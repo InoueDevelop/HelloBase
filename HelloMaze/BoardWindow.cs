@@ -420,7 +420,7 @@ namespace HelloMaze
                 case 4: NewObject = new GoalObject(x, y); ListObjectBoard.Add(NewObject);
                     break;
             }
-            if (NewObject is GoalObject || NewObject is ItemObject)
+            if (NewObject is GoalObject || NewObject is ItemObject || NewObject is WallObject)
             {
                 bmppaint.ObjectSetPaint(NewObject.ObjectPositionX, NewObject.ObjectPositionY, back, ref CanPutObjectOnBoard, NewObject.ObjectSelectNum);
             }
