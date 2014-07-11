@@ -44,9 +44,17 @@
             this.load_button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ロードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.再生ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oFFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ナレーションToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oNToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.oFFToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -147,7 +155,7 @@
             // save_button
             // 
             this.save_button.Location = new System.Drawing.Point(231, 305);
-            this.save_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.save_button.Margin = new System.Windows.Forms.Padding(2);
             this.save_button.Name = "save_button";
             this.save_button.Size = new System.Drawing.Size(94, 30);
             this.save_button.TabIndex = 3;
@@ -158,7 +166,7 @@
             // load_button
             // 
             this.load_button.Location = new System.Drawing.Point(231, 353);
-            this.load_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.load_button.Margin = new System.Windows.Forms.Padding(2);
             this.load_button.Name = "load_button";
             this.load_button.Size = new System.Drawing.Size(94, 30);
             this.load_button.TabIndex = 4;
@@ -170,7 +178,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3,
-            this.ヘルプToolStripMenuItem});
+            this.ヘルプToolStripMenuItem,
+            this.bGMToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(907, 24);
@@ -181,17 +190,11 @@
             // 
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ロードToolStripMenuItem,
-            this.セーブToolStripMenuItem});
+            this.セーブToolStripMenuItem,
+            this.終了ToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(53, 20);
             this.toolStripMenuItem3.Text = "ファイル";
-            // 
-            // セーブToolStripMenuItem
-            // 
-            this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
-            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.セーブToolStripMenuItem.Text = "セーブ";
-            this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
             // 
             // ロードToolStripMenuItem
             // 
@@ -200,11 +203,76 @@
             this.ロードToolStripMenuItem.Text = "ロード";
             this.ロードToolStripMenuItem.Click += new System.EventHandler(this.ロードToolStripMenuItem_Click);
             // 
+            // セーブToolStripMenuItem
+            // 
+            this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
+            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.セーブToolStripMenuItem.Text = "セーブ";
+            this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
+            // 
             // ヘルプToolStripMenuItem
             // 
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
             this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
+            // 
+            // bGMToolStripMenuItem
+            // 
+            this.bGMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.再生ToolStripMenuItem,
+            this.ナレーションToolStripMenuItem});
+            this.bGMToolStripMenuItem.Name = "bGMToolStripMenuItem";
+            this.bGMToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.bGMToolStripMenuItem.Text = "BGM";
+            // 
+            // 再生ToolStripMenuItem
+            // 
+            this.再生ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oNToolStripMenuItem,
+            this.oFFToolStripMenuItem});
+            this.再生ToolStripMenuItem.Name = "再生ToolStripMenuItem";
+            this.再生ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.再生ToolStripMenuItem.Text = "再生";
+            // 
+            // oNToolStripMenuItem
+            // 
+            this.oNToolStripMenuItem.Name = "oNToolStripMenuItem";
+            this.oNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oNToolStripMenuItem.Text = "ON";
+            // 
+            // oFFToolStripMenuItem
+            // 
+            this.oFFToolStripMenuItem.Name = "oFFToolStripMenuItem";
+            this.oFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oFFToolStripMenuItem.Text = "OFF";
+            // 
+            // ナレーションToolStripMenuItem
+            // 
+            this.ナレーションToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oNToolStripMenuItem1,
+            this.oFFToolStripMenuItem1});
+            this.ナレーションToolStripMenuItem.Name = "ナレーションToolStripMenuItem";
+            this.ナレーションToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ナレーションToolStripMenuItem.Text = "ナレーション";
+            // 
+            // oNToolStripMenuItem1
+            // 
+            this.oNToolStripMenuItem1.Name = "oNToolStripMenuItem1";
+            this.oNToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.oNToolStripMenuItem1.Text = "ON";
+            // 
+            // oFFToolStripMenuItem1
+            // 
+            this.oFFToolStripMenuItem1.Name = "oFFToolStripMenuItem1";
+            this.oFFToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.oFFToolStripMenuItem1.Text = "OFF";
+            // 
+            // 終了ToolStripMenuItem
+            // 
+            this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.終了ToolStripMenuItem.Text = "終了";
+            this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
             // BoardData
             // 
@@ -251,6 +319,14 @@
         private System.Windows.Forms.ToolStripMenuItem セーブToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ロードToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 再生ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oFFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ナレーションToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oNToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem oFFToolStripMenuItem1;
     }
 }
 
