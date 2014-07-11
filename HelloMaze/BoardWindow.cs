@@ -98,6 +98,9 @@ namespace HelloMaze
             this.pictureBox1.BackgroundImage = back;
             this.pictureBox1.Image = fore;
 
+            this.KeyPreview = true;
+            
+
             Graphics g=Graphics.FromImage(back);
             
              BoardSizeWidth  = pictureBox1.Width;
@@ -172,11 +175,11 @@ namespace HelloMaze
             System.Drawing.Point cp = pictureBox1.PointToClient(sp);
 
             GetCursolPosition(cp.X, cp.Y,ref x,ref y);
-            for (int i = 1; i < 5; i++)
-            {
-                int a = CountToObject(x, y, i);
-                checkman.Add(a);
-            }   
+            //for (int i = 1; i < 5; i++)　//マスカウントのデバッグ用
+            //{
+            //    int a = CountToObject(x, y, i);
+            //    checkman.Add(a);
+            //}   
             squareX.Text = "squareX:" + x;
            squareY.Text = "squareY:" + y;
            
@@ -222,7 +225,7 @@ namespace HelloMaze
 
                 case 1:
 
-                    while (x < BoardPositionXmax - 1)
+                    while (x < BoardPositionXmax - 2)
                     {
                         x++;
                         checkx++;
@@ -235,7 +238,7 @@ namespace HelloMaze
 
                 case 2:
 
-                    while (y < BoardPositionYmax - 1)
+                    while (y < BoardPositionYmax - 2)
                     {
                         y++;
                         checky++;
@@ -278,20 +281,20 @@ namespace HelloMaze
 
         private void BoardData_KeyDown(object sender, KeyEventArgs e) //十字キー入力後オブジェクトを移動するメソッド
         {
-            if (e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.X)  //right
             {
                 MoveOperation(controlobj, 2, 1);
             }
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.A) //left
             {
 
                 MoveOperation(controlobj, 3, 1);
             }
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.S)//Up
             {
                 MoveOperation(controlobj, 1, 1);
             }
-            if (e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.Z) //down
             {
                 MoveOperation(controlobj, 4, 1);
             }
