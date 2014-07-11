@@ -14,10 +14,13 @@ namespace Block
     {
         Comands comand;
         Conditions condition;
-        int indent_count;
+
         // List<Label> clist = new List<Label>();
-        List<PictureBox> clist = new List<PictureBox>();
-        List<Block> block = new List<Block>();
+        //List<Block> block = new List<Block>();
+        List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
+        Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
+        int indent_count;                                 //インデント回数
+
 
         public Form1()
         {
@@ -26,7 +29,7 @@ namespace Block
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label1.AllowDrop = true;
+
             panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
             //panel1.BackgroundImageLayout = ImageLayout.Zoom;
@@ -85,7 +88,7 @@ namespace Block
             }
         }
         //-------------------------------------------------------------------------------------------
-        private void block_Create(Comands comand)           //もっとブロックらしくする．
+        private void block_Create(Comands comand)           //もっとブロックらしくする．⇒グラデーション（Ifは一つのブロックに見えるように） 同じ処理多数あり　⇒　メソッド化できるわ
         {
             PictureBox pb = new PictureBox();
             //画像の大きさをPictureBoxに合わせる
@@ -96,22 +99,31 @@ namespace Block
                 pb1[i] = new PictureBox();
                 pb1[i].SizeMode = PictureBoxSizeMode.StretchImage;
             }
-
+            string indent_type;
             int indent_size = 150 / 2;
-            int count =0;
+            int count = 0;
 
             switch (comand)
             {
 
                 case Comands.Go:
+
                     pb.Image = System.Drawing.Image.FromFile("前へ.png");
                     pb.Left = 10 + indent_count * indent_size;    //Left=10
+                    pb.Name = "Go";
                     clist.Add(pb);
                     //0708追加
-                    while (count <indent_count)
+                    while (count < indent_count)
                     {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
                         pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                        pb1[count].Left = 10 + (indent_count - count-1) * indent_size;    //Left=10
+
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                         pb1[count].Name = "Indent";
                         clist.Add(pb1[count]);
                         count++;
@@ -120,12 +132,19 @@ namespace Block
                 case Comands.Left:
                     pb.Image = System.Drawing.Image.FromFile("左.png");
                     pb.Left = 10 + indent_count * indent_size;
+                    pb.Name = "Left";
                     clist.Add(pb);
                     //0708追加
                     while (count < indent_count)
                     {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
                         pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                        pb1[count].Left = 10 + count * indent_size;    //Left=10
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                         pb1[count].Name = "Indent";
                         clist.Add(pb1[count]);
                         count++;
@@ -134,41 +153,44 @@ namespace Block
                 case Comands.Right:
                     pb.Image = System.Drawing.Image.FromFile("右.png");
                     pb.Left = 10 + indent_count * indent_size;
+                    pb.Name = "Right";
                     clist.Add(pb);
                     //0708追加
                     while (count < indent_count)
                     {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
                         pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                        pb1[count].Left = 10 + count * indent_size;    //Left=10
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                         pb1[count].Name = "Indent";
                         clist.Add(pb1[count]);
                         count++;
                     }
                     break;
 
-                //case Comands.While:
-                //    pb.Image = System.Drawing.Image.FromFile("もし.png");
-                //    pb.Left = 10 + indent_count * indent_size;
-                //    clist.Add(pb);
-                //    pb1.Image=System.Drawing.Image.FromFile("条件文１.png");
-                //    pb1.Name = "Condition";
-                //    pb1.Left = 150 + indent_count * indent_size;
-                //    clist.Add(pb1);
-
-                //    indent_count++;
-                //    break;
-                
                 case Comands.End:
 
                     pb.Image = System.Drawing.Image.FromFile("ここまで.png");
+                    pb.Name = "End";
                     clist.Add(pb);
                     indent_count--;
                     pb.Left = 10 + indent_count * indent_size;
                     //0708追加
                     while (count < indent_count)
                     {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
                         pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                        pb1[count].Left = 10 + count * indent_size;    //Left=10
+
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                         pb1[count].Name = "Indent";
                         clist.Add(pb1[count]);
                         count++;
@@ -178,17 +200,20 @@ namespace Block
             }
             if (comand == Comands.If)
             {
+                indent.Push("If");
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
                         pb.Image = System.Drawing.Image.FromFile("もし正面壁なし.png");
                         pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Iffront";
                         clist.Add(pb);
                         //0708追加
                         while (count < indent_count)
                         {
+
                             pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                            pb1[count].Left = 10 + count * indent_size;    //Left=10
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
                             count++;
@@ -198,12 +223,13 @@ namespace Block
                     case Conditions.Left_Wall:
                         pb.Image = System.Drawing.Image.FromFile("もし左壁なし.png");
                         pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Ifleft";
                         clist.Add(pb);
                         //0708追加
                         while (count < indent_count)
                         {
                             pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                            pb1[count].Left = 10 + count * indent_size;    //Left=10
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
                             count++;
@@ -213,12 +239,13 @@ namespace Block
                     case Conditions.Right_Wall:
                         pb.Image = System.Drawing.Image.FromFile("もし右壁なし.png");
                         pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Ifright";
                         clist.Add(pb);
                         //0708追加
                         while (count < indent_count)
                         {
                             pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-                            pb1[count].Left = 10 + count * indent_size;    //Left=10
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
                             count++;
@@ -230,17 +257,19 @@ namespace Block
 
             else if (comand == Comands.While)
             {
+                indent.Push("While");
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
                         pb.Image = System.Drawing.Image.FromFile("繰り返し正面壁なし.png");
                         pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Whilefront";
                         clist.Add(pb);
                         //0708追加
                         while (count < indent_count)
                         {
                             pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
-                            pb1[count].Left = 10 + count * indent_size;    //Left=10
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
                             count++;
@@ -250,12 +279,13 @@ namespace Block
                     case Conditions.Left_Wall:
                         pb.Image = System.Drawing.Image.FromFile("繰り返し左壁なし.png");
                         pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Whileleft";
                         clist.Add(pb);
                         //0708追加
                         while (count < indent_count)
                         {
                             pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
-                            pb1[count].Left = 10 + count * indent_size;    //Left=10
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
                             count++;
@@ -265,12 +295,13 @@ namespace Block
                     case Conditions.Right_Wall:
                         pb.Image = System.Drawing.Image.FromFile("繰り返し右壁なし.png");
                         pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Whileright";
                         clist.Add(pb);
                         //0708追加
                         while (count < indent_count)
                         {
                             pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
-                            pb1[count].Left = 10 + count * indent_size;    //Left=10
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
                             count++;
