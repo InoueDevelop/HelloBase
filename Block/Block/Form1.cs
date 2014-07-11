@@ -312,84 +312,7 @@ namespace Block
             }
 
         }
-        //-------------------------------------------------------------------------------------------
-        // マウスのボタンが押下された時に起動するイベントプロシージャ
-        //  --- ドラッグ元となるpictureBox1上で、マウスボタンが押された時に、
-        //      ドラッグ&ドロップを開始する処理を実行する。
-        private void clist_MouseDown(object sender, MouseEventArgs e)
-        {
-            // マウスの左ボタンが押されている場合
-            if (e.Button == MouseButtons.Left)
-            {
-                // ドラッグ&ドロップを開始
-                //  --- ドラッグ ソースのデータは、pictureBox1とするように指示。
-                //      また、ドラッグ ソースのデータは、ドロップ先に移動するよう
-                //      に指示。
-                DoDragDrop(clist, DragDropEffects.Move);
-            }
-        }
-
-        // オブジェクトがコントロールの境界内にドラッグされた時に起動
-        // するイベントプロシージャ
-        //  --- ドロップ先となるForm1上の領域内に、マウスポインターが
-        //      ドラッグされた時に、ドロップ先での準備関係の処理を実行
-        //      する。
-        private void Form1_DragOver(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(typeof(System.Windows.Forms.Label))
-               && (e.AllowedEffect == DragDropEffects.Move))
-            {
-                // ドロップ先に、移動を許可するように指示する。
-                e.Effect = DragDropEffects.Move;
-            }
-            else
-            {
-                // ドロップ先に、ドロップを受け入れないように指示する。
-                e.Effect = DragDropEffects.None;
-            }
-        }
-
-        // ドロップされた時に起動するイベントプロシージャ
-        //  --- ドロップ先となるForm1上で、マウスボタンが離された時（
-        //      すなわち、ドラッグ&ドロップ操作が完了した時）に、画像
-        //      の移動処理を実行する。
-        private void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-            // ドラッグされているデーターがPictureBoxで、かつ、
-            // ドラッグ ソースのデータは、ドロップ先に移動するよう指示さ
-            // れている場合（すなわち、コピー等の別の指示ではない場合）
-            if (e.Data.GetDataPresent(typeof(System.Windows.Forms.PictureBox))
-                && (e.Effect == DragDropEffects.Move))
-            {
-                // ドラッグ ソースのデータ（pictureBox1）を取得
-                System.Windows.Forms.PictureBox picture = (System.Windows.Forms.PictureBox)e.Data.GetData(typeof(System.Windows.Forms.PictureBox));
-
-                // ドラッグ ソースのデータ（pictureBox1）における座標位置を取得
-                Point posi = new Point(e.X, e.Y);
-
-                // ドラッグ ソースのデータ（pictureBox1）における座標位置
-                // を、スクリーン座標からクライアント座標に変換
-                posi = this.PointToClient(posi);
-
-                // ドラッグ ソースのデータ（pictureBox1）の座標位置を設定
-                //  --- なお、ドロップ先でのマウスの座標位置に、pictureBox1
-                //      の中心が来るように指定する。
-                posi = new Point(posi.X - picture.Width / 2, posi.Y - picture.Height / 2);
-                picture.Location = posi;
-            }
-            // ドラッグされているデーターがPictureBoxではない場合、又は、
-            // ドラッグ ソースのデータは、ドロップ先に移動するよう指示され
-            // ていない場合（すなわち、移動ではなく、コピー等の別の指示の場合）
-            else
-            {
-                // 特に処理はなし
-            }
-        }
-        //-------------------------------------------------------------------------------------------
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -400,10 +323,9 @@ namespace Block
         //変換ボタン
         private void button2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < clist.Count; i++)
-            {
-                listBox2.Items.Add(clist[i].Name); //ホントはソースコード辞書の内容を書き出す．
-            }
+            
+                block_to_string();
+            
         }
         //-------------------------------------------------------------------------------------------
         //命令文選択リスト
@@ -450,8 +372,61 @@ namespace Block
             }
         }
         //-------------------------------------------------------------------------------------------
+        //ブロックから文字列へ
+        public void block_to_string()
+        {
+            for(int i=0;i<clist.Count;i++)
+            {
+                switch(clist[i].Name)
+                {
+                    case "Go" :
+                        listBox2.Items.Add("前へ進む．");
+                    break;
+                    case "Left":
+                    listBox2.Items.Add("左へ向きを変える．");
+                    break;
+                    case "Right":
+                    listBox2.Items.Add("右へ向きを変える．");
+                    break;
+                    case "Iffront":
+                    listBox2.Items.Add("もし、正面に壁があるなら、");
+                    listBox2.Items.Add("{");
+                    break;
+                    case "Ifleft":
+                    listBox2.Items.Add("もし、左に壁があるなら、");
+                    listBox2.Items.Add("{");
+                    break;
+                    case "Ifright":
+                    listBox2.Items.Add("もし、右に壁があるなら、");
+                    listBox2.Items.Add("{");
+                    break;
+                    case "Whilefront":
+                    listBox2.Items.Add("正面に壁がある間は、");
+                    listBox2.Items.Add("{");
+                    break;
+                    case "Whileleft":
+                    listBox2.Items.Add("左に壁がある間は、");
+                    listBox2.Items.Add("{");
+                    break;
+                    case "Whileright":
+                    listBox2.Items.Add("右に壁がある間は、");
+                    listBox2.Items.Add("{");
+                    break;
+                    case "End":
+                    listBox2.Items.Add("}");
+                    break;
+                   
+                }
+            }
+        }
+        //-------------------------------------------------------------------------------------------
         //ブロックの取り消し
         private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
