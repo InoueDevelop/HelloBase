@@ -607,6 +607,11 @@ namespace HelloMaze
         {
             load();
         }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         }
 
 
