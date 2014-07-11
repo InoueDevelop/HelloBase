@@ -597,6 +597,16 @@ namespace HelloMaze
             }
 
             }
+
+        private void セーブToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+        private void ロードToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            load();
+        }
         }
 
 

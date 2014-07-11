@@ -155,7 +155,7 @@ namespace open
                 {                  
                     //PlockForm gameForm = new PlockForm();
                     //gameForm.Show();
-                    cFlag = true;
+                    cFlag = false;
                     eFlag = true;
                     
                     this.Close();                    
@@ -167,7 +167,7 @@ namespace open
                 }
                 else
                 {
-
+                    cFlag = true;             
                 }
             }
         }
