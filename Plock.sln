@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plock", "Plock\Plock.csproj", "{65A6BF2E-571E-4BE1-BABC-514B2F492093}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitmapPaint", "HelloMaze\BitmapPaint\BitmapPaint.csproj", "{3D1040DA-51BF-4986-B0A6-AD5E58261862}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "open", "open\open.csproj", "{F264178B-F392-4BE7-BC58-D78206855FA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED3D3603-D04A-4875-BB5B-40F2D51FD71A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Block", "Block\Block\Block.csproj", "{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,16 @@ Global
 		{F264178B-F392-4BE7-BC58-D78206855FA6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F264178B-F392-4BE7-BC58-D78206855FA6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F264178B-F392-4BE7-BC58-D78206855FA6}.Release|x86.ActiveCfg = Release|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
