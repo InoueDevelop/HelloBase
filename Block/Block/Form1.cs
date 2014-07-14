@@ -18,7 +18,7 @@ namespace Block
         // List<Label> clist = new List<Label>();
         //List<Block> block = new List<Block>();
         List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
-        Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
+        static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
 
         int indent_count;                                 //インデント回数
 
@@ -117,11 +117,11 @@ namespace Block
 
             string indent_type;
             string indent_type2;
-            Stack<string> indent_copy = new Stack<string>();
+            Stack<string> indent_copy = indent;//indentの値も変わってしまう
             int indent_size = 150 / 2;
             int count = 0;
 
-            indent_copy = indent;                                                     //indentの値も変わってしまう
+                                                                 
             //--------------------------------------------------------
 
             pb.Image = System.Drawing.Image.FromFile(png_filename);
@@ -160,7 +160,7 @@ namespace Block
                         pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
                 }
 
-                //indent.Push(indent_type);
+                indent.Push(indent_type);
 
                 pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
                 pb1[count].Name = "Indent";
@@ -173,6 +173,7 @@ namespace Block
         //-------------------------------------------------------------------------------------------
         private void block_Create(Comands comand)           //もっとブロックらしくする．⇒グラデーション（Ifは一つのブロックに見えるように） 同じ処理多数あり　⇒　メソッド化できるわ ⇒　したわ
         {
+            string st;
             switch (comand)
             {
 
@@ -187,7 +188,17 @@ namespace Block
                     break;
 
                 case Comands.End:
-                    set_Block("End", "ここまで.png");
+                    st = indent.Pop();
+                    if (st == "If")
+                    {
+                        set_Block("End", "もし（ここまで）.png");
+                        indent.Push("If");
+                    }
+                    else if (st == "While")
+                    {
+                        set_Block("End", "繰り返し（ここまで）.png");
+                        indent.Push("While");
+                    }
                     break;
                 default: break;
 
@@ -382,24 +393,24 @@ namespace Block
 
         }
 
-        //private DateTime m_dtTill = DateTime.MinValue;
-        //private void timer1_Tick(object sender, EventArgs e)
-        //{
-            
-            
-        //    if (m_dtTill > DateTime.Now)
-        //    {
-        //        if (clist[1].BackColor == Color.Empty)
-        //            clist[1].BackColor = Color.Red;
-        //        else
-        //            clist[1].BackColor = Color.Empty;
-        //    }
-        //    else
-        //    {
-        //        clist[1].BackColor = Color.Empty;
+        private DateTime m_dtTill = DateTime.MinValue;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
 
-        //    }
-        //}
+
+            if (m_dtTill > DateTime.Now)
+            {
+                if (clist[1].BackColor == Color.Empty)
+                    clist[1].BackColor = Color.Red;
+                else
+                    clist[1].BackColor = Color.Empty;
+            }
+            else
+            {
+                clist[1].BackColor = Color.Empty;
+
+            }
+        }
 
     }
 }
