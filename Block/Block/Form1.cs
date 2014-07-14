@@ -19,7 +19,11 @@ namespace Block
         //List<Block> block = new List<Block>();
         List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
         Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
+
         int indent_count;                                 //インデント回数
+
+        int x;   //マウス座標
+        int y;
 
 
         public Form1()
@@ -32,6 +36,7 @@ namespace Block
 
             panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
+
             //panel1.BackgroundImageLayout = ImageLayout.Zoom;
             //panel1.BackgroundImage = System.Drawing.Image.FromFile("背景.png");
 
@@ -44,6 +49,14 @@ namespace Block
         //配置ボタン
         private void button1_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("命令セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if (listBox1.SelectedIndex == 3 && listBox2.SelectedIndex == -1)
+            {
+                MessageBox.Show("条件セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             block_Create(comand);
             block_View(0);
 
@@ -51,10 +64,10 @@ namespace Block
         //-------------------------------------------------------------------------------------------
         private void block_View(int k)
         {
-            int top = 0;
-            int y = 14;
-            //int k=0;
-            int pn_height = 0;
+            int top ;
+            int y = 10; //ブロック描画開始位置
+
+            panel1.Controls.Clear();
             for (int i = k; i < clist.Count; i++)
             {
                 if (clist[i].Name == "Indent")
@@ -89,7 +102,7 @@ namespace Block
         }
         //-------------------------------------------------------------------------------------------
         //ブロックの設定とリストへの登録
-        private void set_Block(string prop_name,string png_filename)
+        private void set_Block(string prop_name, string png_filename)
         {
             //-------------------------------------------------------
             PictureBox pb = new PictureBox();
@@ -101,10 +114,14 @@ namespace Block
                 pb1[i] = new PictureBox();
                 pb1[i].SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            
+
             string indent_type;
+            string indent_type2;
+            Stack<string> indent_copy = new Stack<string>();
             int indent_size = 150 / 2;
             int count = 0;
+
+            indent_copy = indent;                                                     //indentの値も変わってしまう
             //--------------------------------------------------------
 
             pb.Image = System.Drawing.Image.FromFile(png_filename);
@@ -112,18 +129,38 @@ namespace Block
                 indent_count--;                          //Endを配置するとインデントを１つ減らす．
             pb.Left = 10 + indent_count * indent_size;
             pb.Name = prop_name;
+            //Clickイベントにイベントハンドラ追加　0714
+            pb.Click += new EventHandler(clist_Click);
             clist.Add(pb);
-            
+
             //インデントブロックの設定・登録　0708追加
             while (count < indent_count)
             {
-                indent_type = indent.Pop();
-                if (indent_type == "If")
-                    pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
 
-                if (indent_type == "While")
-                    pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
-                indent.Push(indent_type);
+                indent_type = indent_copy.Pop();                                                     //indentの値も変わってしまう
+                //command==If or While 最新のindentの次のindentから参照
+                if (comand == Comands.If || comand == Comands.While)
+                {
+                    indent_type2 = indent_copy.Pop();
+                    if (indent_type2 == "If")
+                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+
+                    else if (indent_type2 == "While")
+                        pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+
+                    indent.Push(indent_type2);
+                }
+                // command!=If and While　最新のindentから参照
+                else
+                {
+                    if (indent_type == "If")
+                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+
+                    else if (indent_type == "While")
+                        pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                }
+
+                //indent.Push(indent_type);
 
                 pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
                 pb1[count].Name = "Indent";
@@ -152,11 +189,13 @@ namespace Block
                 case Comands.End:
                     set_Block("End", "ここまで.png");
                     break;
+                default: break;
 
             }
             if (comand == Comands.If)
             {
                 indent.Push("If");
+                //indent_copy.Push("If");
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
@@ -174,6 +213,7 @@ namespace Block
             else if (comand == Comands.While)
             {
                 indent.Push("While");
+                //indent_copy.Push("While");
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
@@ -189,7 +229,7 @@ namespace Block
             }
 
         }
-        
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -200,9 +240,9 @@ namespace Block
         //変換ボタン
         private void button2_Click(object sender, EventArgs e)
         {
-            
-                block_to_string();
-            
+
+            block_to_string();
+
         }
         //-------------------------------------------------------------------------------------------
         //命令文選択リスト
@@ -229,6 +269,7 @@ namespace Block
                 case 5:
                     comand = Comands.End;
                     break;
+                default: break;
             }
         }
         //-------------------------------------------------------------------------------------------
@@ -252,47 +293,47 @@ namespace Block
         //ブロックから文字列へ
         public void block_to_string()
         {
-            for(int i=0;i<clist.Count;i++)
+            for (int i = 0; i < clist.Count; i++)
             {
-                switch(clist[i].Name)
+                switch (clist[i].Name)
                 {
-                    case "Go" :
+                    case "Go":
                         listBox2.Items.Add("前へ進む．");
-                    break;
+                        break;
                     case "Left":
-                    listBox2.Items.Add("左へ向きを変える．");
-                    break;
+                        listBox2.Items.Add("左へ向きを変える．");
+                        break;
                     case "Right":
-                    listBox2.Items.Add("右へ向きを変える．");
-                    break;
+                        listBox2.Items.Add("右へ向きを変える．");
+                        break;
                     case "Iffront":
-                    listBox2.Items.Add("もし、正面に壁があるなら、");
-                    listBox2.Items.Add("{");
-                    break;
+                        listBox2.Items.Add("もし、正面に壁があるなら、");
+                        listBox2.Items.Add("{");
+                        break;
                     case "Ifleft":
-                    listBox2.Items.Add("もし、左に壁があるなら、");
-                    listBox2.Items.Add("{");
-                    break;
+                        listBox2.Items.Add("もし、左に壁があるなら、");
+                        listBox2.Items.Add("{");
+                        break;
                     case "Ifright":
-                    listBox2.Items.Add("もし、右に壁があるなら、");
-                    listBox2.Items.Add("{");
-                    break;
+                        listBox2.Items.Add("もし、右に壁があるなら、");
+                        listBox2.Items.Add("{");
+                        break;
                     case "Whilefront":
-                    listBox2.Items.Add("正面に壁がある間は、");
-                    listBox2.Items.Add("{");
-                    break;
+                        listBox2.Items.Add("正面に壁がある間は、");
+                        listBox2.Items.Add("{");
+                        break;
                     case "Whileleft":
-                    listBox2.Items.Add("左に壁がある間は、");
-                    listBox2.Items.Add("{");
-                    break;
+                        listBox2.Items.Add("左に壁がある間は、");
+                        listBox2.Items.Add("{");
+                        break;
                     case "Whileright":
-                    listBox2.Items.Add("右に壁がある間は、");
-                    listBox2.Items.Add("{");
-                    break;
+                        listBox2.Items.Add("右に壁がある間は、");
+                        listBox2.Items.Add("{");
+                        break;
                     case "End":
-                    listBox2.Items.Add("}");
-                    break;
-                   
+                        listBox2.Items.Add("}");
+                        break;
+
                 }
             }
         }
@@ -302,11 +343,63 @@ namespace Block
         {
 
         }
+        //-------------------------------------------------------------------------------------------
+        private void clist_Click(object sender, EventArgs e)
+        {
+            //x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
+            //y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+            //string b_name;
 
+            //for (int i = 0; i < clist.Count; i++)
+            //{
+            //    if (clist[i].Name != "Indent")
+            //    {
+            //        if (y >= clist[i].Top && y < clist[i].Bottom)
+            //        {
+            //            timer1.Enabled = true;
+            //            m_dtTill = DateTime.Now.AddSeconds(3);
+
+            //            b_name = clist[i].Name;
+            //            DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            //            if (result == DialogResult.Yes)
+            //            {
+            //                clist.RemoveAt(i);
+            //                //再描画
+            //                block_View(0);
+            //            }
+            //            else
+            //            {
+
+            //            }
+            //            break;
+            //        }
+
+            //    }
+            //}
+        }
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        //private DateTime m_dtTill = DateTime.MinValue;
+        //private void timer1_Tick(object sender, EventArgs e)
+        //{
+            
+            
+        //    if (m_dtTill > DateTime.Now)
+        //    {
+        //        if (clist[1].BackColor == Color.Empty)
+        //            clist[1].BackColor = Color.Red;
+        //        else
+        //            clist[1].BackColor = Color.Empty;
+        //    }
+        //    else
+        //    {
+        //        clist[1].BackColor = Color.Empty;
+
+        //    }
+        //}
 
     }
 }
