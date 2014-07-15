@@ -31,6 +31,16 @@ namespace HelloMaze
             get {return ObjectPositionY;}
             protected set { ObjectPositionY=value; }
         }
+
+        /// <summary>
+        /// オブジェクトの向きを示す列挙型
+        /// </summary>
+        internal enum ObjectDirection {Up,Down,Right,Left};
+        /// <summary>
+        /// オブジェクトの現在の向き
+        /// </summary>
+        internal int objectDirection = (int)ObjectDirection.Up;
+
          /// <summary>
          /// オブジェクトの種類を識別する番号
          /// <remarks>
@@ -62,6 +72,34 @@ namespace HelloMaze
        internal void moveDown() { ObjectPositionY++; }
        internal void moveRight() {ObjectPositionX++; }
        internal void moveLeft() { ObjectPositionX--; }
+
+        /// <summary>
+        /// 向きの方向へ進む
+        /// </summary>
+       internal void moveStraight() { 
+           switch (objectDirection){
+               case (int)ObjectDirection.Up:
+                   moveUp();
+                   break;
+               case (int)ObjectDirection.Down:
+                   moveDown();
+                   break;
+               case (int)ObjectDirection.Right:
+                   moveRight();
+                   break;
+               case (int)ObjectDirection.Left:
+                   moveLeft();
+                   break;
+           }
+       
+       }
+        /// <summary>
+        /// オブジェクトの向きを変える
+        /// </summary>
+       internal void turnUp() { objectDirection = (int)ObjectDirection.Up; }
+       internal void turnDown() { objectDirection = (int)ObjectDirection.Down; }
+       internal void turnRight() { objectDirection = (int)ObjectDirection.Right; }
+       internal void turnLeft() { objectDirection = (int)ObjectDirection.Left; }
     
 
     }
