@@ -120,8 +120,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resource\もしindent.png" />
-    <Content Include="Resource\繰り返しindent.png" />
+    <Content Include="Resource\もしend.png" />
+    <Content Include="Resource\もしinterval.png" />
+    <Content Include="Resource\繰り返しend.png" />
+    <Content Include="Resource\繰り返しinterval.png" />
     <None Include="Resources\ここまで.png.png" />
     <Content Include="Resource\ここまで.png" />
     <Content Include="Resource\もし右壁なし.png" />
