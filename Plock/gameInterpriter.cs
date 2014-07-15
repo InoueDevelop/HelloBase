@@ -11,6 +11,7 @@ namespace Plock
     {
         CodeList currentCode = new CodeList();
 
+        [Obsolete("非推奨", false)]
         public GameData run(String code, GameData game)
         {
             build(code);
@@ -24,6 +25,7 @@ namespace Plock
             return game;
         }
 
+        [Obsolete("非推奨", false)]
         public GameData run(Queue<String> code, GameData game)
         {
             build(code);

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace Plock
 {
@@ -18,7 +19,7 @@ namespace Plock
 
         internal GameInterpriter gameInterpriter;
 
-        internal Thread forRunAll;
+        internal System.Timers.Timer runAllTimer;
 
         public InterpriterController(){
             //ゲームのFormのインスタンスを生成
@@ -27,33 +28,39 @@ namespace Plock
 
             //インタプリタの実体を生成
             gameInterpriter = new GameInterpriter();
+
+            //自動実行のためのTimerを用意
+            runAllTimer = new System.Timers.Timer();
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { gameInterpriter.runOneLine("", gameForm); };
+            runAllTimer.AutoReset = true;
+            runAllTimer.Interval = 50;
         }
 
         internal void RunAll(string code)
         {
+            gameInterpriter.build(code);
             //ゲームのデータクラスの更新
-            if (forRunAll != null && forRunAll.IsAlive)
+            if (runAllTimer.Enabled == true)
             {
-                //無視する
+                runAllTimer.Stop();
             }
             else
             {
-                forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(code, gameForm); }));
-                forRunAll.Start();//開始する
+                runAllTimer.Start();
             }
         }
 
         internal void RunAll(Queue<String> code)
         {
+            gameInterpriter.build(code);
             //ゲームのデータクラスの更新
-            if (forRunAll != null && forRunAll.IsAlive)
+            if (runAllTimer.Enabled == true)
             {
-                if (forRunAll.IsAlive) forRunAll.Abort();//停止する
+                runAllTimer.Stop();
             }
             else
             {
-                forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(code, gameForm); }));
-                forRunAll.Start();//開始する
+                runAllTimer.Start();
             }
         }
     }

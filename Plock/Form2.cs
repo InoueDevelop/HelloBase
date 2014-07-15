@@ -22,11 +22,10 @@ namespace Plock
         Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
         int indent_count;                                 //インデント回数
 
-
         public Form2():base()
         {
             InitializeComponent();
-
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -438,24 +437,21 @@ namespace Plock
         {
             try
             {
-                if (forRunAll != null && forRunAll.IsAlive)
-                {
-                    //無視する
-                }
-                else
-                {
-                    Queue<string> codeQueue = block_to_queue();
-                    gameInterpriter.build(codeQueue);
-                    textBox1.Text = gameInterpriter.getCurrentCode();
-                }
-            }catch(Exception exc){
-                textBox1.Text=exc.ToString();
+
+                Queue<string> codeQueue = block_to_queue();
+                if (runAllTimer.Enabled == false) gameInterpriter.build(codeQueue);
+                textBox1.Text = gameInterpriter.getCurrentCode();
+
+            }
+            catch (Exception exc)
+            {
+                textBox1.Text = exc.ToString();
             }
         }
 
         private Queue<string> block_to_queue()
         {
-            Queue<string> _codeQueue=new Queue<string>();
+            Queue<string> _codeQueue = new Queue<string>();
             int codeNumber = 0;
             for (int i = 0; i < clist.Count; i++)
             {
@@ -509,32 +505,27 @@ namespace Plock
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (forRunAll != null && forRunAll.IsAlive)
-            {
-                //無視する
-            }
-            else
-            {
-                gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
-                textBox1.Text=gameInterpriter.getCurrentCode();
-            }
+
+            if (runAllTimer.Enabled == false) gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
+            textBox1.Text = gameInterpriter.getCurrentCode();
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             try
             {
-                Queue<string> code = block_to_queue();
+                Queue<string> codeQueue = block_to_queue();
+                gameInterpriter.build(codeQueue);
                 //ゲームのデータクラスの更新
-                if (forRunAll != null && forRunAll.IsAlive)
+                if (runAllTimer.Enabled==true)
                 {
-                    if (forRunAll.IsAlive) forRunAll.Abort();//停止する
+                    runAllTimer.Stop();
                     button6.Text = "すべて実行";
                 }
                 else
                 {
-                    forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(code, gameForm); }));
-                    forRunAll.Start();//開始する
+                    runAllTimer.Start();
                     button6.Text = "停止する";
                 }
             }
@@ -542,6 +533,18 @@ namespace Plock
             {
                 textBox1.Text = exc.ToString();
             }
+        }
+
+        //デバッグ用(TextBox1に現在のコードを表示する用)
+        delegate void forSetTextBox1();
+        private void setTextBox1(string str)
+        {
+            if (this.textBox1.InvokeRequired)
+            {
+                forSetTextBox1 setTex1 = new forSetTextBox1(() => textBox1.Text=str);
+                this.Invoke(setTex1);
+            }
+            else { this.textBox1.Refresh(); }
         }
 
     }
