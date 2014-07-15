@@ -446,6 +446,7 @@ namespace Plock
                 {
                     Queue<string> codeQueue = block_to_queue();
                     gameInterpriter.build(codeQueue);
+                    textBox1.Text = gameInterpriter.getCurrentCode();
                 }
             }catch(Exception exc){
                 textBox1.Text=exc.ToString();
@@ -455,39 +456,50 @@ namespace Plock
         private Queue<string> block_to_queue()
         {
             Queue<string> _codeQueue=new Queue<string>();
+            int codeNumber = 0;
             for (int i = 0; i < clist.Count; i++)
             {
                 switch (clist[i].Name)
                 {
                     case "Go":
-                        _codeQueue.Enqueue("前へ進む");
+                        _codeQueue.Enqueue(codeNumber + ":前へ進む");
+                        codeNumber++;
                         break;
                     case "Left":
-                        _codeQueue.Enqueue("左を向く");
+                        _codeQueue.Enqueue(codeNumber + ":左を向く");
+                        codeNumber++;
                         break;
                     case "Right":
-                        _codeQueue.Enqueue("右を向く");
+                        _codeQueue.Enqueue(codeNumber + ":右を向く");
+                        codeNumber++;
                         break;
                     case "Iffront":
-                        _codeQueue.Enqueue("もし、正面に壁がないなら{");
+                        _codeQueue.Enqueue(codeNumber + ":もし、正面に壁がないなら{");
+                        codeNumber++;
                         break;
                     case "Ifleft":
-                        _codeQueue.Enqueue("もし、左に壁がないなら{");
+                        _codeQueue.Enqueue(codeNumber + ":もし、左に壁がないなら{");
+                        codeNumber++;
                         break;
                     case "Ifright":
-                        _codeQueue.Enqueue("もし、右に壁がないなら{");
+                        _codeQueue.Enqueue(codeNumber + ":もし、右に壁がないなら{");
+                        codeNumber++;
                         break;
                     case "Whilefront":
-                        _codeQueue.Enqueue("正面に壁がないなら繰り返す{");
+                        _codeQueue.Enqueue(codeNumber + ":正面に壁がないなら繰り返す{");
+                        codeNumber++;
                         break;
                     case "Whileleft":
-                        _codeQueue.Enqueue("左に壁がないなら繰り返す{");
+                        _codeQueue.Enqueue(codeNumber + ":左に壁がないなら繰り返す{");
+                        codeNumber++;
                         break;
                     case "Whileright":
-                        _codeQueue.Enqueue("右に壁がないなら繰り返す{");
+                        _codeQueue.Enqueue(codeNumber + ":右に壁がないなら繰り返す{");
+                        codeNumber++;
                         break;
                     case "End":
-                        _codeQueue.Enqueue("}");
+                        _codeQueue.Enqueue(codeNumber + ":}");
+                        codeNumber++;
                         break;
 
                 }
@@ -504,6 +516,7 @@ namespace Plock
             else
             {
                 gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
+                textBox1.Text=gameInterpriter.getCurrentCode();
             }
         }
 

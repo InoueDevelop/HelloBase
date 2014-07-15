@@ -56,6 +56,15 @@ namespace Plock
             //currentCode = new CodeList();
             currentCode.setValue(code);
         }
+
+        /// <summary>
+        /// 次に実行されるコードの文字列を返す
+        /// </summary>
+        /// <returns></returns>
+        internal String getCurrentCode()
+        {
+            return currentCode._value;
+        }
     }
 
     /// <summary>
@@ -63,7 +72,7 @@ namespace Plock
     /// </summary>
     class CodeList
     {
-        String _value;
+        internal String _value;
         MethodWrapper value;
         CodeList nextCode;//後に実行されるコード
         CodeList previousCode;//前に実行されたコード
