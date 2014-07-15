@@ -24,6 +24,19 @@ namespace Plock
             return game;
         }
 
+        public GameData run(Queue<String> code, GameData game)
+        {
+            build(code);
+
+            while (true)
+            {
+                game = currentCode.execute(game);
+                currentCode = currentCode.getMoveTo(game);
+                if (currentCode.isEnd()) break;
+            }
+            return game;
+        }
+
         internal GameData runOneLine(string code, GameData game)
         {
             if (currentCode.isEnd()) return game;

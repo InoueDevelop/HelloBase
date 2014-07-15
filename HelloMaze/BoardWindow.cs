@@ -321,8 +321,6 @@ namespace HelloMaze
         /// <summary>
         /// ブロックスクリプト用上回転命令
         /// </summary>
-        public void turnUp() { controlobj.turnUp(); }
-        public void turnDown() { controlobj.turnDown(); }
         public void turnRight() { controlobj.turnRight(); }
         public void turnLeft() { controlobj.turnLeft(); }
 

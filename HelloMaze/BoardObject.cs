@@ -35,11 +35,11 @@ namespace HelloMaze
         /// <summary>
         /// オブジェクトの向きを示す列挙型
         /// </summary>
-        internal enum ObjectDirection {Up,Down,Right,Left};
+        public enum ObjectDirection { init, Up, Right, Left, Down };
         /// <summary>
         /// オブジェクトの現在の向き
         /// </summary>
-        internal int objectDirection = (int)ObjectDirection.Up;
+        public int objectDirection = (int)ObjectDirection.Up;
 
          /// <summary>
          /// オブジェクトの種類を識別する番号
@@ -96,10 +96,59 @@ namespace HelloMaze
         /// <summary>
         /// オブジェクトの向きを変える
         /// </summary>
-       internal void turnUp() { objectDirection = (int)ObjectDirection.Up; }
-       internal void turnDown() { objectDirection = (int)ObjectDirection.Down; }
-       internal void turnRight() { objectDirection = (int)ObjectDirection.Right; }
-       internal void turnLeft() { objectDirection = (int)ObjectDirection.Left; }
+       internal void turnRight() { objectDirection = getRight(); }
+       internal void turnLeft() { objectDirection = getLeft(); }
+
+        /// <summary>
+        /// 現在の向きに対して右に回転した方向を得る
+        /// </summary>
+        /// <returns></returns>
+       public int getRight()
+       {
+           int res = 0;
+           switch (objectDirection)
+           {
+               case (int)ObjectDirection.Left:
+                   res = (int)ObjectDirection.Up;
+                   break;
+               case (int)ObjectDirection.Right:
+                   res = (int)ObjectDirection.Down;
+                   break;
+               case (int)ObjectDirection.Up:
+                   res = (int)ObjectDirection.Right;
+                   break;
+               case (int)ObjectDirection.Down:
+                   res = (int)ObjectDirection.Left;
+                   break;
+           }
+           return res;
+       }
+        /// <summary>
+       /// 現在の向きに対して左に回転した方向を得る
+        /// </summary>
+        /// <returns></returns>
+       public int getLeft()
+       {
+           int res=0;
+           switch (objectDirection)
+           {
+               case (int)ObjectDirection.Up:
+                   res = (int)ObjectDirection.Left;
+                   break;
+               case (int)ObjectDirection.Down:
+                   res = (int)ObjectDirection.Right;
+                   break;
+               case (int)ObjectDirection.Right:
+                   res = (int)ObjectDirection.Up;
+                   break;
+               case (int)ObjectDirection.Left:
+                   res = (int)ObjectDirection.Down;
+                   break;
+           }
+           return res;
+       }
+
+
     
 
     }

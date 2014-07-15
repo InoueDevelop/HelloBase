@@ -42,6 +42,20 @@ namespace Plock
                 forRunAll.Start();//開始する
             }
         }
+
+        internal void RunAll(Queue<String> code)
+        {
+            //ゲームのデータクラスの更新
+            if (forRunAll != null && forRunAll.IsAlive)
+            {
+                //無視する
+            }
+            else
+            {
+                forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(code, gameForm); }));
+                forRunAll.Start();//開始する
+            }
+        }
     }
 
 

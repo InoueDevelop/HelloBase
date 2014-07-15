@@ -72,22 +72,6 @@ namespace Plock
             }
         }
 
-        public class turnUp : Method    //ゲームのメソッド
-        {
-            public override GameData execute(GameData game)
-            {
-                game.turnUp();
-                return game;
-            }
-        }
-        public class turnDown : Method    //ゲームのメソッド
-        {
-            public override GameData execute(GameData game)
-            {
-                game.turnDown();
-                return game;
-            }
-        }
         public class turnRight : Method    //ゲームのメソッド
         {
             public override GameData execute(GameData game)
@@ -177,25 +161,29 @@ namespace Plock
                 return -1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 3);
             }
         }
+
+        /// <summary>
+        /// 正面に壁がないかどうか
+        /// </summary>
         public class IsntUpWall : IsMethod
         {
             public override bool execute(GameData game)
             {
-                return !(-1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 4));
+                return !(-1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.objectDirection));
             }
         }
         public class IsntRightWall : IsMethod
         {
             public override bool execute(GameData game)
             {
-                return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 1));
+                return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getRight()));
             }
         }
         public class IsntLeftWall : IsMethod
         {
             public override bool execute(GameData game)
             {
-                return !(-1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 3));
+                return !(-1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getLeft()));
             }
         }
 

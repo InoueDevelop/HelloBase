@@ -492,5 +492,18 @@ namespace Plock
             gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Queue<string> codeQueue = block_to_queue();
+                RunAll(codeQueue);
+            }
+            catch (Exception exc)
+            {
+                textBox1.Text = exc.ToString();
+            }
+        }
+
     }
 }
