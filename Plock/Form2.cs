@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -437,8 +438,15 @@ namespace Plock
         {
             try
             {
-                Queue<string> codeQueue = block_to_queue();
-                gameInterpriter.build(codeQueue);
+                if (forRunAll != null && forRunAll.IsAlive)
+                {
+                    //無視する
+                }
+                else
+                {
+                    Queue<string> codeQueue = block_to_queue();
+                    gameInterpriter.build(codeQueue);
+                }
             }catch(Exception exc){
                 textBox1.Text=exc.ToString();
             }
@@ -489,15 +497,33 @@ namespace Plock
 
         private void button5_Click(object sender, EventArgs e)
         {
-            gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
+            if (forRunAll != null && forRunAll.IsAlive)
+            {
+                //無視する
+            }
+            else
+            {
+                gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             try
             {
-                Queue<string> codeQueue = block_to_queue();
-                RunAll(codeQueue);
+                Queue<string> code = block_to_queue();
+                //ゲームのデータクラスの更新
+                if (forRunAll != null && forRunAll.IsAlive)
+                {
+                    if (forRunAll.IsAlive) forRunAll.Abort();//停止する
+                    button6.Text = "すべて実行";
+                }
+                else
+                {
+                    forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(code, gameForm); }));
+                    forRunAll.Start();//開始する
+                    button6.Text = "停止する";
+                }
             }
             catch (Exception exc)
             {

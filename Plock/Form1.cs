@@ -48,7 +48,7 @@ namespace Plock
             //ゲームのデータクラスの更新
             if (forRunAll != null && forRunAll.IsAlive)
             {
-                //無視する
+                if (forRunAll.IsAlive) forRunAll.Abort();//停止する
             }
             else
             {
