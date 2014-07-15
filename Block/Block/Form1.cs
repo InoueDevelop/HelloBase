@@ -53,18 +53,21 @@ namespace Block
             {
                 MessageBox.Show("命令セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            if (listBox1.SelectedIndex == 3 && listBox2.SelectedIndex == -1)
+            else if ((listBox1.SelectedIndex == 3 || listBox1.SelectedIndex == 4) && listBox3.SelectedIndex == -1)
             {
                 MessageBox.Show("条件セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            block_Create(comand);
-            block_View(0);
+            else
+            {
+                block_Create(comand);
+                block_View(0);
+            }
 
         }
         //-------------------------------------------------------------------------------------------
         private void block_View(int k)
         {
-            int top ;
+            int top;
             int y = 10; //ブロック描画開始位置
 
             panel1.Controls.Clear();
@@ -121,7 +124,7 @@ namespace Block
             int indent_size = 150 / 2;
             int count = 0;
 
-                                                                 
+
             //--------------------------------------------------------
 
             pb.Image = System.Drawing.Image.FromFile(png_filename);
@@ -259,17 +262,20 @@ namespace Block
         //命令文選択リスト
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            listBox3.SelectedIndex = -1;
             switch (listBox1.SelectedIndex)
             {
                 case 0:
                     comand = Comands.Go;
+                    //listBox3.SelectedIndex = -1;
                     break;
                 case 1:
                     comand = Comands.Left;
+                    //listBox3.SelectedIndex = -1;
                     break;
                 case 2:
                     comand = Comands.Right;
+                    // listBox3.SelectedIndex = -1;
                     break;
                 case 3:
                     comand = Comands.If;
@@ -279,6 +285,7 @@ namespace Block
                     break;
                 case 5:
                     comand = Comands.End;
+                    //listBox3.SelectedIndex = -1;
                     break;
                 default: break;
             }
