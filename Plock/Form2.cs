@@ -174,7 +174,7 @@ namespace Plock
                     break;
 
                 case Comands.End:
-
+                    if (indent_count == 0) {setTextBox1("インデントのないときには使えない"); return;}//if文かWhile文が使われていないときは配置できないようにする
                     pb.Image = Properties.Resources.ここまで;
                     pb.Name = "End";
                     clist.Add(pb);
@@ -324,10 +324,7 @@ namespace Plock
         //変換ボタン
         private void button2_Click(object sender, EventArgs e)
         {
-
             block_to_string();
-            RunAll(listBox1.Text);//必要なものは全てあるので、とりあえずrunを実装してみる。
-
         }
         //-------------------------------------------------------------------------------------------
         //命令文選択リスト
