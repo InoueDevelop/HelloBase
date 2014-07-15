@@ -84,14 +84,16 @@
     <Content Include="Resource\もし右壁なし.png" />
     <Content Include="Resource\もし左壁なし.png" />
     <Content Include="Resource\もし正面壁なし.png" />
-    <Content Include="Resource\もし（間）.png" />
+    <Content Include="Resource\もしend.png" />
+    <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\前へ.png" />
     <Content Include="Resource\右.png" />
     <Content Include="Resource\左.png" />
     <Content Include="Resource\繰り返し右壁なし.png" />
     <Content Include="Resource\繰り返し左壁なし.png" />
     <Content Include="Resource\繰り返し正面壁なし.png" />
-    <Content Include="Resource\繰り返し（間）.png" />
+    <Content Include="Resource\繰り返しend.png" />
+    <Content Include="Resource\繰り返しinterval.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
