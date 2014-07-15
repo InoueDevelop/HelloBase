@@ -31,8 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,26 +76,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 732);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 33);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "変換　⇒";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(12, 374);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(176, 352);
-            this.listBox2.TabIndex = 5;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
-            // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
@@ -142,19 +120,19 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(103, 732);
+            this.button4.Location = new System.Drawing.Point(16, 695);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(76, 33);
+            this.button4.Size = new System.Drawing.Size(86, 33);
             this.button4.TabIndex = 10;
-            this.button4.Text = "ビルド";
+            this.button4.Text = "最初から実行";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(201, 732);
+            this.button5.Location = new System.Drawing.Point(16, 734);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(76, 33);
+            this.button5.Size = new System.Drawing.Size(86, 33);
             this.button5.TabIndex = 11;
             this.button5.Text = "１行ずつ実行";
             this.button5.UseVisualStyleBackColor = true;
@@ -162,7 +140,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(201, 693);
+            this.button6.Location = new System.Drawing.Point(113, 734);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(76, 33);
             this.button6.TabIndex = 12;
@@ -172,10 +150,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(201, 374);
+            this.textBox1.Location = new System.Drawing.Point(12, 564);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(97, 313);
+            this.textBox1.Size = new System.Drawing.Size(281, 125);
             this.textBox1.TabIndex = 13;
             // 
             // Form2
@@ -191,8 +169,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
@@ -209,8 +185,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

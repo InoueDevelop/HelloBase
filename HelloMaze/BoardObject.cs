@@ -35,7 +35,7 @@ namespace HelloMaze
         /// <summary>
         /// オブジェクトの向きを示す列挙型
         /// </summary>
-        public enum ObjectDirection { init, Up, Right, Left, Down };
+        public enum ObjectDirection { init, Right, Down ,Left,Up };
         /// <summary>
         /// オブジェクトの現在の向き
         /// </summary>

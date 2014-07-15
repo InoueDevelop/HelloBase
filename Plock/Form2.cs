@@ -321,12 +321,6 @@ namespace Plock
         }
 
         //-------------------------------------------------------------------------------------------
-        //変換ボタン
-        private void button2_Click(object sender, EventArgs e)
-        {
-            block_to_string();
-        }
-        //-------------------------------------------------------------------------------------------
         //命令文選択リスト
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -370,54 +364,7 @@ namespace Plock
                     break;
             }
         }
-        //-------------------------------------------------------------------------------------------
-        //ブロックから文字列へ
-        public void block_to_string()
-        {
-            for (int i = 0; i < clist.Count; i++)
-            {
-                switch (clist[i].Name)
-                {
-                    case "Go":
-                        listBox2.Items.Add("前へ進む．");
-                        break;
-                    case "Left":
-                        listBox2.Items.Add("左へ向きを変える．");
-                        break;
-                    case "Right":
-                        listBox2.Items.Add("右へ向きを変える．");
-                        break;
-                    case "Iffront":
-                        listBox2.Items.Add("もし、正面に壁があるなら、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Ifleft":
-                        listBox2.Items.Add("もし、左に壁があるなら、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Ifright":
-                        listBox2.Items.Add("もし、右に壁があるなら、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Whilefront":
-                        listBox2.Items.Add("正面に壁がある間は、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Whileleft":
-                        listBox2.Items.Add("左に壁がある間は、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Whileright":
-                        listBox2.Items.Add("右に壁がある間は、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "End":
-                        listBox2.Items.Add("}");
-                        break;
 
-                }
-            }
-        }
         //-------------------------------------------------------------------------------------------
         //ブロックの取り消し
         private void button3_Click(object sender, EventArgs e)
@@ -503,7 +450,7 @@ namespace Plock
         private void button5_Click(object sender, EventArgs e)
         {
 
-            if (runAllTimer.Enabled == false) gameForm = gameInterpriter.runOneLine("", gameForm);//一行実行
+            if (runAllTimer.Enabled == false) gameForm = gameInterpriter.runOneLine(block_to_queue(), gameForm);//一行実行
             textBox1.Text = gameInterpriter.getCurrentCode();
 
         }

@@ -41,7 +41,18 @@ namespace Plock
 
         internal GameData runOneLine(string code, GameData game)
         {
-            if (currentCode.isEnd()) return game;
+            if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
+            if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
+
+            game = currentCode.execute(game);
+            currentCode = currentCode.getMoveTo(game);
+            return game;
+        }
+        internal GameData runOneLine(Queue<string> code, GameData game)
+        {
+            if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
+            if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
+            if (currentCode._value == null) return game;//実行するコードがないなら何も実行しない
 
             game = currentCode.execute(game);
             currentCode = currentCode.getMoveTo(game);
@@ -208,8 +219,17 @@ namespace Plock
         /// <returns></returns>
         public bool isEnd()
         {
-            return _value == null;
+            return _value == null&&previousCode!=null;
         }
+        /// <summary>
+        /// ビルドされていないならtrueを返す
+        /// </summary>
+        /// <returns></returns>
+        public bool isNull()
+        {
+            return _value == null && previousCode == null;
+        }
+
     }
 
 }

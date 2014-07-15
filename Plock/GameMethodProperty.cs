@@ -169,21 +169,21 @@ namespace Plock
         {
             public override bool execute(GameData game)
             {
-                return !(-1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.objectDirection));
+                return !(1 == Math.Abs(game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.objectDirection)));
             }
         }
         public class IsntRightWall : IsMethod
         {
             public override bool execute(GameData game)
             {
-                return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getRight()));
+                return !(1 == Math.Abs(game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getRight())));
             }
         }
         public class IsntLeftWall : IsMethod
         {
             public override bool execute(GameData game)
             {
-                return !(-1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getLeft()));
+                return !(1 == Math.Abs(game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getLeft()) ));
             }
         }
 
