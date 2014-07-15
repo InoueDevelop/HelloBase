@@ -300,6 +300,32 @@ namespace HelloMaze
             }
         }
 
+        public void moveStraight()////ブロックスクリプト用移動命令に向きの概念を追加
+        {
+            switch (controlobj.objectDirection)
+            {
+                case (int)BoardObject.ObjectDirection.Up:
+                    MoveOperation(controlobj, 1, 0);
+                    break;
+                case (int)BoardObject.ObjectDirection.Down:
+                    MoveOperation(controlobj, 4, 0);
+                    break;
+                case (int)BoardObject.ObjectDirection.Right:
+                    MoveOperation(controlobj, 2, 0);
+                    break;
+                case (int)BoardObject.ObjectDirection.Left:
+                    MoveOperation(controlobj, 3, 0);
+                    break;
+            }
+        }
+        /// <summary>
+        /// ブロックスクリプト用上回転命令
+        /// </summary>
+        public void turnUp() { controlobj.turnUp(); }
+        public void turnDown() { controlobj.turnDown(); }
+        public void turnRight() { controlobj.turnRight(); }
+        public void turnLeft() { controlobj.turnLeft(); }
+
         public void MoveOperation(BoardObject obj,int directionselect,int repititionnum)  //ブロックスクリプト用移動命令
      {
 

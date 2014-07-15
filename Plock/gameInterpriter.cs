@@ -9,7 +9,7 @@ namespace Plock
 
     class GameInterpriter
     {
-        CodeList currentCode;
+        CodeList currentCode = new CodeList();
 
         public GameData run(String code, GameData game)
         {
@@ -35,7 +35,12 @@ namespace Plock
 
         internal void build(string code)
         {
-            currentCode = new CodeList();
+            //currentCode = new CodeList();
+            currentCode.setValue(code);
+        }
+        internal void build(Queue<String> code)
+        {
+            //currentCode = new CodeList();
             currentCode.setValue(code);
         }
     }
@@ -117,7 +122,7 @@ namespace Plock
         /// キューに格納された文字列を受け取って、実行できるようにメソッドを設定する
         /// </summary>
         /// <param name="codeQueue"></param>
-        void setValue(Queue<String> codeQueue)
+        public void setValue(Queue<String> codeQueue)
         {
 
             if (codeQueue.Count == 0) return;

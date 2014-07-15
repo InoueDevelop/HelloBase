@@ -12,24 +12,57 @@ namespace Plock
     using GameForm = HelloMaze.BoardData;//TODO:利用したいゲームのFormを登録
     using System.Threading;
 
-    public partial class Form1 : Form
+    public class InterpriterController:Form
     {
-        GameForm gameForm;
+        internal GameForm gameForm;
 
-        GameInterpriter gameInterpriter;
+        internal GameInterpriter gameInterpriter;
 
-        Thread forRunAll;
+        internal Thread forRunAll;
 
-        public Form1()
-        {
-            InitializeComponent();
-
+        public InterpriterController(){
             //ゲームのFormのインスタンスを生成
             gameForm = new GameForm();
             gameForm.Show();
 
             //インタプリタの実体を生成
             gameInterpriter = new GameInterpriter();
+        }
+
+        internal void RunAll(string code)
+        {
+            //ゲームのデータクラスの更新
+            if (forRunAll != null && forRunAll.IsAlive)
+            {
+                //無視する
+            }
+            else
+            {
+                forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(code, gameForm); }));
+                forRunAll.Start();//開始する
+            }
+        }
+    }
+
+
+    public partial class Form1 : InterpriterController
+    {
+        //GameForm gameForm;
+
+        //GameInterpriter gameInterpriter;
+
+        //Thread forRunAll;
+
+        public Form1():base()
+        {
+            InitializeComponent();
+
+            ////ゲームのFormのインスタンスを生成
+            //gameForm = new GameForm();
+            //gameForm.Show();
+
+            ////インタプリタの実体を生成
+            //gameInterpriter = new GameInterpriter();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,16 +72,7 @@ namespace Plock
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //ゲームのデータクラスの更新
-            if (forRunAll != null && forRunAll.IsAlive)
-            {
-                //無視する
-            }
-            else
-            {
-                forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(textBox1.Text, gameForm); }));
-                forRunAll.Start();//開始する
-            }
+            RunAll(textBox1.Text);
 
             //ゲームのデータクラスの更新
             //gameForm=gameInterpriter.run(textBox1.Text, gameForm);
@@ -56,6 +80,20 @@ namespace Plock
             //表示の更新(refreshObjectは未完成のメソッド)
             //gameForm.refreshObject(gameForm.controlobj);
         }
+
+        //private void RunAll()
+        //{
+        //    //ゲームのデータクラスの更新
+        //    if (forRunAll != null && forRunAll.IsAlive)
+        //    {
+        //        //無視する
+        //    }
+        //    else
+        //    {
+        //        forRunAll = new Thread(new ThreadStart(() => { gameInterpriter.run(textBox1.Text, gameForm); }));
+        //        forRunAll.Start();//開始する
+        //    }
+        //}
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
