@@ -73,9 +73,19 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap もしindent {
+        internal static System.Drawing.Bitmap もしend {
             get {
-                object obj = ResourceManager.GetObject("もしindent", resourceCulture);
+                object obj = ResourceManager.GetObject("もしend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap もしinterval {
+            get {
+                object obj = ResourceManager.GetObject("もしinterval", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +153,29 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap 繰り返しindent {
+        internal static System.Drawing.Bitmap 繰り返しend {
             get {
-                object obj = ResourceManager.GetObject("繰り返しindent", resourceCulture);
+                object obj = ResourceManager.GetObject("繰り返しend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap 繰り返しinterval {
+            get {
+                object obj = ResourceManager.GetObject("繰り返しinterval", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap 繰り返しinterval1 {
+            get {
+                object obj = ResourceManager.GetObject("繰り返しinterval1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
