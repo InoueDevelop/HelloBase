@@ -118,10 +118,10 @@ namespace Plock
                     {
                         indent_type = indent.Pop();
                         if (indent_type == "If")
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
 
                         if (indent_type == "While")
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                         indent.Push(indent_type);
 
                         pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
@@ -140,9 +140,9 @@ namespace Plock
                     {
                         indent_type = indent.Pop();
                         if (indent_type == "If")
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
                         if (indent_type == "While")
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                         indent.Push(indent_type);
 
                         pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
@@ -161,9 +161,9 @@ namespace Plock
                     {
                         indent_type = indent.Pop();
                         if (indent_type == "If")
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
                         if (indent_type == "While")
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                         indent.Push(indent_type);
 
                         pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
@@ -185,10 +185,10 @@ namespace Plock
                     {
                         indent_type = indent.Pop();
                         if (indent_type == "If")
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
 
                         if (indent_type == "While")
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                         indent.Push(indent_type);
 
                         pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
@@ -213,7 +213,7 @@ namespace Plock
                         while (count < indent_count)
                         {
 
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
                             pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
@@ -229,7 +229,7 @@ namespace Plock
                         //0708追加
                         while (count < indent_count)
                         {
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
                             pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
@@ -245,7 +245,7 @@ namespace Plock
                         //0708追加
                         while (count < indent_count)
                         {
-                            pb1[count].Image = Properties.Resources.もしindent;
+                            pb1[count].Image = Properties.Resources.もしinterval;
                             pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
@@ -269,7 +269,7 @@ namespace Plock
                         //0708追加
                         while (count < indent_count)
                         {
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                             pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
@@ -285,7 +285,7 @@ namespace Plock
                         //0708追加
                         while (count < indent_count)
                         {
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                             pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
@@ -301,7 +301,7 @@ namespace Plock
                         //0708追加
                         while (count < indent_count)
                         {
-                            pb1[count].Image = Properties.Resources.繰り返しindent;
+                            pb1[count].Image = Properties.Resources.繰り返しinterval;
                             pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
                             pb1[count].Name = "Indent";
                             clist.Add(pb1[count]);
