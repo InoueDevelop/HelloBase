@@ -95,7 +95,7 @@ namespace BitmapPaint
 						//g.FillRectangle(Brushes.Black, PositionX * sqlength, PositionY * sqlength, sqlength, sqlength);
 						Bitmap img = Properties.Resources.wall;
 
-						img.MakeTransparent();
+					
 
 
 
@@ -167,7 +167,7 @@ namespace BitmapPaint
 
 
 
-        public void ObjectMovePaint(int PosX, int PosY, Bitmap bmp,int objselect,ref bool[,] CanPutObjectOnBoard,int directionselect,int paintorder)//(アニメーション担当の人が実装)
+        public void ObjectMovePaint(int PosX, int PosY, Bitmap bmpfore,Bitmap bmpback,int objselect,ref bool[,] CanPutObjectOnBoard,int directionselect,int paintorder)//(アニメーション担当の人が実装)
         {
             if(paintorder==0)  CanPutObjectOnBoard[PosX,PosY]=true;
 
@@ -177,9 +177,9 @@ namespace BitmapPaint
 
             switch (directionselect) {
                 case 1:
-                    ResetObject(bmp, PosX, PosY, 0, -paintorder);
+                    ResetObject(bmpfore, PosX, PosY, 0, -paintorder);
                     
-                    using (Graphics g = Graphics.FromImage(bmp))
+                    using (Graphics g = Graphics.FromImage(bmpfore))
                     {
                         //g.Clear(Color.Empty);
                         Bitmap img;                    
@@ -187,7 +187,10 @@ namespace BitmapPaint
 
                            case 0:
                                {
-                                   g.FillRectangle(Brushes.Black, PosX * sqlength, PosY * sqlength - (paintorder + 1) * sqlength / sepalatenum, sqlength, sqlength);
+                                   img = Properties.Resources.wall;
+                                   g.DrawImage(img, PosX * sqlength, PosY * sqlength - (paintorder + 1) * sqlength / sepalatenum, sqlength, sqlength);
+                                   //g.FillRectangle(Brushes.Black, PosX * sqlength, PosY * sqlength - (paintorder + 1) * sqlength / sepalatenum, sqlength, sqlength);
+                                 
                                    g.Dispose();
                                  
                                }break;
@@ -220,9 +223,9 @@ namespace BitmapPaint
 
 
                 case 2:
-            ResetObject(bmp, PosX, PosY, paintorder, 0);
+            ResetObject(bmpfore, PosX, PosY, paintorder, 0);
             
-            using (Graphics g = Graphics.FromImage(bmp))
+            using (Graphics g = Graphics.FromImage(bmpfore))
             {
                 //g.Clear(Color.Empty);
                 Bitmap img;
@@ -230,7 +233,9 @@ namespace BitmapPaint
                 {
                     case 0:
                         {
-                            g.FillRectangle(Brushes.Black, PosX * sqlength + (paintorder + 1) * sqlength / sepalatenum, PosY * sqlength, sqlength, sqlength);
+                            img = Properties.Resources.wall;
+                            g.DrawImage(img, PosX * sqlength + (paintorder + 1) * sqlength / sepalatenum, PosY * sqlength, sqlength, sqlength);
+                            img.Dispose();
                             g.Dispose();
 
                         } break;
@@ -252,9 +257,9 @@ namespace BitmapPaint
                 }
             } break;
                 case 3:
-                    ResetObject(bmp, PosX, PosY, -paintorder, 0);
+                    ResetObject(bmpfore, PosX, PosY, -paintorder, 0);
                
-                    using (Graphics g = Graphics.FromImage(bmp))
+                    using (Graphics g = Graphics.FromImage(bmpfore))
                     {
                         //g.Clear(Color.Empty);
                         Bitmap img;
@@ -262,7 +267,9 @@ namespace BitmapPaint
                         {
                             case 0:
                                 {
-                                    g.FillRectangle(Brushes.Black, PosX * sqlength - (paintorder + 1) * sqlength / sepalatenum, PosY * sqlength, sqlength, sqlength);
+                                    img = Properties.Resources.wall;
+                                    g.DrawImage(img, PosX * sqlength - (paintorder + 1) * sqlength / sepalatenum, PosY * sqlength, sqlength, sqlength);
+                                    img.Dispose();
                                     g.Dispose();
 
                                 } break;
@@ -285,8 +292,8 @@ namespace BitmapPaint
                     } break;
 
                 case 4:
-                    ResetObject(bmp, PosX, PosY, 0, +paintorder);
-                    using (Graphics g = Graphics.FromImage(bmp))
+                    ResetObject(bmpfore, PosX, PosY, 0, +paintorder);
+                    using (Graphics g = Graphics.FromImage(bmpfore))
                     {
                         //g.Clear(Color.Empty);
                         Bitmap img;
@@ -294,7 +301,9 @@ namespace BitmapPaint
                         {
                             case 0:
                                 {
-                                    g.FillRectangle(Brushes.Black, PosX * sqlength, PosY * sqlength + (paintorder + 1) * sqlength / sepalatenum, sqlength, sqlength);
+                                    img = Properties.Resources.wall;
+                                    g.DrawImage(img, PosX * sqlength, PosY * sqlength + (paintorder + 1) * sqlength / sepalatenum, sqlength, sqlength);
+                                    img.Dispose();
                                     g.Dispose();
 
                                 } break;
@@ -319,7 +328,7 @@ namespace BitmapPaint
             }
 
 
-            //ObjectSetPaint(PositionX,PositionY,bmp,ref CanPutObjectOnBoard,player.ObjectSelectNum); 
+            //ObjectSetPaint(PositionX,PositionY,bmpfore,ref CanPutObjectOnBoard,player.ObjectSelectNum); 
         }
 
 

@@ -332,7 +332,7 @@ namespace HelloMaze
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 1, i);
+                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore, back,obj.ObjectSelectNum, ref CanPutObjectOnBoard, 1, i);
                             fore.MakeTransparent(Color.White);
                             //pictureBox1.Refresh();
                             refreshPictureBox1();
@@ -349,7 +349,7 @@ namespace HelloMaze
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 2, i);
+                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore,back, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 2, i);
                             fore.MakeTransparent(Color.White);
                             //pictureBox1.Refresh();
                             refreshPictureBox1();
@@ -367,7 +367,7 @@ namespace HelloMaze
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 3, i);
+                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore,back, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 3, i);
                             fore.MakeTransparent(Color.White);
                             //pictureBox1.Refresh();
                             refreshPictureBox1();
@@ -384,7 +384,7 @@ namespace HelloMaze
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 4, i);
+                            bmppaint.ObjectMovePaint(obj.ObjectPositionX, obj.ObjectPositionY, fore,back, obj.ObjectSelectNum, ref CanPutObjectOnBoard, 4, i);
                             fore.MakeTransparent(Color.White);
                             //pictureBox1.Refresh();
                             refreshPictureBox1();
@@ -425,7 +425,7 @@ namespace HelloMaze
         public void refreshObject(BoardObject obj)
         {
 
-            bmppaint.ObjectMovePaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore, controlobj.ObjectSelectNum, ref CanPutObjectOnBoard, 2, 1);
+            bmppaint.ObjectMovePaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore,back, controlobj.ObjectSelectNum, ref CanPutObjectOnBoard, 2, 1);
             pictureBox1.Refresh();
         }
 
@@ -451,7 +451,7 @@ namespace HelloMaze
                 case 4: NewObject = new GoalObject(x, y); ListObjectBoard.Add(NewObject);
                     break;
             }
-            if (NewObject is GoalObject || NewObject is ItemObject || NewObject is WallObject)
+            if (NewObject is GoalObject || NewObject is ItemObject)
             {
                 bmppaint.ObjectSetPaint(NewObject.ObjectPositionX, NewObject.ObjectPositionY, back, ref CanPutObjectOnBoard, NewObject.ObjectSelectNum);
             }
@@ -529,7 +529,9 @@ namespace HelloMaze
                 if ((controlobj.ObjectPositionX == x && controlobj.ObjectPositionY == y) || (ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionX == x && ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionY == y)) { return; }
 
                 if (ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is PlayerObject
-                    || ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is EnemyObject)
+                    || ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is EnemyObject
+                    || ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is WallObject
+                    )
                 {
                     ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
                     bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, x, y);
