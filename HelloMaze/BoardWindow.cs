@@ -491,7 +491,12 @@ namespace HelloMaze
             GetCursolPosition(cp.X, cp.Y, ref x, ref y);
             if (x > -1)
             {
-                ObjectSet(x, y, objectselectnum);
+               
+                ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
+             　 EnemyObject enemy = new EnemyObject(x, y);
+              　 ObjectSet(x, y, objectselectnum);
+                ListObjectBoard.Add(enemy);　　　　　　　　
+
             }
         }
 
@@ -512,6 +517,9 @@ namespace HelloMaze
             if (x > -1)
             {
                 ObjectSet(x, y, objectselectnum);
+                ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
+                WallObject wall = new WallObject(x, y);
+                ListObjectBoard.Add(wall);　　　　　　　　
             }
         }
 
@@ -528,17 +536,17 @@ namespace HelloMaze
             {
                 if ((controlobj.ObjectPositionX == x && controlobj.ObjectPositionY == y) || (ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionX == x && ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionY == y)) { return; }
 
+                ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
+
                 if (ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is PlayerObject
                     || ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is EnemyObject
                     || ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is WallObject
                     )
                 {
-                    ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
                     bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, x, y);
                 }
                 else
                 {
-                    ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
                     bmppaint.ResetObject(ref CanPutObjectOnBoard, back, x, y);
                 }
                 pictureBox1.Refresh();
