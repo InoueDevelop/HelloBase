@@ -453,10 +453,12 @@ namespace HelloMaze
             }
             if (NewObject is GoalObject || NewObject is ItemObject)
             {
+                //bmppaint.ResetObject( fore,x,y,0,0);
                 bmppaint.ObjectSetPaint(NewObject.ObjectPositionX, NewObject.ObjectPositionY, back, ref CanPutObjectOnBoard, NewObject.ObjectSelectNum);
             }
             else
             {
+                bmppaint.ResetObject(back, x, y,0,0);
                 bmppaint.ObjectSetPaint(NewObject.ObjectPositionX, NewObject.ObjectPositionY, fore, ref CanPutObjectOnBoard, NewObject.ObjectSelectNum);
             }
             pictureBox1.Refresh();
@@ -493,9 +495,8 @@ namespace HelloMaze
             {
                
                 ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
-             　 EnemyObject enemy = new EnemyObject(x, y);
               　 ObjectSet(x, y, objectselectnum);
-                ListObjectBoard.Add(enemy);　　　　　　　　
+      　　　　
 
             }
         }
@@ -516,10 +517,9 @@ namespace HelloMaze
             GetCursolPosition(cp.X, cp.Y, ref x, ref y);
             if (x > -1)
             {
-                ObjectSet(x, y, objectselectnum);
+                
                 ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
-                WallObject wall = new WallObject(x, y);
-                ListObjectBoard.Add(wall);　　　　　　　　
+                ObjectSet(x, y, objectselectnum);  
             }
         }
 
