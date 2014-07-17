@@ -319,8 +319,8 @@ namespace HelloMaze
         /// <summary>
         /// ブロックスクリプト用上回転命令
         /// </summary>
-        public void turnRight() { controlobj.turnRight(); }
-        public void turnLeft() { controlobj.turnLeft(); }
+        public void turnRight() { controlobj.turnRight(); directionchange();}
+        public void turnLeft() { controlobj.turnLeft(); directionchange();}
 
         public void MoveOperation(BoardObject obj, int directionselect, int repititionnum)  //ブロックスクリプト用移動命令
         {
@@ -415,6 +415,7 @@ namespace HelloMaze
         public void directionchange ()
         {
             bmppaint.playerdirectionchange(controlobj.objectDirection,fore,controlobj.objectPositionX,controlobj.objectPositionY);
+            refreshPictureBox1();
         }
 
         /// <summary>
