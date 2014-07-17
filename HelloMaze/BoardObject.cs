@@ -49,6 +49,15 @@ namespace HelloMaze
          /// </summary>
         internal int ObjectSelectNum;  //0:Wall,1:Player,2:Enemy,3:Item,4:Goal
 
+        enum objectselect
+        {
+            Wall,
+            Player,
+            Enemy,
+            Item,
+            Goal
+        }
+
         internal bool OperateMove=false; //ターンの間にAIまたはプレイヤーが動いたかどうかの判定
 
         public BoardObject()

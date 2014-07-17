@@ -410,6 +410,13 @@ namespace HelloMaze
             else { this.pictureBox1.Refresh(); }
         }
 
+
+
+        public void directionchange ()
+        {
+            bmppaint.playerdirectionchange(controlobj.objectDirection,fore,controlobj.objectPositionX,controlobj.objectPositionY);
+        }
+
         /// <summary>
         /// 統一的に使える画面更新のメソッドを作る必要がある(未完成)
         /// </summary>

@@ -20,6 +20,22 @@ namespace BitmapPaint
         //int ObjectSelect;(この行は消さないように) //0:Wall,1:player,2:enemy,3:Item,4:Goal
         //int directionselect //1:Up2:Right3:Left4:Down
 
+        enum objectselect { 
+            wall,
+            player,
+            enemy,
+            Item,
+            Goal            
+        }
+        enum directselect
+        {
+            up,
+            right,
+            left,
+            down
+        }
+
+
         public void ResetBoard(bool[,] CanPutObjectOnBoard,Bitmap bmp) {
 
             for (int i = 0; i < CanPutObjectOnBoard.GetLength(0);i++ )
@@ -90,6 +106,7 @@ namespace BitmapPaint
 
                 case 1: using(Graphics g=Graphics.FromImage(bmp))
             {
+
                 Bitmap img = Properties.Resources.player1 ;
 
                 img.MakeTransparent();
@@ -175,7 +192,7 @@ namespace BitmapPaint
 
                            case 1: 
              
-                                 img = Properties.Resources.player1 ;
+                                 img = Properties.Resources.player1fore ;
 
                                  img.MakeTransparent();
 
@@ -217,7 +234,7 @@ namespace BitmapPaint
                         } break;
 
 
-                    case 1: img = Properties.Resources.player1;
+                    case 1: img = Properties.Resources.player1right;
                         img.MakeTransparent();
                         g.DrawImage(img, PosX * sqlength + (paintorder + 1) * sqlength / sepalatenum, PosY * sqlength, sqlength, sqlength);
                         img.Dispose();
@@ -248,7 +265,7 @@ namespace BitmapPaint
 
                                 } break;
 
-                            case 1:  img = Properties.Resources.player1;
+                            case 1:  img = Properties.Resources.player1left;
                                 img.MakeTransparent();
                                 g.DrawImage(img, PosX * sqlength - (paintorder + 1) * sqlength / sepalatenum, PosY * sqlength, sqlength, sqlength);
                                 img.Dispose();
@@ -299,7 +316,88 @@ namespace BitmapPaint
                     break;
             }
 
+
             //ObjectSetPaint(PositionX,PositionY,bmp,ref CanPutObjectOnBoard,player.ObjectSelectNum); 
+        }
+
+
+        public void playerdirectionchange(int direnum,Bitmap bmp,int PositionX,int PositionY)
+        {
+            switch (direnum)
+            {
+
+
+
+
+                case (int)directselect.up:
+
+                    using (Graphics g = Graphics.FromImage(bmp))
+                    {
+
+                        Bitmap img = Properties.Resources.player1fore;
+
+                        img.MakeTransparent();
+
+
+                        
+                        g.DrawImage(img, PositionX * sqlength, PositionY * sqlength, sqlength, sqlength);
+                        img.Dispose();
+                        g.Dispose();
+                     
+                    }
+                    break;
+
+                case (int)directselect.right:
+                    using (Graphics g = Graphics.FromImage(bmp))
+                    {
+
+                        Bitmap img = Properties.Resources.player1right;
+
+                        img.MakeTransparent();
+
+
+
+                        g.DrawImage(img, PositionX * sqlength, PositionY * sqlength, sqlength, sqlength);
+                        img.Dispose();
+                        g.Dispose();
+
+                    }
+                    break;
+
+                case (int)directselect.left:
+                                        using (Graphics g = Graphics.FromImage(bmp))
+                    {
+
+                        Bitmap img = Properties.Resources.player1left;
+
+                        img.MakeTransparent();
+
+
+                        
+                        g.DrawImage(img, PositionX * sqlength, PositionY * sqlength, sqlength, sqlength);
+                        img.Dispose();
+                        g.Dispose();
+                     
+                    }
+
+                break;
+
+                case (int)directselect.down: using (Graphics g = Graphics.FromImage(bmp))
+                {
+
+                    Bitmap img = Properties.Resources.player1;
+
+                    img.MakeTransparent();
+
+
+
+                    g.DrawImage(img, PositionX * sqlength, PositionY * sqlength, sqlength, sqlength);
+                    img.Dispose();
+                    g.Dispose();
+
+                }
+                break;
+            }
         }
 
         public void RepaintEvent(int posX,int posY,int ObjectSelectNum)//clearされたオブジェクトを再描画するメソッド
