@@ -12,9 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "open", "open\open.csproj", "{F264178B-F392-4BE7-BC58-D78206855FA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED3D3603-D04A-4875-BB5B-40F2D51FD71A}"
-	ProjectSection(SolutionItems) = preProject
-		パフォーマンス1.psess = パフォーマンス1.psess
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Block", "Block\Block\Block.csproj", "{A6F5860A-3357-4CDA-9821-ED9539F1AB6C}"
 EndProject
@@ -81,8 +78,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
