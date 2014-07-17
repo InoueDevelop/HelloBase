@@ -59,6 +59,14 @@ namespace HelloMaze
         public Bitmap fore;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
 
+        enum numsetdirection
+        {
+            up,
+            right,
+            left,
+            down
+        }
+
         public int _sql {
             get { return squarelength; }
         }
