@@ -29,10 +29,12 @@ namespace BitmapPaint
         }
         enum directselect
         {
-            up,
+            init,
             right,
+             down,
             left,
-            down
+            up,
+           
         }
 
 
@@ -323,11 +325,12 @@ namespace BitmapPaint
 
         public void playerdirectionchange(int direnum,Bitmap bmp,int PositionX,int PositionY)
         {
+            ResetObject(bmp, PositionX, PositionY,0,0);
+
             switch (direnum)
             {
 
-
-
+                    
 
                 case (int)directselect.up:
 
