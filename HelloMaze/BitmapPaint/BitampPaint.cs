@@ -74,6 +74,18 @@ namespace BitmapPaint
                 g.Dispose();
             }
         }
+        public void ResetObject(Bitmap bmp, int x, int y)  //アニメーション用
+        {
+            using (Graphics g = Graphics.FromImage(bmp))
+            using (Brush b = new SolidBrush(Color.White))
+            {
+                g.FillRectangle(b, x * sqlength , y * sqlength , sqlength, sqlength);
+                
+                g.Dispose();
+            }
+        }
+
+
 
 
         /// <summary>
