@@ -195,7 +195,7 @@ namespace HelloMaze
 
 
 
-            WallObject wall = new WallObject(x, y);
+            //WallObject wall = new WallObject(x, y);
 
             if (-1 < x)
             {
@@ -444,7 +444,7 @@ namespace HelloMaze
                 case 0: NewObject = new WallObject(x, y); ListObjectBoard.Add(NewObject);
                     break;
                 case 1: if (controlobj is PlayerObject == false) CanPutObjectOnBoard[controlobj.ObjectPositionX, controlobj.ObjectPositionY] = false;
-
+                    bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionX, ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionY);
                     controlobj = new PlayerObject(x, y);
                     NewObject = controlobj; ListObjectBoard[0] = controlobj;
                     break;
@@ -477,13 +477,15 @@ namespace HelloMaze
             int y = -1;
             int objectselectnum = 1;
 
-            bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionX, ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionY);
+           
 
             Point cp = Object_Control_Menu.SourceControl.PointToClient(sp);
             GetCursolPosition(cp.X, cp.Y, ref x, ref y);
             if (x > -1)
             {
+                
                 ObjectSet(x, y, objectselectnum);
+            
             }
         }
 
