@@ -42,6 +42,8 @@ namespace HelloMaze
                 cpfore = sdata.fore;
                 cpcontrolobj = sdata.controlobj;
                 cpCanPutObjectOnBoard = sdata.BoardObjectCanMove;
+                cp_ListObjectBoard = new List<BoardObject>();
+              
             }
 
         }
@@ -613,6 +615,8 @@ namespace HelloMaze
         {
             stateHistory = new Dataset(this);
 
+            stateHistory.cp_ListObjectBoard = ListObjectBoard;
+
             System.IO.Directory.CreateDirectory(@"Userdata");
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.InitialDirectory = Directory.GetCurrentDirectory() + @"\Userdata";
@@ -629,7 +633,7 @@ namespace HelloMaze
         void load()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = Directory.GetCurrentDirectory() + @"\OthelloFiles";
+            ofd.InitialDirectory = Directory.GetCurrentDirectory() + @"\Userdata";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Stream fileStream = ofd.OpenFile();
@@ -649,6 +653,7 @@ namespace HelloMaze
                 this.pictureBox1.Image = fore;
                 controlobj = stateHistory.cpcontrolobj;
                 CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+                ListObjectBoard = stateHistory.cp_ListObjectBoard;
             }
 
         }
