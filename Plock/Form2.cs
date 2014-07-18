@@ -26,7 +26,8 @@ namespace Plock
         int y;
 
 
-        public Form2():base()
+        public Form2()
+            : base()
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
@@ -59,8 +60,8 @@ namespace Plock
             }
             else
             {
-            block_Create(comand);
-            block_View(0);
+                block_Create(comand);
+                block_View(0);
             }
 
         }
@@ -136,16 +137,18 @@ namespace Plock
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
             pb.Click += new EventHandler(clist_Click);
-                    clist.Add(pb);
+            clist.Add(pb);
 
             //インデントブロックの設定・登録　0708追加
-                    while (count < indent_count)
-                    {
+            while (count < indent_count)
+            {
 
-                indent_type = indent_copy.Pop();                                                     //indentの値も変わってしまう
+                //Stackクラスは参照型　⇒　indentの値も変わってしまう
                 //command==If or While 最新のindentの次のindentから参照
                 if (comand == Comands.If || comand == Comands.While)
                 {
+                    if (count == 0)
+                        indent_copy.Pop(); //最新のindentだけ捨てる．
                     indent_type2 = indent_copy.Pop();
                     if (indent_type2 == "If")
                         pb1[count].Image = Properties.Resources.もしinterval;
@@ -153,26 +156,25 @@ namespace Plock
                     else if (indent_type2 == "While")
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
 
-                    //indent_copy.Push(indent_type2);
-                    }
-                // command!=If and While　最新のindentから参照
+
+                }
+                // command != If and While　最新のindentから参照
                 else
-                    {
-                        if (indent_type == "If")
+                {
+                    indent_type = indent_copy.Pop();
+                    if (indent_type == "If")
                         pb1[count].Image = Properties.Resources.もしinterval;
 
                     else if (indent_type == "While")
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
-                    }
-
-                //indent_copy.Push(indent_type);
+                }
 
                 pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
-                        pb1[count].Name = "Indent";
-                        clist.Add(pb1[count]);
-                        count++;
-                    }
-            
+                pb1[count].Name = "Indent";
+                clist.Add(pb1[count]);
+                count++;
+            }
+
             if (prop_name.Contains("If") || prop_name.Contains("While"))
                 indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
         }
@@ -198,12 +200,12 @@ namespace Plock
                     if (st == "If")
                     {
                         set_Block("End", Properties.Resources.もしend);
-                        indent.Push("If");
+                        //indent.Push("If");
                     }
                     else if (st == "While")
                     {
                         set_Block("End", Properties.Resources.繰り返しend);
-                        indent.Push("While");
+                        //indent.Push("While");
                     }
                     break;
                 default: break;
@@ -340,7 +342,7 @@ namespace Plock
                     }
 
                 }
-                if(clist[i].Name == "If")
+                if (clist[i].Name == "If")
                 {
                     int k = i;
                     while (clist[k].Name != "End")
@@ -348,7 +350,7 @@ namespace Plock
                         clist.RemoveAt(k);
                         k++;
 
-        }
+                    }
                     clist.RemoveAt(i);
                     block_View(0);
                 }
@@ -445,7 +447,7 @@ namespace Plock
                 Queue<string> codeQueue = block_to_queue();
                 gameInterpriter.build(codeQueue);
                 //ゲームのデータクラスの更新
-                if (runAllTimer.Enabled==true)
+                if (runAllTimer.Enabled == true)
                 {
                     runAllTimer.Stop();
                     button6.Text = "すべて実行";
@@ -468,7 +470,7 @@ namespace Plock
         {
             if (this.textBox1.InvokeRequired)
             {
-                forSetTextBox1 setTex1 = new forSetTextBox1(() => textBox1.Text=str);
+                forSetTextBox1 setTex1 = new forSetTextBox1(() => textBox1.Text = str);
                 this.Invoke(setTex1);
             }
             else { this.textBox1.Refresh(); }
