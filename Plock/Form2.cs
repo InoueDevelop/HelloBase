@@ -200,12 +200,12 @@ namespace Plock
                     if (st == "If")
                     {
                         set_Block("End", Properties.Resources.もしend);
-                        //indent.Push("If");
+
                     }
                     else if (st == "While")
                     {
                         set_Block("End", Properties.Resources.繰り返しend);
-                        //indent.Push("While");
+
                     }
                     break;
                 default: break;
@@ -214,7 +214,7 @@ namespace Plock
             if (comand == Comands.If)
             {
                 indent.Push("If");
-                //indent_copy.Push("If");
+
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
@@ -232,7 +232,7 @@ namespace Plock
             else if (comand == Comands.While)
             {
                 indent.Push("While");
-                //indent_copy.Push("While");
+
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
@@ -324,35 +324,53 @@ namespace Plock
             {
                 if (clist[i].Name != "Indent" && clist[i].Name != "End")
                 {
-                    if (y >= clist[i].Top && y < clist[i].Bottom)
+                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
                     {
-                        b_name = clist[i].Name;
-                        DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                        if (result == DialogResult.Yes)
+                        if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
-                            clist.RemoveAt(i);
-                            //再描画
-                            block_View(0);
-                        }
-                        else
-                        {
+                            b_name = clist[i].Name;
+                            DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            if (result == DialogResult.Yes)
+                            {
+                                clist.RemoveAt(i);
+                                //再描画
+                                block_View(0);
+                            }
+                            else
+                            {
 
+                            }
+                            break;
                         }
-                        break;
                     }
-
-                }
-                if (clist[i].Name == "If")
-                {
-                    int k = i;
-                    while (clist[k].Name != "End")
+                    //If While ブロックを選択した場合は中身を全て削除．
+                    else
                     {
-                        clist.RemoveAt(k);
-                        k++;
+                        if (y >= clist[i].Top && y < clist[i].Bottom)
+                        {
+                            b_name = clist[i].Name;
+                            DialogResult result = MessageBox.Show(b_name + "のブロック全体を消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            if (result == DialogResult.Yes)
+                            {
+                                int k = i;
+                                while (clist[k].Name != "End")
+                                {
+                                    clist.RemoveAt(k);
+                                    //k++;
+
+                                }
+                                clist.RemoveAt(i);
+                                //再描画
+                                block_View(0);
+                            }
+                            else
+                            {
+
+                            }
+                            break;
+                        }
 
                     }
-                    clist.RemoveAt(i);
-                    block_View(0);
                 }
             }
         }
