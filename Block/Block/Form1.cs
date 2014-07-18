@@ -15,12 +15,11 @@ namespace Block
         Comands comand;
         Conditions condition;
 
-        // List<Label> clist = new List<Label>();
         //List<Block> block = new List<Block>();
-        List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
+        List<PictureBox> clist = new List<PictureBox>();         //ブロック格納リスト
         static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
 
-        int indent_count;                                 //インデント回数
+        int indent_count;                                        //インデント回数
 
         int x;   //マウス座標
         int y;
