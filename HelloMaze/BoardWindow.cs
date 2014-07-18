@@ -209,7 +209,7 @@ namespace HelloMaze
                             if (ListObjectBoard != null)
                             {
 
-                                controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
+                                controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject));
                             }
 
                             break;
@@ -599,7 +599,7 @@ namespace HelloMaze
 
         }
         #endregion
-
+        #region //データ管理
         private void save_button_Click(object sender, EventArgs e)
         {
             save();
@@ -610,7 +610,7 @@ namespace HelloMaze
             load();
         }
 
-
+       
         Dataset stateHistory;
 
         void save()
@@ -660,6 +660,7 @@ namespace HelloMaze
 
         }
 
+
         private void セーブToolStripMenuItem_Click(object sender, EventArgs e)
         {
             save();
@@ -674,6 +675,8 @@ namespace HelloMaze
         {
             this.Close();
         }
+#endregion
+
     }
 
 
