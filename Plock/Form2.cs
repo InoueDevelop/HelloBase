@@ -260,19 +260,20 @@ namespace Plock
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBox3.SelectedIndex = -1;
+            listBox3.Enabled = true;
             switch (listBox1.SelectedIndex)
             {
                 case 0:
                     comand = Comands.Go;
-                    //listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 case 1:
                     comand = Comands.Left;
-                    //listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 case 2:
                     comand = Comands.Right;
-                    // listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 case 3:
                     comand = Comands.If;
@@ -282,7 +283,7 @@ namespace Plock
                     break;
                 case 5:
                     comand = Comands.End;
-                    //listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 default: break;
             }
