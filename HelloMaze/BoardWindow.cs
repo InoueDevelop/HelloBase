@@ -129,26 +129,11 @@ namespace HelloMaze
 
 
                     g.FillRectangle(Brushes.White, i * squarelength, j * squarelength, squarelength, squarelength);
-                    //---------------------------デバック領域
-                    //if (count == gridsizewidth / 2 || j == gridsizeheight / 2)
-                    //{
-                    //    CanPutObjectOnBoard[count, j] = true;
-
-                    //{
-                    //    g.FillRectangle(Brushes.White, count * squarelength, j * squarelength, squarelength, squarelength);
-                    //}
-                    //    }
-                    //else { CanPutObjectOnBoard[count, j] = false;
-                    //{
-                    //    g.FillRectangle(Brushes.Black, count * squarelength, j * squarelength, squarelength, squarelength);
-                    //}
-                    //}
-                    //デバック領域エンド
+               
                 }
             }
 
             controlobj = new PlayerObject(gridsizeheight / 2, gridsizeheight / 2);
-            //player = (PlayerObject)controlobj;
             ListObjectBoard.Add(controlobj);
             bmppaint.ObjectSetPaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore, ref CanPutObjectOnBoard, controlobj.ObjectSelectNum);
 
@@ -184,18 +169,11 @@ namespace HelloMaze
             Point sp = System.Windows.Forms.Cursor.Position;
             System.Drawing.Point cp = pictureBox1.PointToClient(sp);
 
-            GetCursolPosition(cp.X, cp.Y, ref x, ref y);
-            //for (int count = 1; count < 5; count++)　//マスカウントのデバッグ用
-            //{
-            //    int a = CountToObject(x, y, count);
-            //    checkman.Add(a);
-            //}   
+            GetCursolPosition(cp.X, cp.Y, ref x, ref y);  
             squareX.Text = "squareX:" + x;
             squareY.Text = "squareY:" + y;
 
 
-
-            //WallObject wall = new WallObject(x, y);
 
             if (-1 < x)
             {
@@ -209,7 +187,7 @@ namespace HelloMaze
                             if (ListObjectBoard != null)
                             {
 
-                                controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject));
+                                controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject||p is WallObject));
                             }
 
                             break;
