@@ -62,6 +62,7 @@ namespace Plock
             {
                 block_Create(comand);
                 block_View(0);
+
             }
 
         }
@@ -69,7 +70,7 @@ namespace Plock
         private void block_View(int k)
         {
             int top;
-            int y = 10; //ブロック描画開始位置
+            int y = 40; //ブロック描画開始位置
 
             panel1.Controls.Clear();
             for (int i = k; i < clist.Count; i++)
@@ -94,6 +95,19 @@ namespace Plock
                 k++;
                 //pn_height = 0;
             }
+
+        }
+        //-------------------------------------------------------------------------------------------
+        private void array_View(int top)
+        {
+            PictureBox pb = new PictureBox();
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.Image = Properties.Resources.矢印;
+            pb.Left = 20;
+            pb.Height = 40;
+            pb.Width = 60;
+            pb.Top = top;
+            panel1.Controls.Add(pb);
 
         }
         //-------------------------------------------------------------------------------------------
@@ -125,6 +139,7 @@ namespace Plock
             // スタックのコピー
             Stack<string> indent_copy = new Stack<string>(indent.ToArray());
             indent_copy = new Stack<string>(indent_copy.ToArray());
+            int left_pos = 100;
             int indent_size = 150 / 2;
             int count = 0;
 
@@ -133,7 +148,7 @@ namespace Plock
             pb.Image = img;
             if (prop_name == "End")
                 indent_count--;                          //Endを配置するとインデントを１つ減らす．
-            pb.Left = 10 + indent_count * indent_size;
+            pb.Left = left_pos + indent_count * indent_size;
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
             pb.Click += new EventHandler(clist_Click);
@@ -169,7 +184,7 @@ namespace Plock
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
                 }
 
-                pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
+                pb1[count].Left = left_pos + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
                 pb1[count].Name = "Indent";
                 clist.Add(pb1[count]);
                 count++;
