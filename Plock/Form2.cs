@@ -32,6 +32,7 @@ namespace Plock
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6Text("すべて実行"); } }; //最後の行に達したら自動停止 
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -74,8 +75,13 @@ namespace Plock
         {
             int top;
             int y = 40; //ブロック描画開始位置
+            int max_left = 0;
 
+            if (clist.Count > 1 && indent_count > 0)
+                max_left = clist[clist.Count - indent_count].Left;     //スクロールが左端の時のLeftの最大値
+            panel1.AutoScrollPosition = new Point(0, 0);               //スクロールの位置を（0,0）にしてから描画
             panel1.Controls.Clear();
+
             for (int i = k; i < clist.Count; i++)
             {
                 if (clist[i].Name == "Indent")
@@ -90,18 +96,16 @@ namespace Plock
                 // ドラッグ&ドロップを行なう時のドロップ先のコントロール（フォーム）に、ドロップを受け入れるように指示
                 clist[i].AllowDrop = true;
 
-                //clist[i].Select();
-                //lb.Cursor
-                //clist[i].Font = new Font(clist[i].Font.FontFamily, 16, FontStyle.Bold);
-
                 panel1.Controls.Add(clist[i]);
                 k++;
-                //pn_height = 0;
+
             }
+            if (clist.Count > 1)
+                panel1.AutoScrollPosition = new Point(max_left, clist[clist.Count - 1].Top);
 
         }
         //-------------------------------------------------------------------------------------------
-        private void array_View(int top)
+        private void arrow_View(int top)
         {
             PictureBox pb = new PictureBox();
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -150,7 +154,11 @@ namespace Plock
             //--------------------------------------------------------
             pb.Image = img;
             if (prop_name == "End")
+
                 indent_count--;                          //Endを配置するとインデントを１つ減らす．
+
+
+
             pb.Left = left_pos + indent_count * indent_size;
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
@@ -199,7 +207,7 @@ namespace Plock
         //-------------------------------------------------------------------------------------------
         private void block_Create(Comands comand, int insert_point)
         {
-            string st;
+            string st = "";
             switch (comand)
             {
 
@@ -214,7 +222,10 @@ namespace Plock
                     break;
 
                 case Comands.End:
-                    st = indent.Pop();
+                    if (indent_count > 0)
+                        st = indent.Pop();
+                    else
+                        MessageBox.Show("これ以上【ここまでブロック】は置けません．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     if (st == "If")
                     {
                         set_Block("End", Properties.Resources.もしend, insert_point);
@@ -329,6 +340,8 @@ namespace Plock
         private void button3_Click(object sender, EventArgs e)
         {
             clist.Clear();
+            indent_count = 0;
+            indent.Clear();
             block_View(0);
         }
         //-------------------------------------------------------------------------------------------
@@ -401,33 +414,33 @@ namespace Plock
         {
             string b_name = "";
             DialogResult result = MessageBox.Show(b_name + "のブロックの前に挿入するブロックを選んでね。", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-            
-                int x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
-                int y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
-                
-                int indent_count = 0;
-                Stack<string> st = new Stack<string>();
-                for (int i = 0; i < clist.Count; i++)
-                {
-                    if (clist[i].Name != "Indent" && clist[i].Name != "End")
-                    {
-                        if (y >= clist[i].Top && y < clist[i].Bottom)
-                        {
-                            b_name = clist[i].Name;
-                            
-                            if (result == DialogResult.Yes)
-                            {
-                                
-                                insert_block();
-                                //再描画
-                                block_View(0);
-                            }
-                            break;
-                        }
 
+            int x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
+            int y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+
+            int indent_count = 0;
+            Stack<string> st = new Stack<string>();
+            for (int i = 0; i < clist.Count; i++)
+            {
+                if (clist[i].Name != "Indent" && clist[i].Name != "End")
+                {
+                    if (y >= clist[i].Top && y < clist[i].Bottom)
+                    {
+                        b_name = clist[i].Name;
+
+                        if (result == DialogResult.Yes)
+                        {
+
+                            insert_block();
+                            //再描画
+                            block_View(0);
+                        }
+                        break;
                     }
 
                 }
+
+            }
 
 
         }
@@ -593,6 +606,16 @@ namespace Plock
                 this.Invoke(setTex6);
             }
             else { this.button6.Refresh(); }
+        }
+
+        private void setArrowPicture(string str)
+        {
+            if (this.button6.InvokeRequired)
+            {
+                forSetTextBox1 setTex6 = new forSetTextBox1(() => button6.Text = str);
+                this.Invoke(setTex6);
+            }
+            else { this.button6.Text = str; }
         }
 
         //デバッグ用(TextBox1に現在のコードを表示する用)
