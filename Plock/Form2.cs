@@ -386,14 +386,14 @@ namespace Plock
                             DialogResult result = MessageBox.Show(b_name + "のブロック全体を消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                             if (result == DialogResult.Yes)
                             {
-                                int k = i;
-                                while (clist[k].Name != "End")
-                                {
-                                    clist.RemoveAt(k);
-                                    //k++;
-
-                                }
-                                clist.RemoveAt(i);
+                                //int k = i;
+                                //while (clist[k].Name != "End")
+                                //{
+                                //    clist.RemoveAt(k);
+                                //    //k++;
+                                //}
+                                //clist.RemoveAt(i);
+                                deleteBlockSet(clist[i].Left, i);
                                 //再描画
                                 block_View(0);
                             }
@@ -406,6 +406,22 @@ namespace Plock
 
                     }
                 }
+            }
+        }
+        //---------------------------------------------------------------------------------------------------------------
+        //if whileブロックセットの一斉削除
+        private void deleteBlockSet(int condition_left, int index)
+        {
+            for (int i = index; i < clist.Count; i++)
+            {
+                //while (clist[i].Name != "End")
+                //{
+                    if (clist[i].Left >= condition_left)
+                    {
+                        clist.RemoveAt(i);
+                        i--;
+                    }
+                //}
             }
         }
         //---------------------------------------------------------------------------------------------------------------
