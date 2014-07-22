@@ -78,6 +78,11 @@ namespace Plock
         {
             return currentCode._value;
         }
+
+        internal bool isEnd()
+        {
+            return currentCode.isEnd();
+        }
     }
 
     /// <summary>

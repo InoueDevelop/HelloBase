@@ -31,6 +31,7 @@ namespace Plock
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6Text("すべて実行"); } }; //最後の行に達したら自動停止 
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -583,6 +584,15 @@ namespace Plock
             {
                 textBox1.Text = exc.ToString();
             }
+        }
+        private void setButton6Text(string str)
+        {
+            if (this.button6.InvokeRequired)
+            {
+                forSetTextBox1 setTex6 = new forSetTextBox1(() => button6.Text = str);
+                this.Invoke(setTex6);
+            }
+            else { this.button6.Refresh(); }
         }
 
         //デバッグ用(TextBox1に現在のコードを表示する用)
