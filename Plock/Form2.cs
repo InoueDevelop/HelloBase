@@ -26,10 +26,13 @@ namespace Plock
         int y;
 
 
-        public Form2():base()
+        public Form2()
+            : base()
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6Text("すべて実行"); } }; //最後の行に達したら自動停止 
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -37,6 +40,8 @@ namespace Plock
 
             panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
+            //panel　ダブルクリック時のイベントハンドラ追加
+            panel1.DoubleClick += new EventHandler(panel_Click);
             //panel1.BackgroundImageLayout = ImageLayout.Zoom;
             //panel1.BackgroundImage = Properties.Resources.背景");
 
@@ -59,8 +64,9 @@ namespace Plock
             }
             else
             {
-            block_Create(comand);
-            block_View(0);
+                block_Create(comand, clist.Count);
+                block_View(0);
+
             }
 
         }
@@ -68,9 +74,14 @@ namespace Plock
         private void block_View(int k)
         {
             int top;
-            int y = 10; //ブロック描画開始位置
+            int y = 40; //ブロック描画開始位置
+            int max_left = 0;
 
+            if (clist.Count > 1 && indent_count > 0)
+                max_left = clist[clist.Count - indent_count].Left;     //スクロールが左端の時のLeftの最大値
+            panel1.AutoScrollPosition = new Point(0, 0);               //スクロールの位置を（0,0）にしてから描画
             panel1.Controls.Clear();
+
             for (int i = k; i < clist.Count; i++)
             {
                 if (clist[i].Name == "Indent")
@@ -85,14 +96,25 @@ namespace Plock
                 // ドラッグ&ドロップを行なう時のドロップ先のコントロール（フォーム）に、ドロップを受け入れるように指示
                 clist[i].AllowDrop = true;
 
-                //clist[i].Select();
-                //lb.Cursor
-                //clist[i].Font = new Font(clist[i].Font.FontFamily, 16, FontStyle.Bold);
-
                 panel1.Controls.Add(clist[i]);
                 k++;
-                //pn_height = 0;
+
             }
+            if (clist.Count > 1)
+                panel1.AutoScrollPosition = new Point(max_left, clist[clist.Count - 1].Top);
+
+        }
+        //-------------------------------------------------------------------------------------------
+        private void arrow_View(int top)
+        {
+            PictureBox pb = new PictureBox();
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.Image = Properties.Resources.矢印;
+            pb.Left = 20;
+            pb.Height = 40;
+            pb.Width = 60;
+            pb.Top = top;
+            panel1.Controls.Add(pb);
 
         }
         //-------------------------------------------------------------------------------------------
@@ -105,7 +127,7 @@ namespace Plock
         }
         //-------------------------------------------------------------------------------------------
         //ブロックの設定とリストへの登録
-        private void set_Block(string prop_name, Image img)
+        private void set_Block(string prop_name, Image img, int insert_point) //insert_point==clist.Count ⇒　末尾に追加
         {
             //-------------------------------------------------------
             PictureBox pb = new PictureBox();
@@ -124,6 +146,7 @@ namespace Plock
             // スタックのコピー
             Stack<string> indent_copy = new Stack<string>(indent.ToArray());
             indent_copy = new Stack<string>(indent_copy.ToArray());
+            int left_pos = 100;
             int indent_size = 150 / 2;
             int count = 0;
 
@@ -131,21 +154,27 @@ namespace Plock
             //--------------------------------------------------------
             pb.Image = img;
             if (prop_name == "End")
+
                 indent_count--;                          //Endを配置するとインデントを１つ減らす．
-            pb.Left = 10 + indent_count * indent_size;
+
+
+
+            pb.Left = left_pos + indent_count * indent_size;
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
             pb.Click += new EventHandler(clist_Click);
-                    clist.Add(pb);
+            clist.Insert(insert_point, pb);
 
             //インデントブロックの設定・登録　0708追加
-                    while (count < indent_count)
-                    {
+            while (count < indent_count)
+            {
 
-                indent_type = indent_copy.Pop();                                                     //indentの値も変わってしまう
+                //Stackクラスは参照型　⇒　indentの値も変わってしまう
                 //command==If or While 最新のindentの次のindentから参照
                 if (comand == Comands.If || comand == Comands.While)
                 {
+                    if (count == 0)
+                        indent_copy.Pop(); //最新のindentだけ捨てる．
                     indent_type2 = indent_copy.Pop();
                     if (indent_type2 == "If")
                         pb1[count].Image = Properties.Resources.もしinterval;
@@ -153,57 +182,59 @@ namespace Plock
                     else if (indent_type2 == "While")
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
 
-                    //indent_copy.Push(indent_type2);
-                    }
-                // command!=If and While　最新のindentから参照
+
+                }
+                // command != If and While　最新のindentから参照
                 else
-                    {
-                        if (indent_type == "If")
+                {
+                    indent_type = indent_copy.Pop();
+                    if (indent_type == "If")
                         pb1[count].Image = Properties.Resources.もしinterval;
 
                     else if (indent_type == "While")
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
-                    }
+                }
 
-                //indent_copy.Push(indent_type);
+                pb1[count].Left = left_pos + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
+                pb1[count].Name = "Indent";
+                clist.Insert(insert_point + count + 1, pb1[count]);
+                count++;
+            }
 
-                pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
-                        pb1[count].Name = "Indent";
-                        clist.Add(pb1[count]);
-                        count++;
-                    }
-            
             if (prop_name.Contains("If") || prop_name.Contains("While"))
                 indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
         }
         //-------------------------------------------------------------------------------------------
-        private void block_Create(Comands comand)
+        private void block_Create(Comands comand, int insert_point)
         {
-            string st;
+            string st = "";
             switch (comand)
             {
 
                 case Comands.Go:
-                    set_Block("Go", Properties.Resources.前へ);
+                    set_Block("Go", Properties.Resources.前へ, insert_point);
                     break;
                 case Comands.Left:
-                    set_Block("Left", Properties.Resources.左);
+                    set_Block("Left", Properties.Resources.左, insert_point);
                     break;
                 case Comands.Right:
-                    set_Block("Right", Properties.Resources.右);
+                    set_Block("Right", Properties.Resources.右, insert_point);
                     break;
 
                 case Comands.End:
-                    st = indent.Pop();
+                    if (indent_count > 0)
+                        st = indent.Pop();
+                    else
+                        MessageBox.Show("これ以上【ここまでブロック】は置けません．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     if (st == "If")
                     {
-                        set_Block("End", Properties.Resources.もしend);
-                        indent.Push("If");
+                        set_Block("End", Properties.Resources.もしend, insert_point);
+
                     }
                     else if (st == "While")
                     {
-                        set_Block("End", Properties.Resources.繰り返しend);
-                        indent.Push("While");
+                        set_Block("End", Properties.Resources.繰り返しend, insert_point);
+
                     }
                     break;
                 default: break;
@@ -212,17 +243,17 @@ namespace Plock
             if (comand == Comands.If)
             {
                 indent.Push("If");
-                //indent_copy.Push("If");
+
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("Iffront", Properties.Resources.もし正面壁なし);
+                        set_Block("Iffront", Properties.Resources.もし正面壁なし, insert_point);
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("Ifleft", Properties.Resources.もし左壁なし);
+                        set_Block("Ifleft", Properties.Resources.もし左壁なし, insert_point);
                         break;
                     case Conditions.Right_Wall:
-                        set_Block("Ifright", Properties.Resources.もし右壁なし);
+                        set_Block("Ifright", Properties.Resources.もし右壁なし, insert_point);
                         break;
                 }
             }
@@ -230,17 +261,17 @@ namespace Plock
             else if (comand == Comands.While)
             {
                 indent.Push("While");
-                //indent_copy.Push("While");
+
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("Whilefront", Properties.Resources.繰り返し正面壁なし);
+                        set_Block("Whilefront", Properties.Resources.繰り返し正面壁なし, insert_point);
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("Whileleft", Properties.Resources.繰り返し左壁なし);
+                        set_Block("Whileleft", Properties.Resources.繰り返し左壁なし, insert_point);
                         break;
                     case Conditions.Right_Wall:
-                        set_Block("Whileright", Properties.Resources.繰り返し右壁なし);
+                        set_Block("Whileright", Properties.Resources.繰り返し右壁なし, insert_point);
                         break;
                 }
             }
@@ -258,19 +289,20 @@ namespace Plock
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBox3.SelectedIndex = -1;
+            listBox3.Enabled = true;
             switch (listBox1.SelectedIndex)
             {
                 case 0:
                     comand = Comands.Go;
-                    //listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 case 1:
                     comand = Comands.Left;
-                    //listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 case 2:
                     comand = Comands.Right;
-                    // listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 case 3:
                     comand = Comands.If;
@@ -280,7 +312,7 @@ namespace Plock
                     break;
                 case 5:
                     comand = Comands.End;
-                    //listBox3.SelectedIndex = -1;
+                    listBox3.Enabled = false;
                     break;
                 default: break;
             }
@@ -304,13 +336,17 @@ namespace Plock
         }
 
         //-------------------------------------------------------------------------------------------
-        //ブロックの取り消し
+        //ブロック全削除
         private void button3_Click(object sender, EventArgs e)
         {
-
+            clist.Clear();
+            indent_count = 0;
+            indent.Clear();
+            block_View(0);
         }
         //-------------------------------------------------------------------------------------------
         //pictureboxクリック時のイベントハンドラ
+        //ブロックの削除（EndとIndent以外）
         private void clist_Click(object sender, EventArgs e)
         {
             x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
@@ -322,39 +358,156 @@ namespace Plock
             {
                 if (clist[i].Name != "Indent" && clist[i].Name != "End")
                 {
+                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
+                    {
+                        if (y >= clist[i].Top && y < clist[i].Bottom)
+                        {
+                            b_name = clist[i].Name;
+                            DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            if (result == DialogResult.Yes)
+                            {
+                                clist.RemoveAt(i);
+                                //再描画
+                                block_View(0);
+                            }
+                            else
+                            {
+
+                            }
+                            break;
+                        }
+                    }
+                    //If While ブロックを選択した場合は中身を全て削除．
+                    else
+                    {
+                        if (y >= clist[i].Top && y < clist[i].Bottom)
+                        {
+                            b_name = clist[i].Name;
+                            DialogResult result = MessageBox.Show(b_name + "のブロック全体を消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            if (result == DialogResult.Yes)
+                            {
+                                //int k = i;
+                                //while (clist[k].Name != "End")
+                                //{
+                                //    clist.RemoveAt(k);
+                                //    //k++;
+                                //}
+                                //clist.RemoveAt(i);
+                                deleteBlockSet(clist[i].Left, i);
+                                //再描画
+                                block_View(0);
+                            }
+                            else
+                            {
+
+                            }
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+        //---------------------------------------------------------------------------------------------------------------
+        //if whileブロックセットの一斉削除
+        private void deleteBlockSet(int condition_left, int index)
+        {
+            for (int i = index; i < clist.Count; i++)
+            {
+                //while (clist[i].Name != "End")
+                //{
+                    if (clist[i].Left >= condition_left)
+                    {
+                        clist.RemoveAt(i);
+                        i--;
+                    }
+                //}
+            }
+        }
+        //---------------------------------------------------------------------------------------------------------------
+        //panelクリック時のイベントハンドラ
+        private void panel_Click(object sender, EventArgs e)
+        {
+            string b_name = "";
+            DialogResult result = MessageBox.Show(b_name + "のブロックの前に挿入するブロックを選んでね。", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+
+            int x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
+            int y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+
+            int indent_count = 0;
+            Stack<string> st = new Stack<string>();
+            for (int i = 0; i < clist.Count; i++)
+            {
+                if (clist[i].Name != "Indent" && clist[i].Name != "End")
+                {
                     if (y >= clist[i].Top && y < clist[i].Bottom)
                     {
                         b_name = clist[i].Name;
-                        DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+
                         if (result == DialogResult.Yes)
                         {
-                            clist.RemoveAt(i);
+
+                            insert_block();
                             //再描画
                             block_View(0);
-                        }
-                        else
-                        {
-
                         }
                         break;
                     }
 
                 }
-                if(clist[i].Name == "If")
-                {
-                    int k = i;
-                    while (clist[k].Name != "End")
-                    {
-                        clist.RemoveAt(k);
-                        k++;
 
-        }
-                    clist.RemoveAt(i);
-                    block_View(0);
-                }
             }
+
+
+        }
+        //---------------------------------------------------------------------------------------------------------------
+        //ブロックの途中挿入(1つ前にのみ)
+        private void insert_block()
+        {
+
+            int indent_count = 0;
+            Stack<string> st = new Stack<string>();
+            for (int i = 0; i < clist.Count; i++)
+            {
+
+                int k = i + 1;
+                while (clist[k].Name == "Indent")
+                {
+                    indent_count++;
+                    k++;
+                }
+
+
+
+                PictureBox[] pb1 = new PictureBox[indent_count];
+                int count = 0;
+                block_Create(comand, i - indent_count);
+                //clist.Insert(i-indent_count, pb);                                                   //new Block
+                while (indent_count < 0)
+                {
+                    string indent_type = st.Pop();
+                    if (indent_type == "If")
+                        pb1[count].Image = Properties.Resources.もしinterval;
+
+                    else if (indent_type == "While")
+                        pb1[count].Image = Properties.Resources.繰り返しinterval;
+
+                    clist.Insert(i + 1, pb1[count]);                                    //Indent Block
+                    count++;
+                }
+
+
+
+
+                break;
+
+
+            }
+
         }
 
+
+        //---------------------------------------------------------------------------------------------------------------
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -445,7 +598,7 @@ namespace Plock
                 Queue<string> codeQueue = block_to_queue();
                 gameInterpriter.build(codeQueue);
                 //ゲームのデータクラスの更新
-                if (runAllTimer.Enabled==true)
+                if (runAllTimer.Enabled == true)
                 {
                     runAllTimer.Stop();
                     button6.Text = "すべて実行";
@@ -461,6 +614,25 @@ namespace Plock
                 textBox1.Text = exc.ToString();
             }
         }
+        private void setButton6Text(string str)
+        {
+            if (this.button6.InvokeRequired)
+            {
+                forSetTextBox1 setTex6 = new forSetTextBox1(() => button6.Text = str);
+                this.Invoke(setTex6);
+            }
+            else { this.button6.Refresh(); }
+        }
+
+        private void setArrowPicture(string str)
+        {
+            if (this.button6.InvokeRequired)
+            {
+                forSetTextBox1 setTex6 = new forSetTextBox1(() => button6.Text = str);
+                this.Invoke(setTex6);
+            }
+            else { this.button6.Text = str; }
+        }
 
         //デバッグ用(TextBox1に現在のコードを表示する用)
         delegate void forSetTextBox1();
@@ -468,7 +640,7 @@ namespace Plock
         {
             if (this.textBox1.InvokeRequired)
             {
-                forSetTextBox1 setTex1 = new forSetTextBox1(() => textBox1.Text=str);
+                forSetTextBox1 setTex1 = new forSetTextBox1(() => textBox1.Text = str);
                 this.Invoke(setTex1);
             }
             else { this.textBox1.Refresh(); }
