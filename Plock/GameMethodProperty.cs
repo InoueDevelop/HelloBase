@@ -19,6 +19,10 @@ namespace Plock
             methodDictionary.Add("左へ動く", new GoLeft());
             methodDictionary.Add("上へ動く", new GoUp());
             methodDictionary.Add("下へ動く", new GoDown());
+
+            methodDictionary.Add("前へ進む", new GoStright());
+            methodDictionary.Add("右を向く", new turnRight());
+            methodDictionary.Add("左を向く", new turnLeft());
             //methodDictionary.Add("ゲームの初期化", new Constructor());//コンストラクタもここで宣言する
             return methodDictionary;
         }
@@ -59,6 +63,32 @@ namespace Plock
             }
         }
 
+        public class GoStright : Method    //ゲームのメソッド
+        {
+            public override GameData execute(GameData game)
+            {
+                game.moveStraight();
+                return game;
+            }
+        }
+
+        public class turnRight : Method    //ゲームのメソッド
+        {
+            public override GameData execute(GameData game)
+            {
+                game.turnRight();
+                return game;
+            }
+        }
+        public class turnLeft : Method    //ゲームのメソッド
+        {
+            public override GameData execute(GameData game)
+            {
+                game.turnLeft();
+                return game;
+            }
+        }
+
         public class Constructor : Method    //ゲームのメソッド
         {
             public override GameData execute(GameData game)//GUIのプログラムから呼ぶ場合
@@ -81,12 +111,15 @@ namespace Plock
         {
             Dictionary<string, IsMethod> methodDictionary = new Dictionary<string, IsMethod>();
 
-            methodDictionary.Add("xが2なら", new IsX2());
+            //methodDictionary.Add("xが2なら", new IsX2());
             methodDictionary.Add("上に物があるなら", new IsUpObject());
             methodDictionary.Add("下に物があるなら", new IsDownObject());
             methodDictionary.Add("右に物があるなら", new IsRightObject());
             methodDictionary.Add("左に物があるなら", new IsLeftObject());
 
+            methodDictionary.Add("正面に壁がないなら", new IsntUpWall());
+            methodDictionary.Add("右に壁がないなら", new IsntRightWall());
+            methodDictionary.Add("左に壁がないなら", new IsntLeftWall());
             return methodDictionary;
         }
 
@@ -103,7 +136,7 @@ namespace Plock
         {
             public override bool execute(GameData game)
             {
-                return  -1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 4);
+                return  1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 4);
             }
         }
 
@@ -125,9 +158,35 @@ namespace Plock
         {
             public override bool execute(GameData game)
             {
-                return -1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 3);
+                return 1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, 3);
             }
         }
+
+        /// <summary>
+        /// 正面に壁がないかどうか
+        /// </summary>
+        public class IsntUpWall : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.objectDirection));
+            }
+        }
+        public class IsntRightWall : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getRight()));
+            }
+        }
+        public class IsntLeftWall : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getLeft() ));
+            }
+        }
+
     }
 
 

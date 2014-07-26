@@ -58,6 +58,10 @@
   <ItemGroup>
     <Content Include="Monster1.bmp" />
     <Content Include="player1.bmp" />
+    <Content Include="player1fore.bmp" />
+    <Content Include="player1left.bmp" />
+    <Content Include="player1right.bmp" />
+    <None Include="Resources\tutorial_message.txt" />
     <None Include="Resources\goal.bmp" />
     <None Include="Resources\Tutorial01" />
     <None Include="Resources\Tutorial02" />

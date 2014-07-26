@@ -9,9 +9,24 @@ namespace Plock
 
     class GameInterpriter
     {
-        CodeList currentCode;
+        CodeList currentCode = new CodeList();
 
+        [Obsolete("非推奨", false)]
         public GameData run(String code, GameData game)
+        {
+            build(code);
+
+            while (true)
+            {
+                game = currentCode.execute(game);
+                currentCode = currentCode.getMoveTo(game);
+                if (currentCode.isEnd()) break;
+            }
+            return game;
+        }
+
+        [Obsolete("非推奨", false)]
+        public GameData run(Queue<String> code, GameData game)
         {
             build(code);
 
@@ -26,7 +41,18 @@ namespace Plock
 
         internal GameData runOneLine(string code, GameData game)
         {
-            if (currentCode.isEnd()) return game;
+            if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
+            if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
+
+            game = currentCode.execute(game);
+            currentCode = currentCode.getMoveTo(game);
+            return game;
+        }
+        internal GameData runOneLine(Queue<string> code, GameData game)
+        {
+            if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
+            if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
+            if (currentCode._value == null) return game;//実行するコードがないなら何も実行しない
 
             game = currentCode.execute(game);
             currentCode = currentCode.getMoveTo(game);
@@ -35,8 +61,22 @@ namespace Plock
 
         internal void build(string code)
         {
-            currentCode = new CodeList();
+            //currentCode = new CodeList();
             currentCode.setValue(code);
+        }
+        internal void build(Queue<String> code)
+        {
+            //currentCode = new CodeList();
+            currentCode.setValue(code);
+        }
+
+        /// <summary>
+        /// 次に実行されるコードの文字列を返す
+        /// </summary>
+        /// <returns></returns>
+        internal String getCurrentCode()
+        {
+            return currentCode._value;
         }
     }
 
@@ -45,7 +85,7 @@ namespace Plock
     /// </summary>
     class CodeList
     {
-        String _value;
+        internal String _value;
         MethodWrapper value;
         CodeList nextCode;//後に実行されるコード
         CodeList previousCode;//前に実行されたコード
@@ -117,7 +157,7 @@ namespace Plock
         /// キューに格納された文字列を受け取って、実行できるようにメソッドを設定する
         /// </summary>
         /// <param name="codeQueue"></param>
-        void setValue(Queue<String> codeQueue)
+        public void setValue(Queue<String> codeQueue)
         {
 
             if (codeQueue.Count == 0) return;
@@ -179,8 +219,17 @@ namespace Plock
         /// <returns></returns>
         public bool isEnd()
         {
-            return _value == null;
+            return _value == null&&previousCode!=null;
         }
+        /// <summary>
+        /// ビルドされていないならtrueを返す
+        /// </summary>
+        /// <returns></returns>
+        public bool isNull()
+        {
+            return _value == null && previousCode == null;
+        }
+
     }
 
 }

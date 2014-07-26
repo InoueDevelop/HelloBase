@@ -101,6 +101,36 @@ namespace BitmapPaint.Properties {
         }
         
         /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap player1fore {
+            get {
+                object obj = ResourceManager.GetObject("player1fore", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap player1left {
+            get {
+                object obj = ResourceManager.GetObject("player1left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap player1right {
+            get {
+                object obj = ResourceManager.GetObject("player1right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Byte[] のローカライズされたリソースを検索します。
         /// </summary>
         internal static byte[] Tutorial_for {
@@ -127,6 +157,37 @@ namespace BitmapPaint.Properties {
             get {
                 object obj = ResourceManager.GetObject("Tutorial_if", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   【Tutorial00】
+        ///本日はUniLab（ユニラブ）「はじめてのプログラミング」へのご来場、まことにありがとうございます！
+        ///今回は一緒に簡単なプログラミング作りを体験してみよう！
+        ///
+        ///今回皆さんに作ってもらうプログラムは、プレイヤーを敵に触らないようにしながらゴールまでたどり着かせようというものです。
+        ///一番早くたどり着くには、どのように動かせばいいでしょうか？
+        ///敵を上手に避けるにはどうしたらいいでしょうか？
+        ///プレイヤーに色々な「命令」を出して、うまくゲームをクリアしましょう！
+        ///
+        ///【Tutorial01】
+        ///さあいよいよスタートです。…といってもプログラミングなんて初めて、どうしていいかわかりませんね！
+        ///でも大丈夫！簡単な練習からスタートしましょう！
+        ///
+        ///最初は基本中の基本、プレイヤーの移動の練習です。上下左右の４方向に１マスずつ動かすプログラムを作ってみましょう。
+        ///まずは左へ動かしましょう。
+        ///「左を向く」
+        ///「前へ進む」
+        ///という２つの命令を行うことで左へ進めますよ。
+        ///
+        ///【Tutorial02】
+        ///よくできました！同じようにして、今度は上へ動かします。
+        ///使う命令は
+        ///「上を向 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string tutorial_message {
+            get {
+                return ResourceManager.GetString("tutorial_message", resourceCulture);
             }
         }
         
