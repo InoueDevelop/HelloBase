@@ -31,7 +31,7 @@ namespace Plock
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
-            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6Text("すべて実行"); } }; //最後の行に達したら自動停止 
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } }; //最後の行に達したら自動停止 
 
         }
 
@@ -620,6 +620,10 @@ namespace Plock
                 if (runAllTimer.Enabled == true)
                 {
                     runAllTimer.Stop();//タイマーを停止する
+                    button1.Enabled = true;//他のボタンを押せるようにする
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                    button5.Enabled = true;
                     button6.Text = "すべて実行";
                 }
                 else
@@ -629,6 +633,10 @@ namespace Plock
                     Queue<string> codeQueue = block_to_queue();
                     gameInterpriter.build(codeQueue);
                     runAllTimer.Start();//タイマーをスタートする
+                    button1.Enabled = false;////他のボタンを押せなくする
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    button5.Enabled = false;
                     button6.Text = "停止する";
                 }
             }
@@ -637,33 +645,44 @@ namespace Plock
                 textBox1.Text = exc.ToString();
             }
         }
-        private void setButton6Text(string str)
+
+
+        delegate void MyDelegate();
+        private void setButton6TextAndEnableButtons(string str)
         {
             if (this.button6.InvokeRequired)
             {
-                forSetTextBox1 setTex6 = new forSetTextBox1(() => button6.Text = str);
+                MyDelegate setTex6 = new MyDelegate(() => button6.Text = str);
                 this.Invoke(setTex6);
             }
-            else { this.button6.Refresh(); }
+            else { this.button6.Text = str; }
+
+            MyDelegate changeEnableTrue = new MyDelegate(() =>
+            {
+                button1.Enabled = true;//他のボタンを押せるようにする
+                button3.Enabled = true;
+                button4.Enabled = true;
+                button5.Enabled = true;
+            });
+            this.Invoke(changeEnableTrue);
         }
 
         private void setArrowPicture(string str)
         {
             if (this.button6.InvokeRequired)
             {
-                forSetTextBox1 setTex6 = new forSetTextBox1(() => button6.Text = str);
+                MyDelegate setTex6 = new MyDelegate(() => button6.Text = str);
                 this.Invoke(setTex6);
             }
             else { this.button6.Text = str; }
         }
 
-        //デバッグ用(TextBox1に現在のコードを表示する用)
-        delegate void forSetTextBox1();
+
         private void setTextBox1(string str)
         {
             if (this.textBox1.InvokeRequired)
             {
-                forSetTextBox1 setTex1 = new forSetTextBox1(() => textBox1.Text = str);
+                MyDelegate setTex1 = new MyDelegate(() => textBox1.Text = str);
                 this.Invoke(setTex1);
             }
             else { this.textBox1.Refresh(); }
