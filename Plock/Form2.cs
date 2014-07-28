@@ -515,9 +515,10 @@ namespace Plock
         //---------------------------------------------------------------------------------------------------------------
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
+
             try
             {
-
                 Queue<string> codeQueue = block_to_queue();
                 if (runAllTimer.Enabled == false) gameInterpriter.build(codeQueue);
                 textBox1.Text = gameInterpriter.getCurrentCode();
@@ -585,27 +586,49 @@ namespace Plock
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
             if (runAllTimer.Enabled == false) gameForm = gameInterpriter.runOneLine(block_to_queue(), gameForm);//一行実行
             textBox1.Text = gameInterpriter.getCurrentCode();
 
+        }
+
+        /// <summary>
+        /// コードが正しいかどうか（中かっこの数が足りているか？）（一行実行で現在のコードがビルド時と同じかどうか？　もあとで増やす）を返す
+        /// 正しくないときは警告を出す
+        /// </summary>
+        /// <returns></returns>
+        private bool validateCode()
+        {
+            if (clist == null || clist.Count==0)
+            {
+                MessageBox.Show("ブロックを選択しよう", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                return false;
+            }
+            if (clist.Last().Name == "Indent" || clist.Last().Name.Contains("If") || clist.Last().Name.Contains("While"))//コードの中かっこの数が正しくないときは、警告を出す
+            {
+                MessageBox.Show("「ここまで」ブロックが足りません", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                return false;
+            }
+            return true;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             try
             {
-                Queue<string> codeQueue = block_to_queue();
-                gameInterpriter.build(codeQueue);
                 //ゲームのデータクラスの更新
                 if (runAllTimer.Enabled == true)
                 {
-                    runAllTimer.Stop();
+                    runAllTimer.Stop();//タイマーを停止する
                     button6.Text = "すべて実行";
                 }
                 else
                 {
-                    runAllTimer.Start();
+                    if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
+
+                    Queue<string> codeQueue = block_to_queue();
+                    gameInterpriter.build(codeQueue);
+                    runAllTimer.Start();//タイマーをスタートする
                     button6.Text = "停止する";
                 }
             }
