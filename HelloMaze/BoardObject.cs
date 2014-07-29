@@ -39,7 +39,7 @@ namespace HelloMaze
         /// <summary>
         /// オブジェクトの現在の向き
         /// </summary>
-        public int objectDirection = (int)ObjectDirection.Up;
+        public int objectDirection = (int)ObjectDirection.Down;
 
          /// <summary>
          /// オブジェクトの種類を識別する番号
