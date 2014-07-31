@@ -89,6 +89,7 @@
     <None Include="app.config" />
     <None Include="bin\Debug\Userdata\stage3" />
     <None Include="bin\Debug\Userdata\stage4" />
+    <None Include="bin\Debug\Userdata\stage8" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -106,6 +107,8 @@
     <None Include="Resource\stage1" />
     <None Include="Resource\stage10" />
     <None Include="Resource\stage2" />
+    <None Include="Resource\stage8" />
+    <None Include="Resource\stage9" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

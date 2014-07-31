@@ -121,6 +121,12 @@
   <data name="stage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\stage1;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="stage8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\stage8;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stage9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\stage9;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ここまで" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resource\ここまで.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
