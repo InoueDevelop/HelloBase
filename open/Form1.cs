@@ -30,6 +30,7 @@ namespace open
             timer.Tick += new EventHandler(timer_Tick);
             // タイマ用のイベントハンドラをフォームにも登録
             //this.Load += new EventHandler(timer_Tick);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//画像の大きさをpictureBoxに合わせる
             bmp = Properties.Resources.intro;
             r =new int[bmp.Width, bmp.Height];
             g =new int[bmp.Width, bmp.Height];
@@ -118,6 +119,7 @@ namespace open
             label2.Text = "スタート";
             label3.Text = "終了";
             label4.Text = "はじめてのプログラミング";
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//画像の大きさをpictureBoxに合わせる
             pictureBox1.Image = bmp;
             pictureBox1.Refresh();
             count++;
