@@ -89,6 +89,9 @@
     <None Include="app.config" />
     <None Include="bin\Debug\Userdata\stage3" />
     <None Include="bin\Debug\Userdata\stage4" />
+    <None Include="bin\Debug\Userdata\stage5" />
+    <None Include="bin\Debug\Userdata\stage6" />
+    <None Include="bin\Debug\Userdata\stage7" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
