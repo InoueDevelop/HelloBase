@@ -102,6 +102,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resource\stage1" />
+    <None Include="Resource\stage10" />
+    <None Include="Resource\stage2" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
