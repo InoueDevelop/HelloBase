@@ -73,9 +73,9 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Byte[] のローカライズされたリソースを検索します。
         /// </summary>
-        internal static byte[] stage5 {
+        internal static byte[] stage3 {
             get {
-                object obj = ResourceManager.GetObject("stage5", resourceCulture);
+                object obj = ResourceManager.GetObject("stage3", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Byte[] のローカライズされたリソースを検索します。
         /// </summary>
-        internal static byte[] stage6 {
+        internal static byte[] stage4 {
             get {
-                object obj = ResourceManager.GetObject("stage6", resourceCulture);
+                object obj = ResourceManager.GetObject("stage4", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +93,19 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Byte[] のローカライズされたリソースを検索します。
         /// </summary>
-        internal static byte[] stage7 {
+        internal static byte[] stage10 {
             get {
-                object obj = ResourceManager.GetObject("stage7", resourceCulture);
+                object obj = ResourceManager.GetObject("stage10", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] stage2 {
+            get {
+                object obj = ResourceManager.GetObject("stage2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
