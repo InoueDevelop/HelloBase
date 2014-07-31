@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using HelloMaze;
-//using Plock;
-//using PlockForm = Plock.Form1;
 
 namespace open
 {
@@ -18,8 +15,6 @@ namespace open
         Bitmap bmp;
         Timer timer = new Timer();
         int count = 0;
-        int cursoly = 310;
-        int dy = 45;
         int[,] r;
         int[,] g;
         int[,] b;
@@ -33,7 +28,6 @@ namespace open
             timer.Interval = 55;  // 更新間隔 (ミリ秒)　精度の上限は55ms
             // タイマ用のイベントハンドラを登録
             timer.Tick += new EventHandler(timer_Tick);
-            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
             // タイマ用のイベントハンドラをフォームにも登録
             //this.Load += new EventHandler(timer_Tick);
             bmp = Properties.Resources.intro;
@@ -41,6 +35,9 @@ namespace open
             g =new int[bmp.Width, bmp.Height];
             b =new int[bmp.Width, bmp.Height];
             pictureBox1.Controls.Add(label1);//labelの透過処理
+            pictureBox1.Controls.Add(label2);
+            pictureBox1.Controls.Add(label3);
+            pictureBox1.Controls.Add(label4);
             timer.Start();  // タイマ ON
         }
 
@@ -113,69 +110,43 @@ namespace open
             if (count > 23)
 
             {
-                bmp = Properties.Resources.title1;
+                bmp = Properties.Resources.background;
                 Graphics gra = Graphics.FromImage(bmp);
-                gra.FillEllipse(Brushes.Black, 320, 310, 10, 10);
                 label1.Text = "";
                 if (count == 24) timer.Stop();
             }
-
+            label2.Text = "スタート";
+            label3.Text = "終了";
+            label4.Text = "はじめてのプログラミング";
             pictureBox1.Image = bmp;
             pictureBox1.Refresh();
             count++;
 
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            Graphics g = Graphics.FromImage(bmp);
-            if (e.KeyCode == Keys.Down && count > 23 && cursoly<400)
-            {
-                // 実行したい処理
-                cursoly += dy;
-                g.FillEllipse(Brushes.White, 320, cursoly-dy, 10, 10);
-                g.FillEllipse(Brushes.Black, 320, cursoly, 10, 10);
-                g.Dispose();
-                pictureBox1.Image = bmp;
-                pictureBox1.Refresh();
-            }
-            else if (e.KeyCode == Keys.Up && count > 23 && cursoly>320)
-            {
-                cursoly -= dy;
-                g.FillEllipse(Brushes.Black, 320, cursoly, 10, 10);
-                g.FillEllipse(Brushes.White, 320, cursoly+dy, 10, 10);
-                g.Dispose();
-                pictureBox1.Image = bmp;
-                pictureBox1.Refresh();
-            }
-            else if (e.KeyCode == Keys.Enter && count > 23)
-            {
-                if (cursoly == 310)
-                {                  
-                    //PlockForm gameForm = new PlockForm();
-                    //gameForm.Show();
-                    cFlag = false;
-                    eFlag = true;
-                    
-                    this.Close();                    
-                }
-                else if (cursoly == 400)
-                {
-                    cFlag = true;
-                    this.Close();
-                }
-                else
-                {
-                    cFlag = true;             
-                }
-            }
-        }
-
+        
         private void Open_FormClosed(object sender, FormClosedEventArgs e)
         {
             cFlag = true;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            cFlag = false;
+            eFlag = true;
+
+            this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
     }
 }
