@@ -69,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,6 +80,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\stage1" />
+    <None Include="Resources\stage10" />
+    <None Include="Resources\stage2" />
+    <None Include="Resources\stage3" />
+    <None Include="Resources\stage4" />
+    <None Include="Resources\stage5" />
+    <None Include="Resources\stage6" />
+    <None Include="Resources\stage7" />
+    <None Include="Resources\stage8" />
+    <None Include="Resources\stage9" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

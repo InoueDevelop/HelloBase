@@ -73,6 +73,16 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Byte[] のローカライズされたリソースを検索します。
         /// </summary>
+        internal static byte[] stage11 {
+            get {
+                object obj = ResourceManager.GetObject("stage11", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
         internal static byte[] stage5 {
             get {
                 object obj = ResourceManager.GetObject("stage5", resourceCulture);

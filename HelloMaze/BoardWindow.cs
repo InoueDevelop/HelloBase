@@ -12,7 +12,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using BitmapPaint;
 
-
 namespace HelloMaze
 {
 
@@ -654,6 +653,179 @@ namespace HelloMaze
             this.Close();
         }
 #endregion
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage1";
+            var resource = Properties.Resources.stage1;
+            try
+            {
+                loadDataset(path,resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void loadDataset(string path,byte[] resource)
+        {
+            
+
+            using (Stream writeStream = new FileStream(path, FileMode.Create))
+            {
+                BinaryWriter bw = new BinaryWriter(writeStream);
+                bw.Write(resource);
+            }
+
+            Dataset loadedData;
+            using (Stream fileStream = new FileStream(path, FileMode.Open))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+                fileStream.Close();
+            }
+           
+            if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
+            {
+                stateHistory = loadedData;
+            }
+
+            //this.=stateHistory.cpsquarelength;
+            back = stateHistory.cpback;
+            fore = stateHistory.cpfore;
+            this.pictureBox1.BackgroundImage = back;
+            this.pictureBox1.Image = fore;
+            controlobj = stateHistory.cpcontrolobj;
+            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+            ListObjectBoard = stateHistory.cp_ListObjectBoard;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage2";
+            var resource = Properties.Resources.stage2;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage3";
+            var resource = Properties.Resources.stage3;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage4";
+            var resource = Properties.Resources.stage4;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage5";
+            var resource = Properties.Resources.stage5;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage6";
+            var resource = Properties.Resources.stage6;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage7";
+            var resource = Properties.Resources.stage7;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage8";
+            var resource = Properties.Resources.stage8;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage9";
+            var resource = Properties.Resources.stage9;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage10";
+            var resource = Properties.Resources.stage10;
+            try
+            {
+                loadDataset(path, resource);
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
 
     }
 
