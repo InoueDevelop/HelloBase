@@ -107,6 +107,9 @@
     <None Include="Resource\stage1" />
     <None Include="Resource\stage10" />
     <None Include="Resource\stage2" />
+    <None Include="Resource\stage5" />
+    <None Include="Resource\stage6" />
+    <None Include="Resource\stage7" />
     <None Include="Resource\stage8" />
     <None Include="Resource\stage9" />
   </ItemGroup>
