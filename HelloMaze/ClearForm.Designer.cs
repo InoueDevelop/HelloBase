@@ -48,7 +48,7 @@
             this.newgame.Name = "newgame";
             this.newgame.Size = new System.Drawing.Size(75, 23);
             this.newgame.TabIndex = 1;
-            this.newgame.Text = "New Game";
+            this.newgame.Text = "最初から";
             this.newgame.UseVisualStyleBackColor = true;
             this.newgame.Click += new System.EventHandler(this.newgame_Click);
             // 
@@ -56,9 +56,9 @@
             // 
             this.Loada.Location = new System.Drawing.Point(167, 217);
             this.Loada.Name = "Loada";
-            this.Loada.Size = new System.Drawing.Size(75, 23);
+            this.Loada.Size = new System.Drawing.Size(92, 23);
             this.Loada.TabIndex = 2;
-            this.Loada.Text = "Load";
+            this.Loada.Text = "次のステージへ";
             this.Loada.UseVisualStyleBackColor = true;
             this.Loada.Click += new System.EventHandler(this.Loada_Click);
             // 

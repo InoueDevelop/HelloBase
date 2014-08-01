@@ -14,7 +14,7 @@ using BitmapPaint;
 
 namespace HelloMaze
 {
-
+    
 
     /// <summary>
     /// BoardDataを管理するクラス
@@ -30,8 +30,8 @@ namespace HelloMaze
             public List<BoardObject> cp_ListObjectBoard;
             public Bitmap cpback;
             public Bitmap cpfore;
-
-
+           
+           
 
 
             public Dataset(BoardData sdata)
@@ -61,7 +61,7 @@ namespace HelloMaze
         delegate void RefreshPictureBox1();
         public Bitmap fore;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
-
+        public int stagecount = 0;
         public int _sql
         {
             get { return squarelength; }
@@ -104,7 +104,8 @@ namespace HelloMaze
 
         public void constructer()
         {
-       
+
+            stagecount = 0;
             ListObjectBoard = new List<BoardObject>();
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             fore = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -432,12 +433,31 @@ namespace HelloMaze
             } 
         }
 
+       
            public void Goalevent() {
+               stagecount++;
                ClearForm clearwindow = new ClearForm();
-               clearwindow.ShowDialog();
+               if (stagecount == 11)
+               {
+                   clearwindow.Loadtext = "全クリア！！";
+                   stagecount = 1;
+               }
+                   clearwindow.ShowDialog();
               
                    if (clearwindow.newgamestart == true) { constructer(); }
-                   if (clearwindow.Loaddatastart == true) { load(); }
+                   if (clearwindow.Loaddatastart == true) {
+                       string pathnext = "stage"+stagecount.ToString();
+                       byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
+                       try
+                       {
+                           loadDataset(pathnext, da);
+                       }
+                       catch (Exception exc)
+                       {
+
+                       }
+                   
+                   }
                    clearwindow.Dispose();
            }
 
@@ -720,6 +740,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path,resource);
+                stagecount = 1;
             }
             catch (Exception exc)
             {
@@ -767,6 +788,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 2;
             }
             catch (Exception exc)
             {
@@ -781,6 +803,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 3;
             }
             catch (Exception exc)
             {
@@ -795,6 +818,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 4;
             }
             catch (Exception exc)
             {
@@ -809,6 +833,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 5;
             }
             catch (Exception exc)
             {
@@ -823,6 +848,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 6;
             }
             catch (Exception exc)
             {
@@ -837,6 +863,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 7;
             }
             catch (Exception exc)
             {
@@ -851,6 +878,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 8;
             }
             catch (Exception exc)
             {
@@ -865,6 +893,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 9;
             }
             catch (Exception exc)
             {
@@ -879,6 +908,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 10;
             }
             catch (Exception exc)
             {
