@@ -48,7 +48,7 @@ namespace Plock
         }
 
         enum Comands { Go, Left, Right, If, While, End };
-        enum Conditions { Front_Wall, Left_Wall, Right_Wall };
+        enum Conditions { Front_Wall, Left_Wall, Right_Wall, Forever };
 
         //-------------------------------------------------------------------------------------------
         //配置ボタン
@@ -261,6 +261,7 @@ namespace Plock
             else if (comand == Comands.While)
             {
                 indent.Push("While");
+                
 
                 switch (condition)
                 {
@@ -272,6 +273,9 @@ namespace Plock
                         break;
                     case Conditions.Right_Wall:
                         set_Block("Whileright", Properties.Resources.繰り返し右壁なし, insert_point);
+                        break;
+                    case Conditions.Forever:
+                        set_Block("Whileright", Properties.Resources.繰り返し, insert_point);
                         break;
                 }
             }
@@ -306,9 +310,12 @@ namespace Plock
                     break;
                 case 3:
                     comand = Comands.If;
+                    if (listBox3.Items.Count == 4)
+                        listBox3.Items.RemoveAt(3);
                     break;
                 case 4:
                     comand = Comands.While;
+                    listBox3.Items.Add("ずっと");
                     break;
                 case 5:
                     comand = Comands.End;
@@ -331,6 +338,9 @@ namespace Plock
                     break;
                 case 2:
                     condition = Conditions.Right_Wall;
+                    break;
+                case 3:
+                    condition = Conditions.Forever;
                     break;
             }
         }
