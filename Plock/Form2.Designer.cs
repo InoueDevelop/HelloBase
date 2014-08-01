@@ -121,7 +121,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(16, 695);
+            this.button4.Location = new System.Drawing.Point(12, 456);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(96, 33);
             this.button4.TabIndex = 10;
@@ -131,7 +131,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(16, 734);
+            this.button5.Location = new System.Drawing.Point(12, 504);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(96, 33);
             this.button5.TabIndex = 11;
@@ -141,7 +141,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(190, 734);
+            this.button6.Location = new System.Drawing.Point(172, 504);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(103, 33);
             this.button6.TabIndex = 12;
@@ -151,7 +151,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 564);
+            this.textBox1.Location = new System.Drawing.Point(12, 312);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(281, 125);
@@ -162,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1229, 777);
+            this.ClientSize = new System.Drawing.Size(601, 678);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -174,7 +174,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
+            this.Location = new System.Drawing.Point(900, 0);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);

@@ -56,16 +56,16 @@
             this.oNToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.oFFToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -306,6 +306,76 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ステージ選択";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(241, 212);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 36);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "10";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(242, 161);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 36);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "9";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(242, 108);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 36);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "8";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(242, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 36);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "7";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(131, 161);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 36);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "6";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(131, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 36);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "5";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(131, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 36);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -336,82 +406,14 @@
             this.label1.Text = "1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 36);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "4";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(131, 108);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 36);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "5";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(131, 161);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 36);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "6";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(242, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 36);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "7";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(242, 108);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 36);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "8";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(242, 161);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 36);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "9";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(241, 212);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 36);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "10";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
             // BoardData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(907, 565);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.load_button);
@@ -421,7 +423,10 @@
             this.Controls.Add(this.pictureBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BoardData";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "迷路を解こう";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BoardData_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
