@@ -97,8 +97,15 @@ namespace HelloMaze
 
         public BoardData() //コンストラクタ
         {
-
             InitializeComponent();
+            constructer();
+           
+        }
+
+        public void constructer()
+        {
+       
+            ListObjectBoard = new List<BoardObject>();
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             fore = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
@@ -128,7 +135,7 @@ namespace HelloMaze
 
 
                     g.FillRectangle(Brushes.White, i * squarelength, j * squarelength, squarelength, squarelength);
-               
+
                 }
             }
 
@@ -138,6 +145,7 @@ namespace HelloMaze
 
             pictureBox1.Refresh();
             g.Dispose();
+
         }
 
 
@@ -380,6 +388,12 @@ namespace HelloMaze
                     break;
             }
             foreach(var n in ListObjectBoard){
+
+                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY)) { 
+                
+                    Goalevent();
+                }
+
             if(n is ItemObject && controlobj is PlayerObject && (controlobj.ObjectPositionX==n.ObjectPositionX&&controlobj.ObjectPositionY==n.ObjectPositionY)){
               genosideenemy();
             if(genoside==false)  genoside = true;
@@ -390,6 +404,7 @@ namespace HelloMaze
                 ListObjectBoard.RemoveAll(p => p is EnemyObject);
                 pictureBox1.Refresh(); 
             }
+
             }
 
         /// <summary>
@@ -407,20 +422,24 @@ namespace HelloMaze
 
 
            public void genosideenemy()
-        {
-            
+        {       
             foreach (var t in ListObjectBoard)
             {
                 if (t is EnemyObject)
                 {
                     bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, t.ObjectPositionX, t.ObjectPositionY);
                                     }   
-            }
-
-          
-
-           
+            } 
         }
+
+           public void Goalevent() {
+               ClearForm clearwindow = new ClearForm();
+               clearwindow.ShowDialog();
+              
+                   if (clearwindow.newgamestart == true) { constructer(); }
+                   if (clearwindow.Loaddatastart == true) { load(); }
+                   clearwindow.Dispose();
+           }
 
 
         public void directionchange ()

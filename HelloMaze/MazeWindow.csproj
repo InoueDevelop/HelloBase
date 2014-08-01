@@ -56,11 +56,20 @@
     <Compile Include="BoardWindow.Designer.cs">
       <DependentUpon>BoardWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClearForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClearForm.Designer.cs">
+      <DependentUpon>ClearForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BoardObject.cs" />
     <EmbeddedResource Include="BoardWindow.resx">
       <DependentUpon>BoardWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClearForm.resx">
+      <DependentUpon>ClearForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +109,9 @@
       <Project>{3d1040da-51bf-4986-b0a6-ad5e58261862}</Project>
       <Name>BitmapPaint</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\evgoal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
