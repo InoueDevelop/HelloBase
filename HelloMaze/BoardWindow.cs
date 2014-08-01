@@ -261,19 +261,23 @@ namespace HelloMaze
             if (e.KeyCode == Keys.X)  //right
             {
                 MoveOperation(controlobj, 2, 1);
+                controlobj.objectDirection = (int)BoardObject.ObjectDirection.Right;
             }
             if (e.KeyCode == Keys.A) //left
             {
 
                 MoveOperation(controlobj, 3, 1);
+                controlobj.objectDirection = (int)BoardObject.ObjectDirection.Left;
             }
             if (e.KeyCode == Keys.S)//Up
             {
                 MoveOperation(controlobj, 1, 1);
+                controlobj.objectDirection = (int)BoardObject.ObjectDirection.Up;
             }
             if (e.KeyCode == Keys.Z) //down
             {
                 MoveOperation(controlobj, 4, 1);
+                controlobj.objectDirection = (int)BoardObject.ObjectDirection.Down;
             }
         }
 
@@ -303,6 +307,7 @@ namespace HelloMaze
 
         public void MoveOperation(BoardObject obj, int directionselect, int repititionnum)  //ブロックスクリプト用移動命令
         {
+            bool genoside=false;
 
             switch (directionselect)
             {
@@ -374,7 +379,18 @@ namespace HelloMaze
                     }
                     break;
             }
-        }
+            foreach(var n in ListObjectBoard){
+            if(n is ItemObject && controlobj is PlayerObject && (controlobj.ObjectPositionX==n.ObjectPositionX&&controlobj.ObjectPositionY==n.ObjectPositionY)){
+              genosideenemy();
+            if(genoside==false)  genoside = true;
+            }
+            }
+            if (genoside == true)
+            {
+                ListObjectBoard.RemoveAll(p => p is EnemyObject);
+                pictureBox1.Refresh(); 
+            }
+            }
 
         /// <summary>
         /// スレッドセーフなPictureBox1.Refresh()
@@ -389,6 +405,22 @@ namespace HelloMaze
             else { this.pictureBox1.Refresh(); }
         }
 
+
+           public void genosideenemy()
+        {
+            
+            foreach (var t in ListObjectBoard)
+            {
+                if (t is EnemyObject)
+                {
+                    bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, t.ObjectPositionX, t.ObjectPositionY);
+                                    }   
+            }
+
+          
+
+           
+        }
 
 
         public void directionchange ()
@@ -654,6 +686,14 @@ namespace HelloMaze
         }
 #endregion
 
+
+        #region //ステージ選択
+
+        /// <summary>
+        /// labelset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void label1_Click(object sender, EventArgs e)
         {
             string path = "Userdata/stage1";
@@ -826,6 +866,7 @@ namespace HelloMaze
 
             }
         }
+        #endregion // //
 
     }
 

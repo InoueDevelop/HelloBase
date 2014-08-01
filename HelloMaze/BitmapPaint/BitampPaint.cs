@@ -65,6 +65,9 @@ namespace BitmapPaint
                 g.Dispose();
             }
     }
+
+     
+
         public void ResetObject( Bitmap bmp, int x, int y,int i,int j)  //アニメーション用
         {
             using (Graphics g = Graphics.FromImage(bmp))
