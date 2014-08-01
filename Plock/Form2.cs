@@ -412,17 +412,35 @@ namespace Plock
         //if whileブロックセットの一斉削除
         private void deleteBlockSet(int condition_left, int index)
         {
+            int condition_count = 0;
             for (int i = index; i < clist.Count; i++)
             {
-                //while (clist[i].Name != "End")
+                if (clist[i].Name.Contains("If") || clist[i].Name.Contains("While"))
+                {
+                    condition_count++;
+                }
+                if (clist[i].Name == "End")
+                {
+                    condition_count--;
+                }
+                //while (condition_count > 0)
                 //{
-                    if (clist[i].Left >= condition_left)
-                    {
-                        clist.RemoveAt(i);
-                        i--;
-                    }
+                //if (clist[i].Left >= condition_left)
+                //{
+                clist.RemoveAt(i);
+                i--;
                 //}
+                //}
+                if (condition_count == 0)
+                {
+                    while (clist.Count > 0 && clist[i + 1].Name == "Indent")
+                    {
+                        clist.RemoveAt(i+1);
+                    }
+                    break;
+                }
             }
+
         }
         //---------------------------------------------------------------------------------------------------------------
         //panelクリック時のイベントハンドラ
@@ -599,7 +617,7 @@ namespace Plock
         /// <returns></returns>
         private bool validateCode()
         {
-            if (clist == null || clist.Count==0)
+            if (clist == null || clist.Count == 0)
             {
                 MessageBox.Show("ブロックを選択しよう", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                 return false;
