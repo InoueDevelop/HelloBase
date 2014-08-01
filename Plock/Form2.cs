@@ -48,7 +48,7 @@ namespace Plock
         }
 
         enum Comands { Go, Left, Right, If, While, End };
-        enum Conditions { Front_Wall, Left_Wall, Right_Wall };
+        enum Conditions { Front_Wall, Left_Wall, Right_Wall, Forever };
 
         //-------------------------------------------------------------------------------------------
         //配置ボタン
@@ -84,7 +84,7 @@ namespace Plock
 
             for (int i = k; i < clist.Count; i++)
             {
-                if (clist[i].Name == "Indent")
+                if (clist[i].Name.Contains("Indent"))
                 {
                     k--;
                 }
@@ -177,10 +177,16 @@ namespace Plock
                         indent_copy.Pop(); //最新のindentだけ捨てる．
                     indent_type2 = indent_copy.Pop();
                     if (indent_type2 == "If")
+                    {
                         pb1[count].Image = Properties.Resources.もしinterval;
+                        pb1[count].Name = "Indent_If";
+                    }
 
                     else if (indent_type2 == "While")
+                    {
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
+                        pb1[count].Name = "Indent_While";
+                    }
 
 
                 }
@@ -189,20 +195,27 @@ namespace Plock
                 {
                     indent_type = indent_copy.Pop();
                     if (indent_type == "If")
+                    {
                         pb1[count].Image = Properties.Resources.もしinterval;
+                        pb1[count].Name = "Indent_If";
+                    }
 
                     else if (indent_type == "While")
+                    {
                         pb1[count].Image = Properties.Resources.繰り返しinterval;
+                        pb1[count].Name = "Indent_While";
+                    }
                 }
 
                 pb1[count].Left = left_pos + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
-                pb1[count].Name = "Indent";
+
                 clist.Insert(insert_point + count + 1, pb1[count]);
                 count++;
             }
 
-            if (prop_name.Contains("If") || prop_name.Contains("While"))
-                indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
+            if (!prop_name.Contains("Indent"))
+                if (prop_name.Contains("If") || prop_name.Contains("While"))
+                    indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
         }
         //-------------------------------------------------------------------------------------------
         private void block_Create(Comands comand, int insert_point)
@@ -262,6 +275,7 @@ namespace Plock
             {
                 indent.Push("While");
 
+
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
@@ -272,6 +286,9 @@ namespace Plock
                         break;
                     case Conditions.Right_Wall:
                         set_Block("Whileright", Properties.Resources.繰り返し右壁なし, insert_point);
+                        break;
+                    case Conditions.Forever:
+                        set_Block("While", Properties.Resources.繰り返し, insert_point);
                         break;
                 }
             }
@@ -306,9 +323,13 @@ namespace Plock
                     break;
                 case 3:
                     comand = Comands.If;
+                    if (listBox3.Items.Count == 4)
+                        listBox3.Items.RemoveAt(3);
                     break;
                 case 4:
                     comand = Comands.While;
+                    if (listBox3.Items.Count == 3)
+                        listBox3.Items.Add("ずっと");
                     break;
                 case 5:
                     comand = Comands.End;
@@ -331,6 +352,9 @@ namespace Plock
                     break;
                 case 2:
                     condition = Conditions.Right_Wall;
+                    break;
+                case 3:
+                    condition = Conditions.Forever;
                     break;
             }
         }
@@ -356,7 +380,7 @@ namespace Plock
 
             for (int i = 0; i < clist.Count; i++)
             {
-                if (clist[i].Name != "Indent" && clist[i].Name != "End")
+                if (!clist[i].Name.Contains("Indent") && clist[i].Name != "End")
                 {
                     if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
                     {
@@ -412,17 +436,38 @@ namespace Plock
         //if whileブロックセットの一斉削除
         private void deleteBlockSet(int condition_left, int index)
         {
+            int condition_count = 0;
             for (int i = index; i < clist.Count; i++)
             {
-                //while (clist[i].Name != "End")
-                //{
-                    if (clist[i].Left >= condition_left)
+                if (!clist[i].Name.Contains("Indent"))
+                {
+                    if (clist[i].Name.Contains("If") || clist[i].Name.Contains("While"))
                     {
-                        clist.RemoveAt(i);
-                        i--;
+                        condition_count++;
                     }
+                }
+                if (clist[i].Name == "End")
+                {
+                    condition_count--;
+                }
+                //while (condition_count > 0)
+                //{
+                //if (clist[i].Left >= condition_left)
+                //{
+                clist.RemoveAt(i);
+                i--;
                 //}
+                //}
+                if (condition_count == 0)
+                {
+                    while (clist.Count > i + 1 && clist[i + 1].Name.Contains("Indent"))
+                    {
+                        clist.RemoveAt(i + 1);
+                    }
+                    break;
+                }
             }
+
         }
         //---------------------------------------------------------------------------------------------------------------
         //panelクリック時のイベントハンドラ
@@ -438,7 +483,7 @@ namespace Plock
             Stack<string> st = new Stack<string>();
             for (int i = 0; i < clist.Count; i++)
             {
-                if (clist[i].Name != "Indent" && clist[i].Name != "End")
+                if (!clist[i].Name.Contains("Indent") && clist[i].Name != "End")    //*
                 {
                     if (y >= clist[i].Top && y < clist[i].Bottom)
                     {
@@ -471,7 +516,7 @@ namespace Plock
             {
 
                 int k = i + 1;
-                while (clist[k].Name == "Indent")
+                while (clist[k].Name.Contains("Indent"))
                 {
                     indent_count++;
                     k++;
@@ -507,6 +552,16 @@ namespace Plock
         }
 
 
+        //--------------------------------------------------------------------------------------------------------------- 8/1
+        private void setIndent(int point)
+        {
+            Queue<string> indent = new Queue<string>();
+            while (clist[point + 1].Name.Contains("Indent"))
+            {
+
+                point++;
+            }
+        }
         //---------------------------------------------------------------------------------------------------------------
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -599,7 +654,7 @@ namespace Plock
         /// <returns></returns>
         private bool validateCode()
         {
-            if (clist == null || clist.Count==0)
+            if (clist == null || clist.Count == 0)
             {
                 MessageBox.Show("ブロックを選択しよう", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                 return false;

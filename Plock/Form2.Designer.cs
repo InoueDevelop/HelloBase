@@ -83,7 +83,8 @@
             this.listBox3.Items.AddRange(new object[] {
             "正面が壁でないなら",
             "左が壁でないなら",
-            "右が壁でないなら"});
+            "右が壁でないなら",
+            "ずっと"});
             this.listBox3.Location = new System.Drawing.Point(172, 87);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(105, 124);

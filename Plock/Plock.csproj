@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\図1.png" />
+    <None Include="Resources\繰り返し.png" />
     <Content Include="Resource\もしend.png" />
     <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\繰り返しend.png" />
