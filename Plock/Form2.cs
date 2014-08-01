@@ -363,10 +363,16 @@ namespace Plock
         //ブロック全削除
         private void button3_Click(object sender, EventArgs e)
         {
-            clist.Clear();
-            indent_count = 0;
-            indent.Clear();
-            block_View(0);
+            DialogResult result = MessageBox.Show("すべてのブロックを消してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
+            {
+                clist.Clear();
+                indent_count = 0;
+                indent.Clear();
+                block_View(0);
+            }
+            else { };
+            
         }
         //-------------------------------------------------------------------------------------------
         //pictureboxクリック時のイベントハンドラ
@@ -506,7 +512,7 @@ namespace Plock
 
         }
         //---------------------------------------------------------------------------------------------------------------
-        //ブロックの途中挿入(1つ前にのみ)
+        //ブロックの途中挿入
         private void insert_block()
         {
 
@@ -553,14 +559,21 @@ namespace Plock
 
 
         //--------------------------------------------------------------------------------------------------------------- 8/1
+        //選択されたブロックの行にあるインデントの情報を取得
         private void setIndent(int point)
         {
-            Queue<string> indent = new Queue<string>();
+            Stack<string> line_indents = new Stack<string>();
             while (clist[point + 1].Name.Contains("Indent"))
             {
-
+                if (clist[point + 1].Name == "Indent_If")
+                    line_indents.Push("If");
+                else
+                    line_indents.Push("While");
                 point++;
             }
+
+            indent_count = line_indents.Count; //インデント数の更新
+            //line_indents.CopyTo(indent,0);
         }
         //---------------------------------------------------------------------------------------------------------------
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
