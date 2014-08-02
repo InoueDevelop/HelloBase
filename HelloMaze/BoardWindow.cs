@@ -145,7 +145,8 @@ namespace HelloMaze
             ListObjectBoard.Add(controlobj);
             bmppaint.ObjectSetPaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore, ref CanPutObjectOnBoard, controlobj.ObjectSelectNum);
 
-            pictureBox1.Refresh();
+            //pictureBox1.Refresh();
+            refreshPictureBox1();
             g.Dispose();
 
         }
@@ -409,7 +410,9 @@ namespace HelloMaze
                 if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                 {
                     locked = true;
-                    Goalevent();
+                    Task goalevent = new Task(() => { Goalevent(); });
+                    goalevent.Start();
+                    //Goalevent();
  
                 }
 
@@ -462,8 +465,16 @@ namespace HelloMaze
                    stagecount = 1;
                }
                    clearwindow.ShowDialog();
-              
-                   if (clearwindow.newgamestart == true) { constructer(); }
+
+                   if (clearwindow.newgamestart == true)
+                   {
+                       if (this.pictureBox1.InvokeRequired)
+                       {
+                           RefreshPictureBox1 constr = new RefreshPictureBox1(() => constructer());
+                           this.Invoke(constr);
+                       }
+                       else { constructer(); }
+                   }
                    if (clearwindow.Loaddatastart == true) {
                        string pathnext = "stage"+stagecount.ToString();
                        byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);

@@ -31,7 +31,7 @@ namespace Plock
 
             //自動実行のためのTimerを用意
             runAllTimer = new System.Timers.Timer();
-            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { gameInterpriter.runOneLine("", gameForm); if (gameForm.locked == true)runAllTimer.Stop(); };
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) =>  gameInterpriter.runOneLine("", gameForm);
             runAllTimer.AutoReset = true;
             runAllTimer.Interval =400;
             
