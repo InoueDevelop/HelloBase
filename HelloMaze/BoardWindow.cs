@@ -60,6 +60,7 @@ namespace HelloMaze
         Bitmap back;
         delegate void RefreshPictureBox1();
         public Bitmap fore;
+        public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
         public int stagecount = 0;
         public int _sql
@@ -104,7 +105,7 @@ namespace HelloMaze
 
         public void constructer()
         {
-
+            locked = false;
             stagecount = 0;
             ListObjectBoard = new List<BoardObject>();
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -316,8 +317,9 @@ namespace HelloMaze
 
         public void MoveOperation(BoardObject obj, int directionselect, int repititionnum)  //ブロックスクリプト用移動命令
         {
-            bool genoside=false;
-
+            //if (locked == true) return;
+       
+            //    if (locked == true) return; 
             switch (directionselect)
             {
                 case 1:
@@ -334,6 +336,7 @@ namespace HelloMaze
                         }
                         obj.moveUp();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
 
@@ -352,6 +355,7 @@ namespace HelloMaze
 
                         obj.moveRight();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
 
@@ -369,6 +373,7 @@ namespace HelloMaze
                         }
                         obj.moveLeft();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
 
@@ -385,28 +390,39 @@ namespace HelloMaze
                         }
                         obj.moveDown();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
-            }
-            foreach(var n in ListObjectBoard){
+            
 
-                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY)) { 
-                
+
+            }
+            }
+
+        void gameevent() {
+            bool genoside = false;
+            foreach (var n in ListObjectBoard)
+            {
+
+                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                {
+                    locked = true;
                     Goalevent();
+ 
                 }
 
-            if(n is ItemObject && controlobj is PlayerObject && (controlobj.ObjectPositionX==n.ObjectPositionX&&controlobj.ObjectPositionY==n.ObjectPositionY)){
-              genosideenemy();
-            if(genoside==false)  genoside = true;
-            }
+                if (n is ItemObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                {
+                    genosideenemy();
+                    if (genoside == false) genoside = true;
+                }
             }
             if (genoside == true)
             {
                 ListObjectBoard.RemoveAll(p => p is EnemyObject);
-                pictureBox1.Refresh(); 
+                pictureBox1.Refresh();
             }
-
-            }
+        }
 
         /// <summary>
         /// スレッドセーフなPictureBox1.Refresh()
@@ -436,7 +452,8 @@ namespace HelloMaze
        
            public void Goalevent() {
                stagecount++;
-               ClearForm clearwindow = new ClearForm();
+               locked = true;
+              ClearForm clearwindow = new ClearForm();
                if (stagecount == 11)
                {
                    clearwindow.Loadtext = "全クリア！！";
@@ -450,6 +467,7 @@ namespace HelloMaze
                        byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
                        try
                        {
+                           locked = false;
                            loadDataset(pathnext, da);
                        }
                        catch (Exception exc)

@@ -43,10 +43,12 @@ namespace Plock
         {
             if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
             if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
-
-            game = currentCode.execute(game);
-            currentCode = currentCode.getMoveTo(game);
-            return game;
+           
+            
+                game = currentCode.execute(game);
+                currentCode = currentCode.getMoveTo(game);
+            
+                return game;
         }
         internal GameData runOneLine(Queue<string> code, GameData game)
         {

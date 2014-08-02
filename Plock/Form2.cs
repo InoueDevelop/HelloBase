@@ -685,7 +685,7 @@ namespace Plock
             try
             {
                 //ゲームのデータクラスの更新
-                if (runAllTimer.Enabled == true)
+                if (runAllTimer.Enabled == true||gameForm.locked)
                 {
                     runAllTimer.Stop();//タイマーを停止する
                     button1.Enabled = true;//他のボタンを押せるようにする
@@ -696,7 +696,7 @@ namespace Plock
                 }
                 else
                 {
-                    if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
+                    if (!validateCode()||gameForm.locked) return;//コードの形が正しくないときは何も実行しない
 
                     Queue<string> codeQueue = block_to_queue();
                     gameInterpriter.build(codeQueue);
