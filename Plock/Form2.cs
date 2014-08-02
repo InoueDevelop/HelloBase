@@ -25,6 +25,8 @@ namespace Plock
         int x;   //マウス座標
         int y;
 
+        int insert_point; //ブロック挿入位置（リストインデックス）
+
 
         public Form2()
             : base()
@@ -64,8 +66,10 @@ namespace Plock
             }
             else
             {
-                block_Create(comand, clist.Count);
+                //block_Create(comand, clist.Count);
+                block_Create(comand, insert_point);
                 block_View(0);
+                insert_point++;
 
             }
 
@@ -127,7 +131,7 @@ namespace Plock
         }
         //-------------------------------------------------------------------------------------------
         //ブロックの設定とリストへの登録
-        private void set_Block(string prop_name, Image img, int insert_point) //insert_point==clist.Count ⇒　末尾に追加
+        private void set_Block(string prop_name, Image img, int point) //point==clist.Count ⇒　末尾に追加
         {
             //-------------------------------------------------------
             PictureBox pb = new PictureBox();
@@ -163,7 +167,7 @@ namespace Plock
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
             pb.Click += new EventHandler(clist_Click);
-            clist.Insert(insert_point, pb);
+            clist.Insert(point, pb);
 
             //インデントブロックの設定・登録　0708追加
             while (count < indent_count)
@@ -209,8 +213,9 @@ namespace Plock
 
                 pb1[count].Left = left_pos + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
 
-                clist.Insert(insert_point + count + 1, pb1[count]);
+                clist.Insert(point + count + 1, pb1[count]);
                 count++;
+                insert_point++;
             }
 
             if (!prop_name.Contains("Indent"))
@@ -368,11 +373,12 @@ namespace Plock
             {
                 clist.Clear();
                 indent_count = 0;
+                insert_point = 0;
                 indent.Clear();
                 block_View(0);
             }
             else { };
-            
+
         }
         //-------------------------------------------------------------------------------------------
         //pictureboxクリック時のイベントハンドラ
@@ -397,6 +403,7 @@ namespace Plock
                             if (result == DialogResult.Yes)
                             {
                                 clist.RemoveAt(i);
+                                insert_point = clist.Count;            //挿入開始ポイントをリスト最後に移動
                                 //再描画
                                 block_View(0);
                             }
@@ -424,6 +431,7 @@ namespace Plock
                                 //}
                                 //clist.RemoveAt(i);
                                 deleteBlockSet(clist[i].Left, i);
+                                insert_point = clist.Count;            //挿入開始ポイントをリスト最後に移動
                                 //再描画
                                 block_View(0);
                             }
@@ -477,39 +485,59 @@ namespace Plock
         }
         //---------------------------------------------------------------------------------------------------------------
         //panelクリック時のイベントハンドラ
+        //private void panel_Click(object sender, EventArgs e)
+        //{
+        //    string b_name = "";
+        //    DialogResult result = MessageBox.Show(b_name + "のブロックの前に挿入するブロックを選んでね。", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+
+        //    int x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
+        //    int y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+
+        //    int indent_count = 0;
+        //    Stack<string> st = new Stack<string>();
+        //    for (int i = 0; i < clist.Count; i++)
+        //    {
+        //        if (!clist[i].Name.Contains("Indent") && clist[i].Name != "End")    //*
+        //        {
+        //            if (y >= clist[i].Top && y < clist[i].Bottom)
+        //            {
+        //                b_name = clist[i].Name;
+
+        //                if (result == DialogResult.Yes)
+        //                {
+
+        //                    insert_block();
+        //                    //再描画
+        //                    block_View(0);
+        //                }
+        //                break;
+        //            }
+
+        //        }
+
+        //    }
+
+
+        //}
+        //---------------------------------------------------------------------------------------------------------------
         private void panel_Click(object sender, EventArgs e)
         {
-            string b_name = "";
-            DialogResult result = MessageBox.Show(b_name + "のブロックの前に挿入するブロックを選んでね。", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-
             int x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
             int y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
-
-            int indent_count = 0;
-            Stack<string> st = new Stack<string>();
             for (int i = 0; i < clist.Count; i++)
             {
-                if (!clist[i].Name.Contains("Indent") && clist[i].Name != "End")    //*
+                if (y >= clist[i].Top && y < clist[i].Bottom)
                 {
-                    if (y >= clist[i].Top && y < clist[i].Bottom)
+                    DialogResult result = MessageBox.Show(i + "番目のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Yes)
                     {
-                        b_name = clist[i].Name;
-
-                        if (result == DialogResult.Yes)
-                        {
-
-                            insert_block();
-                            //再描画
-                            block_View(0);
-                        }
+                        setIndent(i);
                         break;
                     }
-
+                    else break;
                 }
 
             }
-
-
         }
         //---------------------------------------------------------------------------------------------------------------
         //ブロックの途中挿入
@@ -559,21 +587,25 @@ namespace Plock
 
 
         //--------------------------------------------------------------------------------------------------------------- 8/1
-        //選択されたブロックの行にあるインデントの情報を取得
+        //選択されたブロックの行にあるインデントの情報を設定
         private void setIndent(int point)
         {
             Stack<string> line_indents = new Stack<string>();
-            while (clist[point + 1].Name.Contains("Indent"))
+            if (point+1<clist.Count)
             {
-                if (clist[point + 1].Name == "Indent_If")
-                    line_indents.Push("If");
-                else
-                    line_indents.Push("While");
-                point++;
+                while (clist[point + 1].Name.Contains("Indent"))
+                {
+                    if (clist[point + 1].Name == "Indent_If")
+                        line_indents.Push("If");
+                    else
+                        line_indents.Push("While");
+                    point++;
+                }
             }
 
             indent_count = line_indents.Count; //インデント数の更新
-            //line_indents.CopyTo(indent,0);
+            insert_point = point+1; //挿入開始位置の更新
+            indent = new Stack<string>(line_indents.ToArray()); // スタックのコピー 参照型であることに注意
         }
         //---------------------------------------------------------------------------------------------------------------
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
