@@ -49,7 +49,7 @@ namespace Plock
         }
 
         enum Comands { Go, Left, Right, If, While, End };
-        enum Conditions { Front_Wall, Left_Wall, Right_Wall, Forever };
+        enum Conditions { Front_Wall, Left_Wall, Right_Wall, Front_noWall, Left_noWall, Right_noWall, Forever };
 
         //-------------------------------------------------------------------------------------------
         //配置ボタン
@@ -264,12 +264,21 @@ namespace Plock
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("Iffront", Properties.Resources.もし正面壁なし, insert_point);
+                        set_Block("IffrontWall", Properties.Resources.もし正面壁あり, insert_point);
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("Ifleft", Properties.Resources.もし左壁なし, insert_point);
+                        set_Block("IfleftWall", Properties.Resources.もし左壁あり, insert_point);
                         break;
                     case Conditions.Right_Wall:
+                        set_Block("IfrightWall", Properties.Resources.もし右壁あり, insert_point);
+                        break;
+                    case Conditions.Front_noWall:
+                        set_Block("Iffront", Properties.Resources.もし正面壁なし, insert_point);
+                        break;
+                    case Conditions.Left_noWall:
+                        set_Block("Ifleft", Properties.Resources.もし左壁なし, insert_point);
+                        break;
+                    case Conditions.Right_noWall:
                         set_Block("Ifright", Properties.Resources.もし右壁なし, insert_point);
                         break;
                 }
@@ -283,12 +292,21 @@ namespace Plock
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("Whilefront", Properties.Resources.繰り返し正面壁なし, insert_point);
+                        set_Block("WhilefrontWall", Properties.Resources.繰り返し正面壁あり, insert_point);
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("Whileleft", Properties.Resources.繰り返し左壁なし, insert_point);
+                        set_Block("WhileleftWall", Properties.Resources.繰り返し左壁あり, insert_point);
                         break;
                     case Conditions.Right_Wall:
+                        set_Block("WhilerightWall", Properties.Resources.繰り返し右壁あり, insert_point);
+                        break;
+                    case Conditions.Front_noWall:
+                        set_Block("Whilefront", Properties.Resources.繰り返し正面壁なし, insert_point);
+                        break;
+                    case Conditions.Left_noWall:
+                        set_Block("Whileleft", Properties.Resources.繰り返し左壁なし, insert_point);
+                        break;
+                    case Conditions.Right_noWall:
                         set_Block("Whileright", Properties.Resources.繰り返し右壁なし, insert_point);
                         break;
                     case Conditions.Forever:
@@ -358,6 +376,15 @@ namespace Plock
                     condition = Conditions.Right_Wall;
                     break;
                 case 3:
+                    condition = Conditions.Front_noWall;
+                    break;
+                case 4:
+                    condition = Conditions.Left_noWall;
+                    break;
+                case 5:
+                    condition = Conditions.Right_noWall;
+                    break;
+                case 6:
                     condition = Conditions.Forever;
                     break;
             }
