@@ -778,12 +778,12 @@ namespace Plock
         {
             if (clist == null || clist.Count == 0)
             {
-                MessageBox.Show("ブロックを選択しよう", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                MessageBox.Show("ブロックを選択しよう", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             if (clist.Last().Name == "Indent" || clist.Last().Name.Contains("If") || clist.Last().Name.Contains("While"))//コードの中かっこの数が正しくないときは、警告を出す
             {
-                MessageBox.Show("「ここまで」ブロックが足りません", "お願い", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                MessageBox.Show("「ここまで」ブロックが足りません", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             return true;
