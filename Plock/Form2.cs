@@ -735,6 +735,18 @@ namespace Plock
                         _codeQueue.Enqueue(codeNumber + ":もし、右に壁がないなら{");
                         codeNumber++;
                         break;
+                    case "IffrontWall":
+                        _codeQueue.Enqueue(codeNumber + ":もし、正面が壁なら{");
+                        codeNumber++;
+                        break;
+                    case "IfleftWall":
+                        _codeQueue.Enqueue(codeNumber + ":もし、左が壁なら{");
+                        codeNumber++;
+                        break;
+                    case "IfrightWall":
+                        _codeQueue.Enqueue(codeNumber + ":もし、右が壁なら{");
+                        codeNumber++;
+                        break;
                     case "Whilefront":
                         _codeQueue.Enqueue(codeNumber + ":正面に壁がないなら繰り返す{");
                         codeNumber++;
@@ -745,6 +757,18 @@ namespace Plock
                         break;
                     case "Whileright":
                         _codeQueue.Enqueue(codeNumber + ":右に壁がないなら繰り返す{");
+                        codeNumber++;
+                        break;
+                    case "WhilefrontWall":
+                        _codeQueue.Enqueue(codeNumber + ":正面が壁なら繰り返す{");
+                        codeNumber++;
+                        break;
+                    case "WhileleftWall":
+                        _codeQueue.Enqueue(codeNumber + ":左が壁なら繰り返す{");
+                        codeNumber++;
+                        break;
+                    case "WhilerightWall":
+                        _codeQueue.Enqueue(codeNumber + ":右が壁なら繰り返す{");
                         codeNumber++;
                         break;
                     case "While":

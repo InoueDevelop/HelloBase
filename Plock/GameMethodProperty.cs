@@ -117,6 +117,9 @@ namespace Plock
             methodDictionary.Add("右に物があるなら", new IsRightObject());
             methodDictionary.Add("左に物があるなら", new IsLeftObject());
 
+            methodDictionary.Add("正面が壁なら", new IsUpWall());
+            methodDictionary.Add("右が壁なら", new IsRightWall());
+            methodDictionary.Add("左が壁なら", new IsLeftWall());
             methodDictionary.Add("正面に壁がないなら", new IsntUpWall());
             methodDictionary.Add("右に壁がないなら", new IsntRightWall());
             methodDictionary.Add("左に壁がないなら", new IsntLeftWall());
@@ -164,7 +167,38 @@ namespace Plock
         }
 
         /// <summary>
-        /// 正面に壁がないかどうか
+        /// 正面が壁なら
+        /// </summary>
+        public class IsUpWall : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return (1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.objectDirection));
+            }
+        }
+        /// <summary>
+        /// 右が壁なら
+        /// </summary>
+        public class IsRightWall : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return (1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getRight()));
+            }
+        }
+        /// <summary>
+        /// 左が壁なら
+        /// </summary>
+        public class IsLeftWall : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return (1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getLeft()));
+            }
+        }
+
+        /// <summary>
+        /// 正面に壁がないなら
         /// </summary>
         public class IsntUpWall : IsMethod
         {
@@ -173,6 +207,9 @@ namespace Plock
                 return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.objectDirection));
             }
         }
+        /// <summary>
+        /// 右に壁がないなら
+        /// </summary>
         public class IsntRightWall : IsMethod
         {
             public override bool execute(GameData game)
@@ -180,6 +217,9 @@ namespace Plock
                 return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getRight()));
             }
         }
+        /// <summary>
+        /// 左に壁がないなら
+        /// </summary>
         public class IsntLeftWall : IsMethod
         {
             public override bool execute(GameData game)
