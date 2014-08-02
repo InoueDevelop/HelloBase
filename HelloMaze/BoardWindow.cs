@@ -475,7 +475,7 @@ namespace HelloMaze
                        }
                        else { constructer(); }
                    }
-                   if (clearwindow.Loaddatastart == true) {
+                   else if (clearwindow.Loaddatastart == true) {
                        string pathnext = "stage"+stagecount.ToString();
                        byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
                        try
@@ -489,6 +489,7 @@ namespace HelloMaze
                        }
                    
                    }
+                   else { locked = false; }
                    clearwindow.Dispose();
            }
 
