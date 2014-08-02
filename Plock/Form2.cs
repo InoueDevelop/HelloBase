@@ -345,12 +345,12 @@ namespace Plock
                     break;
                 case 3:
                     comand = Comands.If;
-                    if (listBox3.Items.Count == 4)
-                        listBox3.Items.RemoveAt(3);
+                    if (listBox3.Items.Count == 7)
+                        listBox3.Items.RemoveAt(6);
                     break;
                 case 4:
                     comand = Comands.While;
-                    if (listBox3.Items.Count == 3)
+                    if (listBox3.Items.Count == 6)
                         listBox3.Items.Add("ずっと");
                     break;
                 case 5:
