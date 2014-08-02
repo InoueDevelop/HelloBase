@@ -688,6 +688,10 @@ namespace Plock
                         _codeQueue.Enqueue(codeNumber + ":右に壁がないなら繰り返す{");
                         codeNumber++;
                         break;
+                    case "While":
+                        _codeQueue.Enqueue(codeNumber + ":いつでも繰り返す{");
+                        codeNumber++;
+                        break;
                     case "End":
                         _codeQueue.Enqueue(codeNumber + ":}");
                         codeNumber++;
