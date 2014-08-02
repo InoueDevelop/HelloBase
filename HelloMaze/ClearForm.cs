@@ -13,6 +13,9 @@ namespace HelloMaze
     {
        public bool newgamestart = false;
        public bool Loaddatastart = false;
+       public string Loadtext{
+           set { Loada.Text = value; }
+       }
 
         public ClearForm()
         {

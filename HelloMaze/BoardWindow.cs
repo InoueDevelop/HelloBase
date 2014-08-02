@@ -14,7 +14,7 @@ using BitmapPaint;
 
 namespace HelloMaze
 {
-
+    
 
     /// <summary>
     /// BoardDataを管理するクラス
@@ -30,8 +30,8 @@ namespace HelloMaze
             public List<BoardObject> cp_ListObjectBoard;
             public Bitmap cpback;
             public Bitmap cpfore;
-
-
+           
+           
 
 
             public Dataset(BoardData sdata)
@@ -60,8 +60,9 @@ namespace HelloMaze
         Bitmap back;
         delegate void RefreshPictureBox1();
         public Bitmap fore;
+        public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
-
+        public int stagecount = 0;
         public int _sql
         {
             get { return squarelength; }
@@ -104,7 +105,8 @@ namespace HelloMaze
 
         public void constructer()
         {
-       
+            locked = false;
+            stagecount = 0;
             ListObjectBoard = new List<BoardObject>();
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             fore = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -143,7 +145,8 @@ namespace HelloMaze
             ListObjectBoard.Add(controlobj);
             bmppaint.ObjectSetPaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore, ref CanPutObjectOnBoard, controlobj.ObjectSelectNum);
 
-            pictureBox1.Refresh();
+            //pictureBox1.Refresh();
+            refreshPictureBox1();
             g.Dispose();
 
         }
@@ -165,49 +168,49 @@ namespace HelloMaze
         }
 
 
-        private void pictureBox1_Click(object sender, EventArgs e)//マウスクリックによるオブジェクトの操作権限の移行
+        private void pictureBox1_Click(object sender, EventArgs e)//debugマウスクリックによるオブジェクトの操作権限の移行
         {
-            int x = -1;
-            int y = -1;
+            //int x = -1;
+            //int y = -1;
 
-            List<int> checkman = new List<int>();
-
-
-            Point sp = System.Windows.Forms.Cursor.Position;
-            System.Drawing.Point cp = pictureBox1.PointToClient(sp);
-
-            GetCursolPosition(cp.X, cp.Y, ref x, ref y);  
-            squareX.Text = "squareX:" + x;
-            squareY.Text = "squareY:" + y;
+            //List<int> checkman = new List<int>();
 
 
+            //Point sp = System.Windows.Forms.Cursor.Position;
+            //System.Drawing.Point cp = pictureBox1.PointToClient(sp);
 
-            if (-1 < x)
-            {
-                //bmppaint.PointSquare(x,y,fore);
-                //pictureBox1.Refresh();
+            //GetCursolPosition(cp.X, cp.Y, ref x, ref y);  
+            //squareX.Text = "squareX:" + x;
+            //squareY.Text = "squareY:" + y;
 
-                switch (CanPutObjectOnBoard[x, y])
-                {
-                    case (false):
-                        {
-                            if (ListObjectBoard != null)
-                            {
 
-                                controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject||p is WallObject));
-                            }
 
-                            break;
-                        }
+            //if (-1 < x)
+            //{
+            //    //bmppaint.PointSquare(x,y,fore);
+            //    //pictureBox1.Refresh();
 
-                    case (true):
-                        {
-                            //bmppaint.ObjectSetPaint(x, y, fore, ref CanPutObjectOnBoard,wall.ObjectSelectNum);
-                            //pictureBox1.Refresh();
-                            break;
-                        }
-                }
-            }
+            //    switch (CanPutObjectOnBoard[x, y])
+            //    {
+            //        case (false):
+            //            {
+            //                if (ListObjectBoard != null)
+            //                {
+
+            //                    controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject||p is WallObject));
+            //                }
+
+            //                break;
+            //            }
+
+            //        case (true):
+            //            {
+            //                //bmppaint.ObjectSetPaint(x, y, fore, ref CanPutObjectOnBoard,wall.ObjectSelectNum);
+            //                //pictureBox1.Refresh();
+            //                break;
+            //            }
+            //    }
+            //}
         }
 
 
@@ -315,9 +318,12 @@ namespace HelloMaze
 
         public void MoveOperation(BoardObject obj, int directionselect, int repititionnum)  //ブロックスクリプト用移動命令
         {
-            bool genoside=false;
+       
+          //lock(this){
+              if (locked == true) return;
+  
 
-            switch (directionselect)
+              switch (directionselect)
             {
                 case 1:
                     if (0 < controlobj.ObjectPositionY && BoardObjectCanMove[controlobj.ObjectPositionX, controlobj.ObjectPositionY - 1] == true)
@@ -333,6 +339,7 @@ namespace HelloMaze
                         }
                         obj.moveUp();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
 
@@ -351,6 +358,7 @@ namespace HelloMaze
 
                         obj.moveRight();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
 
@@ -368,6 +376,7 @@ namespace HelloMaze
                         }
                         obj.moveLeft();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
 
@@ -384,28 +393,41 @@ namespace HelloMaze
                         }
                         obj.moveDown();
                         CanPutObjectOnBoard[obj.ObjectPositionX, obj.ObjectPositionY] = false;
+                        gameevent();
                     }
                     break;
-            }
-            foreach(var n in ListObjectBoard){
+            
 
-                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY)) { 
-                
-                    Goalevent();
+            }
+            //}
+            }
+
+        void gameevent() {
+            bool genoside = false;
+            foreach (var n in ListObjectBoard)
+            {
+
+                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                {
+                    locked = true;
+                    Task goalevent = new Task(() => { Goalevent(); });
+                    goalevent.Start();
+                    //Goalevent();
+ 
                 }
 
-            if(n is ItemObject && controlobj is PlayerObject && (controlobj.ObjectPositionX==n.ObjectPositionX&&controlobj.ObjectPositionY==n.ObjectPositionY)){
-              genosideenemy();
-            if(genoside==false)  genoside = true;
-            }
+                if (n is ItemObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                {
+                    genosideenemy();
+                    if (genoside == false) genoside = true;
+                }
             }
             if (genoside == true)
             {
                 ListObjectBoard.RemoveAll(p => p is EnemyObject);
-                pictureBox1.Refresh(); 
+                refreshPictureBox1();
             }
-
-            }
+        }
 
         /// <summary>
         /// スレッドセーフなPictureBox1.Refresh()
@@ -432,12 +454,41 @@ namespace HelloMaze
             } 
         }
 
+       
            public void Goalevent() {
-               ClearForm clearwindow = new ClearForm();
-               clearwindow.ShowDialog();
-              
-                   if (clearwindow.newgamestart == true) { constructer(); }
-                   if (clearwindow.Loaddatastart == true) { load(); }
+               stagecount++;
+               locked = true;
+              ClearForm clearwindow = new ClearForm();
+               if (stagecount == 11)
+               {
+                   clearwindow.Loadtext = "全クリア！！";
+                   stagecount = 1;
+               }
+                   clearwindow.ShowDialog();
+
+                   if (clearwindow.newgamestart == true)
+                   {
+                       if (this.pictureBox1.InvokeRequired)
+                       {
+                           RefreshPictureBox1 constr = new RefreshPictureBox1(() => constructer());
+                           this.Invoke(constr);
+                       }
+                       else { constructer(); }
+                   }
+                   if (clearwindow.Loaddatastart == true) {
+                       string pathnext = "stage"+stagecount.ToString();
+                       byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
+                       try
+                       {
+                           locked = false;
+                           loadDataset(pathnext, da);
+                       }
+                       catch (Exception exc)
+                       {
+
+                       }
+                   
+                   }
                    clearwindow.Dispose();
            }
 
@@ -720,6 +771,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path,resource);
+                stagecount = 1;
             }
             catch (Exception exc)
             {
@@ -767,6 +819,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 2;
             }
             catch (Exception exc)
             {
@@ -781,6 +834,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 3;
             }
             catch (Exception exc)
             {
@@ -795,6 +849,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 4;
             }
             catch (Exception exc)
             {
@@ -809,6 +864,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 5;
             }
             catch (Exception exc)
             {
@@ -823,6 +879,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 6;
             }
             catch (Exception exc)
             {
@@ -837,6 +894,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 7;
             }
             catch (Exception exc)
             {
@@ -851,6 +909,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 8;
             }
             catch (Exception exc)
             {
@@ -865,6 +924,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 9;
             }
             catch (Exception exc)
             {
@@ -879,6 +939,7 @@ namespace HelloMaze
             try
             {
                 loadDataset(path, resource);
+                stagecount = 10;
             }
             catch (Exception exc)
             {

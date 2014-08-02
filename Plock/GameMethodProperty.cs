@@ -120,6 +120,7 @@ namespace Plock
             methodDictionary.Add("正面に壁がないなら", new IsntUpWall());
             methodDictionary.Add("右に壁がないなら", new IsntRightWall());
             methodDictionary.Add("左に壁がないなら", new IsntLeftWall());
+            methodDictionary.Add("いつでも", new returnTrue());
             return methodDictionary;
         }
 
@@ -184,6 +185,14 @@ namespace Plock
             public override bool execute(GameData game)
             {
                 return !(1 == game.CountToObject(game.controlobj.objectPositionX, game.controlobj.objectPositionY, game.controlobj.getLeft() ));
+            }
+        }
+
+        public class returnTrue : IsMethod
+        {
+            public override bool execute(GameData game)
+            {
+                return true;
             }
         }
 

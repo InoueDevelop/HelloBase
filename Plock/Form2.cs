@@ -33,8 +33,7 @@ namespace Plock
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
-            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } }; //最後の行に達したら自動停止 
-
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()||gameForm.locked == true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } }; //最後の行に達したら自動停止 
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -399,7 +398,7 @@ namespace Plock
                         if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
                             b_name = clist[i].Name;
-                            DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            DialogResult result = MessageBox.Show(translate(b_name) + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                             if (result == DialogResult.Yes)
                             {
                                 clist.RemoveAt(i);
@@ -420,7 +419,7 @@ namespace Plock
                         if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
                             b_name = clist[i].Name;
-                            DialogResult result = MessageBox.Show(b_name + "のブロック全体を消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            DialogResult result = MessageBox.Show(translate(b_name) + "のブロック全体を消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                             if (result == DialogResult.Yes)
                             {
                                 //int k = i;
@@ -445,6 +444,53 @@ namespace Plock
                     }
                 }
             }
+        }
+
+
+        string translate(string English)
+        {
+            switch (English)
+            {
+                case "Go":
+                    return "前へ進む";
+                    
+                case "Left":
+                    return "左を向く";
+                    
+                case "Right":
+                    return "右を向く";
+                    
+                case "Iffront":
+                    return "もし、正面に壁がないなら{";
+
+                    
+                case "Ifleft":
+                    return "もし、左に壁がないなら";
+
+                    
+                case "Ifright":
+                    return "もし、右に壁がないなら";
+
+                    
+                case "Whilefront":
+                    return "正面に壁がないなら繰り返す";
+
+                    
+                case "Whileleft":
+                    return "左に壁がないなら繰り返す";
+
+                    
+                case "Whileright":
+                    return "右に壁がないなら繰り返す";
+
+                    
+                case "End":
+                    return "";
+
+                    
+
+            }
+            return "";
         }
         //---------------------------------------------------------------------------------------------------------------
         //if whileブロックセットの一斉削除
@@ -672,6 +718,10 @@ namespace Plock
                         break;
                     case "Whileright":
                         _codeQueue.Enqueue(codeNumber + ":右に壁がないなら繰り返す{");
+                        codeNumber++;
+                        break;
+                    case "While":
+                        _codeQueue.Enqueue(codeNumber + ":いつでも繰り返す{");
                         codeNumber++;
                         break;
                     case "End":

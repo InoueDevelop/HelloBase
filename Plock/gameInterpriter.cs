@@ -41,12 +41,17 @@ namespace Plock
 
         internal GameData runOneLine(string code, GameData game)
         {
-            if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
-            if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
+            lock (this)
+            {
+                if (currentCode.isEnd()) return game;//コードの終わりなら何も実行しない
+                if (currentCode.isNull()) build(code);//コードがビルドされていないならビルドする
 
-            game = currentCode.execute(game);
-            currentCode = currentCode.getMoveTo(game);
-            return game;
+
+                game = currentCode.execute(game);
+                currentCode = currentCode.getMoveTo(game);
+
+                return game;
+            }
         }
         internal GameData runOneLine(Queue<string> code, GameData game)
         {
