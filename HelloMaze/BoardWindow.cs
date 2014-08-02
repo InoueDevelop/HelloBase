@@ -167,49 +167,49 @@ namespace HelloMaze
         }
 
 
-        private void pictureBox1_Click(object sender, EventArgs e)//マウスクリックによるオブジェクトの操作権限の移行
+        private void pictureBox1_Click(object sender, EventArgs e)//debugマウスクリックによるオブジェクトの操作権限の移行
         {
-            int x = -1;
-            int y = -1;
+            //int x = -1;
+            //int y = -1;
 
-            List<int> checkman = new List<int>();
-
-
-            Point sp = System.Windows.Forms.Cursor.Position;
-            System.Drawing.Point cp = pictureBox1.PointToClient(sp);
-
-            GetCursolPosition(cp.X, cp.Y, ref x, ref y);  
-            squareX.Text = "squareX:" + x;
-            squareY.Text = "squareY:" + y;
+            //List<int> checkman = new List<int>();
 
 
+            //Point sp = System.Windows.Forms.Cursor.Position;
+            //System.Drawing.Point cp = pictureBox1.PointToClient(sp);
 
-            if (-1 < x)
-            {
-                //bmppaint.PointSquare(x,y,fore);
-                //pictureBox1.Refresh();
+            //GetCursolPosition(cp.X, cp.Y, ref x, ref y);  
+            //squareX.Text = "squareX:" + x;
+            //squareY.Text = "squareY:" + y;
 
-                switch (CanPutObjectOnBoard[x, y])
-                {
-                    case (false):
-                        {
-                            if (ListObjectBoard != null)
-                            {
 
-                                controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject||p is WallObject));
-                            }
 
-                            break;
-                        }
+            //if (-1 < x)
+            //{
+            //    //bmppaint.PointSquare(x,y,fore);
+            //    //pictureBox1.Refresh();
 
-                    case (true):
-                        {
-                            //bmppaint.ObjectSetPaint(x, y, fore, ref CanPutObjectOnBoard,wall.ObjectSelectNum);
-                            //pictureBox1.Refresh();
-                            break;
-                        }
-                }
-            }
+            //    switch (CanPutObjectOnBoard[x, y])
+            //    {
+            //        case (false):
+            //            {
+            //                if (ListObjectBoard != null)
+            //                {
+
+            //                    controlobj = ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y&&(p is PlayerObject ||p is EnemyObject||p is WallObject));
+            //                }
+
+            //                break;
+            //            }
+
+            //        case (true):
+            //            {
+            //                //bmppaint.ObjectSetPaint(x, y, fore, ref CanPutObjectOnBoard,wall.ObjectSelectNum);
+            //                //pictureBox1.Refresh();
+            //                break;
+            //            }
+            //    }
+            //}
         }
 
 
@@ -317,10 +317,12 @@ namespace HelloMaze
 
         public void MoveOperation(BoardObject obj, int directionselect, int repititionnum)  //ブロックスクリプト用移動命令
         {
-            //if (locked == true) return;
        
-            //    if (locked == true) return; 
-            switch (directionselect)
+          //lock(this){
+              if (locked == true) return;
+  
+
+              switch (directionselect)
             {
                 case 1:
                     if (0 < controlobj.ObjectPositionY && BoardObjectCanMove[controlobj.ObjectPositionX, controlobj.ObjectPositionY - 1] == true)
@@ -395,8 +397,8 @@ namespace HelloMaze
                     break;
             
 
-
             }
+            //}
             }
 
         void gameevent() {
@@ -420,7 +422,7 @@ namespace HelloMaze
             if (genoside == true)
             {
                 ListObjectBoard.RemoveAll(p => p is EnemyObject);
-                pictureBox1.Refresh();
+                refreshPictureBox1();
             }
         }
 

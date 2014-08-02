@@ -31,9 +31,9 @@ namespace Plock
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
-            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } }; //最後の行に達したら自動停止 
-
-        }
+            //runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameForm.locked) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } };
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd()||gameForm.locked==true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } }; //最後の行に達したら自動停止 
+                    }
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -685,7 +685,7 @@ namespace Plock
             try
             {
                 //ゲームのデータクラスの更新
-                if (runAllTimer.Enabled == true||gameForm.locked)
+                if (runAllTimer.Enabled == true)
                 {
                     runAllTimer.Stop();//タイマーを停止する
                     button1.Enabled = true;//他のボタンを押せるようにする
@@ -696,7 +696,7 @@ namespace Plock
                 }
                 else
                 {
-                    if (!validateCode()||gameForm.locked) return;//コードの形が正しくないときは何も実行しない
+                    if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
 
                     Queue<string> codeQueue = block_to_queue();
                     gameInterpriter.build(codeQueue);
