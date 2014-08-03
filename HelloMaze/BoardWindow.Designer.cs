@@ -47,14 +47,6 @@
             this.ロードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bGMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.再生ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oFFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ナレーションToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oNToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.oFFToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -189,9 +181,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.ヘルプToolStripMenuItem,
-            this.bGMToolStripMenuItem});
+            this.toolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(907, 24);
@@ -211,80 +201,23 @@
             // ロードToolStripMenuItem
             // 
             this.ロードToolStripMenuItem.Name = "ロードToolStripMenuItem";
-            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ロードToolStripMenuItem.Text = "ロード";
             this.ロードToolStripMenuItem.Click += new System.EventHandler(this.ロードToolStripMenuItem_Click);
             // 
             // セーブToolStripMenuItem
             // 
             this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
-            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.セーブToolStripMenuItem.Text = "セーブ";
             this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
-            // 
-            // ヘルプToolStripMenuItem
-            // 
-            this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.ヘルプToolStripMenuItem.Text = "ヘルプ";
-            // 
-            // bGMToolStripMenuItem
-            // 
-            this.bGMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.再生ToolStripMenuItem,
-            this.ナレーションToolStripMenuItem});
-            this.bGMToolStripMenuItem.Name = "bGMToolStripMenuItem";
-            this.bGMToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.bGMToolStripMenuItem.Text = "BGM";
-            // 
-            // 再生ToolStripMenuItem
-            // 
-            this.再生ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oNToolStripMenuItem,
-            this.oFFToolStripMenuItem});
-            this.再生ToolStripMenuItem.Name = "再生ToolStripMenuItem";
-            this.再生ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.再生ToolStripMenuItem.Text = "再生";
-            // 
-            // oNToolStripMenuItem
-            // 
-            this.oNToolStripMenuItem.Name = "oNToolStripMenuItem";
-            this.oNToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.oNToolStripMenuItem.Text = "ON";
-            // 
-            // oFFToolStripMenuItem
-            // 
-            this.oFFToolStripMenuItem.Name = "oFFToolStripMenuItem";
-            this.oFFToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.oFFToolStripMenuItem.Text = "OFF";
-            // 
-            // ナレーションToolStripMenuItem
-            // 
-            this.ナレーションToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oNToolStripMenuItem1,
-            this.oFFToolStripMenuItem1});
-            this.ナレーションToolStripMenuItem.Name = "ナレーションToolStripMenuItem";
-            this.ナレーションToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.ナレーションToolStripMenuItem.Text = "ナレーション";
-            // 
-            // oNToolStripMenuItem1
-            // 
-            this.oNToolStripMenuItem1.Name = "oNToolStripMenuItem1";
-            this.oNToolStripMenuItem1.Size = new System.Drawing.Size(97, 22);
-            this.oNToolStripMenuItem1.Text = "ON";
-            // 
-            // oFFToolStripMenuItem1
-            // 
-            this.oFFToolStripMenuItem1.Name = "oFFToolStripMenuItem1";
-            this.oFFToolStripMenuItem1.Size = new System.Drawing.Size(97, 22);
-            this.oFFToolStripMenuItem1.Text = "OFF";
             // 
             // groupBox1
             // 
@@ -459,15 +392,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem セーブToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ロードToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bGMToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 再生ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oNToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oFFToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ナレーションToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oNToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem oFFToolStripMenuItem1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
