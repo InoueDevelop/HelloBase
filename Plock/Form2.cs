@@ -345,12 +345,12 @@ namespace Plock
                     break;
                 case 3:
                     comand = Comands.If;
-                    if (listBox3.Items.Count == 4)
-                        listBox3.Items.RemoveAt(3);
+                    if (listBox3.Items.Count == 7)
+                        listBox3.Items.RemoveAt(6);
                     break;
                 case 4:
                     comand = Comands.While;
-                    if (listBox3.Items.Count == 3)
+                    if (listBox3.Items.Count == 6)
                         listBox3.Items.Add("ずっと");
                     break;
                 case 5:
@@ -535,6 +535,7 @@ namespace Plock
                 case "End":
                     return "";
 
+                default: return "こ";//"こ"のブロックを削除してもよろしいですか？
                     
 
             }
@@ -823,7 +824,7 @@ namespace Plock
         {
             if (clist == null || clist.Count == 0)
             {
-                MessageBox.Show("ブロックを選択しよう", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("ブロックを配置しよう", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             if (clist.Last().Name == "Indent" || clist.Last().Name.Contains("If") || clist.Last().Name.Contains("While"))//コードの中かっこの数が正しくないときは、警告を出す

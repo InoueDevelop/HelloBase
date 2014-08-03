@@ -29,7 +29,7 @@ namespace open
             // タイマ用のイベントハンドラを登録
             timer.Tick += new EventHandler(timer_Tick);
             // タイマ用のイベントハンドラをフォームにも登録
-            //this.Load += new EventHandler(timer_Tick);
+            this.Load += new EventHandler(timer_Tick);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//画像の大きさをpictureBoxに合わせる
             bmp = Properties.Resources.intro;
             r =new int[bmp.Width, bmp.Height];
@@ -44,67 +44,66 @@ namespace open
 
         public void timer_Tick(object sender, EventArgs e)
         {
-            count =24;
-            //if (count == 0)
-            //{
-            //    bmp = Properties.Resources.intro;
-            //    for (int i = 0; i < bmp.Width; i++)
-            //    {
-            //        for (int j = 0; j < bmp.Height; j++)
-            //        {
-            //            r[i, j] = (bmp.GetPixel(i, j).R);
-            //            g[i, j] = (bmp.GetPixel(i, j).G);
-            //            b[i, j] = (bmp.GetPixel(i, j).B);
-            //        }
-            //    }
-            //}
+            if (count == 0)
+            {
+                bmp = Properties.Resources.intro;
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    for (int j = 0; j < bmp.Height; j++)
+                    {
+                        r[i, j] = (bmp.GetPixel(i, j).R);
+                        g[i, j] = (bmp.GetPixel(i, j).G);
+                        b[i, j] = (bmp.GetPixel(i, j).B);
+                    }
+                }
+            }
 
-            //if (count <= 8)
-            //{
-            //    for (int i = 0; i < bmp.Width; i++)
-            //    {
-            //        for (int j = 0; j < bmp.Height; j++)
-            //        {
-            //            bmp.SetPixel(i, j, Color.FromArgb(r[i, j] / 8 * count, g[i, j] / 8 * count, b[i, j] / 8 * count));
-            //        }
-            //    }
-            //}
+            if (count <= 8)
+            {
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    for (int j = 0; j < bmp.Height; j++)
+                    {
+                        bmp.SetPixel(i, j, Color.FromArgb(r[i, j] / 8 * count, g[i, j] / 8 * count, b[i, j] / 8 * count));
+                    }
+                }
+            }
 
-            //else if (count > 8 && count <= 16)
-            //{
-            //    for (int i = 0; i < bmp.Width; i++)
-            //    {
-            //        for (int j = 0; j < bmp.Height; j++)
-            //        {
-            //            bmp.SetPixel(i, j, Color.FromArgb(r[i, j] / 8 * (count - ((count - 8) * 2 - 1)), g[i, j] / 8 * (count - ((count - 8) * 2 - 1)), b[i, j] / 8 * (count - ((count - 8) * 2 - 1))));
-            //        }
-            //    }
-            //}
+            else if (count > 8 && count <= 16)
+            {
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    for (int j = 0; j < bmp.Height; j++)
+                    {
+                        bmp.SetPixel(i, j, Color.FromArgb(r[i, j] / 8 * (count - ((count - 8) * 2 - 1)), g[i, j] / 8 * (count - ((count - 8) * 2 - 1)), b[i, j] / 8 * (count - ((count - 8) * 2 - 1))));
+                    }
+                }
+            }
 
-            //else if (count > 16 && count <= 22)
-            //{
-            //    for (int i = 0; i < bmp.Width; i++)
-            //    {
-            //        for (int j = 0; j < bmp.Height; j++)
-            //        {
-            //            bmp.SetPixel(i, j, Color.FromArgb(0,0,0));
-            //        }
-            //    }
-            //    string[] load;
-            //    load = new string[6] { "","ロ", "ー", "ド", "中", "…" }; 
-            //    label1.Text += load[count-17];
-            //}
+            else if (count > 16 && count <= 22)
+            {
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    for (int j = 0; j < bmp.Height; j++)
+                    {
+                        bmp.SetPixel(i, j, Color.FromArgb(0,0,0));
+                    }
+                }
+                string[] load;
+                load = new string[6] { "","ロ", "ー", "ド", "中", "…" }; 
+                label1.Text += load[count-17];
+            }
 
-            //else if (count == 23)
-            //{
-            //    for (int i = 0; i < bmp.Width; i++)
-            //    {
-            //        for (int j = 0; j < bmp.Height; j++)
-            //        {
-            //            bmp.SetPixel(i, j, Color.FromArgb(0, 0, 0));
-            //        }
-            //    }
-            //}
+            else if (count == 23)
+            {
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    for (int j = 0; j < bmp.Height; j++)
+                    {
+                        bmp.SetPixel(i, j, Color.FromArgb(0, 0, 0));
+                    }
+                }
+            }
 
 
            
@@ -114,11 +113,12 @@ namespace open
                 bmp = Properties.Resources.background;
                 Graphics gra = Graphics.FromImage(bmp);
                 label1.Text = "";
+                label2.Text = "スタート";
+                label3.Text = "終了";
+                label4.Text = "はじめてのプログラミング";
                 if (count == 24) timer.Stop();
             }
-            label2.Text = "スタート";
-            label3.Text = "終了";
-            label4.Text = "はじめてのプログラミング";
+
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//画像の大きさをpictureBoxに合わせる
             pictureBox1.Image = bmp;
             pictureBox1.Refresh();
