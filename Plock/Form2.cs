@@ -486,9 +486,20 @@ namespace Plock
                     
                 case "Right":
                     return "右を向く";
-                    
+
+                case "IffrontWall":
+                    return "もし、正面に壁があるなら";
+
+
+                case "IfleftWall":
+                    return "もし、左に壁があるなら";
+
+
+                case "IfrightWall":
+                    return "もし、右に壁があるなら";
+
                 case "Iffront":
-                    return "もし、正面に壁がないなら{";
+                    return "もし、正面に壁がないなら";
 
                     
                 case "Ifleft":
@@ -498,7 +509,17 @@ namespace Plock
                 case "Ifright":
                     return "もし、右に壁がないなら";
 
-                    
+                case "WhilefrontWall":
+                    return "正面に壁があるなら繰り返す";
+
+
+                case "WhileleftWall":
+                    return "左に壁があるなら繰り返す";
+
+
+                case "WhilerightWall":
+                    return "右に壁があるなら繰り返す";
+
                 case "Whilefront":
                     return "正面に壁がないなら繰り返す";
 
