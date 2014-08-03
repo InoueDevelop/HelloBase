@@ -514,6 +514,7 @@ namespace Plock
                 case "End":
                     return "";
 
+                default: return "こ";//"こ"のブロックを削除してもよろしいですか？
                     
 
             }
@@ -802,7 +803,7 @@ namespace Plock
         {
             if (clist == null || clist.Count == 0)
             {
-                MessageBox.Show("ブロックを選択しよう", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("ブロックを配置しよう", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             if (clist.Last().Name == "Indent" || clist.Last().Name.Contains("If") || clist.Last().Name.Contains("While"))//コードの中かっこの数が正しくないときは、警告を出す
