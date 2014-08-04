@@ -201,21 +201,21 @@
             // ロードToolStripMenuItem
             // 
             this.ロードToolStripMenuItem.Name = "ロードToolStripMenuItem";
-            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.ロードToolStripMenuItem.Text = "ロード";
             this.ロードToolStripMenuItem.Click += new System.EventHandler(this.ロードToolStripMenuItem_Click);
             // 
             // セーブToolStripMenuItem
             // 
             this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
-            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.セーブToolStripMenuItem.Text = "セーブ";
             this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
@@ -232,9 +232,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupBox1.Location = new System.Drawing.Point(46, 259);
+            this.groupBox1.Location = new System.Drawing.Point(27, 259);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 274);
+            this.groupBox1.Size = new System.Drawing.Size(377, 274);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ステージ選択";
@@ -242,7 +242,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(241, 212);
+            this.label10.Location = new System.Drawing.Point(241, 108);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(45, 36);
             this.label10.TabIndex = 9;
@@ -252,7 +252,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(242, 161);
+            this.label9.Location = new System.Drawing.Point(241, 58);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 36);
             this.label9.TabIndex = 8;
@@ -262,7 +262,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(242, 108);
+            this.label8.Location = new System.Drawing.Point(131, 212);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 36);
             this.label8.TabIndex = 7;
@@ -272,7 +272,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(242, 58);
+            this.label7.Location = new System.Drawing.Point(131, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 36);
             this.label7.TabIndex = 6;
@@ -282,7 +282,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(131, 161);
+            this.label6.Location = new System.Drawing.Point(131, 108);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 36);
             this.label6.TabIndex = 5;
@@ -292,7 +292,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(131, 108);
+            this.label5.Location = new System.Drawing.Point(131, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 36);
             this.label5.TabIndex = 4;
@@ -302,7 +302,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 58);
+            this.label4.Location = new System.Drawing.Point(19, 212);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 36);
             this.label4.TabIndex = 3;
