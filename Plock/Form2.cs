@@ -144,13 +144,13 @@ namespace Plock
         //-------------------------------------------------------------------------------------------
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+
         }
         //-------------------------------------------------------------------------------------------
         private void countBlocknumber()
         {
             int count = 0;
-            for(int i=0;i<clist.Count;i++)
+            for (int i = 0; i < clist.Count; i++)
             {
                 if (!clist[i].Name.Contains("Indent"))
                     count++;
@@ -258,7 +258,24 @@ namespace Plock
                 if (prop_name.Contains("If") || prop_name.Contains("While"))
                     indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
         }
-        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------
+        private bool canPutend()
+        {
+            int end_count = 0;
+            int condition_count = 0;
+            for (int i = 0; i < clist.Count; i++)
+            {
+                if ((clist[i].Name.Contains("If") || clist[i].Name.Contains("While")) && !clist[i].Name.Contains("Indent"))
+                    condition_count++;
+                else if (clist[i].Name.Contains("End"))
+                    end_count++;
+            }
+            if (condition_count == end_count)
+                return false;
+            else
+                return true;
+        }
+        //-------------------------------------------------------------------------------------------------------------
         private void block_Create(Comands comand, int insertpoint)
         {
             string st = "";
@@ -276,7 +293,7 @@ namespace Plock
                     break;
 
                 case Comands.End:
-                    if (indent_count > 0)
+                    if (indent_count > 0 && canPutend())
                         st = indent.Pop();
                     else
                     {
@@ -662,7 +679,7 @@ namespace Plock
                         else break;
                     }
                 }
-                else break;
+                else { }
 
             }
         }
@@ -696,7 +713,7 @@ namespace Plock
             if (where == InsertPoint.Before)
                 insert_point = first_point;
             else if (where == InsertPoint.After)
-                insert_point = first_point + 1; //挿入開始位置の更新(後ろに挿入)
+                insert_point = first_point + indent_count + 1; //挿入開始位置の更新(後ろに挿入)
             indent = new Stack<string>(line_indents.ToArray()); // スタックのコピー 参照型であることに注意
         }
         //---------------------------------------------------------------------------------------------------------------

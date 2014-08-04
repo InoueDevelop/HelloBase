@@ -141,7 +141,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(96, 33);
             this.button5.TabIndex = 11;
-            this.button5.Text = "実行する";
+            this.button5.Text = "一行実行";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -151,7 +151,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(103, 33);
             this.button6.TabIndex = 12;
-            this.button6.Text = "すべて実行する";
+            this.button6.Text = "連続実行";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
