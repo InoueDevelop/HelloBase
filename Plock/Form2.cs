@@ -66,7 +66,7 @@ namespace Plock
             }
             else
             {
-                //block_Create(comand, clist.Count);
+
                 block_Create(comand, insert_point);
                 block_View(0);
                 label1.Text = clist.Count.ToString();
@@ -224,35 +224,38 @@ namespace Plock
                     indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
         }
         //-------------------------------------------------------------------------------------------
-        private void block_Create(Comands comand, int insert_point)
+        private void block_Create(Comands comand, int insertpoint)
         {
             string st = "";
             switch (comand)
             {
 
                 case Comands.Go:
-                    set_Block("Go", Properties.Resources.前へ, insert_point);
+                    set_Block("Go", Properties.Resources.前へ, insertpoint);
                     break;
                 case Comands.Left:
-                    set_Block("Left", Properties.Resources.左, insert_point);
+                    set_Block("Left", Properties.Resources.左, insertpoint);
                     break;
                 case Comands.Right:
-                    set_Block("Right", Properties.Resources.右, insert_point);
+                    set_Block("Right", Properties.Resources.右, insertpoint);
                     break;
 
                 case Comands.End:
                     if (indent_count > 0)
                         st = indent.Pop();
                     else
+                    {
                         MessageBox.Show("これ以上【ここまでブロック】は置けません．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        insert_point--;
+                    }
                     if (st == "If")
                     {
-                        set_Block("End", Properties.Resources.もしend, insert_point);
+                        set_Block("End", Properties.Resources.もしend, insertpoint);
 
                     }
                     else if (st == "While")
                     {
-                        set_Block("End", Properties.Resources.繰り返しend, insert_point);
+                        set_Block("End", Properties.Resources.繰り返しend, insertpoint);
 
                     }
                     break;
@@ -266,22 +269,22 @@ namespace Plock
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("IffrontWall", Properties.Resources.もし正面壁あり, insert_point);
+                        set_Block("IffrontWall", Properties.Resources.もし正面壁あり, insertpoint);
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("IfleftWall", Properties.Resources.もし左壁あり, insert_point);
+                        set_Block("IfleftWall", Properties.Resources.もし左壁あり, insertpoint);
                         break;
                     case Conditions.Right_Wall:
-                        set_Block("IfrightWall", Properties.Resources.もし右壁あり, insert_point);
+                        set_Block("IfrightWall", Properties.Resources.もし右壁あり, insertpoint);
                         break;
                     case Conditions.Front_noWall:
-                        set_Block("Iffront", Properties.Resources.もし正面壁なし, insert_point);
+                        set_Block("Iffront", Properties.Resources.もし正面壁なし, insertpoint);
                         break;
                     case Conditions.Left_noWall:
-                        set_Block("Ifleft", Properties.Resources.もし左壁なし, insert_point);
+                        set_Block("Ifleft", Properties.Resources.もし左壁なし, insertpoint);
                         break;
                     case Conditions.Right_noWall:
-                        set_Block("Ifright", Properties.Resources.もし右壁なし, insert_point);
+                        set_Block("Ifright", Properties.Resources.もし右壁なし, insertpoint);
                         break;
                 }
             }
@@ -294,25 +297,25 @@ namespace Plock
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("WhilefrontWall", Properties.Resources.繰り返し正面壁あり, insert_point);
+                        set_Block("WhilefrontWall", Properties.Resources.繰り返し正面壁あり, insertpoint);
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("WhileleftWall", Properties.Resources.繰り返し左壁あり, insert_point);
+                        set_Block("WhileleftWall", Properties.Resources.繰り返し左壁あり, insertpoint);
                         break;
                     case Conditions.Right_Wall:
-                        set_Block("WhilerightWall", Properties.Resources.繰り返し右壁あり, insert_point);
+                        set_Block("WhilerightWall", Properties.Resources.繰り返し右壁あり, insertpoint);
                         break;
                     case Conditions.Front_noWall:
-                        set_Block("Whilefront", Properties.Resources.繰り返し正面壁なし, insert_point);
+                        set_Block("Whilefront", Properties.Resources.繰り返し正面壁なし, insertpoint);
                         break;
                     case Conditions.Left_noWall:
-                        set_Block("Whileleft", Properties.Resources.繰り返し左壁なし, insert_point);
+                        set_Block("Whileleft", Properties.Resources.繰り返し左壁なし, insertpoint);
                         break;
                     case Conditions.Right_noWall:
-                        set_Block("Whileright", Properties.Resources.繰り返し右壁なし, insert_point);
+                        set_Block("Whileright", Properties.Resources.繰り返し右壁なし, insertpoint);
                         break;
                     case Conditions.Forever:
-                        set_Block("While", Properties.Resources.繰り返し, insert_point);
+                        set_Block("While", Properties.Resources.繰り返し, insertpoint);
                         break;
                 }
             }
