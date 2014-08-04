@@ -42,6 +42,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.velocityBar1 = new System.Windows.Forms.TrackBar();
+            this.lvelocity = new System.Windows.Forms.Label();
+            this.hvelocity = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.velocityBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -190,12 +194,44 @@
             this.label5.Size = new System.Drawing.Size(0, 19);
             this.label5.TabIndex = 16;
             // 
+            // velocityBar1
+            // 
+            this.velocityBar1.Location = new System.Drawing.Point(16, 252);
+            this.velocityBar1.Maximum = 5;
+            this.velocityBar1.Minimum = 1;
+            this.velocityBar1.Name = "velocityBar1";
+            this.velocityBar1.Size = new System.Drawing.Size(104, 45);
+            this.velocityBar1.TabIndex = 17;
+            this.velocityBar1.Value = 3;
+            this.velocityBar1.Scroll += new System.EventHandler(this.velocityBar1_Scroll);
+            // 
+            // lvelocity
+            // 
+            this.lvelocity.AutoSize = true;
+            this.lvelocity.Location = new System.Drawing.Point(90, 234);
+            this.lvelocity.Name = "lvelocity";
+            this.lvelocity.Size = new System.Drawing.Size(42, 12);
+            this.lvelocity.TabIndex = 18;
+            this.lvelocity.Text = "遅くする";
+            // 
+            // hvelocity
+            // 
+            this.hvelocity.AutoSize = true;
+            this.hvelocity.Location = new System.Drawing.Point(10, 234);
+            this.hvelocity.Name = "hvelocity";
+            this.hvelocity.Size = new System.Drawing.Size(42, 12);
+            this.hvelocity.TabIndex = 19;
+            this.hvelocity.Text = "速くする";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(601, 678);
+            this.ClientSize = new System.Drawing.Size(524, 675);
+            this.Controls.Add(this.hvelocity);
+            this.Controls.Add(this.lvelocity);
+            this.Controls.Add(this.velocityBar1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -217,6 +253,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.velocityBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +275,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar velocityBar1;
+        private System.Windows.Forms.Label lvelocity;
+        private System.Windows.Forms.Label hvelocity;
     }
 }
 

@@ -21,6 +21,7 @@ namespace Plock
         List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
         static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
         int indent_count;                                 //インデント回数
+        delegate void safevelocityenable();
 
         int x;   //マウス座標
         int y;
@@ -33,8 +34,28 @@ namespace Plock
         {
             InitializeComponent();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
-            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd() || gameForm.locked == true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); } }; //最後の行に達したら自動停止 
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd() || gameForm.locked == true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); safevelocityenabled(); } }; //最後の行に達したら自動停止 
         }
+
+
+        void safevelocityenabled()
+        {
+         
+            if (this.velocityBar1.InvokeRequired)
+            {
+              safevelocityenable safeveloenabled = new safevelocityenable(() => safebarenable());
+                this.Invoke(safeveloenabled);
+            }
+            else { this.velocityBar1.Enabled=true; }
+     
+        }
+
+        void safebarenable(){
+
+            velocityBar1.Enabled=true;
+        }
+
+
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -857,6 +878,7 @@ namespace Plock
                 if (runAllTimer.Enabled == true)
                 {
                     runAllTimer.Stop();//タイマーを停止する
+                    safevelocityenabled();
                     button1.Enabled = true;//他のボタンを押せるようにする
                     button3.Enabled = true;
                     button4.Enabled = true;
@@ -866,9 +888,9 @@ namespace Plock
                 else
                 {
                     if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
-
+                    velocityBar1.Enabled = false;
                     Queue<string> codeQueue = block_to_queue();
-                    gameInterpriter.build(codeQueue);
+                    gameInterpriter.build(codeQueue);                    
                     runAllTimer.Start();//タイマーをスタートする
                     button1.Enabled = false;////他のボタンを押せなくする
                     button3.Enabled = false;
@@ -923,6 +945,19 @@ namespace Plock
                 this.Invoke(setTex1);
             }
             else { this.textBox1.Refresh(); }
+        }
+
+        private void velocityBar1_Scroll(object sender, EventArgs e)
+        {
+            switch (velocityBar1.Value)
+            {
+                case 1: runAllTimer.Interval = 50; break;
+                case 2: runAllTimer.Interval = 100; break;
+                case 3: runAllTimer.Interval = 200; break;
+                case 4: runAllTimer.Interval = 300; break;
+                case 5: runAllTimer.Interval = 400; break;
+
+            }
         }
 
     }

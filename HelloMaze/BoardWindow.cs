@@ -319,7 +319,7 @@ namespace HelloMaze
         public void MoveOperation(BoardObject obj, int directionselect, int repititionnum)  //ブロックスクリプト用移動命令
         {
        
-          //lock(this){
+          lock(this){
               if (locked == true) return;
   
 
@@ -399,7 +399,7 @@ namespace HelloMaze
             
 
             }
-            //}
+          }
             }
 
         void gameevent() {
@@ -481,7 +481,7 @@ namespace HelloMaze
                        try
                        {
                            locked = false;
-                           loadDataset(pathnext, da);
+                           loadDataset2(pathnext, da);
                        }
                        catch (Exception exc)
                        {
@@ -740,6 +740,34 @@ namespace HelloMaze
 
         }
 
+        void load2() //quickload
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = Directory.GetCurrentDirectory() + @"\Userdata";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Stream fileStream = ofd.OpenFile();
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                Dataset loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+                fileStream.Close();
+                
+                    stateHistory = loadedData;
+                
+
+
+                //this.=stateHistory.cpsquarelength;
+                back = stateHistory.cpback;
+                fore = stateHistory.cpfore;
+                this.pictureBox1.BackgroundImage = back;
+                this.pictureBox1.Image = fore;
+                controlobj = stateHistory.cpcontrolobj;
+                CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+                ListObjectBoard = stateHistory.cp_ListObjectBoard;
+            }
+
+        }
+
+
 
         private void セーブToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -802,6 +830,38 @@ namespace HelloMaze
             {
                 stateHistory = loadedData;
             }
+
+            //this.=stateHistory.cpsquarelength;
+            back = stateHistory.cpback;
+            fore = stateHistory.cpfore;
+            this.pictureBox1.BackgroundImage = back;
+            this.pictureBox1.Image = fore;
+            controlobj = stateHistory.cpcontrolobj;
+            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+            ListObjectBoard = stateHistory.cp_ListObjectBoard;
+        }
+
+        private void loadDataset2(string path, byte[] resource)  //quickload
+        {
+
+
+            using (Stream writeStream = new FileStream(path, FileMode.Create))
+            {
+                BinaryWriter bw = new BinaryWriter(writeStream);
+                bw.Write(resource);
+            }
+
+            Dataset loadedData;
+            using (Stream fileStream = new FileStream(path, FileMode.Open))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+                fileStream.Close();
+            }
+
+         
+                stateHistory = loadedData;
+            
 
             //this.=stateHistory.cpsquarelength;
             back = stateHistory.cpback;
