@@ -81,6 +81,7 @@ namespace Plock
         /// <returns></returns>
         internal String getCurrentCode()
         {
+            if (currentCode == null || currentCode._value==null) return "";
             return currentCode._value;
         }
 

@@ -29,13 +29,16 @@ namespace Plock
 
 
         int insert_point; //ブロック挿入位置（リストインデックス）
+        private PictureBox arrowPicture;//矢印の画像
 
 
         public Form2()
             : base()
         {
             InitializeComponent();
+            arrowPicture = new PictureBox();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
+            runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setArrowPicture(); }; //矢印の描画
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd() || gameForm.locked == true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); safevelocityenabled(); } }; //最後の行に達したら自動停止 
         }
 
@@ -146,15 +149,28 @@ namespace Plock
         //-------------------------------------------------------------------------------------------
         private void arrow_View(int top)
         {
-            PictureBox pb = new PictureBox();
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;
-            pb.Image = Properties.Resources.矢印;
-            pb.Left = 20;
-            pb.Height = 40;
-            pb.Width = 60;
-            pb.Top = top;
-            panel1.Controls.Add(pb);
+            panel1.AutoScrollPosition = new Point(0, 0);               //スクロールの位置を（0,0）にしてから描画
+            arrowPicture.Left = 20;
+            arrowPicture.Height = 40;
+            arrowPicture.Width = 60;
+            arrowPicture.Top = top;
+            arrowPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            arrowPicture.Image = Properties.Resources.矢印;
+            panel1.Controls.Add(arrowPicture);
+            panel1.AutoScrollPosition = new Point(0, top);    
 
+        }
+        private void arrow_View()
+        {
+            try
+            {
+                if (!gameInterpriter.getCurrentCode().Contains(':')) return;//区切り文字の:が含まれていないなら、矢印を描画しない
+                string number = gameInterpriter.getCurrentCode().Split(':')[0];
+                arrow_View(40 + int.Parse(number) * 40);
+            }
+            catch(Exception exc) {
+                textBox1.Text = exc.ToString();
+            }
         }
         //-------------------------------------------------------------------------------------------
         private void line_View(int top)
@@ -804,6 +820,7 @@ namespace Plock
                 Queue<string> codeQueue = block_to_queue();
                 if (runAllTimer.Enabled == false) gameInterpriter.build(codeQueue);
                 textBox1.Text = gameInterpriter.getCurrentCode();
+                arrow_View();
 
             }
             catch (Exception exc)
@@ -899,7 +916,7 @@ namespace Plock
             if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
             if (runAllTimer.Enabled == false) gameForm = gameInterpriter.runOneLine(block_to_queue(), gameForm);//一行実行
             textBox1.Text = gameInterpriter.getCurrentCode();
-
+            arrow_View();
         }
 
         /// <summary>
@@ -1001,14 +1018,14 @@ namespace Plock
             this.Invoke(changeEnableTrue);
         }
 
-        private void setArrowPicture(string str)
+        private void setArrowPicture()
         {
-            if (this.button6.InvokeRequired)
+            if (this.panel1.InvokeRequired)
             {
-                MyDelegate setTex6 = new MyDelegate(() => button6.Text = str);
-                this.Invoke(setTex6);
+                MyDelegate arrView = new MyDelegate(() => arrow_View());
+                this.Invoke(arrView);
             }
-            else { this.button6.Text = str; }
+            else { arrow_View(); }
         }
 
 
