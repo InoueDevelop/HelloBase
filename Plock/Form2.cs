@@ -665,7 +665,7 @@ namespace Plock
 
 
                 case "End":
-                    return "";
+                    return "こ";
 
                 default: return "こ";//"こ"のブロックを削除してもよろしいですか？
 
@@ -907,6 +907,20 @@ namespace Plock
                 MessageBox.Show("「ここまで」ブロックが足りません", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
+
+            Queue<string> code =block_to_queue();
+            int countBracket=0;
+            foreach (string line in code)
+            {
+                if (line.Contains("{")) countBracket++;
+                if (line.Contains("}")) countBracket--;
+            }
+            if (countBracket != 0)
+            {
+                MessageBox.Show("「ここまで」ブロックが足りません", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
             return true;
         }
 
