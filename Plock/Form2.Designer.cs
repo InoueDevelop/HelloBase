@@ -46,6 +46,7 @@
             this.velocityBar1 = new System.Windows.Forms.TrackBar();
             this.lvelocity = new System.Windows.Forms.Label();
             this.hvelocity = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.velocityBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -224,6 +225,10 @@
             this.hvelocity.TabIndex = 19;
             this.hvelocity.Text = "速くする";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -279,6 +284,7 @@
         private System.Windows.Forms.TrackBar velocityBar1;
         private System.Windows.Forms.Label lvelocity;
         private System.Windows.Forms.Label hvelocity;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
