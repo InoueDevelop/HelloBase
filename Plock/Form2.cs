@@ -727,10 +727,17 @@ namespace Plock
         {
             for (int i = 0; i < clist.Count; i++)
             {
-                if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
+                if (y >= clist[i].Top && y < clist[i].Bottom)
                 {
-                    if (y >= clist[i].Top && y < clist[i].Bottom)
+                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
                     {
+
+                        if (!checkBracket())
+                        {
+                            MessageBox.Show("「ここまで」ブロックを配置してから挿入位置を変えてね", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            break;
+                        }
+
                         DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                         if (result == DialogResult.Yes)
                         {
@@ -738,9 +745,14 @@ namespace Plock
                             break;
                         }
                         else break;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("「もし」と「繰り返し」のブロックを挿入位置に選ぶことは出来ません", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
                     }
                 }
-                else { }
 
             }
         }
@@ -908,20 +920,29 @@ namespace Plock
                 return false;
             }
 
-            Queue<string> code =block_to_queue();
-            int countBracket=0;
-            foreach (string line in code)
-            {
-                if (line.Contains("{")) countBracket++;
-                if (line.Contains("}")) countBracket--;
-            }
-            if (countBracket != 0)
+            if (!checkBracket())
             {
                 MessageBox.Show("「ここまで」ブロックが足りません", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 中かっこの数が正しいかチェックする
+        /// </summary>
+        /// <returns></returns>
+        private bool checkBracket()
+        {
+            Queue<string> code = block_to_queue();
+            int countBracket = 0;
+            foreach (string line in code)
+            {
+                if (line.Contains("{")) countBracket++;
+                if (line.Contains("}")) countBracket--;
+            }
+            return countBracket == 0;
         }
 
         private void button6_Click(object sender, EventArgs e)
