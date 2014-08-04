@@ -70,6 +70,7 @@ namespace Plock
                 block_Create(comand, insert_point);
                 block_View(0);
                 label1.Text = clist.Count.ToString();
+                countBlocknumber();
                 insert_point++;
 
             }
@@ -121,6 +122,40 @@ namespace Plock
             pb.Top = top;
             panel1.Controls.Add(pb);
 
+        }
+        //-------------------------------------------------------------------------------------------
+        private void line_View(int top)
+        {
+            System.Windows.Forms.Timer timer1;
+            timer1 = new System.Windows.Forms.Timer();
+            timer1.Enabled = true;
+            timer1.Interval = 200;
+            timer1.Tick += new System.EventHandler(timer1_Tick);
+            PictureBox pb = new PictureBox();
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.Height = 5;
+            pb.Width = 200;
+            pb.Top = top;
+            pb.Image = Properties.Resources.線１;
+
+            timer1.Start();
+
+        }
+        //-------------------------------------------------------------------------------------------
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+        }
+        //-------------------------------------------------------------------------------------------
+        private void countBlocknumber()
+        {
+            int count = 0;
+            for(int i=0;i<clist.Count;i++)
+            {
+                if (!clist[i].Name.Contains("Indent"))
+                    count++;
+            }
+            label5.Text = count.ToString();
         }
         //-------------------------------------------------------------------------------------------
         private void block_into_Panel(Panel panel, List<PictureBox> llist)
@@ -407,6 +442,7 @@ namespace Plock
                 insert_point = 0;
                 indent.Clear();
                 block_View(0);
+                countBlocknumber();
                 label1.Text = clist.Count.ToString();
             }
             else { };
@@ -448,6 +484,7 @@ namespace Plock
                                 }
                                 //再描画
                                 block_View(0);
+                                countBlocknumber();
                                 label1.Text = clist.Count.ToString();
                                 break;
                             }
@@ -472,6 +509,7 @@ namespace Plock
 
                                 //再描画
                                 block_View(0);
+                                countBlocknumber();
                                 label1.Text = clist.Count.ToString();
                             }
                             else
