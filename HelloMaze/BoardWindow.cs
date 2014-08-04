@@ -30,7 +30,7 @@ namespace HelloMaze
             public List<BoardObject> cp_ListObjectBoard;
             public Bitmap cpback;
             public Bitmap cpfore;
-           
+          
            
 
 
@@ -59,6 +59,7 @@ namespace HelloMaze
         public BitmapPaintClass bmppaint = new BitmapPaintClass(squarelength);
         Bitmap back;
         delegate void RefreshPictureBox1();
+        delegate void stagepresent();
         public Bitmap fore;
         public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
@@ -457,7 +458,12 @@ namespace HelloMaze
        
            public void Goalevent() {
                stagecount++;
+
+               
+
+
                locked = true;
+               
               ClearForm clearwindow = new ClearForm();
                if (stagecount == 11)
                {
@@ -476,12 +482,24 @@ namespace HelloMaze
                        else { constructer(); }
                    }
                    else if (clearwindow.Loaddatastart == true) {
+
+                       if (this.stage.InvokeRequired)
+                       {
+                           stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
+                           this.Invoke(stapre);
+                       }
+                       else
+                       {
+                           stage.Text = "現在のステージ:" + stagecount;
+                       }
                        string pathnext = "stage"+stagecount.ToString();
                        byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
                        try
                        {
                            locked = false;
+                         
                            loadDataset2(pathnext, da);
+                           
                        }
                        catch (Exception exc)
                        {
@@ -801,6 +819,7 @@ namespace HelloMaze
             {
                 loadDataset(path,resource);
                 stagecount = 1;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -881,6 +900,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 2;
+                stage.Text = "現在のステージ:"+stagecount;
             }
             catch (Exception exc)
             {
@@ -896,6 +916,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 3;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -911,6 +932,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 4;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -926,6 +948,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 5;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -941,6 +964,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 6;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -956,6 +980,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 7;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -971,6 +996,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 8;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -986,6 +1012,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 9;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {
@@ -1001,6 +1028,7 @@ namespace HelloMaze
             {
                 loadDataset(path, resource);
                 stagecount = 10;
+                stage.Text = "現在のステージ:" + stagecount;
             }
             catch (Exception exc)
             {

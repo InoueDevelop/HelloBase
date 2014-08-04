@@ -56,6 +56,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.stage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -317,6 +318,15 @@
             this.label1.Text = "1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // stage
+            // 
+            this.stage.AutoSize = true;
+            this.stage.Location = new System.Drawing.Point(490, 39);
+            this.stage.Name = "stage";
+            this.stage.Size = new System.Drawing.Size(85, 12);
+            this.stage.TabIndex = 7;
+            this.stage.Text = "現在のステージ:0";
+            // 
             // BoardData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -325,6 +335,7 @@
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(626, 560);
             this.ControlBox = false;
+            this.Controls.Add(this.stage);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.squareY);
@@ -378,6 +389,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label stage;
     }
 }
 
