@@ -141,6 +141,7 @@
     <None Include="Resources\もし正面壁あり.png" />
     <None Include="Resources\線１.png" />
     <None Include="Resources\線２.png" />
+    <None Include="Resources\線３.png" />
     <Content Include="Resource\もしend.png" />
     <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\繰り返しend.png" />

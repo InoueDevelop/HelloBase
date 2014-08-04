@@ -58,6 +58,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -201,21 +202,21 @@
             // ロードToolStripMenuItem
             // 
             this.ロードToolStripMenuItem.Name = "ロードToolStripMenuItem";
-            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ロードToolStripMenuItem.Text = "ロード";
             this.ロードToolStripMenuItem.Click += new System.EventHandler(this.ロードToolStripMenuItem_Click);
             // 
             // セーブToolStripMenuItem
             // 
             this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
-            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.セーブToolStripMenuItem.Text = "セーブ";
             this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
@@ -339,6 +340,14 @@
             this.label1.Text = "1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(907, 25);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // BoardData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -347,6 +356,7 @@
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(907, 565);
             this.ControlBox = false;
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.load_button);
@@ -404,6 +414,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
 

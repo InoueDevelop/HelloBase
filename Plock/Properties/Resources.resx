@@ -184,6 +184,9 @@
   <data name="線２" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\線２.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="線３" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\線３.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="繰り返し" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\繰り返し.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

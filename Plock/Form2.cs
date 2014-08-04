@@ -16,14 +16,16 @@ namespace Plock
         Comands comand;
         Conditions condition;
 
-        // List<Label> clist = new List<Label>();
-        //List<Block> block = new List<Block>();
+
+        //ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
         List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
         static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
         int indent_count;                                 //インデント回数
 
         int x;   //マウス座標
         int y;
+
+
 
         int insert_point; //ブロック挿入位置（リストインデックス）
 
@@ -42,7 +44,16 @@ namespace Plock
             panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
             //panel　ダブルクリック時のイベントハンドラ追加
-            panel1.DoubleClick += new EventHandler(panel_Click);
+            //panel1.DoubleClick += new EventHandler(panel_Click);
+
+            ToolStripMenuItem mi1 = new ToolStripMenuItem("削除");
+            mi1.Click += new EventHandler(onClick1);
+            ToolStripMenuItem mi2 = new ToolStripMenuItem("挿入");
+            mi2.Click += new EventHandler(onClick2);
+            ToolStripSeparator tsSep = new ToolStripSeparator();
+            ToolStripMenuItem miExit = new ToolStripMenuItem("終了(&X)");
+            miExit.Click += new EventHandler(onExitClick);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { mi1, mi2, tsSep, miExit });
             //panel1.BackgroundImageLayout = ImageLayout.Zoom;
             //panel1.BackgroundImage = Properties.Resources.背景");
 
@@ -69,8 +80,9 @@ namespace Plock
 
                 block_Create(comand, insert_point);
                 block_View(0);
-                label1.Text = clist.Count.ToString();
+                //label1.Text = clist.Count.ToString();
                 countBlocknumber();
+                //line_View(40 + (countBlocknumber()) * 40);
                 insert_point++;
 
             }
@@ -126,19 +138,21 @@ namespace Plock
         //-------------------------------------------------------------------------------------------
         private void line_View(int top)
         {
-            System.Windows.Forms.Timer timer1;
-            timer1 = new System.Windows.Forms.Timer();
-            timer1.Enabled = true;
-            timer1.Interval = 200;
-            timer1.Tick += new System.EventHandler(timer1_Tick);
+            //System.Windows.Forms.Timer timer1;
+            //timer1 = new System.Windows.Forms.Timer();
+            //timer1.Enabled = true;
+            //timer1.Interval = 200;
+            //timer1.Tick += new System.EventHandler(timer1_Tick);
             PictureBox pb = new PictureBox();
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
             pb.Height = 5;
             pb.Width = 200;
+            pb.Left = 100;
             pb.Top = top;
-            pb.Image = Properties.Resources.線１;
+            pb.Image = Properties.Resources.線２;
+            panel1.Controls.Add(pb);
 
-            timer1.Start();
+            //timer1.Start();
 
         }
         //-------------------------------------------------------------------------------------------
@@ -147,7 +161,7 @@ namespace Plock
 
         }
         //-------------------------------------------------------------------------------------------
-        private void countBlocknumber()
+        private int countBlocknumber()
         {
             int count = 0;
             for (int i = 0; i < clist.Count; i++)
@@ -156,6 +170,7 @@ namespace Plock
                     count++;
             }
             label5.Text = count.ToString();
+            return count;
         }
         //-------------------------------------------------------------------------------------------
         private void block_into_Panel(Panel panel, List<PictureBox> llist)
@@ -460,21 +475,30 @@ namespace Plock
                 indent.Clear();
                 block_View(0);
                 countBlocknumber();
-                label1.Text = clist.Count.ToString();
+                //line_View(40 + (countBlocknumber()) * 40);
+                //label1.Text = clist.Count.ToString();
             }
             else { };
 
         }
         //-------------------------------------------------------------------------------------------
-        //pictureboxクリック時のイベントハンドラ
-        //ブロックの削除（EndとIndent以外）
-        private void clist_Click(object sender, EventArgs e)
+        private void onClick1(object sender, EventArgs e)
         {
-            x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
-            y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+            deleteBlock(x, y);
+        }
+        private void onClick2(object sender, EventArgs e)
+        {
+            insertBlock();
+        }
+        //-------------------------------------------------------------------------------------------
+        void onExitClick(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Close();
+        }
+        //-------------------------------------------------------------------------------------------
+        private void deleteBlock(int x, int y)
+        {
             string b_name;
-
-
             for (int i = 0; i < clist.Count; i++)
             {
                 if (!clist[i].Name.Contains("Indent") && clist[i].Name != "End")
@@ -484,32 +508,33 @@ namespace Plock
                         if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
                             b_name = clist[i].Name;
-                            DialogResult result = MessageBox.Show(translate(b_name) + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                            if (result == DialogResult.Yes)
+                            //DialogResult result = MessageBox.Show(translate(b_name) + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            //if (result == DialogResult.Yes)
+                            //{
+                            setIndent(i, InsertPoint.Before);         //消す前にインデックス情報更新
+                            clist.RemoveAt(i); //対象ブロックの削除
+                            int count = 0;
+                            if (i < clist.Count)
                             {
-                                setIndent(i, InsertPoint.Before);         //消す前にインデックス情報更新
-                                clist.RemoveAt(i); //対象ブロックの削除
-                                int count = 0;
-                                if (i < clist.Count)
+                                while (clist[i].Name.Contains("Indent"))
                                 {
-                                    while (clist[i].Name.Contains("Indent"))
-                                    {
-                                        clist.RemoveAt(i);
-                                        if (i >= clist.Count)
-                                            break;
-                                    }
+                                    clist.RemoveAt(i);
+                                    if (i >= clist.Count)
+                                        break;
                                 }
-                                //再描画
-                                block_View(0);
-                                countBlocknumber();
-                                label1.Text = clist.Count.ToString();
-                                break;
                             }
-                            else
-                            {
-
-                            }
+                            //再描画
+                            block_View(0);
+                            countBlocknumber();
+                            //line_View(40 + (countBlocknumber()) * 40);
+                            //label1.Text = clist.Count.ToString();
                             break;
+                            //}
+                            //else
+                            //{
+
+                            //}
+                            //break;
                         }
                     }
                     //If While ブロックを選択した場合は中身を全て削除．
@@ -527,7 +552,8 @@ namespace Plock
                                 //再描画
                                 block_View(0);
                                 countBlocknumber();
-                                label1.Text = clist.Count.ToString();
+                                //line_View(40 + (countBlocknumber()) * 40);
+                                //label1.Text = clist.Count.ToString();
                             }
                             else
                             {
@@ -539,6 +565,23 @@ namespace Plock
                     }
                 }
             }
+        }
+        //-------------------------------------------------------------------------------------------
+        //pictureboxクリック時のイベントハンドラ
+        //ブロックの削除（EndとIndent以外）
+        private void clist_Click(object sender, EventArgs e)
+        {
+            int cu_x = System.Windows.Forms.Cursor.Position.X;
+            int cu_y = System.Windows.Forms.Cursor.Position.Y;
+            x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
+            y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+
+
+
+            contextMenuStrip1.Show(cu_x, cu_y);
+
+            //deleteBlock(x, y);
+
         }
 
 
@@ -659,18 +702,15 @@ namespace Plock
             }
         }
         //---------------------------------------------------------------------------------------------------------------
-        //panelクリック時のイベントハンドラ
-        private void panel_Click(object sender, EventArgs e)
+        private void insertBlock()
         {
-            int x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
-            int y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
             for (int i = 0; i < clist.Count; i++)
             {
                 if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
                 {
                     if (y >= clist[i].Top && y < clist[i].Bottom)
                     {
-                        DialogResult result = MessageBox.Show(i + "番目のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                        DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                         if (result == DialogResult.Yes)
                         {
                             setIndent(i, InsertPoint.After);
@@ -683,7 +723,7 @@ namespace Plock
 
             }
         }
-        //--------------------------------------------------------------------------------------------------------------- 8/1
+        //--------------------------------------------------------------------------------------------------------------
         //選択されたブロックの行にあるインデントの情報を設定
         private void setIndent(int point, InsertPoint where)
         {

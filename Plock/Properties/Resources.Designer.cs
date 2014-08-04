@@ -283,6 +283,16 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap 線３ {
+            get {
+                object obj = ResourceManager.GetObject("線３", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap 繰り返し {
             get {
                 object obj = ResourceManager.GetObject("繰り返し", resourceCulture);
