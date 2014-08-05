@@ -27,7 +27,7 @@ namespace open
             timer.Enabled = true;
             timer.Interval = 55;  // 更新間隔 (ミリ秒)　精度の上限は55ms
             // タイマ用のイベントハンドラを登録
-            timer.Tick += new EventHandler(timer_Tick);
+            //timer.Tick += new EventHandler(timer_Tick);
             // タイマ用のイベントハンドラをフォームにも登録
             this.Load += new EventHandler(timer_Tick);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//画像の大きさをpictureBoxに合わせる
@@ -39,6 +39,7 @@ namespace open
             pictureBox1.Controls.Add(label2);
             pictureBox1.Controls.Add(label3);
             pictureBox1.Controls.Add(label4);
+            count = 24;
             timer.Start();  // タイマ ON
         }
 
