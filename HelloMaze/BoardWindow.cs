@@ -21,6 +21,8 @@ namespace HelloMaze
     /// </summary>
     public partial class BoardData : Form, BoardPosition
     {
+        static int tutorialcount = 0;
+        static int tutorial = 0;
         [Serializable]
         public class Dataset
         {
@@ -1036,6 +1038,45 @@ namespace HelloMaze
             }
         }
         #endregion // //
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            if(tutorialcount==0)
+            {
+
+                label11.Text = "チュートリアル終了";
+                label1.Visible = false;
+                richTextBox1.Visible = true;
+                richTextBox1.Text = "はじめてのプログラミングへようこそ！";
+                tutorialcount++;
+                button1.Visible = true;
+            }
+            else
+            {
+
+                label1.Visible = true;
+                richTextBox1.Visible = false;
+                tutorialcount = 0;
+                tutorial = 0;
+                button1.Visible = false;
+
+            }
+            
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(tutorial == 0)
+            {
+                richTextBox1.Text = "このゲームは、迷路をクリアするプログラムをみなさんに体験していただきます！";
+                tutorial++;
+            }
+        }
 
     }
 
