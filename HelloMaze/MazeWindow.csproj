@@ -110,6 +110,11 @@
     <None Include="Resources\stage7" />
     <None Include="Resources\stage8" />
     <None Include="Resources\stage9" />
+    <None Include="Resources\tutorial1" />
+    <None Include="Resources\tutorial2" />
+    <None Include="Resources\tutorial2.1" />
+    <None Include="Resources\tutorial3" />
+    <None Include="Resources\tutorial4" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

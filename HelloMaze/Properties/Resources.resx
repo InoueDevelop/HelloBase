@@ -151,4 +151,19 @@
   <data name="stage9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stage9;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="tutorial1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tutorial1;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tutorial2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tutorial2;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tutorial21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tutorial2.1;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tutorial3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tutorial3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tutorial4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tutorial4;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

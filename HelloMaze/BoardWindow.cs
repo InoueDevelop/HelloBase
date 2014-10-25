@@ -862,6 +862,34 @@ namespace HelloMaze
             ListObjectBoard = stateHistory.cp_ListObjectBoard;
         }
 
+        private void demoDataset(string path, byte[] resource)
+        {
+
+
+            using (Stream writeStream = new FileStream(path, FileMode.Create))
+            {
+                BinaryWriter bw = new BinaryWriter(writeStream);
+                bw.Write(resource);
+            }
+
+            Dataset loadedData;
+            using (Stream fileStream = new FileStream(path, FileMode.Open))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+                fileStream.Close();
+            }
+            stateHistory = loadedData;
+            //this.=stateHistory.cpsquarelength;
+            back = stateHistory.cpback;
+            fore = stateHistory.cpfore;
+            this.pictureBox1.BackgroundImage = back;
+            this.pictureBox1.Image = fore;
+            controlobj = stateHistory.cpcontrolobj;
+            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+            ListObjectBoard = stateHistory.cp_ListObjectBoard;
+        }
+
         private void loadDataset2(string path, byte[] resource)  //quickload
         {
 
@@ -1049,6 +1077,9 @@ namespace HelloMaze
                 richTextBox1.Visible = true;
                 richTextBox1.Text = "はじめてのプログラミングへようこそ！";
                 tutorialcount++;
+                label12.Visible = true;
+                label13.Visible = true;
+                label14.Visible = true;
                 button1.Visible = true;
             }
             else
@@ -1058,6 +1089,9 @@ namespace HelloMaze
                 richTextBox1.Visible = false;
                 tutorialcount = 0;
                 tutorial = 0;
+                label12.Visible = false;
+                label13.Visible = false;
+                label14.Visible = false;
                 button1.Visible = false;
 
             }
@@ -1069,6 +1103,7 @@ namespace HelloMaze
 
         }
 
+        #region チュートリアル
         private void button1_Click(object sender, EventArgs e)
         {
             if(tutorial == 0)
@@ -1078,12 +1113,292 @@ namespace HelloMaze
             }
             else if(tutorial == 1)
             {
-                richTextBox1.Text = "この主人公が進める方向は前だけです…\nそれでは実際に前へ進んでみましょう！\n前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。";
+                richTextBox1.Text = "パート1 前への進み方";
                 tutorial++;
+            }
+            else if(tutorial == 2)
+            {
+                string path = "Userdata/tutorial1";
+                var resource = Properties.Resources.tutorial1;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+                richTextBox1.Text = "前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nゴールについたら次へを押してね！";
+                tutorial++;
+            }
+            else if (tutorial == 3)
+            {
+                if (ListObjectBoard[0].objectPositionX == ListObjectBoard[ListObjectBoard.Count()-2].objectPositionX && ListObjectBoard[0].objectPositionY == ListObjectBoard[ListObjectBoard.Count()-2].objectPositionY)
+                {
+                    richTextBox1.Text = "このように一度の連続実行でゴールに到着するのが目標になります。";
+                    tutorial++;
+                }
+                else
+                {
+                    richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。";
+                }
+            }
+            else if(tutorial == 4)
+            {
+                richTextBox1.Text = "パート2 向きを変える\nこの主人公はまっすぐにしか進めません…\nそれでは今のようにプレイヤーの右側にゴールがある場合はどうしましょう？";
+                
+                string path = "Userdata/tutorial2";
+                var resource = Properties.Resources.tutorial2;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+            }
+            else if(tutorial == 5)
+            {
+                richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかの風呂億を配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置して連続実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
+                tutorial++;
+            }
+            else if (tutorial == 6)
+            {
+                if(ListObjectBoard[0].objectDirection==1)
+                {
+                    richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックを配置して、ゴールしましょう！";
+                    tutorial++;
+                }
+                else
+                {
+                    richTextBox1.Text = "ゴールの方向を向けてないよ！！\nもう一度やってみよう！";
+                    string path = "Userdata/tutorial2";
+                    var resource = Properties.Resources.tutorial2;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 1;
+                        stage.Text = "現在のステージ:" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+            else if (tutorial == 7)
+            {
+                if (ListObjectBoard[0].objectPositionX == 6 && ListObjectBoard[0].objectPositionY==5)
+                {
+                    richTextBox1.Text = "ゴールできました!\nそれでは一回の実行でゴールを目指してみましょう。";
+                    tutorial++;
+                }
+                else
+                {
+                    richTextBox1.Text = "ゴールできてないよ！！\nもう一度やってみよう！";
+                    string path = "Userdata/tutorial21";
+                    var resource = Properties.Resources.tutorial21;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 1;
+                        stage.Text = "現在のステージ:" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+            else if(tutorial == 8)
+            {
+                richTextBox1.Text = "ブロックの数は何個でも配置することができます！\n今度は、\n左を向く \n前へ進む \nの順にブロックを配置し、連続実行をクリックしてみましょう！\nゴールできたら次へを押してね！";
+                string path = "Userdata/tutorial2";
+                var resource = Properties.Resources.tutorial2;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+            }
+            else if (tutorial == 9)
+            {
+                foreach(var n in ListObjectBoard)
+                {
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                    {
+                        richTextBox1.Text = "一度の実行でクリアすることができました！\nこのように一度の実行でクリアすることが目標です。\nステージは後ろに行けばいくほど難しくなるので、頑張って挑戦してみましょう！";
+                        tutorial++;
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                if(tutorial!=10)
+                {
+                    richTextBox1.Text = "失敗してしまいました…\nもう一度挑戦してみよう！";
+                    string path = "Userdata/tutorial2";
+                    var resource = Properties.Resources.tutorial2;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 1;
+                        stage.Text = "現在のステージ:" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+            else if(tutorial == 10)
+            {
+                richTextBox1.Text = "パート3 繰り返し";
+                tutorial++;
+            }
+            else if(tutorial == 11)
+            {
+                richTextBox1.Text = "ゴールが主人公の5マス先にあります。\nつまり 前へ進む ブロックを5つ配置すればクリアできますね！\nしかし5つも配置するのは大変です(´・ω・`)\n何か良い方法はないのでしょうか！！";
+                tutorial++;
+                string path = "Userdata/tutorial3";
+                var resource = Properties.Resources.tutorial3;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+            }
+            else if(tutorial == 12)
+            {
+                richTextBox1.Text = "そこで、繰り返し ブロックを配置します！\nまず 繰り返し ブロックを選択、その横にある条件セットから ずっと を選択し配置しましょう。\n次に前へ進むを1つだけ配置します。\n最後に ここまで ブロックを配置します。\n準備ができたら、連続実行をクリックしましょう！";
+                tutorial++;
+            }
+            else if (tutorial == 13)
+            {
+                
+                foreach (var n in ListObjectBoard)
+                {
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                    {
+                        richTextBox1.Text = "前へ進むブロックが1つだけでクリアすることができました！\nこのように繰り返しブロックは繰り返しとここまでの間にあるブロックをゴールに辿りつくまで何回も行います。";
+                        tutorial++;
+                    }
+
+                }
+                if(tutorial!=14)
+                {
+                    richTextBox1.Text = "失敗してしまいました…\nもう一度挑戦してみよう！";
+                    string path = "Userdata/tutorial3";
+                    var resource = Properties.Resources.tutorial3;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 1;
+                        stage.Text = "現在のステージ:" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+            else if(tutorial == 14)
+            {
+                richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！\n失敗してしまった場合、次へをクリックすれば元の状態に戻ります！";
+                string path = "Userdata/tutorial4";
+                var resource = Properties.Resources.tutorial4;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+            }
+            else if(tutorial==15)
+            {
+                foreach (var n in ListObjectBoard)
+                {
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                    {
+                        richTextBox1.Text = "繰り返しブロックの使い方は以上です！\nチュートリアルは次で最後になります('ω')";
+                        tutorial++;
+                    }
+
+                }
+                if (tutorial != 16)
+                {
+                    richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！\n失敗してしまった場合、次へをクリックすれば元の状態に戻ります！";
+                    string path = "Userdata/tutorial4";
+                    var resource = Properties.Resources.tutorial4;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 1;
+                        stage.Text = "現在のステージ:" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
             }
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "パート1 前への進み方";
+            tutorial = 2;
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "パート2 向きを変える\nこの主人公はまっすぐにしか進めません…\nそれでは今のようにプレイヤーの右側にゴールがある場合はどうしましょう？";
+            string path = "Userdata/tutorial2";
+            var resource = Properties.Resources.tutorial2;
+            try
+            {
+                demoDataset(path, resource);
+                stagecount = 1;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+            tutorial = 5;
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "パート3 繰り返し";
+            tutorial = 10;
+        }
     }
+
+        #endregion
 
 
 

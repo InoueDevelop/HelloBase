@@ -169,5 +169,55 @@ namespace HelloMaze.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial1 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial2 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial21 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial21", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial3 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial4 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial4", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
