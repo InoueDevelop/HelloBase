@@ -1074,24 +1074,44 @@ namespace HelloMaze
 
                 label11.Text = "チュートリアル終了";
                 label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+                label5.Visible = false;
+                label6.Visible = false;
+                label7.Visible = false;
+                label8.Visible = false;
+                label9.Visible = false;
+                label10.Visible = false;
                 richTextBox1.Visible = true;
                 richTextBox1.Text = "はじめてのプログラミングへようこそ！";
                 tutorialcount++;
                 label12.Visible = true;
                 label13.Visible = true;
                 label14.Visible = true;
+                label15.Visible = true;
                 button1.Visible = true;
             }
             else
             {
-
+                label11.Text = "チュートリアル開始";
                 label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
+                label10.Visible = true;
                 richTextBox1.Visible = false;
                 tutorialcount = 0;
                 tutorial = 0;
                 label12.Visible = false;
                 label13.Visible = false;
                 label14.Visible = false;
+                label15.Visible = false;
                 button1.Visible = false;
 
             }
@@ -1167,6 +1187,8 @@ namespace HelloMaze
             {
                 richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかの風呂億を配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置して連続実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
                 tutorial++;
+                pictureBox2.Visible = true;
+                pictureBox2.Image = Properties.Resources.direction;
             }
             else if (tutorial == 6)
             {
@@ -1174,6 +1196,7 @@ namespace HelloMaze
                 {
                     richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックを配置して、ゴールしましょう！";
                     tutorial++;
+                    pictureBox2.Visible = false;
                 }
                 else
                 {
@@ -1365,6 +1388,103 @@ namespace HelloMaze
                     }
                 }
             }
+            else if(tutorial == 16)
+            {
+                richTextBox1.Text = "パート4 条件文";
+                tutorial++;
+            }
+            else if(tutorial == 17)
+            {
+                richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには命令セットと条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれでは連続実行をクリックしてみましょう！";
+                string path = "Userdata/tutorial5";
+                var resource = Properties.Resources.tutorial5;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+                button1.Text = "やり直し";
+            }
+            else if(tutorial == 18)
+            {
+                foreach (var n in ListObjectBoard)
+                {
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                    {
+                        richTextBox1.Text = "ゴールできました！\nもしブロックは、その条件を満たしていた時にここまでブロックまでにある行動をします。\n今どの行動をしているかは矢印マークで確認できます。";
+                        tutorial++;
+                        button1.Text = "次へ";
+                    }
+
+                }
+                if (tutorial != 19)
+                {
+                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれでは連続実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
+                    string path = "Userdata/tutorial5";
+                    var resource = Properties.Resources.tutorial5;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 1;
+                        stage.Text = "現在のステージ:" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+            else if(tutorial == 19)
+            {
+                button1.Text = "やり直し";
+                richTextBox1.Text = "最後にこのステージをクリアしてみましょう！\nわからない時は、やり直しボタンを押すとヒントが出るよ！";
+                tutorial++;
+                string path = "Userdata/tutorial6";
+                var resource = Properties.Resources.tutorial6;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+            }
+            else if(tutorial==20)
+            {
+                foreach (var n in ListObjectBoard)
+                {
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                    {
+                        richTextBox1.Text = "ゴールできました！\n以上でチュートリアルはおしまいです。\n全ステージクリアを目指してがんばろう！";
+                        tutorial++;
+                        button1.Text = "次へ";
+                        tutorial++;
+                    }
+
+                }
+                richTextBox1.Text = "ヒント\nもしブロックを2回使います。順番は、\nもし左が壁でないなら\nもし右が壁でないなら\nの順番です。";
+                string path = "Userdata/tutorial6";
+                var resource = Properties.Resources.tutorial6;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                }
+                catch (Exception exc)
+                {
+
+                }
+            }
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -1394,7 +1514,13 @@ namespace HelloMaze
         private void label14_Click(object sender, EventArgs e)
         {
             richTextBox1.Text = "パート3 繰り返し";
-            tutorial = 10;
+            tutorial = 11;
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "パート4 条件文";
+            tutorial = 17;
         }
     }
 

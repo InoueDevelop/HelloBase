@@ -63,6 +63,16 @@ namespace HelloMaze.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap direction {
+            get {
+                object obj = ResourceManager.GetObject("direction", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap evgoal {
             get {
                 object obj = ResourceManager.GetObject("evgoal", resourceCulture);
@@ -216,6 +226,26 @@ namespace HelloMaze.Properties {
         internal static byte[] tutorial4 {
             get {
                 object obj = ResourceManager.GetObject("tutorial4", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial5 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial5", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] tutorial6 {
+            get {
+                object obj = ResourceManager.GetObject("tutorial6", resourceCulture);
                 return ((byte[])(obj));
             }
         }

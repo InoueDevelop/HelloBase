@@ -115,6 +115,8 @@
     <None Include="Resources\tutorial2.1" />
     <None Include="Resources\tutorial3" />
     <None Include="Resources\tutorial4" />
+    <None Include="Resources\tutorial5" />
+    <None Include="Resources\tutorial6" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -126,6 +128,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\direction.PNG" />
     <Content Include="Resources\evgoal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

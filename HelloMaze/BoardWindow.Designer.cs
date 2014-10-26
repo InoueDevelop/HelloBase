@@ -45,6 +45,9 @@
             this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,13 +62,13 @@
             this.stage = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,7 +161,7 @@
             this.toolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(754, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(788, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -195,6 +198,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
@@ -216,6 +220,39 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ステージ選択";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 172);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(143, 36);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "③ 繰り返し";
+            this.label14.Visible = false;
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 133);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(191, 36);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "② 向きを変える";
+            this.label13.Visible = false;
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 93);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 36);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "① 前へ進む";
+            this.label12.Visible = false;
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label11
             // 
@@ -340,7 +377,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(12, 544);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(244, 96);
+            this.richTextBox1.Size = new System.Drawing.Size(244, 167);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
@@ -348,7 +385,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(272, 617);
+            this.button1.Location = new System.Drawing.Point(177, 717);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -357,27 +394,15 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label12
+            // pictureBox2
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 93);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(143, 36);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "① 前へ進む";
-            this.label12.Visible = false;
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 133);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(191, 36);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "② 向きを変える";
-            this.label13.Visible = false;
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.pictureBox2.Location = new System.Drawing.Point(272, 548);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(450, 192);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // pictureBox1
             // 
@@ -390,16 +415,16 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // label14
+            // label15
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 172);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(143, 36);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "③ 繰り返し";
-            this.label14.Visible = false;
-            this.label14.Click += new System.EventHandler(this.label14_Click);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 209);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(119, 36);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "④ 条件文";
+            this.label15.Visible = false;
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // BoardData
             // 
@@ -407,8 +432,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(754, 671);
+            this.ClientSize = new System.Drawing.Size(788, 781);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.stage);
@@ -430,6 +456,7 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -472,6 +499,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label15;
     }
 }
 
