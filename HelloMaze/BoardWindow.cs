@@ -437,6 +437,56 @@ namespace HelloMaze
         /// </summary>
         private void refreshPictureBox1()
         {
+            try
+            {
+                if (reader(10) > 0)
+                {
+                    label16.Visible = false;
+                    label17.Visible = false;
+                    label18.Visible = false;
+                    label19.Visible = false;
+                    label20.Visible = false;
+                    label21.Visible = false;
+                    label22.Visible = false;
+                    label23.Visible = false;
+                    label24.Visible = false;
+                    label25.Visible = false;
+                }
+                else
+                {
+                    label16.Visible = true;
+                    label17.Visible = true;
+                    label18.Visible = true;
+                    label19.Visible = true;
+                    label20.Visible = true;
+                    label21.Visible = true;
+                    label22.Visible = true;
+                    label23.Visible = true;
+                    label24.Visible = true;
+                    label25.Visible = true;
+                }
+            }
+            catch(FileNotFoundException)
+            {
+                using(StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
+                {
+                    for(int i=0;i<20;i++)
+                    {
+                        sw.WriteLine(0);
+                    }
+                }
+                label16.Visible = false;
+                label17.Visible = false;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+            }
+            
             if (this.pictureBox1.InvokeRequired)
             {
                 RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() => pictureBox1.Refresh());
@@ -459,15 +509,15 @@ namespace HelloMaze
 
        
            public void Goalevent() {
-               stagecount++;
-
+               writer(stagecount-1);
                
-
+               stagecount++;
 
                locked = true;
                
               ClearForm clearwindow = new ClearForm();
-               if (stagecount == 11)
+              
+               if (stagecount == 21)
                {
                    clearwindow.Loadtext = "全クリア！！";
                    stagecount = 1;
@@ -507,6 +557,26 @@ namespace HelloMaze
                        {
 
                        }
+
+                       if (!(reader(10) > 0))
+                       {
+                           RefreshPictureBox1 co = new RefreshPictureBox1(() =>
+                           {
+                               label16.Visible = true;
+                               label17.Visible = true;
+                               label18.Visible = true;
+                               label19.Visible = true;
+                               label20.Visible = true;
+                               label21.Visible = true;
+                               label22.Visible = true;
+                               label23.Visible = true;
+                               label24.Visible = true;
+                               label25.Visible = true;
+                           });
+                           this.Invoke(co);                   
+                       }
+
+                       
                    
                    }
                    else { locked = false; }
@@ -1083,6 +1153,16 @@ namespace HelloMaze
                 label8.Visible = false;
                 label9.Visible = false;
                 label10.Visible = false;
+                label16.Visible = false;
+                label17.Visible = false;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
                 richTextBox1.Visible = true;
                 richTextBox1.Text = "はじめてのプログラミングへようこそ！";
                 tutorialcount++;
@@ -1105,6 +1185,16 @@ namespace HelloMaze
                 label8.Visible = true;
                 label9.Visible = true;
                 label10.Visible = true;
+                label16.Visible = true;
+                label17.Visible = true;
+                label18.Visible = true;
+                label19.Visible = true;
+                label20.Visible = true;
+                label21.Visible = true;
+                label22.Visible = true;
+                label23.Visible = true;
+                label24.Visible = true;
+                label25.Visible = true;
                 richTextBox1.Visible = false;
                 tutorialcount = 0;
                 tutorial = 0;
@@ -1116,6 +1206,51 @@ namespace HelloMaze
 
             }
             
+        }
+
+        public static void writer(int stagecount)
+        {
+            int[] cl = new int[20]; 
+            using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    cl[i] = int.Parse(sr.ReadLine());
+                }
+            }
+            if(cl[stagecount]!=1)
+            {
+                cl[stagecount] = 1;
+            }
+            using(StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
+            {
+                for(int i=0;i<20;i++)
+                {
+                    sw.WriteLine(cl[i]);
+                }
+            }
+        }
+
+        public static int reader(int stagecount)
+        {
+            int[] cl = new int[stagecount];
+            int count=0;
+            using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
+            {
+                for (int i = 0; i < stagecount; i++)
+                {
+                    cl[i] = int.Parse(sr.ReadLine());
+                }
+            }
+            foreach(var n in cl)
+            {
+                if(n==0)
+                {
+                    count++;
+                }
+            }
+            return count;
+
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -1152,6 +1287,7 @@ namespace HelloMaze
                 }
                 richTextBox1.Text = "前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nゴールについたら次へを押してね！";
                 tutorial++;
+
             }
             else if (tutorial == 3)
             {
@@ -1521,6 +1657,166 @@ namespace HelloMaze
         {
             richTextBox1.Text = "パート4 条件文";
             tutorial = 17;
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage11";
+            var resource = Properties.Resources.stage11;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 11;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage12";
+            var resource = Properties.Resources.stage12;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 12;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage13";
+            var resource = Properties.Resources.stage13;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 13;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage14";
+            var resource = Properties.Resources.stage14;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 14;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage15";
+            var resource = Properties.Resources.stage15;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 15;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage16";
+            var resource = Properties.Resources.stage16;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 16;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage17";
+            var resource = Properties.Resources.stage17;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 17;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage18";
+            var resource = Properties.Resources.stage18;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 18;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage19";
+            var resource = Properties.Resources.stage19;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 19;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+            string path = "Userdata/stage20";
+            var resource = Properties.Resources.stage20;
+            try
+            {
+                loadDataset(path, resource);
+                stagecount = 20;
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            catch (Exception exc)
+            {
+
+            }
         }
     }
 

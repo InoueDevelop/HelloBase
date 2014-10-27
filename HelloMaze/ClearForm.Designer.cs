@@ -67,9 +67,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ControlBox = false;
             this.Controls.Add(this.Loada);
             this.Controls.Add(this.newgame);
             this.Controls.Add(this.pictureBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ClearForm";
             this.Text = "おめでとう！！";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

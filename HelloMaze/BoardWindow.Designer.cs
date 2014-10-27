@@ -45,6 +45,7 @@
             this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -62,9 +63,18 @@
             this.stage = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -198,6 +208,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
@@ -220,6 +240,17 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ステージ選択";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 209);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(119, 36);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "④ 条件文";
+            this.label15.Visible = false;
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label14
             // 
@@ -394,6 +425,106 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(98, 90);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(45, 36);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "11";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(98, 127);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(45, 36);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "12";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(98, 167);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(45, 36);
+            this.label18.TabIndex = 17;
+            this.label18.Text = "13";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(98, 203);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 36);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "14";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(98, 237);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(45, 36);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "15";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(98, 273);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(45, 36);
+            this.label21.TabIndex = 20;
+            this.label21.Text = "16";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(98, 309);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(45, 36);
+            this.label22.TabIndex = 21;
+            this.label22.Text = "17";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(98, 345);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(45, 36);
+            this.label23.TabIndex = 22;
+            this.label23.Text = "18";
+            this.label23.Click += new System.EventHandler(this.label23_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(98, 381);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(45, 36);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "19";
+            this.label24.Click += new System.EventHandler(this.label24_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(98, 417);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(45, 36);
+            this.label25.TabIndex = 24;
+            this.label25.Text = "20";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(272, 548);
@@ -414,17 +545,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 209);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(119, 36);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "④ 条件文";
-            this.label15.Visible = false;
-            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // BoardData
             // 
@@ -501,6 +621,16 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }
 
