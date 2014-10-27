@@ -1185,16 +1185,21 @@ namespace HelloMaze
                 label8.Visible = true;
                 label9.Visible = true;
                 label10.Visible = true;
-                label16.Visible = true;
-                label17.Visible = true;
-                label18.Visible = true;
-                label19.Visible = true;
-                label20.Visible = true;
-                label21.Visible = true;
-                label22.Visible = true;
-                label23.Visible = true;
-                label24.Visible = true;
-                label25.Visible = true;
+                if(reader(10)==0)
+                {
+                    label16.Visible = true;
+                    label17.Visible = true;
+                    label18.Visible = true;
+                    label19.Visible = true;
+                    label20.Visible = true;
+                    label21.Visible = true;
+                    label22.Visible = true;
+                    label23.Visible = true;
+                    label24.Visible = true;
+                    label25.Visible = true;
+                }
+
+                
                 richTextBox1.Visible = false;
                 tutorialcount = 0;
                 tutorial = 0;
