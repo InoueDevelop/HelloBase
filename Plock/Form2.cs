@@ -42,19 +42,20 @@ namespace Plock
 
         void safevelocityenabled()
         {
-         
+
             if (this.velocityBar1.InvokeRequired)
             {
-              safevelocityenable safeveloenabled = new safevelocityenable(() => safebarenable());
+                safevelocityenable safeveloenabled = new safevelocityenable(() => safebarenable());
                 this.Invoke(safeveloenabled);
             }
-            else { this.velocityBar1.Enabled=true; }
-     
+            else { this.velocityBar1.Enabled = true; }
+
         }
 
-        void safebarenable(){
+        void safebarenable()
+        {
 
-            velocityBar1.Enabled=true;
+            velocityBar1.Enabled = true;
         }
 
 
@@ -723,25 +724,51 @@ namespace Plock
             }
         }
         //---------------------------------------------------------------------------------------------------------------
-        private void insertBlock()
+        private bool canInsert()
         {
+            int count_condition = 0;
+            int count_end = 0;
             for (int i = 0; i < clist.Count; i++)
             {
-                if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
+                if (!clist[i].Name.Contains("Indent"))
+                    if (clist[i].Name.Contains("If") || clist[i].Name.Contains("While"))
+                        count_condition++;
+                if (clist[i].Name == "End")
+                    count_end++;
+            }
+            if (count_condition == count_end)
+                return true;
+            else
+                return false;
+        }
+        //---------------------------------------------------------------------------------------------------------------
+        private void insertBlock()
+        {
+            if (canInsert())
+            {
+                for (int i = 0; i < clist.Count; i++)
                 {
-                    if (y >= clist[i].Top && y < clist[i].Bottom)
+                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
                     {
-                        DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                        if (result == DialogResult.Yes)
+                        if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
-                            setIndent(i, InsertPoint.After);
-                            break;
+                            DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                            if (result == DialogResult.Yes)
+                            {
+                                setIndent(i, InsertPoint.After);
+                                break;
+                            }
+                            else break;
                         }
-                        else break;
                     }
-                }
-                else { }
+                    else
+                    { }
 
+                }
+            }
+            else
+            {
+                MessageBox.Show("挿入する前に【ここまでブロック】を置いてください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
         //--------------------------------------------------------------------------------------------------------------
@@ -930,7 +957,7 @@ namespace Plock
                     if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
                     velocityBar1.Enabled = false;
                     Queue<string> codeQueue = block_to_queue();
-                    gameInterpriter.build(codeQueue);                    
+                    gameInterpriter.build(codeQueue);
                     runAllTimer.Start();//タイマーをスタートする
                     button1.Enabled = false;////他のボタンを押せなくする
                     button3.Enabled = false;
