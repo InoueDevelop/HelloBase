@@ -30,6 +30,7 @@ namespace Plock
 
         int insert_point; //ブロック挿入位置（リストインデックス）
         private PictureBox arrowPicture;//矢印の画像
+        private PictureBox dummyBlock;//ドラックアンドドロップ用の画像
 
 
         public Form2()
@@ -37,6 +38,13 @@ namespace Plock
         {
             InitializeComponent();
             arrowPicture = new PictureBox();
+            //PicutureBoxの上でドロップした場合でも通常通りの動作をするように
+            arrowPicture.AllowDrop = true;
+            arrowPicture.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
+            arrowPicture.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            arrowPicture.DragOver += new System.Windows.Forms.DragEventHandler(this.panel1_DragOver);
+            arrowPicture.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            dummyBlock = new PictureBox();
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setArrowPicture(); }; //矢印の描画
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd() || gameForm.locked == true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); safevelocityenabled(); } }; //最後の行に達したら自動停止 
@@ -255,6 +263,13 @@ namespace Plock
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
             pb.Click += new EventHandler(clist_Click);
+            //PicutureBoxの上でドロップした場合でも通常通りの動作をするように
+            pb.AllowDrop = true;
+            pb.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
+            pb.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            pb.DragOver += new System.Windows.Forms.DragEventHandler(this.panel1_DragOver);
+            pb.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            pb.AllowDrop = true;
             clist.Insert(point, pb);
 
             //インデントブロックの設定・登録　0708追加
@@ -1050,6 +1065,68 @@ namespace Plock
                 case 5: runAllTimer.Interval = 400; break;
 
             }
+        }
+
+        private void button2_MouseDown(object sender, MouseEventArgs e)
+        {
+            button2.DoDragDrop(button2.Text, DragDropEffects.Copy |
+      DragDropEffects.Move);
+            
+
+        }
+
+        private void button2_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.Text))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            panel1.Controls.Remove(dummyBlock);
+            block_Create(comand, insert_point);
+            block_View(0);
+            textBox1.Text = e.Data.GetData(DataFormats.Text).ToString();
+            
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+            
+        }
+
+        private void panel1_DragOver(object sender, DragEventArgs e)
+        {
+            //panel1.Controls.Add(clist.Last());
+            //clist.Last().Left = System.Windows.Forms.Cursor.Position.X;
+            //clist.Last().Top = System.Windows.Forms.Cursor.Position.Y;
+            int cu_x = System.Windows.Forms.Cursor.Position.X;
+            int cu_y = System.Windows.Forms.Cursor.Position.Y;
+            x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
+            y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
+            DummyBlockView(x,y, Properties.Resources.前へ);
+            
+        }
+        private void DummyBlockView(int left, int top, Bitmap bm)
+        {
+            panel1.AutoScrollPosition = new Point(0, 0);               //スクロールの位置を（0,0）にしてから描画
+            dummyBlock.Left = left;
+            dummyBlock.Height = 40;
+            dummyBlock.Width = 150;
+            dummyBlock.Top = top;
+            dummyBlock.SizeMode = PictureBoxSizeMode.StretchImage;
+            dummyBlock.Image = bm;
+            panel1.Controls.Add(dummyBlock);
+            panel1.AutoScrollPosition = new Point(0, top);
+
         }
 
     }

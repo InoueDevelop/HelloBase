@@ -47,16 +47,22 @@
             this.lvelocity = new System.Windows.Forms.Label();
             this.hvelocity = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.velocityBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.AllowDrop = true;
             this.panel1.Location = new System.Drawing.Point(317, 62);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(900, 703);
+            this.panel1.Size = new System.Drawing.Size(718, 703);
             this.panel1.TabIndex = 0;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
+            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            this.panel1.DragOver += new System.Windows.Forms.DragEventHandler(this.panel1_DragOver);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // listBox1
             // 
@@ -230,12 +236,24 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // button2
+            // 
+            this.button2.Image = global::Plock.Properties.Resources.前へ;
+            this.button2.Location = new System.Drawing.Point(1041, 62);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(216, 90);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button2_MouseDown);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(524, 675);
+            this.ClientSize = new System.Drawing.Size(1342, 675);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.hvelocity);
             this.Controls.Add(this.lvelocity);
             this.Controls.Add(this.velocityBar1);
@@ -286,6 +304,7 @@
         private System.Windows.Forms.Label lvelocity;
         private System.Windows.Forms.Label hvelocity;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
