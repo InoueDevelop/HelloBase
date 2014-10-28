@@ -17,11 +17,19 @@ namespace HelloMaze
            set { Loada.Text = value; }
        }
 
-        public ClearForm()
+        public ClearForm(int stagecount)
         {
             InitializeComponent();
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.Image = Properties.Resources.evgoal;
+            if(stagecount==20)
+            {
+                this.pictureBox1.Image = Properties.Resources.perfectgoal;
+            }
+            else
+            {
+                this.pictureBox1.Image = Properties.Resources.evgoal;
+            }
+
             pictureBox1.Refresh();
      
         }

@@ -83,9 +83,19 @@ namespace HelloMaze.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap navi {
+        internal static System.Drawing.Bitmap goal {
             get {
-                object obj = ResourceManager.GetObject("navi", resourceCulture);
+                object obj = ResourceManager.GetObject("goal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap perfectgoal {
+            get {
+                object obj = ResourceManager.GetObject("perfectgoal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

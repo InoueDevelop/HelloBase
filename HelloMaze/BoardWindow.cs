@@ -419,6 +419,14 @@ namespace HelloMaze
                         goalevent.Start();
                         //Goalevent();
                     }
+                    else
+                    {
+                        RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
+                        {
+                            pictureBox3.Visible = true;
+                        });
+                        this.Invoke(refreshPic1);
+                    }
                     
  
                 }
@@ -449,7 +457,7 @@ namespace HelloMaze
                 {
                     try
                     {
-                        if (reader(10) == 0)
+                        if (reader(10) == 0 && tutorialcount == 0)
                         {
                             label16.Visible = true;
                             label17.Visible = true;
@@ -464,16 +472,16 @@ namespace HelloMaze
                         }
                         else
                         {
-                            label16.Visible = true;
-                            label17.Visible = true;
-                            label18.Visible = true;
-                            label19.Visible = true;
-                            label20.Visible = true;
-                            label21.Visible = true;
-                            label22.Visible = true;
-                            label23.Visible = true;
-                            label24.Visible = true;
-                            label25.Visible = true;
+                            label16.Visible = false;
+                            label17.Visible = false;
+                            label18.Visible = false;
+                            label19.Visible = false;
+                            label20.Visible = false;
+                            label21.Visible = false;
+                            label22.Visible = false;
+                            label23.Visible = false;
+                            label24.Visible = false;
+                            label25.Visible = false;
                         }
                     }
                     catch(FileNotFoundException)
@@ -526,7 +534,7 @@ namespace HelloMaze
                    locked = true;
 
 
-                   ClearForm clearwindow = new ClearForm();
+                   ClearForm clearwindow = new ClearForm(stagecount-1);
 
 
                    if (stagecount == 21)
@@ -1211,11 +1219,12 @@ namespace HelloMaze
                     label23.Visible = true;
                     label24.Visible = true;
                     label25.Visible = true;
+                    tutorialcount = 0;
                 }
 
                 
                 richTextBox1.Visible = false;
-                tutorialcount = 0;
+
                 tutorial = 0;
                 label12.Visible = false;
                 label13.Visible = false;
@@ -1280,6 +1289,10 @@ namespace HelloMaze
         #region チュートリアル
         private void button1_Click(object sender, EventArgs e)
         {
+            if(pictureBox3.Visible == true)
+            {
+                pictureBox3.Visible = false;
+            }
             if(tutorial == 0)
             {
                 richTextBox1.Text = "このゲームは、迷路をクリアするプログラムをみなさんに体験していただきます！\nそれでは実際に迷路を体験していただきましょう！";

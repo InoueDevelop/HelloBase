@@ -129,7 +129,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\navi.bmp" />
+    <None Include="Resources\perfectgoal.png" />
+    <None Include="Resources\goal.png" />
     <None Include="Resources\tu2.PNG" />
     <None Include="Resources\tu1.PNG" />
     <None Include="Resources\direction.PNG" />
