@@ -35,6 +35,12 @@
             this.アイテムを置くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.壁を置くtoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.左ドラッグtoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.EnemysettoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.壁を置くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.アイテムを置くToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ゴールを作るToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.削除ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.削除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.squareX = new System.Windows.Forms.Label();
@@ -76,6 +82,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.settingobj = new System.Windows.Forms.Label();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -92,56 +99,104 @@
             this.アイテムを置くToolStripMenuItem,
             this.壁を置くtoolStripMenuItem2,
             this.toolStripMenuItem2,
+            this.左ドラッグtoolStripMenuItem4,
             this.toolStripMenuItem1,
             this.削除ToolStripMenuItem});
             this.Object_Control_Menu.Name = "Object_Control_Menu";
-            this.Object_Control_Menu.Size = new System.Drawing.Size(139, 142);
+            this.Object_Control_Menu.Size = new System.Drawing.Size(153, 186);
             this.Object_Control_Menu.Opened += new System.EventHandler(this.Object_Control_Menu_Opened);
             // 
             // 主人公を置くToolStripMenuItem
             // 
             this.主人公を置くToolStripMenuItem.Name = "主人公を置くToolStripMenuItem";
-            this.主人公を置くToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.主人公を置くToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.主人公を置くToolStripMenuItem.Text = "主人公を置く";
             this.主人公を置くToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PutPlayerToolStripMenuItem_MouseDown);
             // 
             // 敵を置くToolStripMenuItem
             // 
             this.敵を置くToolStripMenuItem.Name = "敵を置くToolStripMenuItem";
-            this.敵を置くToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.敵を置くToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.敵を置くToolStripMenuItem.Text = "敵を置く";
             this.敵を置くToolStripMenuItem.Click += new System.EventHandler(this.PutEnemyToolStripMenuItem_Click);
             // 
             // アイテムを置くToolStripMenuItem
             // 
             this.アイテムを置くToolStripMenuItem.Name = "アイテムを置くToolStripMenuItem";
-            this.アイテムを置くToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.アイテムを置くToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.アイテムを置くToolStripMenuItem.Text = "アイテムを置く";
             this.アイテムを置くToolStripMenuItem.Click += new System.EventHandler(this.PutItemToolStripMenuItem_Click);
             // 
             // 壁を置くtoolStripMenuItem2
             // 
             this.壁を置くtoolStripMenuItem2.Name = "壁を置くtoolStripMenuItem2";
-            this.壁を置くtoolStripMenuItem2.Size = new System.Drawing.Size(138, 22);
+            this.壁を置くtoolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
             this.壁を置くtoolStripMenuItem2.Text = "壁を置く";
             this.壁を置くtoolStripMenuItem2.Click += new System.EventHandler(this.PutWalltoolStripMenuItem2_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(138, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
             this.toolStripMenuItem2.Text = "ゴールを作る";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.GoaltoolStripMenuItem2_Click);
+            // 
+            // 左ドラッグtoolStripMenuItem4
+            // 
+            this.左ドラッグtoolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EnemysettoolStripMenuItem4,
+            this.壁を置くToolStripMenuItem,
+            this.アイテムを置くToolStripMenuItem1,
+            this.ゴールを作るToolStripMenuItem,
+            this.削除ToolStripMenuItem1});
+            this.左ドラッグtoolStripMenuItem4.Name = "左ドラッグtoolStripMenuItem4";
+            this.左ドラッグtoolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.左ドラッグtoolStripMenuItem4.Text = "左ドラッグ設定";
+            // 
+            // EnemysettoolStripMenuItem4
+            // 
+            this.EnemysettoolStripMenuItem4.Name = "EnemysettoolStripMenuItem4";
+            this.EnemysettoolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.EnemysettoolStripMenuItem4.Text = "敵を置く";
+            this.EnemysettoolStripMenuItem4.Click += new System.EventHandler(this.EnemysettoolStripMenuItem4_Click);
+            // 
+            // 壁を置くToolStripMenuItem
+            // 
+            this.壁を置くToolStripMenuItem.Name = "壁を置くToolStripMenuItem";
+            this.壁を置くToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.壁を置くToolStripMenuItem.Text = "壁を置く";
+            this.壁を置くToolStripMenuItem.Click += new System.EventHandler(this.壁を置くToolStripMenuItem_Click);
+            // 
+            // アイテムを置くToolStripMenuItem1
+            // 
+            this.アイテムを置くToolStripMenuItem1.Name = "アイテムを置くToolStripMenuItem1";
+            this.アイテムを置くToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.アイテムを置くToolStripMenuItem1.Text = "アイテムを置く";
+            this.アイテムを置くToolStripMenuItem1.Click += new System.EventHandler(this.アイテムを置くToolStripMenuItem1_Click);
+            // 
+            // ゴールを作るToolStripMenuItem
+            // 
+            this.ゴールを作るToolStripMenuItem.Name = "ゴールを作るToolStripMenuItem";
+            this.ゴールを作るToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ゴールを作るToolStripMenuItem.Text = "ゴールを作る";
+            this.ゴールを作るToolStripMenuItem.Click += new System.EventHandler(this.ゴールを作るToolStripMenuItem_Click);
+            // 
+            // 削除ToolStripMenuItem1
+            // 
+            this.削除ToolStripMenuItem1.Name = "削除ToolStripMenuItem1";
+            this.削除ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.削除ToolStripMenuItem1.Text = "削除";
+            this.削除ToolStripMenuItem1.Click += new System.EventHandler(this.削除ToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(139, 6);
             // 
             // 削除ToolStripMenuItem
             // 
             this.削除ToolStripMenuItem.Name = "削除ToolStripMenuItem";
-            this.削除ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.削除ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.削除ToolStripMenuItem.Text = "削除";
             this.削除ToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -546,7 +601,9 @@
             this.pictureBox1.Size = new System.Drawing.Size(450, 480);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.DragOver += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragOver);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // pictureBox3
             // 
@@ -560,6 +617,15 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Visible = false;
             // 
+            // settingobj
+            // 
+            this.settingobj.AutoSize = true;
+            this.settingobj.Location = new System.Drawing.Point(287, 39);
+            this.settingobj.Name = "settingobj";
+            this.settingobj.Size = new System.Drawing.Size(47, 12);
+            this.settingobj.TabIndex = 13;
+            this.settingobj.Text = "配置：壁";
+            // 
             // BoardData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -568,6 +634,7 @@
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(788, 781);
             this.ControlBox = false;
+            this.Controls.Add(this.settingobj);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button1);
@@ -648,6 +715,13 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label settingobj;
+        private System.Windows.Forms.ToolStripMenuItem 左ドラッグtoolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem EnemysettoolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem 壁を置くToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem アイテムを置くToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ゴールを作るToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 削除ToolStripMenuItem1;
     }
 }
 

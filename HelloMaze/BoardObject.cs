@@ -49,7 +49,7 @@ namespace HelloMaze
          /// </summary>
         internal int ObjectSelectNum;  //0:Wall,1:Player,2:Enemy,3:Item,4:Goal
 
-        enum objectselect
+        public enum objectselect
         {
             Wall,
             Player,
