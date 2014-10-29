@@ -65,7 +65,8 @@ namespace HelloMaze
         public Bitmap fore;
         public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
-        public int stagecount = 0;
+        public int stagecount = 21;
+        int setswitch=(int) set.None;
         public int _sql
         {
             get { return squarelength; }
@@ -97,6 +98,15 @@ namespace HelloMaze
             set { _ListObjectBoard = value; }
         }
 
+        enum set{
+            Wall,
+            Enemy,
+            Item,
+            Goal,
+            Del,
+            None
+        }
+
         #endregion
 
         public BoardData() //コンストラクタ
@@ -108,11 +118,12 @@ namespace HelloMaze
 
         public void constructer()
         {
+            dragevent = new System.Threading.Timer(new System.Threading.TimerCallback(called), null, System.Threading.Timeout.Infinite, 50);
             locked = false;
-            stagecount = 0;
             ListObjectBoard = new List<BoardObject>();
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             fore = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            stagecount = 1;
 
 
             this.pictureBox1.BackgroundImage = back;
@@ -144,7 +155,7 @@ namespace HelloMaze
                 }
             }
 
-            controlobj = new PlayerObject(gridsizeheight / 2, gridsizeheight / 2);
+            controlobj = new PlayerObject(gridsizeheight / 2-1, gridsizeheight / 2);
             ListObjectBoard.Add(controlobj);
             bmppaint.ObjectSetPaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore, ref CanPutObjectOnBoard, controlobj.ObjectSelectNum);
 
@@ -491,7 +502,7 @@ namespace HelloMaze
                 ListObjectBoard.RemoveAll(p => p is EnemyObject);
                 refreshPictureBox1();
             }
-        }
+        }         //ゲーム中に起こるイベントのまとめ
 
         /// <summary>
         /// スレッドセーフなPictureBox1.Refresh()
@@ -522,6 +533,7 @@ namespace HelloMaze
 
        
            public void Goalevent() {
+
                writer(stagecount-1);
 
                    stagecount++;
@@ -598,7 +610,7 @@ namespace HelloMaze
                    else { locked = false; }
                    clearwindow.Dispose();
                
-           }
+           } //ゴールに重なった時のイベント
 
 
         public void directionchange ()
@@ -717,20 +729,13 @@ namespace HelloMaze
             }
         }
 
-        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)//コンテキストメニューでオブジェクトを削除
-        {
-
-            int x = -1;
-            int y = -1;
-
-            Point cp = Object_Control_Menu.SourceControl.PointToClient(sp);
-            GetCursolPosition(cp.X, cp.Y, ref x, ref y);
-
+        void deleteobj(int x, int y) {
+            
             if (x > -1)
             {
                 if ((controlobj.ObjectPositionX == x && controlobj.ObjectPositionY == y) || (ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionX == x && ListObjectBoard.Find(p => p is PlayerObject).ObjectPositionY == y)) { return; }
 
-               
+
 
                 if (
                     //ListObjectBoard.Find(p => p.ObjectPositionX == x && p.ObjectPositionY == y) is PlayerObject
@@ -740,7 +745,7 @@ namespace HelloMaze
                     )
                 {
                     bmppaint.ResetObject(ref CanPutObjectOnBoard, fore, x, y);
-                  
+
                 }
                 else
                 {
@@ -749,6 +754,17 @@ namespace HelloMaze
                 ListObjectBoard.RemoveAll(p => p.ObjectPositionX == x && p.ObjectPositionY == y);
                 pictureBox1.Refresh();
             }
+        }
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)//コンテキストメニューでオブジェクトを削除
+        {
+            int x = -1;
+            int y = -1;
+
+            Point cp = Object_Control_Menu.SourceControl.PointToClient(sp);
+            GetCursolPosition(cp.X, cp.Y, ref x, ref y);
+
+            deleteobj(x,y);
+           
         }
 
         private void PutItemToolStripMenuItem_Click(object sender, EventArgs e)//コンテキストメニューでアイテムを置く
@@ -1845,6 +1861,109 @@ namespace HelloMaze
 
             }
         }
+
+        private void pictureBox1_DragOver(object sender, DragEventArgs e)
+        {
+            
+        }
+
+
+        System.Threading.Timer dragevent;
+
+        delegate void SetDelegate();
+        public void draevent(){
+            int x = -1;
+            int y = -1;
+            int objectselectnum = 0;
+
+
+
+            Point sp = System.Windows.Forms.Cursor.Position;
+            System.Drawing.Point cp = pictureBox1.PointToClient(sp);
+            GetCursolPosition(cp.X, cp.Y, ref x, ref y);
+           
+            if (x > -1)
+            {
+                switch (setswitch) { 
+                    case (int)set.Wall :    ObjectSet(x, y,(int) BoardObject.objectselect.Wall);
+                        break;
+                    case (int)set.Enemy:  ObjectSet(x, y, (int)BoardObject.objectselect.Enemy);
+                        break;
+                    case (int)set.Item: ObjectSet(x, y, (int)BoardObject.objectselect.Item);
+                        break;
+                    case (int)set.Goal: ObjectSet(x, y, (int)BoardObject.objectselect.Goal);
+                        break;
+                    case (int)set.Del: deleteobj(x,y);
+                        break;
+                    case (int)set.None:
+                        break;
+            }
+            }
+
+        
+
+        }
+        void called(Object obj)
+        {
+            Invoke(new SetDelegate(draevent));
+
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ((Control.MouseButtons & MouseButtons.Right) == MouseButtons.Right)
+            {
+                return;
+            }
+            //dragevent = new System.Threading.Timer(new System.Threading.TimerCallback(called),null,System.Threading.Timeout.Infinite,50);
+            dragevent.Change(100, 100);
+
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if ((Control.MouseButtons & MouseButtons.Right) == MouseButtons.Right)
+            {
+                return;
+            }
+            dragevent.Change(System.Threading.Timeout.Infinite,100);
+        }
+
+        private void EnemysettoolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+           setswitch=(int) set.Enemy;
+           settingobj.Text = "配置:敵";
+        }
+
+        private void 壁を置くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setswitch = (int)set.Wall;
+            settingobj.Text = "配置:壁";
+        }
+
+        private void アイテムを置くToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            setswitch = (int)set.Item;
+            settingobj.Text = "配置:アイテム";
+        }
+
+        private void ゴールを作るToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setswitch = (int)set.Goal;
+            settingobj.Text = "配置:ゴール";
+        }
+
+        private void 削除ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            setswitch = (int)set.Del;
+            settingobj.Text = "削除";
+        }
+
+        private void 設定なしToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setswitch = (int)set.None;
+            settingobj.Text = "";
+        }
+
     }
 
         #endregion
