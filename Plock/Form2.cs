@@ -529,7 +529,7 @@ namespace Plock
                 indent.Clear();
                 block_View(0);
                 countBlocknumber();
-             
+
             }
             else { };
 
@@ -561,10 +561,10 @@ namespace Plock
                         if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
                             b_name = clist[i].Name;
-                            
+
                             setIndent(i, InsertPoint.Before);         //消す前にインデックス情報更新
                             clist.RemoveAt(i); //対象ブロックの削除
-                          
+
                             if (i < clist.Count)
                             {
                                 while (clist[i].Name.Contains("Indent"))
@@ -577,7 +577,7 @@ namespace Plock
                             //再描画
                             block_View(0);
                             countBlocknumber();
-           
+
                             break;
                         }
                     }
@@ -773,19 +773,19 @@ namespace Plock
             {
                 if (y >= clist[i].Top && y < clist[i].Bottom)
                 {
-                        if (!checkBracket())
-                        {
-                            MessageBox.Show("「ここまで」ブロックを配置してから挿入位置を変えてね", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            break;
-                        }
+                    if (!checkBracket())
+                    {
+                        MessageBox.Show("「ここまで」ブロックを配置してから挿入位置を変えてね", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    }
 
-                        DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                        if (result == DialogResult.Yes)
-                        {
-                            setIndent(i, InsertPoint.After);
-                            break;
-                        }
-                        else break;
+                    DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Yes)
+                    {
+                        setIndent(i, InsertPoint.After);
+                        break;
+                    }
+                    else break;
                 }
 
             }
@@ -795,7 +795,7 @@ namespace Plock
         private void setIndent(int point, InsertPoint where)
         {
             int first_point = point;
-            bool firstisCondition=false;
+            bool firstisCondition = false;
             Stack<string> line_indents = new Stack<string>();
 
             if (clist[point].Name.Contains("If") || clist[point].Name.Contains("While"))
@@ -805,7 +805,7 @@ namespace Plock
                 else if (clist[point].Name.Contains("While"))
                     line_indents.Push("While");
 
-                firstisCondition=true;
+                firstisCondition = true;
             }
 
 
@@ -832,7 +832,7 @@ namespace Plock
                 if (firstisCondition)
                     insert_point--;
             }
-            
+
             indent = new Stack<string>(line_indents.ToArray()); // スタックのコピー 参照型であることに注意
         }
         //---------------------------------------------------------------------------------------------------------------
@@ -1132,7 +1132,7 @@ namespace Plock
         }
         private void DummyBlockView(int left, int top, Bitmap bm)
         {
-            panel1.AutoScrollPosition = new Point(0, 0);               //スクロールの位置を（0,0）にしてから描画
+            
             dummyBlock.Left = left;
             dummyBlock.Height = 40;
             dummyBlock.Width = 150;
@@ -1140,7 +1140,6 @@ namespace Plock
             dummyBlock.SizeMode = PictureBoxSizeMode.StretchImage;
             dummyBlock.Image = bm;
             panel1.Controls.Add(dummyBlock);
-            panel1.AutoScrollPosition = new Point(0, top);
 
         }
 
