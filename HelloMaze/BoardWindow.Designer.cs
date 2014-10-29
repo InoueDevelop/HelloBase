@@ -77,7 +77,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
 			this.stage = new System.Windows.Forms.Label();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.button1 = new System.Windows.Forms.Button();
@@ -85,6 +84,34 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.settingobj = new System.Windows.Forms.Label();
+			this.ステージ選択ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.チュートリアルモードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ステージ選択ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.初級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.中級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.上級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem21 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
+			this.label1 = new System.Windows.Forms.Label();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -233,11 +260,13 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.ステージ選択ToolStripMenuItem,
+            this.ヘルプToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-			this.menuStrip1.Size = new System.Drawing.Size(1051, 31);
+			this.menuStrip1.Size = new System.Drawing.Size(1241, 31);
 			this.menuStrip1.TabIndex = 5;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -309,9 +338,9 @@
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.groupBox1.Location = new System.Drawing.Point(16, 49);
-			this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Size = new System.Drawing.Size(325, 624);
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
@@ -585,17 +614,6 @@
 			this.label2.Text = "2";
 			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(63, 116);
-			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(39, 45);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "1";
-			this.label1.Click += new System.EventHandler(this.label1_Click);
-			// 
 			// stage
 			// 
 			this.stage.AutoSize = true;
@@ -609,7 +627,7 @@
 			// richTextBox1
 			// 
 			this.richTextBox1.Location = new System.Drawing.Point(16, 680);
-			this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.richTextBox1.Name = "richTextBox1";
 			this.richTextBox1.Size = new System.Drawing.Size(324, 208);
 			this.richTextBox1.TabIndex = 9;
@@ -620,7 +638,7 @@
 			// button1
 			// 
 			this.button1.Location = new System.Drawing.Point(236, 896);
-			this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.button1.Margin = new System.Windows.Forms.Padding(4);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(100, 29);
 			this.button1.TabIndex = 10;
@@ -632,7 +650,7 @@
 			// pictureBox2
 			// 
 			this.pictureBox2.Location = new System.Drawing.Point(363, 685);
-			this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox2.Name = "pictureBox2";
 			this.pictureBox2.Size = new System.Drawing.Size(600, 240);
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -659,7 +677,7 @@
 			this.pictureBox3.Image = global::HelloMaze.Properties.Resources.goal;
 			this.pictureBox3.InitialImage = null;
 			this.pictureBox3.Location = new System.Drawing.Point(385, 685);
-			this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox3.Name = "pictureBox3";
 			this.pictureBox3.Size = new System.Drawing.Size(281, 240);
 			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -676,13 +694,217 @@
 			this.settingobj.Size = new System.Drawing.Size(0, 15);
 			this.settingobj.TabIndex = 13;
 			// 
+			// ステージ選択ToolStripMenuItem
+			// 
+			this.ステージ選択ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.チュートリアルモードToolStripMenuItem,
+            this.ステージ選択ToolStripMenuItem1});
+			this.ステージ選択ToolStripMenuItem.Name = "ステージ選択ToolStripMenuItem";
+			this.ステージ選択ToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
+			this.ステージ選択ToolStripMenuItem.Text = "モード";
+			// 
+			// チュートリアルモードToolStripMenuItem
+			// 
+			this.チュートリアルモードToolStripMenuItem.Name = "チュートリアルモードToolStripMenuItem";
+			this.チュートリアルモードToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+			this.チュートリアルモードToolStripMenuItem.Text = "チュートリアルモード";
+			// 
+			// ステージ選択ToolStripMenuItem1
+			// 
+			this.ステージ選択ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.初級ToolStripMenuItem,
+            this.中級ToolStripMenuItem,
+            this.上級ToolStripMenuItem});
+			this.ステージ選択ToolStripMenuItem1.Name = "ステージ選択ToolStripMenuItem1";
+			this.ステージ選択ToolStripMenuItem1.Size = new System.Drawing.Size(230, 28);
+			this.ステージ選択ToolStripMenuItem1.Text = "ステージ選択";
+			// 
+			// ヘルプToolStripMenuItem
+			// 
+			this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
+			this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
+			this.ヘルプToolStripMenuItem.Text = "ヘルプ";
+			// 
+			// 初級ToolStripMenuItem
+			// 
+			this.初級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem10});
+			this.初級ToolStripMenuItem.Name = "初級ToolStripMenuItem";
+			this.初級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
+			this.初級ToolStripMenuItem.Text = "初級";
+			// 
+			// 中級ToolStripMenuItem
+			// 
+			this.中級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem11,
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem15});
+			this.中級ToolStripMenuItem.Name = "中級ToolStripMenuItem";
+			this.中級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
+			this.中級ToolStripMenuItem.Text = "中級";
+			// 
+			// 上級ToolStripMenuItem
+			// 
+			this.上級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem16,
+            this.toolStripMenuItem17,
+            this.toolStripMenuItem18,
+            this.toolStripMenuItem19,
+            this.toolStripMenuItem20,
+            this.toolStripMenuItem21,
+            this.toolStripMenuItem22,
+            this.toolStripMenuItem23,
+            this.toolStripMenuItem24,
+            this.toolStripMenuItem25});
+			this.上級ToolStripMenuItem.Name = "上級ToolStripMenuItem";
+			this.上級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
+			this.上級ToolStripMenuItem.Text = "上級";
+			// 
+			// toolStripMenuItem6
+			// 
+			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem6.Text = "1";
+			this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+			// 
+			// toolStripMenuItem7
+			// 
+			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem7.Text = "2";
+			// 
+			// toolStripMenuItem8
+			// 
+			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+			this.toolStripMenuItem8.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem8.Text = "3";
+			// 
+			// toolStripMenuItem9
+			// 
+			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+			this.toolStripMenuItem9.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem9.Text = "4";
+			// 
+			// toolStripMenuItem10
+			// 
+			this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+			this.toolStripMenuItem10.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem10.Text = "5";
+			// 
+			// toolStripMenuItem11
+			// 
+			this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+			this.toolStripMenuItem11.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem11.Text = "6";
+			// 
+			// toolStripMenuItem12
+			// 
+			this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+			this.toolStripMenuItem12.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem12.Text = "7";
+			// 
+			// toolStripMenuItem13
+			// 
+			this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+			this.toolStripMenuItem13.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem13.Text = "8";
+			// 
+			// toolStripMenuItem14
+			// 
+			this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+			this.toolStripMenuItem14.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem14.Text = "9";
+			// 
+			// toolStripMenuItem15
+			// 
+			this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+			this.toolStripMenuItem15.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem15.Text = "10";
+			// 
+			// toolStripMenuItem16
+			// 
+			this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+			this.toolStripMenuItem16.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem16.Text = "11";
+			// 
+			// toolStripMenuItem17
+			// 
+			this.toolStripMenuItem17.Name = "toolStripMenuItem17";
+			this.toolStripMenuItem17.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem17.Text = "12";
+			// 
+			// toolStripMenuItem18
+			// 
+			this.toolStripMenuItem18.Name = "toolStripMenuItem18";
+			this.toolStripMenuItem18.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem18.Text = "13";
+			// 
+			// toolStripMenuItem19
+			// 
+			this.toolStripMenuItem19.Name = "toolStripMenuItem19";
+			this.toolStripMenuItem19.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem19.Text = "14";
+			// 
+			// toolStripMenuItem20
+			// 
+			this.toolStripMenuItem20.Name = "toolStripMenuItem20";
+			this.toolStripMenuItem20.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem20.Text = "15";
+			// 
+			// toolStripMenuItem21
+			// 
+			this.toolStripMenuItem21.Name = "toolStripMenuItem21";
+			this.toolStripMenuItem21.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem21.Text = "16";
+			// 
+			// toolStripMenuItem22
+			// 
+			this.toolStripMenuItem22.Name = "toolStripMenuItem22";
+			this.toolStripMenuItem22.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem22.Text = "17";
+			// 
+			// toolStripMenuItem23
+			// 
+			this.toolStripMenuItem23.Name = "toolStripMenuItem23";
+			this.toolStripMenuItem23.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem23.Text = "18";
+			// 
+			// toolStripMenuItem24
+			// 
+			this.toolStripMenuItem24.Name = "toolStripMenuItem24";
+			this.toolStripMenuItem24.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem24.Text = "19";
+			// 
+			// toolStripMenuItem25
+			// 
+			this.toolStripMenuItem25.Name = "toolStripMenuItem25";
+			this.toolStripMenuItem25.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem25.Text = "20";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(63, 116);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(39, 45);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "1";
+			this.label1.Click += new System.EventHandler(this.label1_Click);
+			// 
 			// BoardData
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.BackColor = System.Drawing.Color.Bisque;
-			this.ClientSize = new System.Drawing.Size(1051, 976);
+			this.ClientSize = new System.Drawing.Size(1262, 705);
 			this.ControlBox = false;
 			this.Controls.Add(this.settingobj);
 			this.Controls.Add(this.pictureBox3);
@@ -695,6 +917,7 @@
 			this.Controls.Add(this.squareY);
 			this.Controls.Add(this.squareX);
 			this.Controls.Add(this.pictureBox1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MainMenuStrip = this.menuStrip1;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.MaximizeBox = false;
@@ -736,8 +959,7 @@
         private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -774,6 +996,34 @@
         private System.Windows.Forms.ToolStripMenuItem 削除ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 設定なしToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem ステージ選択ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem チュートリアルモードToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ステージ選択ToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 初級ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+		private System.Windows.Forms.ToolStripMenuItem 中級ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 上級ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem18;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem19;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem20;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem21;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem22;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem23;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem24;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem25;
+		private System.Windows.Forms.Label label1;
     }
 }
 

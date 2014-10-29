@@ -910,123 +910,142 @@ namespace HelloMaze
         }
 #endregion
 
+		#region //loadDataset
+		private void loadDataset(string path, byte[] resource)
+		{
 
-        #region //ステージ選択
 
-        /// <summary>
+			using (Stream writeStream = new FileStream(path, FileMode.Create))
+			{
+				BinaryWriter bw = new BinaryWriter(writeStream);
+				bw.Write(resource);
+			}
+
+			Dataset loadedData;
+			using (Stream fileStream = new FileStream(path, FileMode.Open))
+			{
+				BinaryFormatter binaryFormatter = new BinaryFormatter();
+				loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+				fileStream.Close();
+			}
+
+			if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
+			{
+				stateHistory = loadedData;
+			}
+
+			//this.=stateHistory.cpsquarelength;
+			back = stateHistory.cpback;
+			fore = stateHistory.cpfore;
+			this.pictureBox1.BackgroundImage = back;
+			this.pictureBox1.Image = fore;
+			controlobj = stateHistory.cpcontrolobj;
+			CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+			ListObjectBoard = stateHistory.cp_ListObjectBoard;
+		}
+
+		private void demoDataset(string path, byte[] resource)
+		{
+
+
+			using (Stream writeStream = new FileStream(path, FileMode.Create))
+			{
+				BinaryWriter bw = new BinaryWriter(writeStream);
+				bw.Write(resource);
+			}
+
+			Dataset loadedData;
+			using (Stream fileStream = new FileStream(path, FileMode.Open))
+			{
+				BinaryFormatter binaryFormatter = new BinaryFormatter();
+				loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+				fileStream.Close();
+			}
+			stateHistory = loadedData;
+			//this.=stateHistory.cpsquarelength;
+			back = stateHistory.cpback;
+			fore = stateHistory.cpfore;
+			this.pictureBox1.BackgroundImage = back;
+			this.pictureBox1.Image = fore;
+			controlobj = stateHistory.cpcontrolobj;
+			CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+			ListObjectBoard = stateHistory.cp_ListObjectBoard;
+		}
+
+		private void loadDataset2(string path, byte[] resource)  //quickload
+		{
+
+
+			using (Stream writeStream = new FileStream(path, FileMode.Create))
+			{
+				BinaryWriter bw = new BinaryWriter(writeStream);
+				bw.Write(resource);
+			}
+
+			Dataset loadedData;
+			using (Stream fileStream = new FileStream(path, FileMode.Open))
+			{
+				BinaryFormatter binaryFormatter = new BinaryFormatter();
+				loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+				fileStream.Close();
+			}
+
+
+			stateHistory = loadedData;
+
+
+			//this.=stateHistory.cpsquarelength;
+			back = stateHistory.cpback;
+			fore = stateHistory.cpfore;
+			this.pictureBox1.BackgroundImage = back;
+			this.pictureBox1.Image = fore;
+			controlobj = stateHistory.cpcontrolobj;
+			CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+			ListObjectBoard = stateHistory.cp_ListObjectBoard;
+		}
+		#endregion
+
+
+		#region //ステージ選択
+
+		/// <summary>
         /// labelset
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void label1_Click(object sender, EventArgs e)
         {
-            string path = "Userdata/stage1";
-            var resource = Properties.Resources.stage1;
-            try
-            {
-                loadDataset(path,resource);
-                stagecount = 1;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+			string path = "Userdata/stage1";
+			var resource = Properties.Resources.stage1;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 1;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
+			}
         }
 
-        private void loadDataset(string path,byte[] resource)
-        {
-            
+		private void toolStripMenuItem6_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage1";
+			var resource = Properties.Resources.stage1;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 1;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            using (Stream writeStream = new FileStream(path, FileMode.Create))
-            {
-                BinaryWriter bw = new BinaryWriter(writeStream);
-                bw.Write(resource);
-            }
+			}
+		}
 
-            Dataset loadedData;
-            using (Stream fileStream = new FileStream(path, FileMode.Open))
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
-                fileStream.Close();
-            }
-           
-            if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
-            {
-                stateHistory = loadedData;
-            }
-
-            //this.=stateHistory.cpsquarelength;
-            back = stateHistory.cpback;
-            fore = stateHistory.cpfore;
-            this.pictureBox1.BackgroundImage = back;
-            this.pictureBox1.Image = fore;
-            controlobj = stateHistory.cpcontrolobj;
-            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
-            ListObjectBoard = stateHistory.cp_ListObjectBoard;
-        }
-
-        private void demoDataset(string path, byte[] resource)
-        {
-
-
-            using (Stream writeStream = new FileStream(path, FileMode.Create))
-            {
-                BinaryWriter bw = new BinaryWriter(writeStream);
-                bw.Write(resource);
-            }
-
-            Dataset loadedData;
-            using (Stream fileStream = new FileStream(path, FileMode.Open))
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
-                fileStream.Close();
-            }
-            stateHistory = loadedData;
-            //this.=stateHistory.cpsquarelength;
-            back = stateHistory.cpback;
-            fore = stateHistory.cpfore;
-            this.pictureBox1.BackgroundImage = back;
-            this.pictureBox1.Image = fore;
-            controlobj = stateHistory.cpcontrolobj;
-            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
-            ListObjectBoard = stateHistory.cp_ListObjectBoard;
-        }
-
-        private void loadDataset2(string path, byte[] resource)  //quickload
-        {
-
-
-            using (Stream writeStream = new FileStream(path, FileMode.Create))
-            {
-                BinaryWriter bw = new BinaryWriter(writeStream);
-                bw.Write(resource);
-            }
-
-            Dataset loadedData;
-            using (Stream fileStream = new FileStream(path, FileMode.Open))
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
-                fileStream.Close();
-            }
-
-         
-                stateHistory = loadedData;
-            
-
-            //this.=stateHistory.cpsquarelength;
-            back = stateHistory.cpback;
-            fore = stateHistory.cpfore;
-            this.pictureBox1.BackgroundImage = back;
-            this.pictureBox1.Image = fore;
-            controlobj = stateHistory.cpcontrolobj;
-            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
-            ListObjectBoard = stateHistory.cp_ListObjectBoard;
-        }
-
+        
         private void label2_Click(object sender, EventArgs e)
         {
             string path = "Userdata/stage2";
@@ -1170,6 +1189,166 @@ namespace HelloMaze
 
             }
         }
+
+		private void label16_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage11";
+			var resource = Properties.Resources.stage11;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 11;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label17_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage12";
+			var resource = Properties.Resources.stage12;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 12;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label18_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage13";
+			var resource = Properties.Resources.stage13;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 13;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label19_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage14";
+			var resource = Properties.Resources.stage14;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 14;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label20_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage15";
+			var resource = Properties.Resources.stage15;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 15;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label21_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage16";
+			var resource = Properties.Resources.stage16;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 16;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label22_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage17";
+			var resource = Properties.Resources.stage17;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 17;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label23_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage18";
+			var resource = Properties.Resources.stage18;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 18;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label24_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage19";
+			var resource = Properties.Resources.stage19;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 19;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
+
+		private void label25_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage20";
+			var resource = Properties.Resources.stage20;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 20;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
+
+			}
+		}
         #endregion // //
 
         private void label11_Click(object sender, EventArgs e)
@@ -1704,165 +1883,7 @@ namespace HelloMaze
             tutorial = 17;
         }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage11";
-            var resource = Properties.Resources.stage11;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 11;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage12";
-            var resource = Properties.Resources.stage12;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 12;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage13";
-            var resource = Properties.Resources.stage13;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 13;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage14";
-            var resource = Properties.Resources.stage14;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 14;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage15";
-            var resource = Properties.Resources.stage15;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 15;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage16";
-            var resource = Properties.Resources.stage16;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 16;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage17";
-            var resource = Properties.Resources.stage17;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 17;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage18";
-            var resource = Properties.Resources.stage18;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 18;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage19";
-            var resource = Properties.Resources.stage19;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 19;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage20";
-            var resource = Properties.Resources.stage20;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 20;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
+        
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
         {
@@ -1970,11 +1991,14 @@ namespace HelloMaze
         {
             constructer();
         }
+		#endregion
+
+
+		
 
     }
 
-        #endregion
-
+        
 
 
 
