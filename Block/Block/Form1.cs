@@ -18,12 +18,8 @@ namespace Block
         // List<Label> clist = new List<Label>();
         //List<Block> block = new List<Block>();
         List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
-        static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
-
+        Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
         int indent_count;                                 //インデント回数
-
-        int x;   //マウス座標
-        int y;
 
 
         public Form1()
@@ -36,7 +32,6 @@ namespace Block
 
             panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
-
             //panel1.BackgroundImageLayout = ImageLayout.Zoom;
             //panel1.BackgroundImage = System.Drawing.Image.FromFile("背景.png");
 
@@ -49,14 +44,6 @@ namespace Block
         //配置ボタン
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex == -1)
-            {
-                MessageBox.Show("命令セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            if (listBox1.SelectedIndex == 3 && listBox2.SelectedIndex == -1)
-            {
-                MessageBox.Show("条件セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
             block_Create(comand);
             block_View(0);
 
@@ -64,10 +51,10 @@ namespace Block
         //-------------------------------------------------------------------------------------------
         private void block_View(int k)
         {
-            int top ;
-            int y = 10; //ブロック描画開始位置
-
-            panel1.Controls.Clear();
+            int top = 0;
+            int y = 14;
+            //int k=0;
+            int pn_height = 0;
             for (int i = k; i < clist.Count; i++)
             {
                 if (clist[i].Name == "Indent")
@@ -101,10 +88,8 @@ namespace Block
             }
         }
         //-------------------------------------------------------------------------------------------
-        //ブロックの設定とリストへの登録
-        private void set_Block(string prop_name, string png_filename)
+        private void block_Create(Comands comand)           //もっとブロックらしくする．⇒グラデーション（Ifは一つのブロックに見えるように） 同じ処理多数あり　⇒　メソッド化できるわ
         {
-            //-------------------------------------------------------
             PictureBox pb = new PictureBox();
             //画像の大きさをPictureBoxに合わせる
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -114,109 +99,158 @@ namespace Block
                 pb1[i] = new PictureBox();
                 pb1[i].SizeMode = PictureBoxSizeMode.StretchImage;
             }
-
             string indent_type;
-            string indent_type2;
-            Stack<string> indent_copy = indent;//indentの値も変わってしまう
             int indent_size = 150 / 2;
             int count = 0;
 
-                                                                 
-            //--------------------------------------------------------
-
-            pb.Image = System.Drawing.Image.FromFile(png_filename);
-            if (prop_name == "End")
-                indent_count--;                          //Endを配置するとインデントを１つ減らす．
-            pb.Left = 10 + indent_count * indent_size;
-            pb.Name = prop_name;
-            //Clickイベントにイベントハンドラ追加　0714
-            pb.Click += new EventHandler(clist_Click);
-            clist.Add(pb);
-
-            //インデントブロックの設定・登録　0708追加
-            while (count < indent_count)
-            {
-
-                indent_type = indent_copy.Pop();                                                     //indentの値も変わってしまう
-                //command==If or While 最新のindentの次のindentから参照
-                if (comand == Comands.If || comand == Comands.While)
-                {
-                    indent_type2 = indent_copy.Pop();
-                    if (indent_type2 == "If")
-                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-
-                    else if (indent_type2 == "While")
-                        pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
-
-                    indent.Push(indent_type2);
-                }
-                // command!=If and While　最新のindentから参照
-                else
-                {
-                    if (indent_type == "If")
-                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
-
-                    else if (indent_type == "While")
-                        pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
-                }
-
-                indent.Push(indent_type);
-
-                pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;　//インデントブロックは右から配置（先表示が前面）
-                pb1[count].Name = "Indent";
-                clist.Add(pb1[count]);
-                count++;
-            }
-            if (prop_name.Contains("If") || prop_name.Contains("While"))
-                indent_count++;                                                  //If Whileを配置するとインデントを１つ増やす．
-        }
-        //-------------------------------------------------------------------------------------------
-        private void block_Create(Comands comand)           //もっとブロックらしくする．⇒グラデーション（Ifは一つのブロックに見えるように） 同じ処理多数あり　⇒　メソッド化できるわ ⇒　したわ
-        {
-            string st;
             switch (comand)
             {
 
                 case Comands.Go:
-                    set_Block("Go", "前へ.png");
+
+                    pb.Image = System.Drawing.Image.FromFile("前へ.png");
+                    pb.Left = 10 + indent_count * indent_size;    //Left=10
+                    pb.Name = "Go";
+                    clist.Add(pb);
+                    //0708追加
+                    while (count < indent_count)
+                    {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
+                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                        pb1[count].Name = "Indent";
+                        clist.Add(pb1[count]);
+                        count++;
+                    }
                     break;
                 case Comands.Left:
-                    set_Block("Left", "左.png");
+                    pb.Image = System.Drawing.Image.FromFile("左.png");
+                    pb.Left = 10 + indent_count * indent_size;
+                    pb.Name = "Left";
+                    clist.Add(pb);
+                    //0708追加
+                    while (count < indent_count)
+                    {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
+                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                        pb1[count].Name = "Indent";
+                        clist.Add(pb1[count]);
+                        count++;
+                    }
                     break;
                 case Comands.Right:
-                    set_Block("Right", "右.png");
+                    pb.Image = System.Drawing.Image.FromFile("右.png");
+                    pb.Left = 10 + indent_count * indent_size;
+                    pb.Name = "Right";
+                    clist.Add(pb);
+                    //0708追加
+                    while (count < indent_count)
+                    {
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
+                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                        pb1[count].Name = "Indent";
+                        clist.Add(pb1[count]);
+                        count++;
+                    }
                     break;
 
                 case Comands.End:
-                    st = indent.Pop();
-                    if (st == "If")
+
+                    pb.Image = System.Drawing.Image.FromFile("ここまで.png");
+                    pb.Name = "End";
+                    clist.Add(pb);
+                    indent_count--;
+                    pb.Left = 10 + indent_count * indent_size;
+                    //0708追加
+                    while (count < indent_count)
                     {
-                        set_Block("End", "もし（ここまで）.png");
-                        indent.Push("If");
-                    }
-                    else if (st == "While")
-                    {
-                        set_Block("End", "繰り返し（ここまで）.png");
-                        indent.Push("While");
+                        indent_type = indent.Pop();
+                        if (indent_type == "If")
+                        pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+
+                        if (indent_type == "While")
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                        indent.Push(indent_type);
+
+                        pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                        pb1[count].Name = "Indent";
+                        clist.Add(pb1[count]);
+                        count++;
                     }
                     break;
-                default: break;
 
             }
             if (comand == Comands.If)
             {
                 indent.Push("If");
-                //indent_copy.Push("If");
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("Iffront", "もし正面壁なし.png");
+                        pb.Image = System.Drawing.Image.FromFile("もし正面壁なし.png");
+                        pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Iffront";
+                        clist.Add(pb);
+                        //0708追加
+                        while (count < indent_count)
+                        {
+
+                            pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                            pb1[count].Name = "Indent";
+                            clist.Add(pb1[count]);
+                            count++;
+                        }
+                        indent_count++;
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("Ifleft", "もし左壁なし.png");
+                        pb.Image = System.Drawing.Image.FromFile("もし左壁なし.png");
+                        pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Ifleft";
+                        clist.Add(pb);
+                        //0708追加
+                        while (count < indent_count)
+                        {
+                            pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                            pb1[count].Name = "Indent";
+                            clist.Add(pb1[count]);
+                            count++;
+                        }
+                        indent_count++;
                         break;
                     case Conditions.Right_Wall:
-                        set_Block("Ifright", "もし右壁なし.png");
+                        pb.Image = System.Drawing.Image.FromFile("もし右壁なし.png");
+                        pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Ifright";
+                        clist.Add(pb);
+                        //0708追加
+                        while (count < indent_count)
+                        {
+                            pb1[count].Image = System.Drawing.Image.FromFile("もし（間）.png");
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                            pb1[count].Name = "Indent";
+                            clist.Add(pb1[count]);
+                            count++;
+                        }
+                        indent_count++;
                         break;
                 }
             }
@@ -224,23 +258,138 @@ namespace Block
             else if (comand == Comands.While)
             {
                 indent.Push("While");
-                //indent_copy.Push("While");
                 switch (condition)
                 {
                     case Conditions.Front_Wall:
-                        set_Block("Whilefront", "繰り返し正面壁なし.png");
+                        pb.Image = System.Drawing.Image.FromFile("繰り返し正面壁なし.png");
+                        pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Whilefront";
+                        clist.Add(pb);
+                        //0708追加
+                        while (count < indent_count)
+                        {
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                            pb1[count].Name = "Indent";
+                            clist.Add(pb1[count]);
+                            count++;
+                        }
+                        indent_count++;
                         break;
                     case Conditions.Left_Wall:
-                        set_Block("Whileleft", "繰り返し左壁なし.png");
+                        pb.Image = System.Drawing.Image.FromFile("繰り返し左壁なし.png");
+                        pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Whileleft";
+                        clist.Add(pb);
+                        //0708追加
+                        while (count < indent_count)
+                        {
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                            pb1[count].Name = "Indent";
+                            clist.Add(pb1[count]);
+                            count++;
+                        }
+                        indent_count++;
                         break;
                     case Conditions.Right_Wall:
-                        set_Block("Whileright", "繰り返し右壁なし.png");
+                        pb.Image = System.Drawing.Image.FromFile("繰り返し右壁なし.png");
+                        pb.Left = 10 + indent_count * indent_size;
+                        pb.Name = "Whileright";
+                        clist.Add(pb);
+                        //0708追加
+                        while (count < indent_count)
+                        {
+                            pb1[count].Image = System.Drawing.Image.FromFile("繰り返し（間）.png");
+                            pb1[count].Left = 10 + (indent_count - count - 1) * indent_size;    //Left=10
+                            pb1[count].Name = "Indent";
+                            clist.Add(pb1[count]);
+                            count++;
+                        }
+                        indent_count++;
                         break;
                 }
             }
 
         }
+        //-------------------------------------------------------------------------------------------
+        // マウスのボタンが押下された時に起動するイベントプロシージャ
+        //  --- ドラッグ元となるpictureBox1上で、マウスボタンが押された時に、
+        //      ドラッグ&ドロップを開始する処理を実行する。
+        private void clist_MouseDown(object sender, MouseEventArgs e)
+        {
+            // マウスの左ボタンが押されている場合
+            if (e.Button == MouseButtons.Left)
+            {
+                // ドラッグ&ドロップを開始
+                //  --- ドラッグ ソースのデータは、pictureBox1とするように指示。
+                //      また、ドラッグ ソースのデータは、ドロップ先に移動するよう
+                //      に指示。
+                DoDragDrop(clist, DragDropEffects.Move);
+            }
+        }
 
+        // オブジェクトがコントロールの境界内にドラッグされた時に起動
+        // するイベントプロシージャ
+        //  --- ドロップ先となるForm1上の領域内に、マウスポインターが
+        //      ドラッグされた時に、ドロップ先での準備関係の処理を実行
+        //      する。
+        private void Form1_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(System.Windows.Forms.Label))
+               && (e.AllowedEffect == DragDropEffects.Move))
+            {
+                // ドロップ先に、移動を許可するように指示する。
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                // ドロップ先に、ドロップを受け入れないように指示する。
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        // ドロップされた時に起動するイベントプロシージャ
+        //  --- ドロップ先となるForm1上で、マウスボタンが離された時（
+        //      すなわち、ドラッグ&ドロップ操作が完了した時）に、画像
+        //      の移動処理を実行する。
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            // ドラッグされているデーターがPictureBoxで、かつ、
+            // ドラッグ ソースのデータは、ドロップ先に移動するよう指示さ
+            // れている場合（すなわち、コピー等の別の指示ではない場合）
+            if (e.Data.GetDataPresent(typeof(System.Windows.Forms.PictureBox))
+                && (e.Effect == DragDropEffects.Move))
+            {
+                // ドラッグ ソースのデータ（pictureBox1）を取得
+                System.Windows.Forms.PictureBox picture = (System.Windows.Forms.PictureBox)e.Data.GetData(typeof(System.Windows.Forms.PictureBox));
+
+                // ドラッグ ソースのデータ（pictureBox1）における座標位置を取得
+                Point posi = new Point(e.X, e.Y);
+
+                // ドラッグ ソースのデータ（pictureBox1）における座標位置
+                // を、スクリーン座標からクライアント座標に変換
+                posi = this.PointToClient(posi);
+
+                // ドラッグ ソースのデータ（pictureBox1）の座標位置を設定
+                //  --- なお、ドロップ先でのマウスの座標位置に、pictureBox1
+                //      の中心が来るように指定する。
+                posi = new Point(posi.X - picture.Width / 2, posi.Y - picture.Height / 2);
+                picture.Location = posi;
+            }
+            // ドラッグされているデーターがPictureBoxではない場合、又は、
+            // ドラッグ ソースのデータは、ドロップ先に移動するよう指示され
+            // ていない場合（すなわち、移動ではなく、コピー等の別の指示の場合）
+            else
+            {
+                // 特に処理はなし
+            }
+        }
+        //-------------------------------------------------------------------------------------------
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -251,9 +400,10 @@ namespace Block
         //変換ボタン
         private void button2_Click(object sender, EventArgs e)
         {
-
-            block_to_string();
-
+            for (int i = 0; i < clist.Count; i++)
+            {
+                listBox2.Items.Add(clist[i].Name); //ホントはソースコード辞書の内容を書き出す．
+            }
         }
         //-------------------------------------------------------------------------------------------
         //命令文選択リスト
@@ -280,7 +430,6 @@ namespace Block
                 case 5:
                     comand = Comands.End;
                     break;
-                default: break;
             }
         }
         //-------------------------------------------------------------------------------------------
@@ -301,115 +450,10 @@ namespace Block
             }
         }
         //-------------------------------------------------------------------------------------------
-        //ブロックから文字列へ
-        public void block_to_string()
-        {
-            for (int i = 0; i < clist.Count; i++)
-            {
-                switch (clist[i].Name)
-                {
-                    case "Go":
-                        listBox2.Items.Add("前へ進む．");
-                        break;
-                    case "Left":
-                        listBox2.Items.Add("左へ向きを変える．");
-                        break;
-                    case "Right":
-                        listBox2.Items.Add("右へ向きを変える．");
-                        break;
-                    case "Iffront":
-                        listBox2.Items.Add("もし、正面に壁があるなら、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Ifleft":
-                        listBox2.Items.Add("もし、左に壁があるなら、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Ifright":
-                        listBox2.Items.Add("もし、右に壁があるなら、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Whilefront":
-                        listBox2.Items.Add("正面に壁がある間は、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Whileleft":
-                        listBox2.Items.Add("左に壁がある間は、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "Whileright":
-                        listBox2.Items.Add("右に壁がある間は、");
-                        listBox2.Items.Add("{");
-                        break;
-                    case "End":
-                        listBox2.Items.Add("}");
-                        break;
-
-                }
-            }
-        }
-        //-------------------------------------------------------------------------------------------
         //ブロックの取り消し
         private void button3_Click(object sender, EventArgs e)
         {
 
-        }
-        //-------------------------------------------------------------------------------------------
-        private void clist_Click(object sender, EventArgs e)
-        {
-            //x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
-            //y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
-            //string b_name;
-
-            //for (int i = 0; i < clist.Count; i++)
-            //{
-            //    if (clist[i].Name != "Indent")
-            //    {
-            //        if (y >= clist[i].Top && y < clist[i].Bottom)
-            //        {
-            //            timer1.Enabled = true;
-            //            m_dtTill = DateTime.Now.AddSeconds(3);
-
-            //            b_name = clist[i].Name;
-            //            DialogResult result = MessageBox.Show(b_name + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-            //            if (result == DialogResult.Yes)
-            //            {
-            //                clist.RemoveAt(i);
-            //                //再描画
-            //                block_View(0);
-            //            }
-            //            else
-            //            {
-
-            //            }
-            //            break;
-            //        }
-
-            //    }
-            //}
-        }
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private DateTime m_dtTill = DateTime.MinValue;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-
-            if (m_dtTill > DateTime.Now)
-            {
-                if (clist[1].BackColor == Color.Empty)
-                    clist[1].BackColor = Color.Red;
-                else
-                    clist[1].BackColor = Color.Empty;
-            }
-            else
-            {
-                clist[1].BackColor = Color.Empty;
-
-            }
         }
 
     }

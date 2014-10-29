@@ -1,0 +1,22 @@
+﻿Revert "Merge branch 'master' of https://github.com/InoueDevelop/HelloBase"
+
+This reverts commit 9119d109351fbdb8385e6d2563cb3f4d3518043f, reversing
+changes made to 9f7970b28424a6a1e71801454d7243936752c08f.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch oldmaster
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   Block/Block/Form1.Designer.cs
+#	modified:   Block/Block/Form1.cs
+#	modified:   HelloMaze/BitmapPaint/BitmapPaint.csproj
+#	modified:   Plock.sln
+#	modified:   Plock/Block.cs
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	HelloMaze/evgoal.png
+
