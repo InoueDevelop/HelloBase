@@ -53,19 +53,20 @@ namespace Plock
 
         void safevelocityenabled()
         {
-         
+
             if (this.velocityBar1.InvokeRequired)
             {
-              safevelocityenable safeveloenabled = new safevelocityenable(() => safebarenable());
+                safevelocityenable safeveloenabled = new safevelocityenable(() => safebarenable());
                 this.Invoke(safeveloenabled);
             }
-            else { this.velocityBar1.Enabled=true; }
-     
+            else { this.velocityBar1.Enabled = true; }
+
         }
 
-        void safebarenable(){
+        void safebarenable()
+        {
 
-            velocityBar1.Enabled=true;
+            velocityBar1.Enabled = true;
         }
 
 
@@ -165,7 +166,7 @@ namespace Plock
             arrowPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             arrowPicture.Image = Properties.Resources.矢印;
             panel1.Controls.Add(arrowPicture);
-            panel1.AutoScrollPosition = new Point(0, top);    
+            panel1.AutoScrollPosition = new Point(0, top);
 
         }
         private void arrow_View()
@@ -176,7 +177,8 @@ namespace Plock
                 string number = gameInterpriter.getCurrentCode().Split(':')[0];
                 arrow_View(40 + int.Parse(number) * 40);
             }
-            catch(Exception exc) {
+            catch (Exception exc)
+            {
                 textBox1.Text = exc.ToString();
             }
         }
@@ -527,8 +529,7 @@ namespace Plock
                 indent.Clear();
                 block_View(0);
                 countBlocknumber();
-                //line_View(40 + (countBlocknumber()) * 40);
-                //label1.Text = clist.Count.ToString();
+             
             }
             else { };
 
@@ -560,12 +561,10 @@ namespace Plock
                         if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
                             b_name = clist[i].Name;
-                            //DialogResult result = MessageBox.Show(translate(b_name) + "のブロックを消去してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                            //if (result == DialogResult.Yes)
-                            //{
+                            
                             setIndent(i, InsertPoint.Before);         //消す前にインデックス情報更新
                             clist.RemoveAt(i); //対象ブロックの削除
-                            int count = 0;
+                          
                             if (i < clist.Count)
                             {
                                 while (clist[i].Name.Contains("Indent"))
@@ -578,15 +577,8 @@ namespace Plock
                             //再描画
                             block_View(0);
                             countBlocknumber();
-                            //line_View(40 + (countBlocknumber()) * 40);
-                            //label1.Text = clist.Count.ToString();
+           
                             break;
-                            //}
-                            //else
-                            //{
-
-                            //}
-                            //break;
                         }
                     }
                     //If While ブロックを選択した場合は中身を全て削除．
@@ -737,6 +729,8 @@ namespace Plock
             else
             {
                 setIndent(index, InsertPoint.Before); //消す前にインデックス情報更新
+                indent.Pop(); //削除するときはindentの先頭の情報は捨てる（挿入するときのみ使う）
+                indent_count--;
 
                 int count = last_endIndex - index + 1;
                 while (count > 0)
@@ -754,15 +748,31 @@ namespace Plock
             }
         }
         //---------------------------------------------------------------------------------------------------------------
+        private bool canInsert()
+        {
+            int condition_count = 0;
+            int end_count = 0;
+            for (int i = 0; i < clist.Count; i++)
+            {
+                if (!clist[i].Name.Contains("Indent"))
+                    if (clist[i].Name.Contains("If") || clist[i].Name.Contains("While"))
+                        condition_count++;
+                if (clist[i].Name == "End")
+                    end_count++;
+
+            }
+            if (condition_count == end_count)
+                return true;
+            else
+                return false;
+        }
+        //---------------------------------------------------------------------------------------------------------------
         private void insertBlock()
         {
             for (int i = 0; i < clist.Count; i++)
             {
                 if (y >= clist[i].Top && y < clist[i].Bottom)
                 {
-                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
-                    {
-
                         if (!checkBracket())
                         {
                             MessageBox.Show("「ここまで」ブロックを配置してから挿入位置を変えてね", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -776,13 +786,6 @@ namespace Plock
                             break;
                         }
                         else break;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("「もし」と「繰り返し」のブロックを挿入位置に選ぶことは出来ません", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                    }
                 }
 
             }
@@ -792,20 +795,27 @@ namespace Plock
         private void setIndent(int point, InsertPoint where)
         {
             int first_point = point;
+            bool firstisCondition=false;
             Stack<string> line_indents = new Stack<string>();
-            if (clist[point].Name.Contains("Indent"))
+
+            if (clist[point].Name.Contains("If") || clist[point].Name.Contains("While"))
             {
-                while (clist[point].Name.Contains("Indent"))
-                    point--;
+                if (clist[point].Name.Contains("If"))
+                    line_indents.Push("If");
+                else if (clist[point].Name.Contains("While"))
+                    line_indents.Push("While");
+
+                firstisCondition=true;
             }
+
 
             if (point + 1 < clist.Count)
             {
                 while (clist[point + 1].Name.Contains("Indent"))
                 {
-                    if (clist[point + 1].Name == "Indent_If")
+                    if (clist[point + 1].Name.Contains("If") && !clist[point + 1].Name.Contains("End"))
                         line_indents.Push("If");
-                    else
+                    else if (clist[point + 1].Name.Contains("While") && !clist[point + 1].Name.Contains("End"))
                         line_indents.Push("While");
                     point++;
                     if (point + 1 >= clist.Count)
@@ -817,7 +827,12 @@ namespace Plock
             if (where == InsertPoint.Before)
                 insert_point = first_point;
             else if (where == InsertPoint.After)
+            {
                 insert_point = first_point + indent_count + 1; //挿入開始位置の更新(後ろに挿入)
+                if (firstisCondition)
+                    insert_point--;
+            }
+            
             indent = new Stack<string>(line_indents.ToArray()); // スタックのコピー 参照型であることに注意
         }
         //---------------------------------------------------------------------------------------------------------------
@@ -997,7 +1012,7 @@ namespace Plock
                     if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
                     velocityBar1.Enabled = false;
                     Queue<string> codeQueue = block_to_queue();
-                    gameInterpriter.build(codeQueue);                    
+                    gameInterpriter.build(codeQueue);
                     runAllTimer.Start();//タイマーをスタートする
                     button1.Enabled = false;////他のボタンを押せなくする
                     button3.Enabled = false;
@@ -1071,7 +1086,7 @@ namespace Plock
         {
             button2.DoDragDrop(button2.Text, DragDropEffects.Copy |
       DragDropEffects.Move);
-            
+
 
         }
 
@@ -1094,13 +1109,13 @@ namespace Plock
             block_Create(comand, insert_point);
             block_View(0);
             textBox1.Text = e.Data.GetData(DataFormats.Text).ToString();
-            
+
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            
-            
+
+
         }
 
         private void panel1_DragOver(object sender, DragEventArgs e)
@@ -1112,8 +1127,8 @@ namespace Plock
             int cu_y = System.Windows.Forms.Cursor.Position.Y;
             x = panel1.PointToClient(System.Windows.Forms.Cursor.Position).X; //スクリーン座標　⇒　クライエント座標
             y = panel1.PointToClient(System.Windows.Forms.Cursor.Position).Y;
-            DummyBlockView(x,y, Properties.Resources.前へ);
-            
+            DummyBlockView(x, y, Properties.Resources.前へ);
+
         }
         private void DummyBlockView(int left, int top, Bitmap bm)
         {
