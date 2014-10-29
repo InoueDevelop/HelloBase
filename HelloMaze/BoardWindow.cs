@@ -66,7 +66,7 @@ namespace HelloMaze
         public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
         public int stagecount = 0;
-        int setswitch=(int) set.Wall;
+        int setswitch=(int) set.None;
         public int _sql
         {
             get { return squarelength; }
@@ -104,7 +104,7 @@ namespace HelloMaze
             Item,
             Goal,
             Del,
-
+            None
         }
 
         #endregion
@@ -155,7 +155,7 @@ namespace HelloMaze
                 }
             }
 
-            controlobj = new PlayerObject(gridsizeheight / 2, gridsizeheight / 2);
+            controlobj = new PlayerObject(gridsizeheight / 2-1, gridsizeheight / 2);
             ListObjectBoard.Add(controlobj);
             bmppaint.ObjectSetPaint(controlobj.ObjectPositionX, controlobj.ObjectPositionY, fore, ref CanPutObjectOnBoard, controlobj.ObjectSelectNum);
 
@@ -1894,8 +1894,8 @@ namespace HelloMaze
                         break;
                     case (int)set.Del: deleteobj(x,y);
                         break;
-            
-            
+                    case (int)set.None:
+                        break;
             }
             }
 
@@ -1955,6 +1955,12 @@ namespace HelloMaze
         {
             setswitch = (int)set.Del;
             settingobj.Text = "削除";
+        }
+
+        private void 設定なしToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setswitch = (int)set.None;
+            settingobj.Text = "";
         }
 
     }

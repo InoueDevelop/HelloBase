@@ -83,6 +83,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.settingobj = new System.Windows.Forms.Label();
+            this.設定なしToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Object_Control_Menu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,7 +104,7 @@
             this.toolStripMenuItem1,
             this.削除ToolStripMenuItem});
             this.Object_Control_Menu.Name = "Object_Control_Menu";
-            this.Object_Control_Menu.Size = new System.Drawing.Size(153, 186);
+            this.Object_Control_Menu.Size = new System.Drawing.Size(143, 164);
             this.Object_Control_Menu.Opened += new System.EventHandler(this.Object_Control_Menu_Opened);
             // 
             // 主人公を置くToolStripMenuItem
@@ -148,7 +149,8 @@
             this.壁を置くToolStripMenuItem,
             this.アイテムを置くToolStripMenuItem1,
             this.ゴールを作るToolStripMenuItem,
-            this.削除ToolStripMenuItem1});
+            this.削除ToolStripMenuItem1,
+            this.設定なしToolStripMenuItem});
             this.左ドラッグtoolStripMenuItem4.Name = "左ドラッグtoolStripMenuItem4";
             this.左ドラッグtoolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.左ドラッグtoolStripMenuItem4.Text = "左ドラッグ設定";
@@ -622,9 +624,15 @@
             this.settingobj.AutoSize = true;
             this.settingobj.Location = new System.Drawing.Point(287, 39);
             this.settingobj.Name = "settingobj";
-            this.settingobj.Size = new System.Drawing.Size(47, 12);
+            this.settingobj.Size = new System.Drawing.Size(0, 12);
             this.settingobj.TabIndex = 13;
-            this.settingobj.Text = "配置：壁";
+            // 
+            // 設定なしToolStripMenuItem
+            // 
+            this.設定なしToolStripMenuItem.Name = "設定なしToolStripMenuItem";
+            this.設定なしToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.設定なしToolStripMenuItem.Text = "設定なし";
+            this.設定なしToolStripMenuItem.Click += new System.EventHandler(this.設定なしToolStripMenuItem_Click);
             // 
             // BoardData
             // 
@@ -722,6 +730,7 @@
         private System.Windows.Forms.ToolStripMenuItem アイテムを置くToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ゴールを作るToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 削除ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 設定なしToolStripMenuItem;
     }
 }
 
