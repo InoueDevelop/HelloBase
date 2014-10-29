@@ -1869,10 +1869,7 @@ namespace HelloMaze
 		}
         
 
-        private void pictureBox1_DragOver(object sender, DragEventArgs e)
-        {
-            
-        }
+
 
 
         System.Threading.Timer dragevent;

@@ -83,10 +83,6 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -518,7 +514,6 @@
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
-			this.pictureBox1.DragOver += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragOver);
 			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
 			this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
 			// 
@@ -547,13 +542,9 @@
 			// 
 			this.tabPage2.Controls.Add(this.label1);
 			this.tabPage2.Controls.Add(this.comboBox1);
-			this.tabPage2.Controls.Add(this.label15);
 			this.tabPage2.Controls.Add(this.richTextBox1);
-			this.tabPage2.Controls.Add(this.label14);
 			this.tabPage2.Controls.Add(this.button1);
-			this.tabPage2.Controls.Add(this.label13);
 			this.tabPage2.Controls.Add(this.pictureBox3);
-			this.tabPage2.Controls.Add(this.label12);
 			this.tabPage2.Controls.Add(this.pictureBox2);
 			this.tabPage2.Controls.Add(this.label2);
 			this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -564,50 +555,6 @@
 			this.tabPage2.Text = "チュートリアル";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(423, 304);
-			this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(72, 15);
-			this.label15.TabIndex = 24;
-			this.label15.Text = "④ 条件文";
-			this.label15.Visible = false;
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(423, 279);
-			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(77, 15);
-			this.label14.TabIndex = 23;
-			this.label14.Text = "③ 繰り返し";
-			this.label14.Visible = false;
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(423, 251);
-			this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(102, 15);
-			this.label13.TabIndex = 21;
-			this.label13.Text = "② 向きを変える";
-			this.label13.Visible = false;
-			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(389, 236);
-			this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(81, 15);
-			this.label12.TabIndex = 19;
-			this.label12.Text = "① 前へ進む";
-			this.label12.Visible = false;
-			// 
 			// richTextBox1
 			// 
 			this.richTextBox1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -615,7 +562,7 @@
 			this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.richTextBox1.Name = "richTextBox1";
 			this.richTextBox1.ReadOnly = true;
-			this.richTextBox1.Size = new System.Drawing.Size(554, 189);
+			this.richTextBox1.Size = new System.Drawing.Size(560, 244);
 			this.richTextBox1.TabIndex = 16;
 			this.richTextBox1.Text = "";
 			this.richTextBox1.Visible = false;
@@ -624,7 +571,7 @@
 			// 
 			this.pictureBox3.Image = global::HelloMaze.Properties.Resources.goal;
 			this.pictureBox3.InitialImage = null;
-			this.pictureBox3.Location = new System.Drawing.Point(19, 249);
+			this.pictureBox3.Location = new System.Drawing.Point(161, 336);
 			this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox3.Name = "pictureBox3";
 			this.pictureBox3.Size = new System.Drawing.Size(281, 240);
@@ -635,10 +582,10 @@
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Location = new System.Drawing.Point(53, 280);
+			this.pictureBox2.Location = new System.Drawing.Point(55, 301);
 			this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(499, 240);
+			this.pictureBox2.Size = new System.Drawing.Size(495, 308);
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox2.TabIndex = 20;
 			this.pictureBox2.TabStop = false;
@@ -646,10 +593,11 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(31, 550);
+			this.button1.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.button1.Location = new System.Drawing.Point(462, 9);
 			this.button1.Margin = new System.Windows.Forms.Padding(4);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(100, 29);
+			this.button1.Size = new System.Drawing.Size(117, 30);
 			this.button1.TabIndex = 18;
 			this.button1.Text = "次へ";
 			this.button1.UseVisualStyleBackColor = true;
@@ -680,10 +628,10 @@
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Items.AddRange(new object[] {
             "最初から",
-            "前へ進む",
-            "向きを変える",
-            "繰り返し",
-            "条件文"});
+            "1. 前へ進む",
+            "2. 向きを変える",
+            "3. 繰り返し",
+            "4. 条件文"});
 			this.comboBox1.Location = new System.Drawing.Point(128, 6);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(172, 33);
@@ -801,13 +749,9 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.RichTextBox richTextBox1;
-		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.TabPage tabPage3;
 		private System.Windows.Forms.ToolStripMenuItem 開始ToolStripMenuItem;
