@@ -65,7 +65,7 @@ namespace HelloMaze
         public Bitmap fore;
         public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
-        public int stagecount = 0;
+        public int stagecount = 21;
         int setswitch=(int) set.None;
         public int _sql
         {
@@ -122,10 +122,10 @@ namespace HelloMaze
             settingobj.Text = "";
             dragevent = new System.Threading.Timer(new System.Threading.TimerCallback(called), null, System.Threading.Timeout.Infinite, 50);
             locked = false;
-            stagecount = 0;
             ListObjectBoard = new List<BoardObject>();
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             fore = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            stagecount = 1;
 
 
             this.pictureBox1.BackgroundImage = back;
@@ -535,6 +535,7 @@ namespace HelloMaze
 
        
            public void Goalevent() {
+
                writer(stagecount-1);
 
                    stagecount++;
