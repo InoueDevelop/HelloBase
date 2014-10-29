@@ -163,6 +163,55 @@ namespace HelloMaze
             refreshPictureBox1();
             g.Dispose();
 
+            try
+            {
+                if (reader(10) == 0 && tutorialcount == 0)
+                {
+                    label16.Visible = true;
+                    label17.Visible = true;
+                    label18.Visible = true;
+                    label19.Visible = true;
+                    label20.Visible = true;
+                    label21.Visible = true;
+                    label22.Visible = true;
+                    label23.Visible = true;
+                    label24.Visible = true;
+                    label25.Visible = true;
+                }
+                else
+                {
+                    label16.Visible = false;
+                    label17.Visible = false;
+                    label18.Visible = false;
+                    label19.Visible = false;
+                    label20.Visible = false;
+                    label21.Visible = false;
+                    label22.Visible = false;
+                    label23.Visible = false;
+                    label24.Visible = false;
+                    label25.Visible = false;
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                using (StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
+                {
+                    for (int i = 0; i < 20; i++)
+                    {
+                        sw.WriteLine(0);
+                    }
+                }
+                label16.Visible = false;
+                label17.Visible = false;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+            }
         }
 
 
@@ -464,61 +513,7 @@ namespace HelloMaze
             {
                 RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() => pictureBox1.Refresh());
                 this.Invoke(refreshPic1);
-                RefreshPictureBox1 co = new RefreshPictureBox1(() =>
-                {
-                    try
-                    {
-                        if (reader(10) == 0 && tutorialcount == 0)
-                        {
-                            label16.Visible = true;
-                            label17.Visible = true;
-                            label18.Visible = true;
-                            label19.Visible = true;
-                            label20.Visible = true;
-                            label21.Visible = true;
-                            label22.Visible = true;
-                            label23.Visible = true;
-                            label24.Visible = true;
-                            label25.Visible = true;
-                        }
-                        else
-                        {
-                            label16.Visible = false;
-                            label17.Visible = false;
-                            label18.Visible = false;
-                            label19.Visible = false;
-                            label20.Visible = false;
-                            label21.Visible = false;
-                            label22.Visible = false;
-                            label23.Visible = false;
-                            label24.Visible = false;
-                            label25.Visible = false;
-                        }
-                    }
-                    catch(FileNotFoundException)
-                    {
-                        using (StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
-                        {
-                            for (int i = 0; i < 20; i++)
-                            {
-                                sw.WriteLine(0);
-                            }
-                        }
-                        label16.Visible = false;
-                        label17.Visible = false;
-                        label18.Visible = false;
-                        label19.Visible = false;
-                        label20.Visible = false;
-                        label21.Visible = false;
-                        label22.Visible = false;
-                        label23.Visible = false;
-                        label24.Visible = false;
-                        label25.Visible = false;
-                    }
-                    
-                    
-                });
-                this.Invoke(co);  
+                 
                 
             }
             else { this.pictureBox1.Refresh(); }
