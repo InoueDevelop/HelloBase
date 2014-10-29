@@ -167,32 +167,7 @@ namespace HelloMaze
 
             try
             {
-                if (reader(10) == 0 && tutorialcount == 0)
-                {
-                    label16.Visible = true;
-                    label17.Visible = true;
-                    label18.Visible = true;
-                    label19.Visible = true;
-                    label20.Visible = true;
-                    label21.Visible = true;
-                    label22.Visible = true;
-                    label23.Visible = true;
-                    label24.Visible = true;
-                    label25.Visible = true;
-                }
-                else
-                {
-                    label16.Visible = false;
-                    label17.Visible = false;
-                    label18.Visible = false;
-                    label19.Visible = false;
-                    label20.Visible = false;
-                    label21.Visible = false;
-                    label22.Visible = false;
-                    label23.Visible = false;
-                    label24.Visible = false;
-                    label25.Visible = false;
-                }
+               
             }
             catch (FileNotFoundException)
             {
@@ -203,16 +178,7 @@ namespace HelloMaze
                         sw.WriteLine(0);
                     }
                 }
-                label16.Visible = false;
-                label17.Visible = false;
-                label18.Visible = false;
-                label19.Visible = false;
-                label20.Visible = false;
-                label21.Visible = false;
-                label22.Visible = false;
-                label23.Visible = false;
-                label24.Visible = false;
-                label25.Visible = false;
+
             }
         }
 
@@ -588,23 +554,6 @@ namespace HelloMaze
 
                        }
 
-                       if (!(reader(10) > 0) && tutorialcount == 0)
-                       {
-                           RefreshPictureBox1 co = new RefreshPictureBox1(() =>
-                           {
-                               label16.Visible = true;
-                               label17.Visible = true;
-                               label18.Visible = true;
-                               label19.Visible = true;
-                               label20.Visible = true;
-                               label21.Visible = true;
-                               label22.Visible = true;
-                               label23.Visible = true;
-                               label24.Visible = true;
-                               label25.Visible = true;
-                           });
-                           this.Invoke(co);
-                       }
 
 
 
@@ -1009,26 +958,10 @@ namespace HelloMaze
 		#region //ステージ選択
 
 		/// <summary>
-        /// labelset
+        /// ステージ1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void label1_Click(object sender, EventArgs e)
-        {
-			string path = "Userdata/stage1";
-			var resource = Properties.Resources.stage1;
-			try
-			{
-				loadDataset(path, resource);
-				stagecount = 1;
-				stage.Text = "現在のステージ:" + stagecount;
-			}
-			catch (Exception exc)
-			{
-
-			}
-        }
-
 		private void toolStripMenuItem6_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage1";
@@ -1045,152 +978,201 @@ namespace HelloMaze
 			}
 		}
 
-        
-        private void label2_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage2";
-            var resource = Properties.Resources.stage2;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 2;
-                stage.Text = "現在のステージ:"+stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ2
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem7_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage2";
+			var resource = Properties.Resources.stage2;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 2;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage3";
-            var resource = Properties.Resources.stage3;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 3;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ3
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem8_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage3";
+			var resource = Properties.Resources.stage3;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 3;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage4";
-            var resource = Properties.Resources.stage4;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 4;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ4
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem9_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage4";
+			var resource = Properties.Resources.stage4;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 4;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage5";
-            var resource = Properties.Resources.stage5;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 5;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ5
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem10_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage5";
+			var resource = Properties.Resources.stage5;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 5;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage6";
-            var resource = Properties.Resources.stage6;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 6;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ6
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem11_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage6";
+			var resource = Properties.Resources.stage6;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 6;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage7";
-            var resource = Properties.Resources.stage7;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 7;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ7
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem12_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage7";
+			var resource = Properties.Resources.stage7;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 7;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage8";
-            var resource = Properties.Resources.stage8;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 8;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ8
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem13_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage8";
+			var resource = Properties.Resources.stage8;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 8;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage9";
-            var resource = Properties.Resources.stage9;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 9;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ9
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem14_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage9";
+			var resource = Properties.Resources.stage9;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 9;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-            string path = "Userdata/stage10";
-            var resource = Properties.Resources.stage10;
-            try
-            {
-                loadDataset(path, resource);
-                stagecount = 10;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
+		/// <summary>
+		/// ステージ10
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem15_Click(object sender, EventArgs e)
+		{
+			string path = "Userdata/stage10";
+			var resource = Properties.Resources.stage10;
+			try
+			{
+				loadDataset(path, resource);
+				stagecount = 10;
+				stage.Text = "現在のステージ:" + stagecount;
+			}
+			catch (Exception exc)
+			{
 
-            }
-        }
+			}
+		}
 
-		private void label16_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ11
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem16_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage11";
 			var resource = Properties.Resources.stage11;
@@ -1206,7 +1188,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label17_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ12
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem17_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage12";
 			var resource = Properties.Resources.stage12;
@@ -1222,7 +1209,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label18_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ13
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem18_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage13";
 			var resource = Properties.Resources.stage13;
@@ -1238,7 +1230,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label19_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ14
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem19_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage14";
 			var resource = Properties.Resources.stage14;
@@ -1254,7 +1251,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label20_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ15
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem20_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage15";
 			var resource = Properties.Resources.stage15;
@@ -1270,7 +1272,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label21_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ16
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem21_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage16";
 			var resource = Properties.Resources.stage16;
@@ -1286,7 +1293,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label22_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ17
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem22_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage17";
 			var resource = Properties.Resources.stage17;
@@ -1301,8 +1313,13 @@ namespace HelloMaze
 
 			}
 		}
-
-		private void label23_Click(object sender, EventArgs e)
+		
+		/// <summary>
+		/// ステージ18
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem23_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage18";
 			var resource = Properties.Resources.stage18;
@@ -1318,7 +1335,13 @@ namespace HelloMaze
 			}
 		}
 
-		private void label24_Click(object sender, EventArgs e)
+
+		/// <summary>
+		/// ステージ19
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem24_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage19";
 			var resource = Properties.Resources.stage19;
@@ -1334,7 +1357,12 @@ namespace HelloMaze
 			}
 		}
 
-		private void label25_Click(object sender, EventArgs e)
+		/// <summary>
+		/// ステージ20
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolStripMenuItem25_Click(object sender, EventArgs e)
 		{
 			string path = "Userdata/stage20";
 			var resource = Properties.Resources.stage20;
@@ -1357,26 +1385,6 @@ namespace HelloMaze
             {
 
                 label11.Text = "チュートリアル終了";
-                label1.Visible = false;
-                label2.Visible = false;
-                label3.Visible = false;
-                label4.Visible = false;
-                label5.Visible = false;
-                label6.Visible = false;
-                label7.Visible = false;
-                label8.Visible = false;
-                label9.Visible = false;
-                label10.Visible = false;
-                label16.Visible = false;
-                label17.Visible = false;
-                label18.Visible = false;
-                label19.Visible = false;
-                label20.Visible = false;
-                label21.Visible = false;
-                label22.Visible = false;
-                label23.Visible = false;
-                label24.Visible = false;
-                label25.Visible = false;
                 richTextBox1.Visible = true;
                 richTextBox1.Text = "はじめてのプログラミングへようこそ！";
                 tutorialcount++;
@@ -1389,28 +1397,9 @@ namespace HelloMaze
             else
             {
                 label11.Text = "チュートリアル開始";
-                label1.Visible = true;
-                label2.Visible = true;
-                label3.Visible = true;
-                label4.Visible = true;
-                label5.Visible = true;
-                label6.Visible = true;
-                label7.Visible = true;
-                label8.Visible = true;
-                label9.Visible = true;
-                label10.Visible = true;
+               
                 if(reader(10)==0)
                 {
-                    label16.Visible = true;
-                    label17.Visible = true;
-                    label18.Visible = true;
-                    label19.Visible = true;
-                    label20.Visible = true;
-                    label21.Visible = true;
-                    label22.Visible = true;
-                    label23.Visible = true;
-                    label24.Visible = true;
-                    label25.Visible = true;
                     tutorialcount = 0;
                 }
 
@@ -1992,6 +1981,8 @@ namespace HelloMaze
             constructer();
         }
 		#endregion
+
+
 
 
 		

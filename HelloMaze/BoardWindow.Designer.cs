@@ -52,55 +52,22 @@
 			this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
 			this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label25 = new System.Windows.Forms.Label();
-			this.label24 = new System.Windows.Forms.Label();
-			this.label23 = new System.Windows.Forms.Label();
-			this.label22 = new System.Windows.Forms.Label();
-			this.label21 = new System.Windows.Forms.Label();
-			this.label20 = new System.Windows.Forms.Label();
-			this.label19 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.stage = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.settingobj = new System.Windows.Forms.Label();
 			this.ステージ選択ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.チュートリアルモードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ステージ選択ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.初級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.中級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.上級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+			this.中級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+			this.上級ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,13 +78,26 @@
 			this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
-			this.label1 = new System.Windows.Forms.Label();
+			this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.stage = new System.Windows.Forms.Label();
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.button1 = new System.Windows.Forms.Button();
+			this.settingobj = new System.Windows.Forms.Label();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Object_Control_Menu
@@ -266,7 +246,7 @@
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-			this.menuStrip1.Size = new System.Drawing.Size(1241, 31);
+			this.menuStrip1.Size = new System.Drawing.Size(1262, 31);
 			this.menuStrip1.TabIndex = 5;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -309,33 +289,225 @@
 			this.終了ToolStripMenuItem.Text = "終了";
 			this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
 			// 
+			// ステージ選択ToolStripMenuItem
+			// 
+			this.ステージ選択ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.チュートリアルモードToolStripMenuItem,
+            this.ステージ選択ToolStripMenuItem1});
+			this.ステージ選択ToolStripMenuItem.Name = "ステージ選択ToolStripMenuItem";
+			this.ステージ選択ToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
+			this.ステージ選択ToolStripMenuItem.Text = "モード";
+			// 
+			// チュートリアルモードToolStripMenuItem
+			// 
+			this.チュートリアルモードToolStripMenuItem.Name = "チュートリアルモードToolStripMenuItem";
+			this.チュートリアルモードToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+			this.チュートリアルモードToolStripMenuItem.Text = "チュートリアルモード";
+			// 
+			// ステージ選択ToolStripMenuItem1
+			// 
+			this.ステージ選択ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.初級ToolStripMenuItem,
+            this.中級ToolStripMenuItem,
+            this.上級ToolStripMenuItem});
+			this.ステージ選択ToolStripMenuItem1.Name = "ステージ選択ToolStripMenuItem1";
+			this.ステージ選択ToolStripMenuItem1.Size = new System.Drawing.Size(230, 28);
+			this.ステージ選択ToolStripMenuItem1.Text = "ステージ選択";
+			// 
+			// 初級ToolStripMenuItem
+			// 
+			this.初級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem10});
+			this.初級ToolStripMenuItem.Name = "初級ToolStripMenuItem";
+			this.初級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
+			this.初級ToolStripMenuItem.Text = "初級";
+			// 
+			// toolStripMenuItem6
+			// 
+			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem6.Text = "1";
+			this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+			// 
+			// toolStripMenuItem7
+			// 
+			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem7.Text = "2";
+			this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+			// 
+			// toolStripMenuItem8
+			// 
+			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+			this.toolStripMenuItem8.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem8.Text = "3";
+			this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+			// 
+			// toolStripMenuItem9
+			// 
+			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+			this.toolStripMenuItem9.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem9.Text = "4";
+			this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
+			// 
+			// toolStripMenuItem10
+			// 
+			this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+			this.toolStripMenuItem10.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem10.Text = "5";
+			this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+			// 
+			// 中級ToolStripMenuItem
+			// 
+			this.中級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem11,
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem15});
+			this.中級ToolStripMenuItem.Name = "中級ToolStripMenuItem";
+			this.中級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
+			this.中級ToolStripMenuItem.Text = "中級";
+			// 
+			// toolStripMenuItem11
+			// 
+			this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+			this.toolStripMenuItem11.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem11.Text = "6";
+			this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
+			// 
+			// toolStripMenuItem12
+			// 
+			this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+			this.toolStripMenuItem12.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem12.Text = "7";
+			this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
+			// 
+			// toolStripMenuItem13
+			// 
+			this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+			this.toolStripMenuItem13.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem13.Text = "8";
+			this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
+			// 
+			// toolStripMenuItem14
+			// 
+			this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+			this.toolStripMenuItem14.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem14.Text = "9";
+			this.toolStripMenuItem14.Click += new System.EventHandler(this.toolStripMenuItem14_Click);
+			// 
+			// toolStripMenuItem15
+			// 
+			this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+			this.toolStripMenuItem15.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem15.Text = "10";
+			this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
+			// 
+			// 上級ToolStripMenuItem
+			// 
+			this.上級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem16,
+            this.toolStripMenuItem17,
+            this.toolStripMenuItem18,
+            this.toolStripMenuItem19,
+            this.toolStripMenuItem20,
+            this.toolStripMenuItem21,
+            this.toolStripMenuItem22,
+            this.toolStripMenuItem23,
+            this.toolStripMenuItem24,
+            this.toolStripMenuItem25});
+			this.上級ToolStripMenuItem.Name = "上級ToolStripMenuItem";
+			this.上級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
+			this.上級ToolStripMenuItem.Text = "上級";
+			// 
+			// toolStripMenuItem16
+			// 
+			this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+			this.toolStripMenuItem16.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem16.Text = "11";
+			this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
+			// 
+			// toolStripMenuItem17
+			// 
+			this.toolStripMenuItem17.Name = "toolStripMenuItem17";
+			this.toolStripMenuItem17.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem17.Text = "12";
+			this.toolStripMenuItem17.Click += new System.EventHandler(this.toolStripMenuItem17_Click);
+			// 
+			// toolStripMenuItem18
+			// 
+			this.toolStripMenuItem18.Name = "toolStripMenuItem18";
+			this.toolStripMenuItem18.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem18.Text = "13";
+			this.toolStripMenuItem18.Click += new System.EventHandler(this.toolStripMenuItem18_Click);
+			// 
+			// toolStripMenuItem19
+			// 
+			this.toolStripMenuItem19.Name = "toolStripMenuItem19";
+			this.toolStripMenuItem19.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem19.Text = "14";
+			this.toolStripMenuItem19.Click += new System.EventHandler(this.toolStripMenuItem19_Click);
+			// 
+			// toolStripMenuItem20
+			// 
+			this.toolStripMenuItem20.Name = "toolStripMenuItem20";
+			this.toolStripMenuItem20.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem20.Text = "15";
+			this.toolStripMenuItem20.Click += new System.EventHandler(this.toolStripMenuItem20_Click);
+			// 
+			// toolStripMenuItem21
+			// 
+			this.toolStripMenuItem21.Name = "toolStripMenuItem21";
+			this.toolStripMenuItem21.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem21.Text = "16";
+			this.toolStripMenuItem21.Click += new System.EventHandler(this.toolStripMenuItem21_Click);
+			// 
+			// toolStripMenuItem22
+			// 
+			this.toolStripMenuItem22.Name = "toolStripMenuItem22";
+			this.toolStripMenuItem22.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem22.Text = "17";
+			this.toolStripMenuItem22.Click += new System.EventHandler(this.toolStripMenuItem22_Click);
+			// 
+			// toolStripMenuItem23
+			// 
+			this.toolStripMenuItem23.Name = "toolStripMenuItem23";
+			this.toolStripMenuItem23.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem23.Text = "18";
+			this.toolStripMenuItem23.Click += new System.EventHandler(this.toolStripMenuItem23_Click);
+			// 
+			// toolStripMenuItem24
+			// 
+			this.toolStripMenuItem24.Name = "toolStripMenuItem24";
+			this.toolStripMenuItem24.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem24.Text = "19";
+			this.toolStripMenuItem24.Click += new System.EventHandler(this.toolStripMenuItem24_Click);
+			// 
+			// toolStripMenuItem25
+			// 
+			this.toolStripMenuItem25.Name = "toolStripMenuItem25";
+			this.toolStripMenuItem25.Size = new System.Drawing.Size(175, 28);
+			this.toolStripMenuItem25.Text = "20";
+			this.toolStripMenuItem25.Click += new System.EventHandler(this.toolStripMenuItem25_Click);
+			// 
+			// ヘルプToolStripMenuItem
+			// 
+			this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
+			this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
+			this.ヘルプToolStripMenuItem.Text = "ヘルプ";
+			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.label25);
-			this.groupBox1.Controls.Add(this.label24);
-			this.groupBox1.Controls.Add(this.label23);
-			this.groupBox1.Controls.Add(this.label22);
-			this.groupBox1.Controls.Add(this.label21);
-			this.groupBox1.Controls.Add(this.label20);
-			this.groupBox1.Controls.Add(this.label19);
-			this.groupBox1.Controls.Add(this.label18);
-			this.groupBox1.Controls.Add(this.label17);
-			this.groupBox1.Controls.Add(this.label16);
-			this.groupBox1.Controls.Add(this.label15);
-			this.groupBox1.Controls.Add(this.label14);
-			this.groupBox1.Controls.Add(this.label13);
-			this.groupBox1.Controls.Add(this.label12);
 			this.groupBox1.Controls.Add(this.label11);
-			this.groupBox1.Controls.Add(this.label10);
-			this.groupBox1.Controls.Add(this.label9);
-			this.groupBox1.Controls.Add(this.label8);
-			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.label1);
+			this.groupBox1.Controls.Add(this.label12);
+			this.groupBox1.Controls.Add(this.label13);
+			this.groupBox1.Controls.Add(this.label14);
+			this.groupBox1.Controls.Add(this.label15);
 			this.groupBox1.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.groupBox1.Location = new System.Drawing.Point(16, 49);
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -346,151 +518,16 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "ステージ選択";
 			// 
-			// label25
+			// label11
 			// 
-			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(131, 521);
-			this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(58, 45);
-			this.label25.TabIndex = 24;
-			this.label25.Text = "20";
-			this.label25.Click += new System.EventHandler(this.label25_Click);
-			// 
-			// label24
-			// 
-			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(131, 476);
-			this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label24.Name = "label24";
-			this.label24.Size = new System.Drawing.Size(58, 45);
-			this.label24.TabIndex = 23;
-			this.label24.Text = "19";
-			this.label24.Click += new System.EventHandler(this.label24_Click);
-			// 
-			// label23
-			// 
-			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(131, 431);
-			this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(58, 45);
-			this.label23.TabIndex = 22;
-			this.label23.Text = "18";
-			this.label23.Click += new System.EventHandler(this.label23_Click);
-			// 
-			// label22
-			// 
-			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(131, 386);
-			this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(58, 45);
-			this.label22.TabIndex = 21;
-			this.label22.Text = "17";
-			this.label22.Click += new System.EventHandler(this.label22_Click);
-			// 
-			// label21
-			// 
-			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(131, 341);
-			this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(58, 45);
-			this.label21.TabIndex = 20;
-			this.label21.Text = "16";
-			this.label21.Click += new System.EventHandler(this.label21_Click);
-			// 
-			// label20
-			// 
-			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(131, 296);
-			this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(58, 45);
-			this.label20.TabIndex = 19;
-			this.label20.Text = "15";
-			this.label20.Click += new System.EventHandler(this.label20_Click);
-			// 
-			// label19
-			// 
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(131, 254);
-			this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(58, 45);
-			this.label19.TabIndex = 18;
-			this.label19.Text = "14";
-			this.label19.Click += new System.EventHandler(this.label19_Click);
-			// 
-			// label18
-			// 
-			this.label18.AutoSize = true;
-			this.label18.Location = new System.Drawing.Point(131, 209);
-			this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(58, 45);
-			this.label18.TabIndex = 17;
-			this.label18.Text = "13";
-			this.label18.Click += new System.EventHandler(this.label18_Click);
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(131, 159);
-			this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(58, 45);
-			this.label17.TabIndex = 16;
-			this.label17.Text = "12";
-			this.label17.Click += new System.EventHandler(this.label17_Click);
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(131, 112);
-			this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(58, 45);
-			this.label16.TabIndex = 15;
-			this.label16.Text = "11";
-			this.label16.Click += new System.EventHandler(this.label16_Click);
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(19, 261);
-			this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(150, 45);
-			this.label15.TabIndex = 14;
-			this.label15.Text = "④ 条件文";
-			this.label15.Visible = false;
-			this.label15.Click += new System.EventHandler(this.label15_Click);
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(19, 215);
-			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(180, 45);
-			this.label14.TabIndex = 13;
-			this.label14.Text = "③ 繰り返し";
-			this.label14.Visible = false;
-			this.label14.Click += new System.EventHandler(this.label14_Click);
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(19, 166);
-			this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(240, 45);
-			this.label13.TabIndex = 12;
-			this.label13.Text = "② 向きを変える";
-			this.label13.Visible = false;
-			this.label13.Click += new System.EventHandler(this.label13_Click);
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(12, 49);
+			this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(290, 45);
+			this.label11.TabIndex = 10;
+			this.label11.Text = "チュートリアル開始";
+			this.label11.Click += new System.EventHandler(this.label11_Click);
 			// 
 			// label12
 			// 
@@ -504,115 +541,41 @@
 			this.label12.Visible = false;
 			this.label12.Click += new System.EventHandler(this.label12_Click);
 			// 
-			// label11
+			// label13
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(12, 49);
-			this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(290, 45);
-			this.label11.TabIndex = 10;
-			this.label11.Text = "チュートリアル開始";
-			this.label11.Click += new System.EventHandler(this.label11_Click);
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(19, 166);
+			this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(240, 45);
+			this.label13.TabIndex = 12;
+			this.label13.Text = "② 向きを変える";
+			this.label13.Visible = false;
+			this.label13.Click += new System.EventHandler(this.label13_Click);
 			// 
-			// label10
+			// label14
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(43, 521);
-			this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(58, 45);
-			this.label10.TabIndex = 9;
-			this.label10.Text = "10";
-			this.label10.Click += new System.EventHandler(this.label10_Click);
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(19, 215);
+			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(180, 45);
+			this.label14.TabIndex = 13;
+			this.label14.Text = "③ 繰り返し";
+			this.label14.Visible = false;
+			this.label14.Click += new System.EventHandler(this.label14_Click);
 			// 
-			// label9
+			// label15
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(63, 476);
-			this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(39, 45);
-			this.label9.TabIndex = 8;
-			this.label9.Text = "9";
-			this.label9.Click += new System.EventHandler(this.label9_Click);
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(63, 431);
-			this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(39, 45);
-			this.label8.TabIndex = 7;
-			this.label8.Text = "8";
-			this.label8.Click += new System.EventHandler(this.label8_Click);
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(63, 386);
-			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(39, 45);
-			this.label7.TabIndex = 6;
-			this.label7.Text = "7";
-			this.label7.Click += new System.EventHandler(this.label7_Click);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(63, 341);
-			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(39, 45);
-			this.label6.TabIndex = 5;
-			this.label6.Text = "6";
-			this.label6.Click += new System.EventHandler(this.label6_Click);
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(63, 296);
-			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(39, 45);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "5";
-			this.label5.Click += new System.EventHandler(this.label5_Click);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(63, 251);
-			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(39, 45);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "4";
-			this.label4.Click += new System.EventHandler(this.label4_Click);
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(63, 206);
-			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(39, 45);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "3";
-			this.label3.Click += new System.EventHandler(this.label3_Click);
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(63, 161);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(39, 45);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "2";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(19, 261);
+			this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(150, 45);
+			this.label15.TabIndex = 14;
+			this.label15.Text = "④ 条件文";
+			this.label15.Visible = false;
+			this.label15.Click += new System.EventHandler(this.label15_Click);
 			// 
 			// stage
 			// 
@@ -647,6 +610,28 @@
 			this.button1.Visible = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
+			// settingobj
+			// 
+			this.settingobj.AutoSize = true;
+			this.settingobj.Location = new System.Drawing.Point(383, 49);
+			this.settingobj.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.settingobj.Name = "settingobj";
+			this.settingobj.Size = new System.Drawing.Size(0, 15);
+			this.settingobj.TabIndex = 13;
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.Image = global::HelloMaze.Properties.Resources.goal;
+			this.pictureBox3.InitialImage = null;
+			this.pictureBox3.Location = new System.Drawing.Point(385, 685);
+			this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(281, 240);
+			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox3.TabIndex = 12;
+			this.pictureBox3.TabStop = false;
+			this.pictureBox3.Visible = false;
+			// 
 			// pictureBox2
 			// 
 			this.pictureBox2.Location = new System.Drawing.Point(363, 685);
@@ -672,239 +657,13 @@
 			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
 			this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
 			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.Image = global::HelloMaze.Properties.Resources.goal;
-			this.pictureBox3.InitialImage = null;
-			this.pictureBox3.Location = new System.Drawing.Point(385, 685);
-			this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(281, 240);
-			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox3.TabIndex = 12;
-			this.pictureBox3.TabStop = false;
-			this.pictureBox3.Visible = false;
-			// 
-			// settingobj
-			// 
-			this.settingobj.AutoSize = true;
-			this.settingobj.Location = new System.Drawing.Point(383, 49);
-			this.settingobj.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.settingobj.Name = "settingobj";
-			this.settingobj.Size = new System.Drawing.Size(0, 15);
-			this.settingobj.TabIndex = 13;
-			// 
-			// ステージ選択ToolStripMenuItem
-			// 
-			this.ステージ選択ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.チュートリアルモードToolStripMenuItem,
-            this.ステージ選択ToolStripMenuItem1});
-			this.ステージ選択ToolStripMenuItem.Name = "ステージ選択ToolStripMenuItem";
-			this.ステージ選択ToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
-			this.ステージ選択ToolStripMenuItem.Text = "モード";
-			// 
-			// チュートリアルモードToolStripMenuItem
-			// 
-			this.チュートリアルモードToolStripMenuItem.Name = "チュートリアルモードToolStripMenuItem";
-			this.チュートリアルモードToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
-			this.チュートリアルモードToolStripMenuItem.Text = "チュートリアルモード";
-			// 
-			// ステージ選択ToolStripMenuItem1
-			// 
-			this.ステージ選択ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.初級ToolStripMenuItem,
-            this.中級ToolStripMenuItem,
-            this.上級ToolStripMenuItem});
-			this.ステージ選択ToolStripMenuItem1.Name = "ステージ選択ToolStripMenuItem1";
-			this.ステージ選択ToolStripMenuItem1.Size = new System.Drawing.Size(230, 28);
-			this.ステージ選択ToolStripMenuItem1.Text = "ステージ選択";
-			// 
-			// ヘルプToolStripMenuItem
-			// 
-			this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-			this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
-			this.ヘルプToolStripMenuItem.Text = "ヘルプ";
-			// 
-			// 初級ToolStripMenuItem
-			// 
-			this.初級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8,
-            this.toolStripMenuItem9,
-            this.toolStripMenuItem10});
-			this.初級ToolStripMenuItem.Name = "初級ToolStripMenuItem";
-			this.初級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
-			this.初級ToolStripMenuItem.Text = "初級";
-			// 
-			// 中級ToolStripMenuItem
-			// 
-			this.中級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem11,
-            this.toolStripMenuItem12,
-            this.toolStripMenuItem13,
-            this.toolStripMenuItem14,
-            this.toolStripMenuItem15});
-			this.中級ToolStripMenuItem.Name = "中級ToolStripMenuItem";
-			this.中級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
-			this.中級ToolStripMenuItem.Text = "中級";
-			// 
-			// 上級ToolStripMenuItem
-			// 
-			this.上級ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem16,
-            this.toolStripMenuItem17,
-            this.toolStripMenuItem18,
-            this.toolStripMenuItem19,
-            this.toolStripMenuItem20,
-            this.toolStripMenuItem21,
-            this.toolStripMenuItem22,
-            this.toolStripMenuItem23,
-            this.toolStripMenuItem24,
-            this.toolStripMenuItem25});
-			this.上級ToolStripMenuItem.Name = "上級ToolStripMenuItem";
-			this.上級ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
-			this.上級ToolStripMenuItem.Text = "上級";
-			// 
-			// toolStripMenuItem6
-			// 
-			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-			this.toolStripMenuItem6.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem6.Text = "1";
-			this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
-			// 
-			// toolStripMenuItem7
-			// 
-			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-			this.toolStripMenuItem7.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem7.Text = "2";
-			// 
-			// toolStripMenuItem8
-			// 
-			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-			this.toolStripMenuItem8.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem8.Text = "3";
-			// 
-			// toolStripMenuItem9
-			// 
-			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-			this.toolStripMenuItem9.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem9.Text = "4";
-			// 
-			// toolStripMenuItem10
-			// 
-			this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-			this.toolStripMenuItem10.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem10.Text = "5";
-			// 
-			// toolStripMenuItem11
-			// 
-			this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-			this.toolStripMenuItem11.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem11.Text = "6";
-			// 
-			// toolStripMenuItem12
-			// 
-			this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-			this.toolStripMenuItem12.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem12.Text = "7";
-			// 
-			// toolStripMenuItem13
-			// 
-			this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-			this.toolStripMenuItem13.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem13.Text = "8";
-			// 
-			// toolStripMenuItem14
-			// 
-			this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-			this.toolStripMenuItem14.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem14.Text = "9";
-			// 
-			// toolStripMenuItem15
-			// 
-			this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-			this.toolStripMenuItem15.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem15.Text = "10";
-			// 
-			// toolStripMenuItem16
-			// 
-			this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-			this.toolStripMenuItem16.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem16.Text = "11";
-			// 
-			// toolStripMenuItem17
-			// 
-			this.toolStripMenuItem17.Name = "toolStripMenuItem17";
-			this.toolStripMenuItem17.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem17.Text = "12";
-			// 
-			// toolStripMenuItem18
-			// 
-			this.toolStripMenuItem18.Name = "toolStripMenuItem18";
-			this.toolStripMenuItem18.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem18.Text = "13";
-			// 
-			// toolStripMenuItem19
-			// 
-			this.toolStripMenuItem19.Name = "toolStripMenuItem19";
-			this.toolStripMenuItem19.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem19.Text = "14";
-			// 
-			// toolStripMenuItem20
-			// 
-			this.toolStripMenuItem20.Name = "toolStripMenuItem20";
-			this.toolStripMenuItem20.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem20.Text = "15";
-			// 
-			// toolStripMenuItem21
-			// 
-			this.toolStripMenuItem21.Name = "toolStripMenuItem21";
-			this.toolStripMenuItem21.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem21.Text = "16";
-			// 
-			// toolStripMenuItem22
-			// 
-			this.toolStripMenuItem22.Name = "toolStripMenuItem22";
-			this.toolStripMenuItem22.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem22.Text = "17";
-			// 
-			// toolStripMenuItem23
-			// 
-			this.toolStripMenuItem23.Name = "toolStripMenuItem23";
-			this.toolStripMenuItem23.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem23.Text = "18";
-			// 
-			// toolStripMenuItem24
-			// 
-			this.toolStripMenuItem24.Name = "toolStripMenuItem24";
-			this.toolStripMenuItem24.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem24.Text = "19";
-			// 
-			// toolStripMenuItem25
-			// 
-			this.toolStripMenuItem25.Name = "toolStripMenuItem25";
-			this.toolStripMenuItem25.Size = new System.Drawing.Size(175, 28);
-			this.toolStripMenuItem25.Text = "20";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(63, 116);
-			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(39, 45);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "1";
-			this.label1.Click += new System.EventHandler(this.label1_Click);
-			// 
 			// BoardData
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.BackColor = System.Drawing.Color.Bisque;
-			this.ClientSize = new System.Drawing.Size(1262, 705);
+			this.ClientSize = new System.Drawing.Size(1283, 705);
 			this.ControlBox = false;
 			this.Controls.Add(this.settingobj);
 			this.Controls.Add(this.pictureBox3);
@@ -931,9 +690,9 @@
 			this.menuStrip1.PerformLayout();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -957,16 +716,7 @@
         private System.Windows.Forms.ToolStripMenuItem セーブToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ロードToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label stage;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -975,17 +725,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label settingobj;
         private System.Windows.Forms.ToolStripMenuItem 左ドラッグtoolStripMenuItem4;
@@ -1023,7 +763,6 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem23;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem24;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem25;
-		private System.Windows.Forms.Label label1;
     }
 }
 
