@@ -50,6 +50,7 @@
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
 			this.ロードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
 			this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label25 = new System.Windows.Forms.Label();
@@ -245,6 +246,7 @@
 			this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ロードToolStripMenuItem,
             this.セーブToolStripMenuItem,
+            this.toolStripMenuItem4,
             this.終了ToolStripMenuItem});
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
 			this.toolStripMenuItem3.Size = new System.Drawing.Size(82, 27);
@@ -253,21 +255,28 @@
 			// ロードToolStripMenuItem
 			// 
 			this.ロードToolStripMenuItem.Name = "ロードToolStripMenuItem";
-			this.ロードToolStripMenuItem.Size = new System.Drawing.Size(125, 28);
+			this.ロードToolStripMenuItem.Size = new System.Drawing.Size(170, 28);
 			this.ロードToolStripMenuItem.Text = "ロード";
 			this.ロードToolStripMenuItem.Click += new System.EventHandler(this.ロードToolStripMenuItem_Click);
 			// 
 			// セーブToolStripMenuItem
 			// 
 			this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
-			this.セーブToolStripMenuItem.Size = new System.Drawing.Size(125, 28);
+			this.セーブToolStripMenuItem.Size = new System.Drawing.Size(170, 28);
 			this.セーブToolStripMenuItem.Text = "セーブ";
 			this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(170, 28);
+			this.toolStripMenuItem4.Text = "迷路リセット";
+			this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
 			// 
 			// 終了ToolStripMenuItem
 			// 
 			this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-			this.終了ToolStripMenuItem.Size = new System.Drawing.Size(125, 28);
+			this.終了ToolStripMenuItem.Size = new System.Drawing.Size(170, 28);
 			this.終了ToolStripMenuItem.Text = "終了";
 			this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
 			// 
@@ -764,6 +773,7 @@
         private System.Windows.Forms.ToolStripMenuItem ゴールを作るToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 削除ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 設定なしToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
     }
 }
 

@@ -118,6 +118,8 @@ namespace HelloMaze
 
         public void constructer()
         {
+            setswitch = (int)set.None;
+            settingobj.Text = "";
             dragevent = new System.Threading.Timer(new System.Threading.TimerCallback(called), null, System.Threading.Timeout.Infinite, 50);
             locked = false;
             ListObjectBoard = new List<BoardObject>();
@@ -558,7 +560,7 @@ namespace HelloMaze
                            RefreshPictureBox1 constr = new RefreshPictureBox1(() => constructer());
                            this.Invoke(constr);
                        }
-                       else { constructer(); }
+                       else {constructer(); }
                    }
                    else if (clearwindow.Loaddatastart == true)
                    {
@@ -1962,6 +1964,11 @@ namespace HelloMaze
         {
             setswitch = (int)set.None;
             settingobj.Text = "";
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            constructer();
         }
 
     }
