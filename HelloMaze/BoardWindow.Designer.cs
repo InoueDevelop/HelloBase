@@ -86,7 +86,6 @@
 			this.label15 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -94,6 +93,9 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.開始ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -543,15 +545,17 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.label1);
+			this.tabPage2.Controls.Add(this.comboBox1);
 			this.tabPage2.Controls.Add(this.label15);
 			this.tabPage2.Controls.Add(this.richTextBox1);
 			this.tabPage2.Controls.Add(this.label14);
 			this.tabPage2.Controls.Add(this.button1);
 			this.tabPage2.Controls.Add(this.label13);
-			this.tabPage2.Controls.Add(this.label11);
 			this.tabPage2.Controls.Add(this.pictureBox3);
 			this.tabPage2.Controls.Add(this.label12);
 			this.tabPage2.Controls.Add(this.pictureBox2);
+			this.tabPage2.Controls.Add(this.label2);
 			this.tabPage2.Location = new System.Drawing.Point(4, 25);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -563,7 +567,7 @@
 			// label15
 			// 
 			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(373, 162);
+			this.label15.Location = new System.Drawing.Point(423, 304);
 			this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(72, 15);
@@ -574,7 +578,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(368, 132);
+			this.label14.Location = new System.Drawing.Point(423, 279);
 			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(77, 15);
@@ -585,7 +589,7 @@
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(368, 104);
+			this.label13.Location = new System.Drawing.Point(423, 251);
 			this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(102, 15);
@@ -593,20 +597,10 @@
 			this.label13.Text = "② 向きを変える";
 			this.label13.Visible = false;
 			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(368, 36);
-			this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(114, 15);
-			this.label11.TabIndex = 17;
-			this.label11.Text = "チュートリアル開始";
-			// 
 			// label12
 			// 
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(368, 75);
+			this.label12.Location = new System.Drawing.Point(389, 236);
 			this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(81, 15);
@@ -616,10 +610,12 @@
 			// 
 			// richTextBox1
 			// 
-			this.richTextBox1.Location = new System.Drawing.Point(19, 33);
+			this.richTextBox1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.richTextBox1.Location = new System.Drawing.Point(19, 46);
 			this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(324, 208);
+			this.richTextBox1.ReadOnly = true;
+			this.richTextBox1.Size = new System.Drawing.Size(554, 189);
 			this.richTextBox1.TabIndex = 16;
 			this.richTextBox1.Text = "";
 			this.richTextBox1.Visible = false;
@@ -628,7 +624,7 @@
 			// 
 			this.pictureBox3.Image = global::HelloMaze.Properties.Resources.goal;
 			this.pictureBox3.InitialImage = null;
-			this.pictureBox3.Location = new System.Drawing.Point(53, 249);
+			this.pictureBox3.Location = new System.Drawing.Point(19, 249);
 			this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox3.Name = "pictureBox3";
 			this.pictureBox3.Size = new System.Drawing.Size(281, 240);
@@ -639,10 +635,10 @@
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Location = new System.Drawing.Point(31, 249);
+			this.pictureBox2.Location = new System.Drawing.Point(53, 280);
 			this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(600, 240);
+			this.pictureBox2.Size = new System.Drawing.Size(499, 240);
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox2.TabIndex = 20;
 			this.pictureBox2.TabStop = false;
@@ -676,6 +672,43 @@
 			this.開始ToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
 			this.開始ToolStripMenuItem.Text = "開始";
 			this.開始ToolStripMenuItem.Click += new System.EventHandler(this.開始ToolStripMenuItem_Click);
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Items.AddRange(new object[] {
+            "最初から",
+            "前へ進む",
+            "向きを変える",
+            "繰り返し",
+            "条件文"});
+			this.comboBox1.Location = new System.Drawing.Point(128, 6);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(172, 33);
+			this.comboBox1.TabIndex = 25;
+			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.label1.Location = new System.Drawing.Point(14, 9);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(108, 25);
+			this.label1.TabIndex = 26;
+			this.label1.Text = "学習の項目";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.label2.Location = new System.Drawing.Point(14, 59);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(565, 25);
+			this.label2.TabIndex = 27;
+			this.label2.Text = "チュートリアルを開始するには[モード]から[チュートリアルモード]を[開始]";
 			// 
 			// BoardData
 			// 
@@ -773,12 +806,14 @@
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.TabPage tabPage3;
 		private System.Windows.Forms.ToolStripMenuItem 開始ToolStripMenuItem;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.Label label2;
     }
 }
 

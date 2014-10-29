@@ -180,6 +180,8 @@ namespace HelloMaze
                 }
 
             }
+
+			(tabControl1.TabPages[1] as Control).Enabled = false;
         }
 
 
@@ -1384,35 +1386,24 @@ namespace HelloMaze
 		{
 			if (tutorialcount == 0)
 			{
+				(tabControl1.TabPages[1] as Control).Enabled = true;
+				label2.Visible = false;
 				tabControl1.SelectedIndex = 1;
-				label11.Text = "チュートリアル終了";
+				comboBox1.SelectedIndex = 0;
+				開始ToolStripMenuItem.Text = "終了";
 				richTextBox1.Visible = true;
 				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
 				tutorialcount++;
-				label12.Visible = true;
-				label13.Visible = true;
-				label14.Visible = true;
-				label15.Visible = true;
 				button1.Visible = true;
 			}
 			else
 			{
-				
-				label11.Text = "チュートリアル開始";
-
-				if (reader(10) == 0)
-				{
-					tutorialcount = 0;
-				}
-
-
+				開始ToolStripMenuItem.Text = "開始";
+				label2.Visible = true;
+				(tabControl1.TabPages[1] as Control).Enabled = false;
+				tutorialcount = 0;
 				richTextBox1.Visible = false;
-
 				tutorial = 0;
-				label12.Visible = false;
-				label13.Visible = false;
-				label14.Visible = false;
-				label15.Visible = false;
 				button1.Visible = false;
 
 			}
@@ -1466,10 +1457,6 @@ namespace HelloMaze
 
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         #region チュートリアル
         private void button1_Click(object sender, EventArgs e)
@@ -1840,42 +1827,46 @@ namespace HelloMaze
             }
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "パート1 前への進み方";
-            tutorial = 2;
-        }
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (comboBox1.SelectedIndex == 0) 
+			{
+				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
+				tutorial = 0;
+			}
+			else if (comboBox1.SelectedIndex == 1)
+			{
+				richTextBox1.Text = "パート1 前への進み方";
+				tutorial = 2;
+			}
+			else if (comboBox1.SelectedIndex == 2)
+			{
+				richTextBox1.Text = "パート2 向きを変える\nこの主人公はまっすぐにしか進めません…\nそれでは今のようにプレイヤーの右側にゴールがある場合はどうしましょう？";
+				string path = "Userdata/tutorial2";
+				var resource = Properties.Resources.tutorial2;
+				try
+				{
+					demoDataset(path, resource);
+					stagecount = 1;
+					stage.Text = "現在のステージ:" + stagecount;
+				}
+				catch (Exception exc)
+				{
 
-        private void label13_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "パート2 向きを変える\nこの主人公はまっすぐにしか進めません…\nそれでは今のようにプレイヤーの右側にゴールがある場合はどうしましょう？";
-            string path = "Userdata/tutorial2";
-            var resource = Properties.Resources.tutorial2;
-            try
-            {
-                demoDataset(path, resource);
-                stagecount = 1;
-                stage.Text = "現在のステージ:" + stagecount;
-            }
-            catch (Exception exc)
-            {
-
-            }
-            tutorial = 5;
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "パート3 繰り返し";
-            tutorial = 11;
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "パート4 条件文";
-            tutorial = 17;
-        }
-
+				}
+				tutorial = 5;
+			}
+			else if (comboBox1.SelectedIndex == 3)
+			{
+				richTextBox1.Text = "パート3 繰り返し";
+				tutorial = 11;
+			}
+			else if(comboBox1.SelectedIndex == 4)
+			{
+				richTextBox1.Text = "パート4 条件文";
+				tutorial = 17;
+			}
+		}
         
 
         private void pictureBox1_DragOver(object sender, DragEventArgs e)
@@ -1985,6 +1976,8 @@ namespace HelloMaze
             constructer();
         }
 		#endregion
+
+		
 
 		
 
