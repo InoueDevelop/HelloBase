@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Block</RootNamespace>
     <AssemblyName>Block</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,14 +86,16 @@
     <Content Include="Resource\もし右壁なし.png" />
     <Content Include="Resource\もし左壁なし.png" />
     <Content Include="Resource\もし正面壁なし.png" />
-    <Content Include="Resource\もし（間）.png" />
+    <Content Include="Resource\もしend.png" />
+    <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\前へ.png" />
     <Content Include="Resource\右.png" />
     <Content Include="Resource\左.png" />
     <Content Include="Resource\繰り返し右壁なし.png" />
     <Content Include="Resource\繰り返し左壁なし.png" />
     <Content Include="Resource\繰り返し正面壁なし.png" />
-    <Content Include="Resource\繰り返し（間）.png" />
+    <Content Include="Resource\繰り返しend.png" />
+    <Content Include="Resource\繰り返しinterval.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

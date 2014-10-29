@@ -19,7 +19,7 @@ namespace Plock
             Open zady = new Open();//オープニング画面
             
             if(zady.cFlag == false)zady.ShowDialog();
-            if (zady.eFlag == true)Application.Run(new Form1());
+            if (zady.eFlag == true)Application.Run(new Form2());
         }
     }
 }

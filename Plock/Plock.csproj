@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plock</RootNamespace>
     <AssemblyName>Plock</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -57,40 +57,69 @@
     <Compile Include="baseGameMethodProperty.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Block.cs" />
+    <Compile Include="BoardWindow.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoardWindow.resx</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="gameInterpriter.cs" />
     <Compile Include="GameMethodProperty.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BoardWindow.resx" />
+    <EmbeddedResource Include="BoardWindow.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BoardWindow.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.config" />
+    <None Include="bin\Debug\Userdata\stage3" />
+    <None Include="bin\Debug\Userdata\stage4" />
+    <None Include="bin\Debug\Userdata\stage8" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resource\stage1" />
+    <None Include="Resource\stage10" />
+    <None Include="Resource\stage2" />
+    <None Include="Resource\stage5" />
+    <None Include="Resource\stage6" />
+    <None Include="Resource\stage7" />
+    <None Include="Resource\stage8" />
+    <None Include="Resource\stage9" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -108,6 +137,37 @@
       <Project>{f264178b-f392-4be7-bc58-d78206855fa6}</Project>
       <Name>open</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\図1.png" />
+    <None Include="Resources\繰り返し.png" />
+    <None Include="Resources\繰り返し右壁あり.png" />
+    <None Include="Resources\繰り返し左壁あり.png" />
+    <None Include="Resources\繰り返し正面壁あり.png" />
+    <None Include="Resources\もし左壁あり.png" />
+    <None Include="Resources\もし右壁あり.png" />
+    <None Include="Resources\もし正面壁あり.png" />
+    <None Include="Resources\線１.png" />
+    <None Include="Resources\線２.png" />
+    <None Include="Resources\線３.png" />
+    <Content Include="Resource\もしend.png" />
+    <Content Include="Resource\もしinterval.png" />
+    <Content Include="Resource\繰り返しend.png" />
+    <Content Include="Resource\繰り返しinterval.png" />
+    <None Include="Resources\ここまで.png.png" />
+    <Content Include="Resource\ここまで.png" />
+    <Content Include="Resource\もし右壁なし.png" />
+    <Content Include="Resource\もし左壁なし.png" />
+    <Content Include="Resource\もし正面壁なし.png" />
+    <Content Include="Resource\前へ.png" />
+    <Content Include="Resource\右.png" />
+    <Content Include="Resource\左.png" />
+    <Content Include="Resource\繰り返し右壁なし.png" />
+    <Content Include="Resource\繰り返し左壁なし.png" />
+    <Content Include="Resource\繰り返し正面壁なし.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
