@@ -1379,45 +1379,49 @@ namespace HelloMaze
 		}
         #endregion // //
 
-        private void label11_Click(object sender, EventArgs e)
-        {
-            if(tutorialcount==0)
-            {
+		#region //チュートリアルモード
+		private void 開始ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (tutorialcount == 0)
+			{
+				tabControl1.SelectedIndex = 1;
+				label11.Text = "チュートリアル終了";
+				richTextBox1.Visible = true;
+				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
+				tutorialcount++;
+				label12.Visible = true;
+				label13.Visible = true;
+				label14.Visible = true;
+				label15.Visible = true;
+				button1.Visible = true;
+			}
+			else
+			{
+				
+				label11.Text = "チュートリアル開始";
 
-                label11.Text = "チュートリアル終了";
-                richTextBox1.Visible = true;
-                richTextBox1.Text = "はじめてのプログラミングへようこそ！";
-                tutorialcount++;
-                label12.Visible = true;
-                label13.Visible = true;
-                label14.Visible = true;
-                label15.Visible = true;
-                button1.Visible = true;
-            }
-            else
-            {
-                label11.Text = "チュートリアル開始";
-               
-                if(reader(10)==0)
-                {
-                    tutorialcount = 0;
-                }
+				if (reader(10) == 0)
+				{
+					tutorialcount = 0;
+				}
 
-                
-                richTextBox1.Visible = false;
 
-                tutorial = 0;
-                label12.Visible = false;
-                label13.Visible = false;
-                label14.Visible = false;
-                label15.Visible = false;
-                button1.Visible = false;
+				richTextBox1.Visible = false;
 
-            }
-            
-        }
+				tutorial = 0;
+				label12.Visible = false;
+				label13.Visible = false;
+				label14.Visible = false;
+				label15.Visible = false;
+				button1.Visible = false;
 
-        public static void writer(int stagecount)
+			}
+		}
+
+		#endregion
+
+
+		public static void writer(int stagecount)
         {
             int[] cl = new int[20]; 
             using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
@@ -1981,6 +1985,8 @@ namespace HelloMaze
             constructer();
         }
 		#endregion
+
+		
 
 
 
