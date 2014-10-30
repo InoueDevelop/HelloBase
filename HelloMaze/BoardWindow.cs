@@ -841,7 +841,7 @@ namespace HelloMaze
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 Dataset loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
                 fileStream.Close();
-                if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
+                if (DialogResult.Yes == MessageBox.Show("選んだステージに移動してもいいですか?", "かくにん", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
                 {
                     stateHistory = loadedData;
                 }
@@ -923,7 +923,7 @@ namespace HelloMaze
 				fileStream.Close();
 			}
 
-			if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
+			if (DialogResult.Yes == MessageBox.Show("選んだステージに移動してもいいですか?", "かくにん", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
 			{
 				stateHistory = loadedData;
 			}
