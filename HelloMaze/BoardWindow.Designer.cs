@@ -93,6 +93,7 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.button2 = new System.Windows.Forms.Button();
+			this.ステージ編集モードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -115,6 +116,7 @@
             this.削除ToolStripMenuItem});
 			this.Object_Control_Menu.Name = "Object_Control_Menu";
 			this.Object_Control_Menu.Size = new System.Drawing.Size(143, 164);
+			this.Object_Control_Menu.Opening += new System.ComponentModel.CancelEventHandler(this.Object_Control_Menu_Opening);
 			this.Object_Control_Menu.Opened += new System.EventHandler(this.Object_Control_Menu_Opened);
 			// 
 			// 主人公を置くToolStripMenuItem
@@ -274,7 +276,8 @@
 			// 
 			this.ステージ選択ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.チュートリアルモードToolStripMenuItem,
-            this.ステージ選択ToolStripMenuItem1});
+            this.ステージ選択ToolStripMenuItem1,
+            this.ステージ編集モードToolStripMenuItem});
 			this.ステージ選択ToolStripMenuItem.Name = "ステージ選択ToolStripMenuItem";
 			this.ステージ選択ToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
 			this.ステージ選択ToolStripMenuItem.Text = "モード";
@@ -301,8 +304,9 @@
             this.中級ToolStripMenuItem,
             this.上級ToolStripMenuItem});
 			this.ステージ選択ToolStripMenuItem1.Name = "ステージ選択ToolStripMenuItem1";
-			this.ステージ選択ToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-			this.ステージ選択ToolStripMenuItem1.Text = "ステージ選択";
+			this.ステージ選択ToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
+			this.ステージ選択ToolStripMenuItem1.Text = "ステージ選択モード";
+			this.ステージ選択ToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.ステージ選択ToolStripMenuItem1_DropDownOpened);
 			// 
 			// 初級ToolStripMenuItem
 			// 
@@ -669,6 +673,13 @@
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
+			// ステージ編集モードToolStripMenuItem
+			// 
+			this.ステージ編集モードToolStripMenuItem.Name = "ステージ編集モードToolStripMenuItem";
+			this.ステージ編集モードToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.ステージ編集モードToolStripMenuItem.Text = "ステージ編集モード";
+			this.ステージ編集モードToolStripMenuItem.Click += new System.EventHandler(this.ステージ編集モードToolStripMenuItem_Click);
+			// 
 			// BoardData
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -771,6 +782,7 @@
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.ToolStripMenuItem ステージ編集モードToolStripMenuItem;
     }
 }
 

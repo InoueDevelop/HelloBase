@@ -1168,105 +1168,118 @@ namespace Plock
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Front_Wall;
             pictureBox4.DoDragDrop(pictureBox4.Image, DragDropEffects.Copy |
       DragDropEffects.Move);
-            condition = Conditions.Front_Wall;
+            
         }
 
         private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Left_Wall;
             pictureBox5.DoDragDrop(pictureBox5.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_Wall;
+           
         }
 
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Right_Wall;
             pictureBox6.DoDragDrop(pictureBox6.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_Wall;
+            
         }
 
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Front_noWall;
             pictureBox7.DoDragDrop(pictureBox7.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Front_noWall;
+            
         }
 
         private void pictureBox8_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Left_noWall;
             pictureBox8.DoDragDrop(pictureBox8.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_noWall;
+            
         }
 
         private void pictureBox9_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Right_noWall;
             pictureBox9.DoDragDrop(pictureBox9.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_noWall;
+            
         }
 
         private void pictureBox10_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Front_Wall;
             pictureBox10.DoDragDrop(pictureBox10.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Front_Wall;
+            
         }
 
         private void pictureBox11_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Left_Wall;
             pictureBox11.DoDragDrop(pictureBox11.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_Wall;
+            
         }
 
         private void pictureBox12_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Right_Wall;
             pictureBox12.DoDragDrop(pictureBox12.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_Wall;
+            
         }
 
         private void pictureBox13_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Front_noWall;
             pictureBox13.DoDragDrop(pictureBox13.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Front_noWall;
+            
         }
 
         private void pictureBox14_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Left_noWall;
             pictureBox14.DoDragDrop(pictureBox14.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_noWall;
+            
         }
 
         private void pictureBox15_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Right_noWall;
             pictureBox15.DoDragDrop(pictureBox15.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_noWall;
+            
         }
 
         private void pictureBox16_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Forever;
             pictureBox16.DoDragDrop(pictureBox16.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Forever;
+            
         }
 
         #endregion
