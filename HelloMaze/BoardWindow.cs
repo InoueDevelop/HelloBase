@@ -2571,7 +2571,43 @@ namespace HelloMaze
 
         private void button4_Click(object sender, EventArgs e)
         {
+            string path = "stage" + stagecount.ToString();
+            byte[] resource = (byte[])Properties.Resources.ResourceManager.GetObject(path);
+            try
+            {
+                using (Stream writeStream = new FileStream(path, FileMode.Create))
+                {
+                    BinaryWriter bw = new BinaryWriter(writeStream);
+                    bw.Write(resource);
+                }
 
+                Dataset loadedData;
+                using (Stream fileStream = new FileStream(path, FileMode.Open))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
+                    fileStream.Close();
+                }
+
+                    stateHistory = loadedData;
+                //this.=stateHistory.cpsquarelength;
+                back = stateHistory.cpback;
+                fore = stateHistory.cpfore;
+                this.pictureBox1.BackgroundImage = back;
+                this.pictureBox1.Image = fore;
+                controlobj = stateHistory.cpcontrolobj;
+                CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+                ListObjectBoard = stateHistory.cp_ListObjectBoard;
+                stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
+            }
+            catch (Exception exc)
+            {
+
+            }
         }
 
 		
