@@ -1683,6 +1683,8 @@ namespace HelloMaze
 				richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックを配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置してすべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
                 tutorial++;
                 pictureBox2.Visible = true;
+                stage.Text = "現在のステージ:チュートリアル2";
+                stagecount = 30;
                 pictureBox2.Image = Properties.Resources.direction;
                 if (locked == true)
                 {
@@ -1706,7 +1708,7 @@ namespace HelloMaze
                     {
                         demoDataset(path, resource);
                         stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル2" + stagecount;
+                        stage.Text = "現在のステージ:チュートリアル2";
                     }
                     catch (Exception exc)
                     {
