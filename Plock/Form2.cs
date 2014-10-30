@@ -250,8 +250,8 @@ namespace Plock
             pb.Left = left_pos + indent_count * indent_size;
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
-            //pb.Click += new EventHandler(clist_Click);
-            pb.Click += new EventHandler(onClick1);
+            pb.Click += new EventHandler(clist_Click);
+            //pb.Click += new EventHandler(onClick1);
             //PicutureBoxの上でドロップした場合でも通常通りの動作をするように
             pb.AllowDrop = true;
             pb.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
@@ -759,19 +759,19 @@ namespace Plock
             {
                 if (y >= clist[i].Top && y < clist[i].Bottom)
                 {
-                    if (!checkBracket())
-                    {
-                        MessageBox.Show("「ここまで」ブロックを配置してから挿入位置を変えてね", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                    }
+                    //if (!checkBracket())
+                    //{
+                    //    MessageBox.Show("「ここまで」ブロックを配置してから挿入位置を変えてね", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //    break;
+                    //}
 
-                    DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                    if (result == DialogResult.Yes)
-                    {
+                    //DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+                    //if (result == DialogResult.Yes)
+                    //{
                         setIndent(i, InsertPoint.After);
                         break;
-                    }
-                    else break;
+                    //}
+                    //else break;
                 }
 
             }
@@ -1082,10 +1082,21 @@ namespace Plock
         {
             panel1.Controls.Remove(dummyBlock);
             panel1.Controls.Remove(line);
-            
+
+            //setDropTarget();
+            insertBlock();
             block_Create(comand, insert_point);
             block_View(0);
             countBlocknumber();
+
+            if (comand == Comands.If || comand == Comands.While)
+            {
+                //setDropTarget();
+                comand = Comands.End;
+                block_Create(comand, insert_point+1);
+                block_View(0);
+                countBlocknumber();
+            }
             
         }
 
@@ -1161,12 +1172,17 @@ namespace Plock
             //timer1.Tick += new System.EventHandler(timer1_Tick);
             if (insert_p - 1 < 0) line.Left = 100;
             else if (clist.Count >= 1) {
-                if(!clist[insert_p - 1].Name.Contains("Indent"))line.Left = clist[insert_p - 1].Left;
-
-                int insert_p2 = insert_p;//indentの時はindentでなくなるまで前に辿る
-                while(clist[insert_p2 - 1].Name.Contains("Indent")){
-                    insert_p2--;
-                    line.Left = clist[insert_p2 - 1].Left;
+                if (!clist[insert_p - 1].Name.Contains("Indent")) line.Left = clist[insert_p - 1].Left;
+                else
+                {
+                    int insert_p2 = insert_p;//indentの時はindentでなくなるまで前に辿る
+                    int _left = 0;
+                    while (clist[insert_p2 - 1].Name.Contains("Indent"))
+                    {
+                        insert_p2--;
+                        _left = clist[insert_p2 - 1].Left;
+                    }
+                    line.Left = _left;
                 }
             }
 
