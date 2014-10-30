@@ -2227,8 +2227,8 @@ namespace HelloMaze
         }
 		#endregion
 
-
-		public static void writer(int stagecount)
+        #region 不要
+        public static void writer(int stagecount)
 		{
 
 
@@ -2254,8 +2254,8 @@ namespace HelloMaze
 			}
 
 		}
-
-		public static int reader(int stagecount)
+        
+        public static int reader(int stagecount)
 		{
 			int[] cl = new int[stagecount];
 			int count = 0;
@@ -2276,6 +2276,7 @@ namespace HelloMaze
 			return count;
 
 		}
+        #endregion
 
         private void button2_Click(object sender, EventArgs e)
         {
