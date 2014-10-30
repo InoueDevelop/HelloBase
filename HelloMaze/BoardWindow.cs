@@ -1589,57 +1589,6 @@ namespace HelloMaze
 
 		#endregion
 
-
-		public static void writer(int stagecount)
-        {
-			
-
-            int[] cl = new int[20];
-
-			//using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
-			//{
-			//	for (int i = 0; i < 20; i++)
-			//	{
-			//		cl[i] = int.Parse(sr.ReadLine());
-			//	}
-			//}
-			//using (StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
-			//{
-			//	for (int i = 0; i < 20; i++)
-			//	{
-			//		sw.WriteLine(cl[i]);
-			//	}
-			//}
-            if(cl[stagecount]!=1)
-            {
-                cl[stagecount] = 1;
-            }
-            
-        }
-
-        public static int reader(int stagecount)
-        {
-            int[] cl = new int[stagecount];
-            int count=0;
-            using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
-            {
-                for (int i = 0; i < stagecount; i++)
-                {
-                    cl[i] = int.Parse(sr.ReadLine());
-                }
-            }
-            foreach(var n in cl)
-            {
-                if(n==0)
-                {
-                    count++;
-                }
-            }
-            return count;
-
-        }
-
-
         #region チュートリアル
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1667,7 +1616,8 @@ namespace HelloMaze
             }
             else if(tutorial == 2)
             {
-                string path = "Userdata/tutorial1";
+				comboBox1.SelectedIndex = 1;
+				string path = "Userdata/tutorial1";
                 var resource = Properties.Resources.tutorial1;
                 try
                 {
@@ -1728,7 +1678,8 @@ namespace HelloMaze
             }
             else if(tutorial == 5)
             {
-                richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックを配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置してすべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
+				comboBox1.SelectedIndex = 2;
+				richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックを配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置してすべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
                 tutorial++;
                 pictureBox2.Visible = true;
                 pictureBox2.Image = Properties.Resources.direction;
@@ -1768,7 +1719,8 @@ namespace HelloMaze
             }
             else if (tutorial == 7)
             {
-                if (ListObjectBoard[0].objectPositionX == 6 && ListObjectBoard[0].objectPositionY==5)
+				
+				if (ListObjectBoard[0].objectPositionX == 6 && ListObjectBoard[0].objectPositionY==5)
                 {
                     richTextBox1.Text = "ゴールできました!\nそれでは一回の実行でゴールを目指してみましょう。";
                     tutorial++;
@@ -1861,7 +1813,8 @@ namespace HelloMaze
             }
             else if(tutorial == 11)
             {
-                richTextBox1.Text = "ゴールが主人公の5マス先にあります。\nつまり 前へ進む ブロックを5つ配置すればクリアできますね！\nしかし5つも配置するのは大変です(´・ω・`)\n何か良い方法はないのでしょうか！！";
+				comboBox1.SelectedIndex = 3;
+				richTextBox1.Text = "ゴールが主人公の5マス先にあります。\nつまり 前へ進む ブロックを5つ配置すればクリアできますね！\nしかし5つも配置するのは大変です(´・ω・`)\n何か良い方法はないのでしょうか！！";
                 tutorial++;
                 string path = "Userdata/tutorial3";
                 var resource = Properties.Resources.tutorial3;
@@ -1986,7 +1939,8 @@ namespace HelloMaze
             }
             else if(tutorial == 17)
             {
-                richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには命令セットと条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれではすべて実行をクリックしてみましょう！";
+				comboBox1.SelectedIndex = 4;
+				richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには命令セットと条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれではすべて実行をクリックしてみましょう！";
                 string path = "Userdata/tutorial5";
                 var resource = Properties.Resources.tutorial5;
                 try
@@ -2240,6 +2194,56 @@ namespace HelloMaze
             constructer();
         }
 		#endregion
+
+
+		public static void writer(int stagecount)
+		{
+
+
+			int[] cl = new int[20];
+
+			//using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
+			//{
+			//	for (int i = 0; i < 20; i++)
+			//	{
+			//		cl[i] = int.Parse(sr.ReadLine());
+			//	}
+			//}
+			//using (StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
+			//{
+			//	for (int i = 0; i < 20; i++)
+			//	{
+			//		sw.WriteLine(cl[i]);
+			//	}
+			//}
+			if (cl[stagecount] != 1)
+			{
+				cl[stagecount] = 1;
+			}
+
+		}
+
+		public static int reader(int stagecount)
+		{
+			int[] cl = new int[stagecount];
+			int count = 0;
+			using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
+			{
+				for (int i = 0; i < stagecount; i++)
+				{
+					cl[i] = int.Parse(sr.ReadLine());
+				}
+			}
+			foreach (var n in cl)
+			{
+				if (n == 0)
+				{
+					count++;
+				}
+			}
+			return count;
+
+		}
 
         private void button2_Click(object sender, EventArgs e)
         {
