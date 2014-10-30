@@ -2589,6 +2589,13 @@ namespace HelloMaze
 
         private void button4_Click(object sender, EventArgs e)
         {
+            foreach (var n in ListObjectBoard)
+            {
+                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                {
+                    stagecount = stagecount - 1;
+                }
+            }
             string path = "stage" + stagecount.ToString();
             byte[] resource = (byte[])Properties.Resources.ResourceManager.GetObject(path);
             try
