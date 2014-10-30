@@ -109,9 +109,12 @@ namespace HelloMaze
             None
         }
 
+		private bool contextFlag = false;
+
         #endregion
 
-        public BoardData() //コンストラクタ
+		#region //コンストラクタ
+		public BoardData() 
         {
             InitializeComponent();
             constructer();
@@ -191,6 +194,9 @@ namespace HelloMaze
 
 			(tabControl1.TabPages[1] as Control).Enabled = false;
         }
+
+#endregion
+
 
 
         public void GetCursolPosition(int X, int Y, ref int x, ref int y)//クライアントを盤面座標に直すメソッド
@@ -797,6 +803,7 @@ namespace HelloMaze
 
         }
         #endregion
+
         #region //データ管理
         private void save_button_Click(object sender, EventArgs e)
         {
@@ -1518,6 +1525,7 @@ namespace HelloMaze
 				comboBox1.SelectedIndex = 0;
 				開始ToolStripMenuItem.Text = "終了";
 				ステージ選択ToolStripMenuItem1.Enabled = false;
+				ステージ編集モードToolStripMenuItem.Enabled = false;
 				richTextBox1.Visible = true;
 				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
 				tutorialcount++;
@@ -1528,6 +1536,7 @@ namespace HelloMaze
 			{
 				開始ToolStripMenuItem.Text = "開始";
 				ステージ選択ToolStripMenuItem1.Enabled = true;
+				ステージ編集モードToolStripMenuItem.Enabled = true;
 				label2.Visible = true;
 				(tabControl1.TabPages[1] as Control).Enabled = false;
 				tutorialcount = 0;
@@ -1544,6 +1553,37 @@ namespace HelloMaze
                 }
                 button3.Visible = false;
 
+			}
+		}
+
+		#endregion
+
+		#region //menu controls
+		private void ステージ選択ToolStripMenuItem1_DropDownOpened(object sender, EventArgs e)
+		{
+			tabControl1.SelectedIndex = 0;
+		}
+
+		private void Object_Control_Menu_Opening(object sender, CancelEventArgs e)
+		{
+			if (!contextFlag) e.Cancel = true;
+		}
+
+		private void ステージ編集モードToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (contextFlag)
+			{
+				contextFlag = false;
+				ステージ選択ToolStripMenuItem1.Enabled = true;
+				チュートリアルモードToolStripMenuItem.Enabled = true;
+				ステージ編集モードToolStripMenuItem.Text = "ステージ編集モード";
+			}
+			else 
+			{
+				contextFlag = true;
+				ステージ選択ToolStripMenuItem1.Enabled = false;
+				チュートリアルモードToolStripMenuItem.Enabled = false;
+				ステージ編集モードToolStripMenuItem.Text = "編集モード終了";
 			}
 		}
 
@@ -2546,11 +2586,6 @@ namespace HelloMaze
     }
 
         
-
-
-
-
-
 
     interface BoardPosition //ボードの仕様はBoardDataクラス以外で変更不可，外部からのアクセスを制限
     {
