@@ -464,6 +464,7 @@ namespace HelloMaze
                         RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
                         {
                             pictureBox3.Visible = true;
+                            locked = true;
                         });
                         this.Invoke(refreshPic1);
                     }
@@ -1532,6 +1533,14 @@ namespace HelloMaze
 				richTextBox1.Visible = false;
 				tutorial = 0;
 				button1.Visible = false;
+                if(pictureBox2.Visible==true)
+                {
+                    pictureBox2.Visible = false;
+                }
+                if(pictureBox3.Visible==true)
+                {
+                    pictureBox3.Visible = false;
+                }
 
 			}
 		}
@@ -1595,11 +1604,19 @@ namespace HelloMaze
             if(tutorial == 0)
             {
                 richTextBox1.Text = "このゲームは、迷路をクリアするプログラムをみなさんに体験していただきます！\nそれでは実際に迷路を体験していただきましょう！";
+                if(locked == true)
+                {
+                    locked = false;
+                }
                 tutorial++;
             }
             else if(tutorial == 1)
             {
                 richTextBox1.Text = "パート1 前への進み方";
+                if (locked == true)
+                {
+                    locked = false;
+                }
                 tutorial++;
             }
             else if(tutorial == 2)
@@ -1611,6 +1628,7 @@ namespace HelloMaze
                     demoDataset(path, resource);
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル1";
+
                 }
                 catch (Exception exc)
                 {
@@ -1618,6 +1636,10 @@ namespace HelloMaze
                 }
                 richTextBox1.Text = "前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nゴールについたら次へを押してね！";
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
 
             }
             else if (tutorial == 3)
@@ -1630,6 +1652,10 @@ namespace HelloMaze
                 else
                 {
                     richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。";
+                }
+                if (locked == true)
+                {
+                    locked = false;
                 }
             }
             else if(tutorial == 4)
@@ -1649,6 +1675,10 @@ namespace HelloMaze
 
                 }
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 5)
             {
@@ -1656,6 +1686,10 @@ namespace HelloMaze
                 tutorial++;
                 pictureBox2.Visible = true;
                 pictureBox2.Image = Properties.Resources.direction;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if (tutorial == 6)
             {
@@ -1681,6 +1715,10 @@ namespace HelloMaze
 
                     }
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if (tutorial == 7)
             {
@@ -1705,6 +1743,10 @@ namespace HelloMaze
 
                     }
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 8)
             {
@@ -1722,6 +1764,10 @@ namespace HelloMaze
 
                 }
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if (tutorial == 9)
             {
@@ -1753,11 +1799,19 @@ namespace HelloMaze
 
                     }
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 10)
             {
                 richTextBox1.Text = "パート3 繰り返し";
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 11)
             {
@@ -1775,11 +1829,19 @@ namespace HelloMaze
                 {
 
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 12)
             {
                 richTextBox1.Text = "そこで、繰り返し ブロックを配置します！\nまず 繰り返し ブロックを選択、その横にある条件セットから ずっと を選択し配置しましょう。\n次に前へ進むを1つだけ配置します。\n最後に ここまで ブロックを配置します。\n準備ができたら、連続実行をクリックしましょう！";
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if (tutorial == 13)
             {
@@ -1809,6 +1871,10 @@ namespace HelloMaze
 
                     }
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 14)
             {
@@ -1826,6 +1892,10 @@ namespace HelloMaze
 
                 }
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial==15)
             {
@@ -1854,11 +1924,19 @@ namespace HelloMaze
 
                     }
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 16)
             {
                 richTextBox1.Text = "パート4 条件文";
                 tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 17)
             {
@@ -1877,6 +1955,10 @@ namespace HelloMaze
                 }
                 tutorial++;
                 button1.Text = "やり直し";
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 18)
             {
@@ -1906,6 +1988,10 @@ namespace HelloMaze
 
                     }
                 }
+                if (locked == true)
+                {
+                    locked = false;
+                }
             }
             else if(tutorial == 19)
             {
@@ -1923,6 +2009,10 @@ namespace HelloMaze
                 catch (Exception exc)
                 {
 
+                }
+                if (locked == true)
+                {
+                    locked = false;
                 }
             }
             else if(tutorial==20)
@@ -1950,6 +2040,10 @@ namespace HelloMaze
                 catch (Exception exc)
                 {
 
+                }
+                if (locked == true)
+                {
+                    locked = false;
                 }
             }
         }
@@ -2107,9 +2201,6 @@ namespace HelloMaze
             {
                 stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
                 this.Invoke(stapre);
-
-
-
             }
             else
             {
