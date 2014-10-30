@@ -450,9 +450,9 @@ namespace Plock
             string b_name;
             for (int i = 0; i < clist.Count; i++)
             {
-                if (!clist[i].Name.Contains("Indent") && clist[i].Name != "End")
+                if (!clist[i].Name.Contains("Indent"))
                 {
-                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While"))
+                    if (!clist[i].Name.Contains("If") && !clist[i].Name.Contains("While") && !clist[i].Name.Contains("End"))
                     {
                         if (y >= clist[i].Top && y < clist[i].Bottom)
                         {
@@ -477,6 +477,24 @@ namespace Plock
                             break;
                         }
                     }
+                    else if (clist[i].Name.Contains("End"))
+                    {
+                        if (y >= clist[i].Top && y < clist[i].Bottom)
+                        {
+                            b_name = clist[i].Name;
+                            
+                           
+
+                                int[] xy = searchBlockSet(clist[i].Left, i);
+                                deleteBlock(xy[0], xy[1]);
+                                //再描画
+                                block_View(0);
+                                countBlocknumber();
+                                
+                            
+                            break;
+                        }
+                    }
                     //If While ブロックを選択した場合は中身を全て削除．
                     else
                     {
@@ -495,16 +513,28 @@ namespace Plock
                                 //line_View(40 + (countBlocknumber()) * 40);
                                 //label1.Text = clist.Count.ToString();
                             }
-                            else
-                            {
-
-                            }
                             break;
                         }
 
                     }
                 }
             }
+        }
+
+        private int[] searchBlockSet(int p, int i)
+        {
+            int[] xy = new int[2];
+            while (i>=0)
+            {
+                if(!clist[i].Name.Contains("Indent"))
+                    if(clist[i].Left == p && (clist[i].Name.Contains("If") || clist[i].Name.Contains("While")))
+                        break;
+                i--;
+            }
+
+            xy[0] = clist[i].Left;
+            xy[1] = clist[i].Top;
+            return xy;
         }
         //-------------------------------------------------------------------------------------------
         //pictureboxクリック時のイベントハンドラ
@@ -1105,7 +1135,7 @@ namespace Plock
 
             if (insert_p - 1 < 0)
             {
-                if (clist.Count==0) line.Top = 40;
+                if (clist.Count == 0) line.Top = 40;
                 else line.Top = clist[0].Top;
             }
             else if (clist.Count >= 1) line.Top = clist[insert_p - 1].Top + clist[insert_p - 1].Height;
