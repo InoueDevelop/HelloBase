@@ -92,7 +92,7 @@ namespace Plock
             //ToolStripSeparator tsSep = new ToolStripSeparator();
             //ToolStripMenuItem miExit = new ToolStripMenuItem("終了(&X)");
             //miExit.Click += new EventHandler(onExitClick);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { mi1});
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { mi1 });
             //panel1.BackgroundImageLayout = ImageLayout.Zoom;
             //panel1.BackgroundImage = Properties.Resources.背景");
 
@@ -677,8 +677,8 @@ namespace Plock
                     //DialogResult result = MessageBox.Show(translate(clist[i].Name) + "のブロックの次に挿入しますか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
                     //if (result == DialogResult.Yes)
                     //{
-                        setIndent(i, InsertPoint.After);
-                        break;
+                    setIndent(i, InsertPoint.After);
+                    break;
                     //}
                     //else break;
                 }
@@ -999,11 +999,11 @@ namespace Plock
             {
                 //setDropTarget();
                 comand = Comands.End;
-                block_Create(comand, insert_point+1);
+                block_Create(comand, insert_point + 1);
                 block_View(0);
                 countBlocknumber();
             }
-            
+
         }
 
         private void setDropTarget()
@@ -1012,7 +1012,13 @@ namespace Plock
             {
                 if (y >= clist[i].Top && y < clist[i].Bottom)
                 {
-                   setIndent(i, InsertPoint.After);
+                    setIndent(i, InsertPoint.After);
+                }
+                else if (y < 40)
+                {
+                    setIndent(0, InsertPoint.Before);
+                    indent = new Stack<string>();
+                    indent_count = 0;
                 }
             }
         }
@@ -1076,8 +1082,13 @@ namespace Plock
             //timer1.Enabled = true;
             //timer1.Interval = 200;
             //timer1.Tick += new System.EventHandler(timer1_Tick);
-            if (insert_p - 1 < 0) line.Left = 100;
-            else if (clist.Count >= 1) {
+            if (insert_p - 1 < 0)
+            {
+                if (clist.Count == 0) line.Left = 100;
+                else line.Left = clist[0].Left;
+            }
+            else if (clist.Count >= 1)
+            {
                 if (!clist[insert_p - 1].Name.Contains("Indent")) line.Left = clist[insert_p - 1].Left;
                 else
                 {
@@ -1092,7 +1103,11 @@ namespace Plock
                 }
             }
 
-            if (insert_p - 1 < 0) line.Top = 40;
+            if (insert_p - 1 < 0)
+            {
+                if (clist.Count==0) line.Top = 40;
+                else line.Top = clist[0].Top;
+            }
             else if (clist.Count >= 1) line.Top = clist[insert_p - 1].Top + clist[insert_p - 1].Height;
             //timer1.Start();
         }
@@ -1123,105 +1138,118 @@ namespace Plock
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Front_Wall;
             pictureBox4.DoDragDrop(pictureBox4.Image, DragDropEffects.Copy |
       DragDropEffects.Move);
-            condition = Conditions.Front_Wall;
+            
         }
 
         private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Left_Wall;
             pictureBox5.DoDragDrop(pictureBox5.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_Wall;
+           
         }
 
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Right_Wall;
             pictureBox6.DoDragDrop(pictureBox6.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_Wall;
+            
         }
 
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Front_noWall;
             pictureBox7.DoDragDrop(pictureBox7.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Front_noWall;
+            
         }
 
         private void pictureBox8_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Left_noWall;
             pictureBox8.DoDragDrop(pictureBox8.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_noWall;
+            
         }
 
         private void pictureBox9_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.If;
+            condition = Conditions.Right_noWall;
             pictureBox9.DoDragDrop(pictureBox9.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_noWall;
+            
         }
 
         private void pictureBox10_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Front_Wall;
             pictureBox10.DoDragDrop(pictureBox10.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Front_Wall;
+            
         }
 
         private void pictureBox11_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Left_Wall;
             pictureBox11.DoDragDrop(pictureBox11.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_Wall;
+            
         }
 
         private void pictureBox12_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Right_Wall;
             pictureBox12.DoDragDrop(pictureBox12.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_Wall;
+            
         }
 
         private void pictureBox13_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Front_noWall;
             pictureBox13.DoDragDrop(pictureBox13.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Front_noWall;
+            
         }
 
         private void pictureBox14_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Left_noWall;
             pictureBox14.DoDragDrop(pictureBox14.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Left_noWall;
+            
         }
 
         private void pictureBox15_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Right_noWall;
             pictureBox15.DoDragDrop(pictureBox15.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Right_noWall;
+            
         }
 
         private void pictureBox16_MouseDown(object sender, MouseEventArgs e)
         {
             comand = Comands.While;
+            condition = Conditions.Forever;
             pictureBox16.DoDragDrop(pictureBox16.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
-            condition = Conditions.Forever;
+            
         }
 
         #endregion
