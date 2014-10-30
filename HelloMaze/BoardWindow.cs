@@ -1954,7 +1954,7 @@ namespace HelloMaze
 
                 }
                 tutorial++;
-                button1.Text = "やり直し";
+                button1.Text = "次へ";
                 if (locked == true)
                 {
                     locked = false;
@@ -1995,7 +1995,7 @@ namespace HelloMaze
             }
             else if(tutorial == 19)
             {
-                button1.Text = "やり直し";
+                button1.Text = "次へ";
                 richTextBox1.Text = "最後にこのステージをクリアしてみましょう！\nわからない時は、やり直しボタンを押すとヒントが出るよ！";
                 tutorial++;
                 string path = "Userdata/tutorial6";
@@ -2022,29 +2022,37 @@ namespace HelloMaze
                     if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                     {
                         richTextBox1.Text = "ゴールできました！\n以上でチュートリアルはおしまいです。\n全ステージクリアを目指してがんばろう！";
-                        tutorial++;
                         button1.Text = "次へ";
-                        tutorial++;
                     }
-
-                }
-                richTextBox1.Text = "ヒント\nもしブロックを2回使います。順番は、\nもし左が壁でないなら\nもし右が壁でないなら\nの順番です。";
-                string path = "Userdata/tutorial6";
-                var resource = Properties.Resources.tutorial6;
-                try
-                {
-                    demoDataset(path, resource);
-                    stagecount = 30;
-                    stage.Text = "現在のステージ:チュートリアル6";
-                }
-                catch (Exception exc)
-                {
 
                 }
                 if (locked == true)
                 {
                     locked = false;
                 }
+                tutorial++;
+            }
+            else if (tutorial == 21)
+            {
+                開始ToolStripMenuItem.Text = "開始";
+                ステージ選択ToolStripMenuItem1.Enabled = true;
+                ステージ編集モードToolStripMenuItem.Enabled = true;
+                label2.Visible = true;
+                (tabControl1.TabPages[1] as Control).Enabled = false;
+                tutorialcount = 0;
+                richTextBox1.Visible = false;
+                tutorial = 0;
+                button1.Visible = false;
+                if (pictureBox2.Visible == true)
+                {
+                    pictureBox2.Visible = false;
+                }
+                if (pictureBox3.Visible == true)
+                {
+                    pictureBox3.Visible = false;
+                }
+                button3.Visible = false;
+                tabControl1.SelectedIndex = 0;
             }
         }
 
@@ -2570,7 +2578,9 @@ namespace HelloMaze
                 {
                     locked = false;
                 }
+                tutorial++;
             }
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -2612,6 +2622,11 @@ namespace HelloMaze
             {
 
             }
+        }
+
+        private void ステージ選択ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 		
