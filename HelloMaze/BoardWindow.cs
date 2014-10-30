@@ -66,6 +66,8 @@ namespace HelloMaze
         public bool locked = false;
         Point sp;    //イベント発生時に保持されるマウスの画面座標
         public int stagecount = 21;
+        public bool gostage = false;
+
         int setswitch=(int) set.None;
         public int _sql
         {
@@ -126,6 +128,8 @@ namespace HelloMaze
             back = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             fore = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             stagecount = 1;
+            button2.Text = "次へ";
+            button2.Visible=false;
 
 
 
@@ -510,64 +514,97 @@ namespace HelloMaze
        
            public void Goalevent() {
 
-               writer(stagecount-1);
+			   //writer(stagecount-1);
 
                    stagecount++;
 
                    locked = true;
 
+                   //ClearForm clearwindow = new ClearForm(stagecount-1);
 
-                   ClearForm clearwindow = new ClearForm(stagecount-1);
+
+                   //if (stagecount == 21)
+                   //{
+                   //    clearwindow.Loadtext = "全クリア！！";
+                   //    stagecount = 1;
+                   //}
+                   //clearwindow.ShowDialog();
 
 
-                   if (stagecount == 21)
+                   stagepresent st = new stagepresent(() =>
                    {
-                       clearwindow.Loadtext = "全クリア！！";
-                       stagecount = 1;
-                   }
-                   clearwindow.ShowDialog();
-
-                   if (clearwindow.newgamestart == true)
+                       button2.Visible = true;
+                   });
+                   this.Invoke(st);
+               if(gostage == true)
+               {
+                   if (this.stage.InvokeRequired)
                    {
-                       if (this.pictureBox1.InvokeRequired)
-                       {
-                           RefreshPictureBox1 constr = new RefreshPictureBox1(() => constructer());
-                           this.Invoke(constr);
-                       }
-                       else {constructer(); }
-                   }
-                   else if (clearwindow.Loaddatastart == true)
-                   {
+                       stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
+                       this.Invoke(stapre);
 
-                       if (this.stage.InvokeRequired)
-                       {
-                           stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
-                           this.Invoke(stapre);
-                       }
-                       else
-                       {
-                           stage.Text = "現在のステージ:" + stagecount;
-                       }
-                       string pathnext = "stage" + stagecount.ToString();
-                       byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
-                       try
-                       {
-                           locked = false;
-
-                           loadDataset2(pathnext, da);
-
-                       }
-                       catch (Exception exc)
-                       {
-
-                       }
-
-
-
+                       
 
                    }
+                   else
+                   {
+                       stage.Text = "現在のステージ:" + stagecount;
+                   }
+                   string pathnext = "stage" + stagecount.ToString();
+                   byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
+                   try
+                   {
+                       locked = false;
+
+                       loadDataset2(pathnext, da);
+
+                   }
+                   catch (Exception exc)
+                   {
+
+                   }
+               }
+                   //if (clearwindow.newgamestart == true)
+                   //{
+                   //    if (this.pictureBox1.InvokeRequired)
+                   //    {
+                   //        RefreshPictureBox1 constr = new RefreshPictureBox1(() => constructer());
+                   //        this.Invoke(constr);
+                   //    }
+                   //    else {constructer(); }
+                   //}
+                   //else if (clearwindow.Loaddatastart == true)
+                   //{
+
+                   //    if (this.stage.InvokeRequired)
+                   //    {
+                   //        stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
+                   //        this.Invoke(stapre);
+                   //    }
+                   //    else
+                   //    {
+                   //        stage.Text = "現在のステージ:" + stagecount;
+                   //    }
+                   //    string pathnext = "stage" + stagecount.ToString();
+                   //    byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
+                   //    try
+                   //    {
+                   //        locked = false;
+
+                   //        loadDataset2(pathnext, da);
+
+                   //    }
+                   //    catch (Exception exc)
+                   //    {
+
+                   //    }
+
+
+
+
+                   //}
                    else { locked = false; }
-                   clearwindow.Dispose();
+                   //clearwindow.Dispose();
                
            } //ゴールに重なった時のイベント
 
@@ -804,7 +841,7 @@ namespace HelloMaze
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 Dataset loadedData = (Dataset)binaryFormatter.Deserialize(fileStream);
                 fileStream.Close();
-                if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
+                if (DialogResult.Yes == MessageBox.Show("選んだステージに移動してもいいですか?", "かくにん", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
                 {
                     stateHistory = loadedData;
                 }
@@ -886,7 +923,7 @@ namespace HelloMaze
 				fileStream.Close();
 			}
 
-			if (DialogResult.Yes == MessageBox.Show("読み込んだファイルで現在のプレイに上書きしてもよいですか?", "上書きの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
+			if (DialogResult.Yes == MessageBox.Show("選んだステージに移動してもいいですか?", "かくにん", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2))
 			{
 				stateHistory = loadedData;
 			}
@@ -983,6 +1020,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 1;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1004,6 +1045,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 2;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1025,6 +1070,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 3;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1046,6 +1095,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 4;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1067,6 +1120,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 5;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1088,6 +1145,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 6;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1109,6 +1170,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 7;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1130,6 +1195,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 8;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1151,6 +1220,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 9;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1172,6 +1245,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 10;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1193,6 +1270,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 11;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1214,6 +1295,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 12;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1235,6 +1320,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 13;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1256,6 +1345,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 14;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1277,6 +1370,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 15;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1298,6 +1395,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 16;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1319,6 +1420,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 17;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1340,6 +1445,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 18;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1362,6 +1471,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 19;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1383,6 +1496,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 20;
 				stage.Text = "現在のステージ:" + stagecount;
+                if(button2.Visible==true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1401,6 +1518,7 @@ namespace HelloMaze
 				tabControl1.SelectedIndex = 1;
 				comboBox1.SelectedIndex = 0;
 				開始ToolStripMenuItem.Text = "終了";
+				ステージ選択ToolStripMenuItem1.Enabled = false;
 				richTextBox1.Visible = true;
 				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
 				tutorialcount++;
@@ -1409,6 +1527,7 @@ namespace HelloMaze
 			else
 			{
 				開始ToolStripMenuItem.Text = "開始";
+				ステージ選択ToolStripMenuItem1.Enabled = true;
 				label2.Visible = true;
 				(tabControl1.TabPages[1] as Control).Enabled = false;
 				tutorialcount = 0;
@@ -1424,25 +1543,29 @@ namespace HelloMaze
 
 		public static void writer(int stagecount)
         {
-            int[] cl = new int[20]; 
-            using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
-            {
-                for (int i = 0; i < 20; i++)
-                {
-                    cl[i] = int.Parse(sr.ReadLine());
-                }
-            }
+			
+
+            int[] cl = new int[20];
+
+			//using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
+			//{
+			//	for (int i = 0; i < 20; i++)
+			//	{
+			//		cl[i] = int.Parse(sr.ReadLine());
+			//	}
+			//}
+			//using (StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
+			//{
+			//	for (int i = 0; i < 20; i++)
+			//	{
+			//		sw.WriteLine(cl[i]);
+			//	}
+			//}
             if(cl[stagecount]!=1)
             {
                 cl[stagecount] = 1;
             }
-            using(StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
-            {
-                for(int i=0;i<20;i++)
-                {
-                    sw.WriteLine(cl[i]);
-                }
-            }
+            
         }
 
         public static int reader(int stagecount)
@@ -1983,6 +2106,36 @@ namespace HelloMaze
             constructer();
         }
 		#endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.stage.InvokeRequired)
+            {
+                stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
+                this.Invoke(stapre);
+
+
+
+            }
+            else
+            {
+                stage.Text = "現在のステージ:" + stagecount;
+            }
+            string pathnext = "stage" + stagecount.ToString();
+            byte[] da = (byte[])Properties.Resources.ResourceManager.GetObject(pathnext);
+            try
+            {
+                locked = false;
+
+                loadDataset2(pathnext, da);
+
+            }
+            catch (Exception exc)
+            {
+
+            }
+            button2.Visible = false;
+        }
 
 		
 
