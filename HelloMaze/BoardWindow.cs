@@ -128,6 +128,12 @@ namespace HelloMaze
             stagecount = 1;
 
 
+
+    // 作成先の DirectoryInfo を取得することも可能
+    System.IO.DirectoryInfo hDirInfo;
+    hDirInfo = System.IO.Directory.CreateDirectory("data");
+
+
             this.pictureBox1.BackgroundImage = back;
             this.pictureBox1.Image = fore;
 

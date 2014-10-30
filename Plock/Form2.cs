@@ -102,31 +102,7 @@ namespace Plock
         enum Conditions { Front_Wall, Left_Wall, Right_Wall, Front_noWall, Left_noWall, Right_noWall, Forever };
         enum InsertPoint { Before, After };
 
-        //-------------------------------------------------------------------------------------------
-        //配置ボタン
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex == -1)
-            {
-                MessageBox.Show("命令セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if ((listBox1.SelectedIndex == 3 || listBox1.SelectedIndex == 4) && listBox3.SelectedIndex == -1)
-            {
-                MessageBox.Show("条件セットを選択してください．", "けいこく", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
 
-                block_Create(comand, insert_point);
-                block_View(0);
-                //label1.Text = clist.Count.ToString();
-                countBlocknumber();
-                //line_View(40 + (countBlocknumber()) * 40);
-                insert_point++;
-
-            }
-
-        }
         //-------------------------------------------------------------------------------------------
         private void block_View(int k)
         {
@@ -435,72 +411,6 @@ namespace Plock
 
         }
 
-        //-------------------------------------------------------------------------------------------
-        //命令文選択リスト
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listBox3.SelectedIndex = -1;
-            listBox3.Enabled = true;
-            switch (listBox1.SelectedIndex)
-            {
-                case 0:
-                    comand = Comands.Go;
-                    listBox3.Enabled = false;
-                    break;
-                case 1:
-                    comand = Comands.Left;
-                    listBox3.Enabled = false;
-                    break;
-                case 2:
-                    comand = Comands.Right;
-                    listBox3.Enabled = false;
-                    break;
-                case 3:
-                    comand = Comands.If;
-                    if (listBox3.Items.Count == 7)
-                        listBox3.Items.RemoveAt(6);
-                    break;
-                case 4:
-                    comand = Comands.While;
-                    if (listBox3.Items.Count == 6)
-                        listBox3.Items.Add("ずっと");
-                    break;
-                case 5:
-                    comand = Comands.End;
-                    listBox3.Enabled = false;
-                    break;
-                default: break;
-            }
-        }
-        //-------------------------------------------------------------------------------------------
-        //条件文選択リスト
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (listBox3.SelectedIndex)
-            {
-                case 0:
-                    condition = Conditions.Front_Wall;
-                    break;
-                case 1:
-                    condition = Conditions.Left_Wall;
-                    break;
-                case 2:
-                    condition = Conditions.Right_Wall;
-                    break;
-                case 3:
-                    condition = Conditions.Front_noWall;
-                    break;
-                case 4:
-                    condition = Conditions.Left_noWall;
-                    break;
-                case 5:
-                    condition = Conditions.Right_noWall;
-                    break;
-                case 6:
-                    condition = Conditions.Forever;
-                    break;
-            }
-        }
 
         //-------------------------------------------------------------------------------------------
         //ブロック全削除
@@ -680,7 +590,6 @@ namespace Plock
 
 
             }
-            return "";
         }
         //---------------------------------------------------------------------------------------------------------------
         //if whileブロックセットの一斉削除
@@ -987,7 +896,6 @@ namespace Plock
                 {
                     runAllTimer.Stop();//タイマーを停止する
                     safevelocityenabled();
-                    button1.Enabled = true;//他のボタンを押せるようにする
                     button3.Enabled = true;
                     button4.Enabled = true;
                     button5.Enabled = true;
@@ -1000,7 +908,6 @@ namespace Plock
                     Queue<string> codeQueue = block_to_queue();
                     gameInterpriter.build(codeQueue);
                     runAllTimer.Start();//タイマーをスタートする
-                    button1.Enabled = false;////他のボタンを押せなくする
                     button3.Enabled = false;
                     button4.Enabled = false;
                     button5.Enabled = false;
@@ -1026,8 +933,7 @@ namespace Plock
 
             MyDelegate changeEnableTrue = new MyDelegate(() =>
             {
-                button1.Enabled = true;//他のボタンを押せるようにする
-                button3.Enabled = true;
+                button3.Enabled = true;//他のボタンを押せるようにする
                 button4.Enabled = true;
                 button5.Enabled = true;
             });
@@ -1316,19 +1222,6 @@ DragDropEffects.Move);
             pictureBox16.DoDragDrop(pictureBox16.Image, DragDropEffects.Copy |
 DragDropEffects.Move);
             condition = Conditions.Forever;
-        }
-        private void pictureBox17_MouseDown(object sender, MouseEventArgs e)
-        {
-            comand = Comands.End;
-            pictureBox17.DoDragDrop(pictureBox17.Image, DragDropEffects.Copy |
-DragDropEffects.Move);
-        }
-
-        private void pictureBox18_MouseDown(object sender, MouseEventArgs e)
-        {
-            comand = Comands.End;
-            pictureBox18.DoDragDrop(pictureBox18.Image, DragDropEffects.Copy |
-DragDropEffects.Move);
         }
 
         #endregion
