@@ -1622,7 +1622,7 @@ namespace HelloMaze
                 {
 
                 }
-                richTextBox1.Text = "前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nゴールについたら次へを押してね！";
+                richTextBox1.Text = "前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、すべて実行をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nゴールについたら次へを押してね！";
                 tutorial++;
 
             }
@@ -1630,12 +1630,12 @@ namespace HelloMaze
             {
                 if (ListObjectBoard[0].objectPositionX == ListObjectBoard[ListObjectBoard.Count()-2].objectPositionX && ListObjectBoard[0].objectPositionY == ListObjectBoard[ListObjectBoard.Count()-2].objectPositionY)
                 {
-                    richTextBox1.Text = "このように一度の連続実行でゴールに到着するのが目標になります。";
+                    richTextBox1.Text = "このように一度のすべて実行でゴールに到着するのが目標になります。";
                     tutorial++;
                 }
                 else
                 {
-                    richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、連続実行をクリックします。";
+                    richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、すべて実行をクリックします。";
                 }
             }
             else if(tutorial == 4)
@@ -1658,7 +1658,7 @@ namespace HelloMaze
             }
             else if(tutorial == 5)
             {
-                richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックを配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置して連続実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
+                richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックを配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置してすべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
                 tutorial++;
                 pictureBox2.Visible = true;
                 pictureBox2.Image = Properties.Resources.direction;
@@ -1714,7 +1714,7 @@ namespace HelloMaze
             }
             else if(tutorial == 8)
             {
-                richTextBox1.Text = "ブロックの数は何個でも配置することができます！\n今度は、\n左を向く \n前へ進む \nの順にブロックを配置し、連続実行をクリックしてみましょう！\nゴールできたら次へを押してね！";
+                richTextBox1.Text = "ブロックの数は何個でも配置することができます！\n今度は、\n左を向く \n前へ進む \nの順にブロックを配置し、すべて実行をクリックしてみましょう！\nゴールできたら次へを押してね！";
                 string path = "Userdata/tutorial2";
                 var resource = Properties.Resources.tutorial2;
                 try
@@ -1784,7 +1784,7 @@ namespace HelloMaze
             }
             else if(tutorial == 12)
             {
-                richTextBox1.Text = "そこで、繰り返し ブロックを配置します！\nまず 繰り返し ブロックを選択、その横にある条件セットから ずっと を選択し配置しましょう。\n次に前へ進むを1つだけ配置します。\n最後に ここまで ブロックを配置します。\n準備ができたら、連続実行をクリックしましょう！";
+                richTextBox1.Text = "そこで、繰り返し ブロックを配置します！\nまず 繰り返し ブロックを選択、その横にある条件セットから ずっと を選択し配置しましょう。\n次に前へ進むを1つだけ配置します。\n最後に ここまで ブロックを配置します。\n準備ができたら、すべて実行をクリックしましょう！";
                 tutorial++;
             }
             else if (tutorial == 13)
@@ -1868,7 +1868,7 @@ namespace HelloMaze
             }
             else if(tutorial == 17)
             {
-                richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには命令セットと条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれでは連続実行をクリックしてみましょう！";
+                richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには命令セットと条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれではすべて実行をクリックしてみましょう！";
                 string path = "Userdata/tutorial5";
                 var resource = Properties.Resources.tutorial5;
                 try
@@ -1898,7 +1898,7 @@ namespace HelloMaze
                 }
                 if (tutorial != 19)
                 {
-                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれでは連続実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
+                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれではすべて実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
                     string path = "Userdata/tutorial5";
                     var resource = Properties.Resources.tutorial5;
                     try
