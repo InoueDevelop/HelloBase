@@ -32,8 +32,6 @@ namespace Plock
             public List<BoardObject> cp_ListObjectBoard;
             public Bitmap cpback;
             public Bitmap cpfore;
-          
-           
 
 
             public Dataset(BoardData sdata)
@@ -111,6 +109,8 @@ namespace Plock
 
 		private bool contextFlag = false;
 
+           
+
         #endregion
 
 		#region //コンストラクタ
@@ -118,8 +118,10 @@ namespace Plock
         {
             InitializeComponent();
             constructer();
-           
-        }
+			
+			
+
+		}
 
         public void constructer()
         {
@@ -134,7 +136,7 @@ namespace Plock
             button2.Text = "次へ";
             button2.Visible=false;
 
-
+			
 
     // 作成先の DirectoryInfo を取得することも可能
 
@@ -2639,6 +2641,23 @@ namespace Plock
         {
 
         }
+
+		public class PanelEventArgs : EventArgs
+		{
+			public bool showFlag;
+		}
+
+		public delegate void PanelEventHandler(object sender, PanelEventArgs e);
+		public event PanelEventHandler PanelEvent;
+
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			PanelEventArgs ee = new PanelEventArgs();
+			if (tabControl1.SelectedIndex == 0) ee.showFlag = true;
+			else ee.showFlag = false;
+			this.PanelEvent(this, ee);
+		}
+
 
 		
 

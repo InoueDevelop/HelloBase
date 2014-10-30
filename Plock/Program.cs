@@ -11,18 +11,19 @@ namespace Plock
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
-        [STAThread]
-        static void Main()
+		[STAThread]
+		
+		static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Open zady = new Open();//オープニング画面
-            
+
             if(zady.cFlag == false)zady.ShowDialog();
 			if (zady.eFlag == true)
 			{
+				
 				Application.Run(new Form2());
-				Application.Run(new BoardData());
 			}
         }
     }

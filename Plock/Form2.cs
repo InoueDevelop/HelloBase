@@ -54,7 +54,19 @@ namespace Plock
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setTextBox1(gameInterpriter.getCurrentCode()); }; //デバッグ用(TextBox1に現在のコードを表示)
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { setArrowPicture(); }; //矢印の描画
             runAllTimer.Elapsed += (object o, System.Timers.ElapsedEventArgs eea) => { if (gameInterpriter.isEnd() || gameForm.locked == true) { runAllTimer.Stop(); setButton6TextAndEnableButtons("すべて実行"); safevelocityenabled(); } }; //最後の行に達したら自動停止 
-        }
+			gameForm.TopLevel = false;
+			this.Controls.Add(gameForm);
+			gameForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			gameForm.TransparencyKey = System.Drawing.SystemColors.Highlight ;
+			gameForm.Show();
+			gameForm.PanelEvent += delegate(object sender, BoardData.PanelEventArgs e) 
+			{
+				if (!e.showFlag) panel3.Visible = false;
+				else panel3.Visible = true;
+			};
+		}
+
+		
 
 
         void safevelocityenabled()
