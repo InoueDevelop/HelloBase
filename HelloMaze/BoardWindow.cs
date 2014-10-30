@@ -458,13 +458,21 @@ namespace HelloMaze
                 {
                     if(stagecount!=30)
                     {
-                        locked = true;
-                        Task goalevent = new Task(() => { Goalevent(); });
-                        goalevent.Start();
+                        RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
+                        {
+                            pictureBox3.Visible = true;
+                            button2.Visible = true;
+                            locked = true;
+                        });
+                        this.Invoke(refreshPic1);
+                        //locked = true;
+                        //Task goalevent = new Task(() => { Goalevent(); });
+                        //goalevent.Start();
                         //Goalevent();
                     }
                     else
                     {
+                        //Goalevent();
                         RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
                         {
                             pictureBox3.Visible = true;
@@ -1019,6 +1027,10 @@ namespace HelloMaze
         /// <param name="e"></param>
 		private void toolStripMenuItem6_Click(object sender, EventArgs e)
 		{
+            if(locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage1";
 			var resource = Properties.Resources.stage1;
 			try
@@ -1044,6 +1056,10 @@ namespace HelloMaze
 		/// <param name="e"></param>
 		private void toolStripMenuItem7_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage2";
 			var resource = Properties.Resources.stage2;
 			try
@@ -1069,6 +1085,10 @@ namespace HelloMaze
 		/// <param name="e"></param>
 		private void toolStripMenuItem8_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage3";
 			var resource = Properties.Resources.stage3;
 			try
@@ -2259,6 +2279,7 @@ namespace HelloMaze
 
         private void button2_Click(object sender, EventArgs e)
         {
+            stagecount++;
             if (this.stage.InvokeRequired)
             {
                 stagepresent stapre = new stagepresent(() => stage.Text = "現在のステージ:" + stagecount);
@@ -2589,11 +2610,15 @@ namespace HelloMaze
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if(locked == true)
+            {
+                locked = false;
+            }
             foreach (var n in ListObjectBoard)
             {
                 if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                 {
-                    stagecount = stagecount - 1;
+                    stagecount = stagecount;
                 }
             }
             string path = "stage" + stagecount.ToString();
