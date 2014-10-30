@@ -507,7 +507,7 @@ namespace HelloMaze
         }
 
 
-           public void genosideenemy()
+        public void genosideenemy()
         {       
             foreach (var t in ListObjectBoard)
             {
@@ -519,7 +519,7 @@ namespace HelloMaze
         }
 
        
-           public void Goalevent() {
+        public void Goalevent() {
 
 			   //writer(stagecount-1);
 
@@ -2268,26 +2268,7 @@ namespace HelloMaze
             button2.Visible = false;
         }
 
-		
-
-		
-
-		
-		
-
-		
-
-
-
-
-		
-
     }
-
-        
-
-
-
 
 
 
