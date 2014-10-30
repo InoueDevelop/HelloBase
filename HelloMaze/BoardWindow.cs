@@ -504,7 +504,7 @@ namespace HelloMaze
        
            public void Goalevent() {
 
-               writer(stagecount-1);
+			   //writer(stagecount-1);
 
                    stagecount++;
 
@@ -1418,25 +1418,29 @@ namespace HelloMaze
 
 		public static void writer(int stagecount)
         {
-            int[] cl = new int[20]; 
-            using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
-            {
-                for (int i = 0; i < 20; i++)
-                {
-                    cl[i] = int.Parse(sr.ReadLine());
-                }
-            }
+			
+
+            int[] cl = new int[20];
+
+			//using (StreamReader sr = new StreamReader("Userdata/clear.csv"))
+			//{
+			//	for (int i = 0; i < 20; i++)
+			//	{
+			//		cl[i] = int.Parse(sr.ReadLine());
+			//	}
+			//}
+			//using (StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
+			//{
+			//	for (int i = 0; i < 20; i++)
+			//	{
+			//		sw.WriteLine(cl[i]);
+			//	}
+			//}
             if(cl[stagecount]!=1)
             {
                 cl[stagecount] = 1;
             }
-            using(StreamWriter sw = new StreamWriter("Userdata/clear.csv"))
-            {
-                for(int i=0;i<20;i++)
-                {
-                    sw.WriteLine(cl[i]);
-                }
-            }
+            
         }
 
         public static int reader(int stagecount)
