@@ -58,10 +58,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Block.cs" />
+    <Compile Include="BoardObject.cs" />
+    <Compile Include="BoardWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BoardWindow.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BoardWindow.resx</DependentUpon>
+      <DependentUpon>BoardWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -80,8 +82,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BoardWindow.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BoardWindow.Designer.cs</LastGenOutput>
+      <DependentUpon>BoardWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -113,6 +114,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\stage10" />
+    <None Include="Resources\stage12" />
+    <None Include="Resources\stage13" />
+    <None Include="Resources\stage14" />
+    <None Include="Resources\stage15" />
+    <None Include="Resources\stage16" />
+    <None Include="Resources\stage17" />
+    <None Include="Resources\stage18" />
+    <None Include="Resources\stage19" />
+    <None Include="Resources\stage2" />
+    <None Include="Resources\stage20" />
+    <None Include="Resources\stage3" />
+    <None Include="Resources\stage4" />
+    <None Include="Resources\tutorial1" />
+    <None Include="Resources\tutorial2" />
+    <None Include="Resources\tutorial2.1" />
+    <None Include="Resources\tutorial3" />
+    <None Include="Resources\tutorial4" />
+    <None Include="Resources\tutorial5" />
+    <None Include="Resources\tutorial6" />
     <None Include="Resource\stage1" />
     <None Include="Resource\stage10" />
     <None Include="Resource\stage2" />
@@ -129,10 +150,6 @@
     <ProjectReference Include="..\HelloMaze\BitmapPaint\BitmapPaint.csproj">
       <Project>{3d1040da-51bf-4986-b0a6-ad5e58261862}</Project>
       <Name>BitmapPaint</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HelloMaze\MazeWindow.csproj">
-      <Project>{269d0337-76b4-430e-84ed-39173a3d744b}</Project>
-      <Name>MazeWindow</Name>
     </ProjectReference>
     <ProjectReference Include="..\open\open.csproj">
       <Project>{f264178b-f392-4be7-bc58-d78206855fa6}</Project>
@@ -151,6 +168,8 @@
     <None Include="Resources\線１.png" />
     <None Include="Resources\線２.png" />
     <None Include="Resources\線３.png" />
+    <None Include="Resources\goal.png" />
+    <None Include="Resources\direction.PNG" />
     <Content Include="Resource\もしend.png" />
     <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\繰り返しend.png" />

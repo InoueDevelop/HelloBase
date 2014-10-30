@@ -10,7 +10,7 @@ using System.Timers;
 
 namespace Plock
 {
-    using GameForm = HelloMaze.BoardData;//TODO:利用したいゲームのFormを登録
+    using GameForm = BoardData;//TODO:利用したいゲームのFormを登録
     using System.Threading;
 
     public class InterpriterController:Form
