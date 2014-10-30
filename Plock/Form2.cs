@@ -250,8 +250,8 @@ namespace Plock
             pb.Left = left_pos + indent_count * indent_size;
             pb.Name = prop_name;
             //Clickイベントにイベントハンドラ追加　0714
-            //pb.Click += new EventHandler(clist_Click);
-            pb.Click += new EventHandler(onClick1);
+            pb.Click += new EventHandler(clist_Click);
+            //pb.Click += new EventHandler(onClick1);
             //PicutureBoxの上でドロップした場合でも通常通りの動作をするように
             pb.AllowDrop = true;
             pb.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
