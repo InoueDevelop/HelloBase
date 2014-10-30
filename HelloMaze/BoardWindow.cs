@@ -460,6 +460,12 @@ namespace HelloMaze
                     {
                         RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
                         {
+                            button2.Text = "次へ";
+                            if(stagecount == 20)
+                            {
+                                stagecount = 0;
+                                button2.Text = "はじめから";
+                            }
                             pictureBox3.Visible = true;
                             button2.Visible = true;
                             locked = true;
@@ -2614,13 +2620,6 @@ namespace HelloMaze
             if(locked == true)
             {
                 locked = false;
-            }
-            foreach (var n in ListObjectBoard)
-            {
-                if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
-                {
-                    stagecount = stagecount;
-                }
             }
             string path = "stage" + stagecount.ToString();
             byte[] resource = (byte[])Properties.Resources.ResourceManager.GetObject(path);
