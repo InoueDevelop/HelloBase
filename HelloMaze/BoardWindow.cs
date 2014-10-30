@@ -946,13 +946,17 @@ namespace HelloMaze
 
 
 			//this.=stateHistory.cpsquarelength;
+            controlobj = stateHistory.cpcontrolobj;
+            CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+            ListObjectBoard = stateHistory.cp_ListObjectBoard;
 			back = stateHistory.cpback;
 			fore = stateHistory.cpfore;
+
 			this.pictureBox1.BackgroundImage = back;
 			this.pictureBox1.Image = fore;
-			controlobj = stateHistory.cpcontrolobj;
-			CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
-			ListObjectBoard = stateHistory.cp_ListObjectBoard;
+            //controlobj = stateHistory.cpcontrolobj;
+            //CanPutObjectOnBoard = stateHistory.cpCanPutObjectOnBoard;
+            //ListObjectBoard = stateHistory.cp_ListObjectBoard;
 		}
 		#endregion
 
