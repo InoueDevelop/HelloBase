@@ -1531,6 +1531,7 @@ namespace HelloMaze
 				tutorialcount++;
 				button1.Visible = true;
                 button3.Visible = true;
+                button4.Visible = false;
 			}
 			else
 			{
@@ -1552,7 +1553,7 @@ namespace HelloMaze
                     pictureBox3.Visible = false;
                 }
                 button3.Visible = false;
-
+                button4.Visible = true;
 			}
 		}
 
@@ -2053,6 +2054,7 @@ namespace HelloMaze
                 }
                 button3.Visible = false;
                 tabControl1.SelectedIndex = 0;
+                button4.Visible = true;
             }
         }
 
