@@ -137,8 +137,6 @@ namespace HelloMaze
 
 
     // 作成先の DirectoryInfo を取得することも可能
-    System.IO.DirectoryInfo hDirInfo;
-    hDirInfo = System.IO.Directory.CreateDirectory("data");
 
 
             this.pictureBox1.BackgroundImage = back;
@@ -507,7 +505,7 @@ namespace HelloMaze
         }
 
 
-        public void genosideenemy()
+           public void genosideenemy()
         {       
             foreach (var t in ListObjectBoard)
             {
@@ -519,7 +517,7 @@ namespace HelloMaze
         }
 
        
-        public void Goalevent() {
+           public void Goalevent() {
 
 			   //writer(stagecount-1);
 
@@ -1532,6 +1530,7 @@ namespace HelloMaze
 				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
 				tutorialcount++;
 				button1.Visible = true;
+                button3.Visible = true;
 			}
 			else
 			{
@@ -1552,6 +1551,7 @@ namespace HelloMaze
                 {
                     pictureBox3.Visible = false;
                 }
+                button3.Visible = false;
 
 			}
 		}
@@ -2272,9 +2272,324 @@ namespace HelloMaze
             button2.Visible = false;
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (pictureBox3.Visible == true)
+            {
+                pictureBox3.Visible = false;
+            }
+            
+            if (tutorial == 3)
+            {
+                string path = "Userdata/tutorial1";
+                var resource = Properties.Resources.tutorial1;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル1";
+
+                }
+                catch (Exception exc)
+                {
+
+                }
+                if (locked == true)
+                {
+                    locked = false;
+                }
+
+            }
+            else if (tutorial == 5)
+            {
+                
+                string path = "Userdata/tutorial2";
+                var resource = Properties.Resources.tutorial2;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル2";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 6)
+            {
+                
+                pictureBox2.Visible = true;
+                pictureBox2.Image = Properties.Resources.direction;
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 7)
+            {
+                
+                    string path = "Userdata/tutorial2";
+                    var resource = Properties.Resources.tutorial2;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル2" + stagecount;
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 8)
+            {
+                    string path = "Userdata/tutorial21";
+                    var resource = Properties.Resources.tutorial21;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル2-1";
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 9)
+            {
+                string path = "Userdata/tutorial2";
+                var resource = Properties.Resources.tutorial2;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル2";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 10)
+            {
+                    string path = "Userdata/tutorial2";
+                    var resource = Properties.Resources.tutorial2;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル2";
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 12)
+            {
+                string path = "Userdata/tutorial3";
+                var resource = Properties.Resources.tutorial3;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル3";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 14)
+            {
+
+                string path = "Userdata/tutorial3";
+                    var resource = Properties.Resources.tutorial3;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル3";
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 15)
+            {
+                string path = "Userdata/tutorial4";
+                var resource = Properties.Resources.tutorial4;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル4";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 16)
+            {
+                 string path = "Userdata/tutorial4";
+                    var resource = Properties.Resources.tutorial4;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル4";
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 18)
+            {
+                string path = "Userdata/tutorial5";
+                var resource = Properties.Resources.tutorial5;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル5";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                tutorial++;
+                button1.Text = "やり直し";
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 19)
+            {
+                 string path = "Userdata/tutorial5";
+                    var resource = Properties.Resources.tutorial5;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル5";
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 20)
+            {
+                string path = "Userdata/tutorial6";
+                var resource = Properties.Resources.tutorial6;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル6";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+            else if (tutorial == 21)
+            {
+                string path = "Userdata/tutorial6";
+                var resource = Properties.Resources.tutorial6;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 30;
+                    stage.Text = "現在のステージ:チュートリアル6";
+                }
+                catch (Exception exc)
+                {
+
+                }
+                if (locked == true)
+                {
+                    locked = false;
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+		
+
+		
+
+
+
+
+		
+
     }
 
-
+        
 
     interface BoardPosition //ボードの仕様はBoardDataクラス以外で変更不可，外部からのアクセスを制限
     {
