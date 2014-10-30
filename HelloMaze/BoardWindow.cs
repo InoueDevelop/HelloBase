@@ -1020,6 +1020,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 1;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1041,6 +1045,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 2;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1062,6 +1070,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 3;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1083,6 +1095,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 4;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1104,6 +1120,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 5;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1125,6 +1145,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 6;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1146,6 +1170,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 7;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1167,6 +1195,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 8;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1188,6 +1220,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 9;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1209,6 +1245,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 10;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1230,6 +1270,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 11;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1251,6 +1295,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 12;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1272,6 +1320,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 13;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1293,6 +1345,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 14;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1314,6 +1370,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 15;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1335,6 +1395,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 16;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1356,6 +1420,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 17;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1377,6 +1445,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 18;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1399,6 +1471,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 19;
 				stage.Text = "現在のステージ:" + stagecount;
+                if (button2.Visible == true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
@@ -1420,6 +1496,10 @@ namespace HelloMaze
 				loadDataset(path, resource);
 				stagecount = 20;
 				stage.Text = "現在のステージ:" + stagecount;
+                if(button2.Visible==true)
+                {
+                    button2.Visible = false;
+                }
 			}
 			catch (Exception exc)
 			{
