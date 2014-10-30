@@ -1518,6 +1518,7 @@ namespace HelloMaze
 				tabControl1.SelectedIndex = 1;
 				comboBox1.SelectedIndex = 0;
 				開始ToolStripMenuItem.Text = "終了";
+				ステージ選択ToolStripMenuItem1.Enabled = false;
 				richTextBox1.Visible = true;
 				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
 				tutorialcount++;
@@ -1526,6 +1527,7 @@ namespace HelloMaze
 			else
 			{
 				開始ToolStripMenuItem.Text = "開始";
+				ステージ選択ToolStripMenuItem1.Enabled = true;
 				label2.Visible = true;
 				(tabControl1.TabPages[1] as Control).Enabled = false;
 				tutorialcount = 0;

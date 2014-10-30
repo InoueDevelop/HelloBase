@@ -495,7 +495,7 @@
 			// 
 			this.stage.AutoSize = true;
 			this.stage.Font = new System.Drawing.Font("Meiryo UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.stage.Location = new System.Drawing.Point(12, 530);
+			this.stage.Location = new System.Drawing.Point(12, 537);
 			this.stage.Name = "stage";
 			this.stage.Size = new System.Drawing.Size(146, 24);
 			this.stage.TabIndex = 7;
@@ -661,9 +661,9 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(175, 530);
+			this.button2.Location = new System.Drawing.Point(363, 533);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.Size = new System.Drawing.Size(93, 41);
 			this.button2.TabIndex = 16;
 			this.button2.Text = "button2";
 			this.button2.UseVisualStyleBackColor = true;
