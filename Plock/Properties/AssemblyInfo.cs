@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("Plock")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("はじめてのプログラミング 迷路パズル")]
+[assembly: AssemblyDescription("理工展2014 迷路パズルをプログラミングで解いてみよう")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Your Company Name")]
-[assembly: AssemblyProduct("Plock")]
-[assembly: AssemblyCopyright("Copyright © Your Company Name 2014")]
+[assembly: AssemblyCompany("早稲田大学 井上研究室")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("Copyright © inoueLab 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
