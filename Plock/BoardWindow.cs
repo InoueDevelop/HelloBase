@@ -2570,26 +2570,6 @@ namespace Plock
                 richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックをドラッグして、ゴールしましょう！";
                     
             }
-            else if (tutorial == 8)
-            {
-                    string path = "Userdata/tutorial21";
-                    var resource = Properties.Resources.tutorial21;
-                    try
-                    {
-                        demoDataset(path, resource);
-                        stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル2-1";
-                    }
-                    catch (Exception exc)
-                    {
-
-                    }
-                
-                if (locked == true)
-                {
-                    locked = false;
-                }
-            }
             else if (tutorial == 9)
             {
                 string path = "Userdata/tutorial2";
