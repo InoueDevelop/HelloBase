@@ -421,6 +421,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Location = new System.Drawing.Point(10, 10);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";

@@ -928,10 +928,7 @@ namespace Plock
             load();
         }
 
-        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
 #endregion
 
 		#region //loadDataset

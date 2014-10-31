@@ -49,7 +49,6 @@
             this.ロードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.セーブToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ステージ選択ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.チュートリアルモードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.開始ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,7 +77,6 @@
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
             this.ステージ編集モードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stage = new System.Windows.Forms.Label();
             this.settingobj = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -226,8 +224,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3,
-            this.ステージ選択ToolStripMenuItem,
-            this.ヘルプToolStripMenuItem});
+            this.ステージ選択ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -239,8 +236,7 @@
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ロードToolStripMenuItem,
             this.セーブToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.終了ToolStripMenuItem});
+            this.toolStripMenuItem4});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(53, 20);
             this.toolStripMenuItem3.Text = "ファイル";
@@ -248,30 +244,23 @@
             // ロードToolStripMenuItem
             // 
             this.ロードToolStripMenuItem.Name = "ロードToolStripMenuItem";
-            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.ロードToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ロードToolStripMenuItem.Text = "ロード";
             this.ロードToolStripMenuItem.Click += new System.EventHandler(this.ロードToolStripMenuItem_Click);
             // 
             // セーブToolStripMenuItem
             // 
             this.セーブToolStripMenuItem.Name = "セーブToolStripMenuItem";
-            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.セーブToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.セーブToolStripMenuItem.Text = "セーブ";
             this.セーブToolStripMenuItem.Click += new System.EventHandler(this.セーブToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(130, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem4.Text = "迷路リセット";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // 終了ToolStripMenuItem
-            // 
-            this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.終了ToolStripMenuItem.Text = "終了";
-            this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
             // ステージ選択ToolStripMenuItem
             // 
@@ -497,12 +486,6 @@
             this.ステージ編集モードToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.ステージ編集モードToolStripMenuItem.Text = "ステージ編集モード";
             this.ステージ編集モードToolStripMenuItem.Click += new System.EventHandler(this.ステージ編集モードToolStripMenuItem_Click);
-            // 
-            // ヘルプToolStripMenuItem
-            // 
-            this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // stage
             // 
@@ -745,7 +728,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem セーブToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ロードToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
 		private System.Windows.Forms.Label stage;
         private System.Windows.Forms.Label settingobj;
         private System.Windows.Forms.ToolStripMenuItem 左ドラッグtoolStripMenuItem4;
@@ -758,8 +740,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
 		private System.Windows.Forms.ToolStripMenuItem ステージ選択ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem チュートリアルモードToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem ステージ選択ToolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ステージ選択ToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem 初級ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
