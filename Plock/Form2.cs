@@ -931,6 +931,7 @@ namespace Plock
 
         private void button6_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 //ゲームのデータクラスの更新
@@ -942,6 +943,7 @@ namespace Plock
                     button4.Enabled = true;
                     button5.Enabled = true;
                     button6.Text = "すべて実行";
+                    gameForm.changevisiblet();
                 }
                 else
                 {
@@ -953,6 +955,7 @@ namespace Plock
                     button3.Enabled = false;
                     button4.Enabled = false;
                     button5.Enabled = false;
+                    gameForm.changevisiblef();
                     button6.Text = "停止する";
                 }
             }

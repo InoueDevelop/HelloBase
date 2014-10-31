@@ -367,7 +367,6 @@ namespace Plock
        
           lock(this){
               if (locked == true) return;
-  
 
               switch (directionselect)
             {
@@ -472,7 +471,7 @@ namespace Plock
                             pictureBox3.Visible = true;
                             pictureBox3.Size = new Size(600, 600);
                             pictureBox3.Location = new Point(0, 50);
-
+                            
 
                         locked = true;
                         });
@@ -2715,6 +2714,21 @@ namespace Plock
                 tutorial++;
             }
             
+        }
+        public void changevisiblef()
+        {
+            button4.Visible = false;
+            ステージ選択ToolStripMenuItem.Enabled = false;
+            チュートリアルモードToolStripMenuItem.Enabled = false;
+            ステージ編集モードToolStripMenuItem.Enabled = false;
+
+        }
+        public void changevisiblet()
+        {
+            button4.Visible = true;
+            ステージ選択ToolStripMenuItem.Enabled = true;
+            チュートリアルモードToolStripMenuItem.Enabled = true;
+            ステージ編集モードToolStripMenuItem.Enabled = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
