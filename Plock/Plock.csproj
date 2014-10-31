@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon1.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -199,6 +202,7 @@
     <None Include="Resources\perfectgoal.png" />
     <None Include="bin\Release\userdata\tu1.PNG" />
     <None Include="bin\Release\userdata\tu2.PNG" />
+    <Content Include="icon1.ico" />
     <Content Include="Resources\tu1.PNG" />
     <Content Include="Resources\tu2.PNG" />
     <Content Include="Resource\もしend.png" />
