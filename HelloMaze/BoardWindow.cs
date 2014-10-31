@@ -135,10 +135,6 @@ namespace HelloMaze
             button2.Visible=false;
 
 
-
-    // 作成先の DirectoryInfo を取得することも可能
-
-
             this.pictureBox1.BackgroundImage = back;
             this.pictureBox1.Image = fore;
 
