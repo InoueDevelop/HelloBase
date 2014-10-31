@@ -99,6 +99,33 @@
     <None Include="bin\Debug\Userdata\stage4" />
     <None Include="bin\Debug\Userdata\stage8" />
     <Content Include="bin\Release\userdata\dummy.txt" />
+    <None Include="bin\Release\userdata\stage1" />
+    <None Include="bin\Release\userdata\stage10" />
+    <None Include="bin\Release\userdata\stage11" />
+    <None Include="bin\Release\userdata\stage12" />
+    <None Include="bin\Release\userdata\stage13" />
+    <None Include="bin\Release\userdata\stage14" />
+    <None Include="bin\Release\userdata\stage15" />
+    <None Include="bin\Release\userdata\stage16" />
+    <None Include="bin\Release\userdata\stage17" />
+    <None Include="bin\Release\userdata\stage18" />
+    <None Include="bin\Release\userdata\stage19" />
+    <None Include="bin\Release\userdata\stage2" />
+    <None Include="bin\Release\userdata\stage20" />
+    <None Include="bin\Release\userdata\stage3" />
+    <None Include="bin\Release\userdata\stage4" />
+    <None Include="bin\Release\userdata\stage5" />
+    <None Include="bin\Release\userdata\stage6" />
+    <None Include="bin\Release\userdata\stage7" />
+    <None Include="bin\Release\userdata\stage8" />
+    <None Include="bin\Release\userdata\stage9" />
+    <None Include="bin\Release\userdata\tutorial1" />
+    <None Include="bin\Release\userdata\tutorial2" />
+    <None Include="bin\Release\userdata\tutorial21" />
+    <None Include="bin\Release\userdata\tutorial3" />
+    <None Include="bin\Release\userdata\tutorial4" />
+    <None Include="bin\Release\userdata\tutorial5" />
+    <None Include="bin\Release\userdata\tutorial6" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
