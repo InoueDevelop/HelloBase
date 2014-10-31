@@ -196,6 +196,7 @@
     <None Include="Resources\線３.png" />
     <None Include="Resources\goal.png" />
     <None Include="Resources\direction.PNG" />
+    <None Include="Resources\perfectgoal.png" />
     <Content Include="Resource\もしend.png" />
     <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\繰り返しend.png" />

@@ -458,14 +458,22 @@ namespace Plock
                     {
                         RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
                         {
+                            pictureBox3.Image = Properties.Resources.goal;
                             button2.Text = "次へ";
                             if(stagecount == 20)
                             {
                                 stagecount = 0;
                                 button2.Text = "はじめから";
+                                pictureBox3.Image = Properties.Resources.perfectgoal;
                             }
                             pictureBox3.Visible = true;
                             button2.Visible = true;
+                            tabControl1.SelectedIndex = 1;
+                            pictureBox3.Visible = true;
+                            pictureBox3.Size = new Size(600, 600);
+                            pictureBox3.Location = new Point(0, 50);
+
+
                         locked = true;
                         });
                         this.Invoke(refreshPic1);
@@ -479,6 +487,7 @@ namespace Plock
                         //Goalevent();
                         RefreshPictureBox1 refreshPic1 = new RefreshPictureBox1(() =>
                         {
+                            pictureBox3.Image = Properties.Resources.goal;
                             pictureBox3.Visible = true;
                             locked = true;
                             tabControl1.SelectedIndex = 1;
@@ -1128,6 +1137,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem9_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage4";
 			var resource = Properties.Resources.stage4;
 			try
@@ -1153,6 +1166,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem10_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage5";
 			var resource = Properties.Resources.stage5;
 			try
@@ -1178,6 +1195,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem11_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage6";
 			var resource = Properties.Resources.stage6;
 			try
@@ -1203,6 +1224,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem12_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage7";
 			var resource = Properties.Resources.stage7;
 			try
@@ -1228,6 +1253,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem13_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage8";
 			var resource = Properties.Resources.stage8;
 			try
@@ -1253,6 +1282,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem14_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage9";
 			var resource = Properties.Resources.stage9;
 			try
@@ -1278,6 +1311,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem15_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage10";
 			var resource = Properties.Resources.stage10;
 			try
@@ -1303,6 +1340,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem16_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage11";
 			var resource = Properties.Resources.stage11;
 			try
@@ -1328,6 +1369,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem17_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage12";
 			var resource = Properties.Resources.stage12;
 			try
@@ -1353,6 +1398,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem18_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage13";
 			var resource = Properties.Resources.stage13;
 			try
@@ -1378,6 +1427,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem19_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage14";
 			var resource = Properties.Resources.stage14;
 			try
@@ -1403,6 +1456,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem20_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage15";
 			var resource = Properties.Resources.stage15;
 			try
@@ -1428,6 +1485,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem21_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage16";
 			var resource = Properties.Resources.stage16;
 			try
@@ -1453,6 +1514,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem22_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage17";
 			var resource = Properties.Resources.stage17;
 			try
@@ -1478,6 +1543,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem23_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage18";
 			var resource = Properties.Resources.stage18;
 			try
@@ -1504,6 +1573,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem24_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage19";
 			var resource = Properties.Resources.stage19;
 			try
@@ -1529,6 +1602,10 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem25_Click(object sender, EventArgs e)
 		{
+            if (locked == true)
+            {
+                locked = false;
+            }
 			string path = "Userdata/stage20";
 			var resource = Properties.Resources.stage20;
 			try
@@ -1553,6 +1630,8 @@ namespace Plock
 		{
 			if (tutorialcount == 0)
 			{
+                pictureBox3.Size = new Size(211, 192);
+                pictureBox3.Location = new Point(468, 406);
 				(tabControl1.TabPages[1] as Control).Enabled = true;
 				label2.Visible = false;
 				tabControl1.SelectedIndex = 1;
@@ -1563,9 +1642,11 @@ namespace Plock
 				richTextBox1.Visible = true;
 				richTextBox1.Text = "はじめてのプログラミングへようこそ！";
 				tutorialcount++;
+                button2.Visible = false;
 				button1.Visible = true;
                 button3.Visible = true;
                 button4.Visible = false;
+                pictureBox3.Visible = false;
 			}
 			else
 			{
@@ -2303,6 +2384,10 @@ namespace Plock
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            tabControl1.SelectedIndex = 0;
             stagecount++;
             if (this.stage.InvokeRequired)
             {
