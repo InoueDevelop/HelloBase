@@ -937,16 +937,17 @@ namespace Plock
                 //ゲームのデータクラスの更新
                 if (runAllTimer.Enabled == true)
                 {
+                    gameForm.locked = true;
                     runAllTimer.Stop();//タイマーを停止する
                     safevelocityenabled();
                     button3.Enabled = true;
                     button4.Enabled = true;
                     button5.Enabled = true;
                     button6.Text = "すべて実行";
-                    gameForm.changevisiblet();
                 }
                 else
                 {
+                    gameForm.locked = false;
                     if (!validateCode()) return;//コードの形が正しくないときは何も実行しない
                     velocityBar1.Enabled = false;
                     Queue<string> codeQueue = block_to_queue();
@@ -955,7 +956,6 @@ namespace Plock
                     button3.Enabled = false;
                     button4.Enabled = false;
                     button5.Enabled = false;
-                    gameForm.changevisiblef();
                     button6.Text = "停止する";
                 }
             }
