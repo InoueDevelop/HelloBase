@@ -142,7 +142,8 @@ namespace Plock
 
             this.KeyPreview = true;
 
-
+            
+            
             Graphics g = Graphics.FromImage(back);
 
             BoardSizeWidth = pictureBox1.Width;
