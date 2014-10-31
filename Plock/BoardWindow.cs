@@ -2719,8 +2719,12 @@ namespace Plock
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if(tabControl1.SelectedIndex==1)
+            {
+                tabControl1.SelectedIndex = 0;
+            }
             if(locked == true)
-                {
+            {
                 locked = false;
             }
             string path = "stage" + stagecount.ToString();
