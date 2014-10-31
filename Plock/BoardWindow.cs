@@ -2175,7 +2175,7 @@ namespace Plock
                 }
                 if (tutorial != 19)
                 {
-                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n次のようにブロックを配置してみましょう！\n繰り返し　の中に\n前へ進む\nもし　左が壁でないなら　を入れて\n左を向く　をもし　左が壁でないならの中に入れます。それではすべて実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
+                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n繰り返し　の中に\n前へ進む\nもし　左が壁でないなら　を入れて\n左を向く　をもし　左が壁でないならの中に入れます。それではすべて実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
                     string path = "Userdata/tutorial5";
                     var resource = Properties.Resources.tutorial5;
                     try
@@ -2589,28 +2589,10 @@ namespace Plock
                 {
                     locked = false;
                 }
-            }
-            else if (tutorial == 10)
-            {
-                    string path = "Userdata/tutorial2";
-                    var resource = Properties.Resources.tutorial2;
-                    try
-                    {
-                        demoDataset(path, resource);
-                        stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル2";
-                    }
-                    catch (Exception exc)
-                    {
-
-                    }
+                richTextBox1.Text = "ブロックの数は何個でも配置することができます！\n今度は、\n左を向く \n前へ進む \nの順にブロックをドラッグし、すべて実行をクリックしてみましょう！\nゴールできたら次へを押してね！";
                 
-                if (locked == true)
-                {
-                    locked = false;
-                }
             }
-            else if (tutorial == 12)
+            else if (tutorial == 13)
             {
                 string path = "Userdata/tutorial3";
                 var resource = Properties.Resources.tutorial3;
@@ -2628,27 +2610,8 @@ namespace Plock
                 {
                     locked = false;
                 }
-            }
-            else if (tutorial == 14)
-            {
-
-                string path = "Userdata/tutorial3";
-                    var resource = Properties.Resources.tutorial3;
-                    try
-                    {
-                        demoDataset(path, resource);
-                        stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル3";
-                    }
-                    catch (Exception exc)
-                    {
-
-                    }
+                richTextBox1.Text = "そこで、繰り返し ブロックをドラッグします！\nまず 繰り返し ブロックをドラッグしましょう。\nそして 前へ進む を繰り返しブロックの間にドラッグします。\n準備ができたら、すべて実行をクリックしましょう！";
                 
-                if (locked == true)
-                {
-                    locked = false;
-                }
             }
             else if (tutorial == 15)
             {
@@ -2669,26 +2632,7 @@ namespace Plock
                 {
                     locked = false;
                 }
-            }
-            else if (tutorial == 16)
-            {
-                 string path = "Userdata/tutorial4";
-                    var resource = Properties.Resources.tutorial4;
-                    try
-                    {
-                        demoDataset(path, resource);
-                        stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル4";
-                    }
-                    catch (Exception exc)
-                    {
-
-                    }
-                
-                if (locked == true)
-                {
-                    locked = false;
-                }
+                richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！";
             }
             else if (tutorial == 18)
             {
@@ -2710,29 +2654,12 @@ namespace Plock
                 {
                     locked = false;
                 }
-            }
-            else if (tutorial == 19)
-            {
-                 string path = "Userdata/tutorial5";
-                    var resource = Properties.Resources.tutorial5;
-                    try
-                    {
-                        demoDataset(path, resource);
-                        stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル5";
-                    }
-                    catch (Exception exc)
-                    {
-
-                    }
+                richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　の中に\n前へ進む\nもし　左が壁でないなら　を入れて\n左を向く　をもし　左が壁でないならの中に入れます。\nそれではすべて実行をクリックしてみましょう！";
                 
-                if (locked == true)
-                {
-                    locked = false;
-                }
             }
             else if (tutorial == 20)
             {
+                richTextBox1.Text = "最後にこのステージをクリアしてみましょう！";
                 string path = "Userdata/tutorial6";
                 var resource = Properties.Resources.tutorial6;
                 try
@@ -2750,27 +2677,6 @@ namespace Plock
                     locked = false;
                 }
             }
-            else if (tutorial == 21)
-            {
-                string path = "Userdata/tutorial6";
-                var resource = Properties.Resources.tutorial6;
-                try
-                {
-                    demoDataset(path, resource);
-                    stagecount = 30;
-                    stage.Text = "現在のステージ:チュートリアル6";
-                }
-                catch (Exception exc)
-                {
-
-                }
-                if (locked == true)
-                {
-                    locked = false;
-                }
-                tutorial++;
-            }
-            
         }
 
 
