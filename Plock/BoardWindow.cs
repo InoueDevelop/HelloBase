@@ -451,7 +451,6 @@ namespace Plock
             bool genoside = false;
             foreach (var n in ListObjectBoard)
             {
-
                 if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                 {
                     if(stagecount!=30)
@@ -481,6 +480,7 @@ namespace Plock
                         {
                             pictureBox3.Visible = true;
                             locked = true;
+                            tabControl1.SelectedIndex = 1;
                         });
                         this.Invoke(refreshPic1);
                     }
@@ -629,6 +629,18 @@ namespace Plock
         public void directionchange ()
         {
             bmppaint.playerdirectionchange(controlobj.objectDirection,fore,controlobj.objectPositionX,controlobj.objectPositionY);
+            if (tutorial == 6 && tutorialcount == 1)
+            {
+                if (controlobj.objectDirection == 1)
+                {
+                    RefreshPictureBox1 refreshPic2 = new RefreshPictureBox1(() =>
+                    {
+
+                        tabControl1.SelectedIndex = 1;
+                    });
+                    this.Invoke(refreshPic2);
+                }
+            }
             refreshPictureBox1();
         }
 
