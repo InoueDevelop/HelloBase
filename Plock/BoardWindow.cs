@@ -491,6 +491,7 @@ namespace Plock
                             pictureBox3.Visible = true;
                             locked = true;
                             tabControl1.SelectedIndex = 1;
+                            richTextBox1.Text = "ゴールできたよ！\n次へを押してね！";
                         });
                         this.Invoke(refreshPic1);
                     }
@@ -645,7 +646,7 @@ namespace Plock
                 {
                     RefreshPictureBox1 refreshPic2 = new RefreshPictureBox1(() =>
                     {
-
+                        richTextBox1.Text = "ゴールを向けたよ！\n次へを押してね！";
                         tabControl1.SelectedIndex = 1;
                     });
                     this.Invoke(refreshPic2);
@@ -1070,6 +1071,9 @@ namespace Plock
 			{
 
 			}
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
 		}
 
 		/// <summary>
@@ -1079,6 +1083,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem7_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1108,6 +1115,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem8_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1137,6 +1147,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem9_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1166,6 +1179,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem10_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1195,6 +1211,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem11_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1224,6 +1243,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem12_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1253,6 +1275,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem13_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1282,6 +1307,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem14_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1311,6 +1339,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem15_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1340,6 +1371,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem16_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1369,6 +1403,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem17_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1391,6 +1428,7 @@ namespace Plock
 			}
 		}
 
+
 		/// <summary>
 		/// ステージ13
 		/// </summary>
@@ -1398,6 +1436,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem18_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1427,6 +1468,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem19_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1456,6 +1500,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem20_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1485,6 +1532,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem21_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1514,6 +1564,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem22_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1543,6 +1596,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem23_Click(object sender, EventArgs e)
         {
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1573,6 +1629,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem24_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1602,6 +1661,9 @@ namespace Plock
 		/// <param name="e"></param>
 		private void toolStripMenuItem25_Click(object sender, EventArgs e)
 		{
+            pictureBox3.Size = new Size(211, 192);
+            pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             if (locked == false)
             {
                 locked = true;
@@ -1768,8 +1830,12 @@ namespace Plock
                     }
                     else
                     {
-                        richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには 前へ進む のブロックをドラッグし、すべて実行 をクリックします。";
+                        
                     }
+                }
+                if(tutorial!=4)
+                {
+                    richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには 前へ進む のブロックをドラッグし、すべて実行 をクリックします。";
                 }
                 if (locked == true)
                 {
@@ -1853,22 +1919,25 @@ namespace Plock
                     }
                     else
                     {
-                        richTextBox1.Text = "ゴールできてないよ！！\nもう一度やってみよう！";
-                        string path = "Userdata/tutorial21";
-                        var resource = Properties.Resources.tutorial21;
-                        try
-                        {
-                            demoDataset(path, resource);
-                            stagecount = 30;
-                            stage.Text = "現在のステージ:チュートリアル2-1";
-                        }
-                        catch (Exception exc)
-                        {
-
-                        }
+                        
                     }
                 }
-                
+                if(tutorial!=8)
+                {
+                    richTextBox1.Text = "ゴールできてないよ！！\nもう一度やってみよう！";
+                    string path = "Userdata/tutorial21";
+                    var resource = Properties.Resources.tutorial21;
+                    try
+                    {
+                        demoDataset(path, resource);
+                        stagecount = 30;
+                        stage.Text = "現在のステージ:チュートリアル2-1";
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
                 if (locked == true)
                 {
                     locked = false;
@@ -1970,6 +2039,8 @@ namespace Plock
                 {
                     locked = false;
                 }
+                pictureBox2.Visible = true;
+                pictureBox2.Image = Properties.Resources.tu1;
             }
             else if (tutorial == 13)
             {
@@ -1980,6 +2051,7 @@ namespace Plock
                     {
                         richTextBox1.Text = "前へ進むブロックが1つだけでクリアすることができました！\nこのように繰り返しブロックは繰り返しの間にあるブロックをゴールに辿りつくまで何回も行います。";
                         tutorial++;
+                        pictureBox2.Visible = false;
                     }
 
                 }
@@ -2116,6 +2188,8 @@ namespace Plock
                     {
 
                     }
+                    pictureBox2.Visible = true;
+                    pictureBox2.Image = Properties.Resources.tu2;
                 }
                 if (locked == true)
                 {
@@ -2143,6 +2217,8 @@ namespace Plock
                 {
                     locked = false;
                 }
+                pictureBox2.Image = Properties.Resources.direction;
+                pictureBox2.Visible = false;
             }
             else if(tutorial==20)
             {
@@ -2389,6 +2465,7 @@ namespace Plock
 
             pictureBox3.Size = new Size(211, 192);
             pictureBox3.Location = new Point(468, 406);
+            pictureBox3.Visible = false;
             tabControl1.SelectedIndex = 0;
             stagecount++;
             if (this.stage.InvokeRequired)
@@ -2414,6 +2491,7 @@ namespace Plock
 
             }
             button2.Visible = false;
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -2425,6 +2503,7 @@ namespace Plock
             
             if (tutorial == 3)
             {
+                richTextBox1.Text = "前へ進むには 前へ進む のブロックをドラッグし、すべて実行 をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nブロックを置くにはプログラミングを上にあるプログラミングをクリックしてね！\nゴールについたら次へを押してね！";
                 string path = "Userdata/tutorial1";
                 var resource = Properties.Resources.tutorial1;
                 try
@@ -2444,7 +2523,7 @@ namespace Plock
                 }
 
             }
-            else if (tutorial == 5)
+            else if (tutorial == 6)
             {
                 
                 string path = "Userdata/tutorial2";
@@ -2459,21 +2538,14 @@ namespace Plock
                 {
 
                 }
-                tutorial++;
-                if (locked == true)
-                {
-                    locked = false;
-                }
-            }
-            else if (tutorial == 6)
-            {
-                
                 pictureBox2.Visible = true;
                 pictureBox2.Image = Properties.Resources.direction;
                 if (locked == true)
                 {
                     locked = false;
                 }
+                richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックをドラッグしましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く をドラッグし、すべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
+                
             }
             else if (tutorial == 7)
             {
@@ -2495,6 +2567,8 @@ namespace Plock
                 {
                     locked = false;
                 }
+                richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックをドラッグして、ゴールしましょう！";
+                    
             }
             else if (tutorial == 8)
             {

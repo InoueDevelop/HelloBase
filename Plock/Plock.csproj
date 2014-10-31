@@ -197,6 +197,8 @@
     <None Include="Resources\goal.png" />
     <None Include="Resources\direction.PNG" />
     <None Include="Resources\perfectgoal.png" />
+    <None Include="bin\Release\userdata\tu1.PNG" />
+    <None Include="bin\Release\userdata\tu2.PNG" />
     <Content Include="Resource\もしend.png" />
     <Content Include="Resource\もしinterval.png" />
     <Content Include="Resource\繰り返しend.png" />

@@ -622,7 +622,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Plock.Properties.Resources.goal;
+//            this.pictureBox3.Image = global::Plock.Properties.Resources.goal;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(468, 406);
             this.pictureBox3.Name = "pictureBox3";
