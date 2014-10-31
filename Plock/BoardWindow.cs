@@ -1667,7 +1667,7 @@ namespace Plock
                 {
 
                 }
-                richTextBox1.Text = "前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、すべて実行をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nゴールについたら次へを押してね！";
+                richTextBox1.Text = "前へ進むには 前へ進む のブロックをドラッグし、すべて実行 をクリックします。\nそれでは実際にキャラクターを前へ動かしてみましょう！\nブロックを置くにはプログラミングを上にあるプログラミングをクリックしてね！\nゴールについたら次へを押してね！";
                 tutorial++;
                 if (locked == true)
                 {
@@ -1677,14 +1677,18 @@ namespace Plock
             }
             else if (tutorial == 3)
             {
-                if (ListObjectBoard[0].objectPositionX == ListObjectBoard[ListObjectBoard.Count()-2].objectPositionX && ListObjectBoard[0].objectPositionY == ListObjectBoard[ListObjectBoard.Count()-2].objectPositionY)
+                foreach (var n in ListObjectBoard)
                 {
-                    richTextBox1.Text = "このように一度のすべて実行でゴールに到着するのが目標になります。";
-                    tutorial++;
-                }
-                else
-                {
-                    richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには命令セットから前へ進むを選び、配置をクリックしてください。\nその後、すべて実行をクリックします。";
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
+                    {
+                        richTextBox1.Text = "このように一度のすべて実行でゴールに到着するのが目標になります。";
+                        tutorial++;
+                        break;
+                    }
+                    else
+                    {
+                        richTextBox1.Text = "前へ進めてないよ！！\n前へ進むには 前へ進む のブロックをドラッグし、すべて実行 をクリックします。";
+                    }
                 }
                 if (locked == true)
                 {
@@ -1693,7 +1697,7 @@ namespace Plock
             }
             else if(tutorial == 4)
             {
-                richTextBox1.Text = "パート2 向きを変える\nこの主人公はまっすぐにしか進めません…\nそれでは今のようにプレイヤーの右側にゴールがある場合はどうしましょう？";
+                richTextBox1.Text = "パート2 向きを変える\nこの主人公はまっすぐにしか進めません…\nそれでは今のようにプレイヤーの右側にゴールがある場合はどうしましょうか？";
                 
                 string path = "Userdata/tutorial2";
                 var resource = Properties.Resources.tutorial2;
@@ -1716,7 +1720,7 @@ namespace Plock
             else if(tutorial == 5)
             {
 				comboBox1.SelectedIndex = 2;
-				richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックを配置してあげましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く を配置してすべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
+				richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックをドラッグしましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く をドラッグし、すべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
                 tutorial++;
                 pictureBox2.Visible = true;
                 stage.Text = "現在のステージ:チュートリアル2";
@@ -1731,7 +1735,7 @@ namespace Plock
             {
                 if(ListObjectBoard[0].objectDirection==1)
                 {
-                    richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックを配置して、ゴールしましょう！";
+                    richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックをドラッグして、ゴールしましょう！";
                     tutorial++;
                     pictureBox2.Visible = false;
                 }
@@ -1758,28 +1762,32 @@ namespace Plock
             }
             else if (tutorial == 7)
             {
-				
-				if (ListObjectBoard[0].objectPositionX == 6 && ListObjectBoard[0].objectPositionY==5)
+                foreach (var n in ListObjectBoard)
                 {
-                    richTextBox1.Text = "ゴールできました!\nそれでは一回の実行でゴールを目指してみましょう。";
-                    tutorial++;
-                }
-                else
-                {
-                    richTextBox1.Text = "ゴールできてないよ！！\nもう一度やってみよう！";
-                    string path = "Userdata/tutorial21";
-                    var resource = Properties.Resources.tutorial21;
-                    try
+                    if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                     {
-                        demoDataset(path, resource);
-                        stagecount = 30;
-                        stage.Text = "現在のステージ:チュートリアル2-1";
+                        richTextBox1.Text = "ゴールできました!\nそれでは一回の実行でゴールを目指してみましょう。";
+                        tutorial++;
+                        break;
                     }
-                    catch (Exception exc)
+                    else
                     {
+                        richTextBox1.Text = "ゴールできてないよ！！\nもう一度やってみよう！";
+                        string path = "Userdata/tutorial21";
+                        var resource = Properties.Resources.tutorial21;
+                        try
+                        {
+                            demoDataset(path, resource);
+                            stagecount = 30;
+                            stage.Text = "現在のステージ:チュートリアル2-1";
+                        }
+                        catch (Exception exc)
+                        {
 
+                        }
                     }
                 }
+                
                 if (locked == true)
                 {
                     locked = false;
@@ -1787,7 +1795,7 @@ namespace Plock
             }
             else if(tutorial == 8)
             {
-                richTextBox1.Text = "ブロックの数は何個でも配置することができます！\n今度は、\n左を向く \n前へ進む \nの順にブロックを配置し、すべて実行をクリックしてみましょう！\nゴールできたら次へを押してね！";
+                richTextBox1.Text = "ブロックの数は何個でも配置することができます！\n今度は、\n左を向く \n前へ進む \nの順にブロックをドラッグし、すべて実行をクリックしてみましょう！\nゴールできたら次へを押してね！";
                 string path = "Userdata/tutorial2";
                 var resource = Properties.Resources.tutorial2;
                 try
@@ -1814,6 +1822,7 @@ namespace Plock
                     {
                         richTextBox1.Text = "一度の実行でクリアすることができました！\nこのように一度の実行でクリアすることが目標です。\nステージは後ろに行けばいくほど難しくなるので、頑張って挑戦してみましょう！";
                         tutorial++;
+                        break;
                     }
                     else
                     {
@@ -1853,7 +1862,7 @@ namespace Plock
             else if(tutorial == 11)
             {
 				comboBox1.SelectedIndex = 3;
-				richTextBox1.Text = "ゴールが主人公の5マス先にあります。\nつまり 前へ進む ブロックを5つ配置すればクリアできますね！\nしかし5つも配置するのは大変です(´・ω・`)\n何か良い方法はないのでしょうか！！";
+				richTextBox1.Text = "ゴールが主人公の5マス先にあります。\nつまり 前へ進む ブロックを5つドラッグすればクリアできますね！\nしかし5つも配置するのは大変です(´・ω・`)\n何か良い方法はないのでしょうか？？";
                 tutorial++;
                 string path = "Userdata/tutorial3";
                 var resource = Properties.Resources.tutorial3;
@@ -1874,7 +1883,7 @@ namespace Plock
             }
             else if(tutorial == 12)
             {
-                richTextBox1.Text = "そこで、繰り返し ブロックを配置します！\nまず 繰り返し ブロックを選択、その横にある条件セットから ずっと を選択し配置しましょう。\n次に前へ進むを1つだけ配置します。\n最後に ここまで ブロックを配置します。\n準備ができたら、すべて実行をクリックしましょう！";
+                richTextBox1.Text = "そこで、繰り返し ブロックをドラッグします！\nまず 繰り返し ブロックをドラッグしましょう。\nそして 前へ進む を繰り返しブロックの間にドラッグします。\n準備ができたら、すべて実行をクリックしましょう！";
                 tutorial++;
                 if (locked == true)
                 {
@@ -1888,7 +1897,7 @@ namespace Plock
                 {
                     if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                     {
-                        richTextBox1.Text = "前へ進むブロックが1つだけでクリアすることができました！\nこのように繰り返しブロックは繰り返しとここまでの間にあるブロックをゴールに辿りつくまで何回も行います。";
+                        richTextBox1.Text = "前へ進むブロックが1つだけでクリアすることができました！\nこのように繰り返しブロックは繰り返しの間にあるブロックをゴールに辿りつくまで何回も行います。";
                         tutorial++;
                     }
 
@@ -1916,7 +1925,7 @@ namespace Plock
             }
             else if(tutorial == 14)
             {
-                richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！\n失敗してしまった場合、次へをクリックすれば元の状態に戻ります！";
+                richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！";
                 string path = "Userdata/tutorial4";
                 var resource = Properties.Resources.tutorial4;
                 try
@@ -1948,7 +1957,7 @@ namespace Plock
                 }
                 if (tutorial != 16)
                 {
-                    richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！\n失敗してしまった場合、次へをクリックすれば元の状態に戻ります！";
+                    richTextBox1.Text = "繰り返しブロックの復習です(｀・ω・´)\nこのステージをブロック5つでクリアしてみましょう！\nヒント 2回前へ進み、1回左を向くを繰り返しましょう！";
                     string path = "Userdata/tutorial4";
                     var resource = Properties.Resources.tutorial4;
                     try
@@ -1979,7 +1988,7 @@ namespace Plock
             else if(tutorial == 17)
             {
 				comboBox1.SelectedIndex = 4;
-				richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには命令セットと条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれではすべて実行をクリックしてみましょう！";
+				richTextBox1.Text = "最後は条件文です。\nこのステージをクリアするには条件を組み合わせることが重要になります。\n次のようにブロックを配置してみましょう！\n繰り返し　の中に\n前へ進む\nもし　左が壁でないなら　を入れて\n左を向く　をもし　左が壁でないならの中に入れます。\nそれではすべて実行をクリックしてみましょう！";
                 string path = "Userdata/tutorial5";
                 var resource = Properties.Resources.tutorial5;
                 try
@@ -2005,7 +2014,7 @@ namespace Plock
                 {
                     if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                     {
-                        richTextBox1.Text = "ゴールできました！\nもしブロックは、その条件を満たしていた時にここまでブロックまでにある行動をします。\n今どの行動をしているかは矢印マークで確認できます。";
+                        richTextBox1.Text = "ゴールできました！\nもしブロックは、その条件を満たしていた時にその中にあるブロックの行動をします。\n今どの行動をしているかは矢印マークで確認できます。";
                         tutorial++;
                         button1.Text = "次へ";
                     }
@@ -2013,7 +2022,7 @@ namespace Plock
                 }
                 if (tutorial != 19)
                 {
-                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n繰り返し　ずっと\n前へ進む\nもし　左が壁でないなら\n左を向く\nここまで\nここまで\nそれではすべて実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
+                    richTextBox1.Text = "次のようにブロックを配置してみましょう！\n次のようにブロックを配置してみましょう！\n繰り返し　の中に\n前へ進む\nもし　左が壁でないなら　を入れて\n左を向く　をもし　左が壁でないならの中に入れます。それではすべて実行をクリックしてみましょう！\nブロックを間違って配置してしまったときは、全削除ですべてのブロックを消せます！\nまた一つだけ消したいときは、消したいブロックの上で右クリックをして削除を選ぶと消すことができます！";
                     string path = "Userdata/tutorial5";
                     var resource = Properties.Resources.tutorial5;
                     try
@@ -2035,7 +2044,7 @@ namespace Plock
             else if(tutorial == 19)
             {
                 button1.Text = "次へ";
-                richTextBox1.Text = "最後にこのステージをクリアしてみましょう！\nわからない時は、やり直しボタンを押すとヒントが出るよ！";
+                richTextBox1.Text = "最後にこのステージをクリアしてみましょう！";
                 tutorial++;
                 string path = "Userdata/tutorial6";
                 var resource = Properties.Resources.tutorial6;
