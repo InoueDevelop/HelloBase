@@ -2584,7 +2584,6 @@ namespace Plock
                 {
 
                 }
-                tutorial++;
                 if (locked == true)
                 {
                     locked = false;
