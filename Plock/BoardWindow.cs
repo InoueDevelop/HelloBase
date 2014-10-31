@@ -1710,6 +1710,9 @@ namespace Plock
                 button3.Visible = true;
                 button4.Visible = false;
                 pictureBox3.Visible = false;
+                ロードToolStripMenuItem.Enabled = false;
+                セーブToolStripMenuItem.Enabled = false;
+                toolStripMenuItem4.Enabled = false;
 			}
 			else
 			{
@@ -1733,6 +1736,9 @@ namespace Plock
                 }
                 button3.Visible = false;
                 button4.Visible = true;
+                ロードToolStripMenuItem.Enabled = true;
+                セーブToolStripMenuItem.Enabled = true;
+                toolStripMenuItem4.Enabled = true;
 			}
 		}
 
@@ -2236,6 +2242,7 @@ namespace Plock
                     locked = false;
                 }
                 tutorial++;
+                button1.Text = "終了";
             }
             else if (tutorial == 21)
             {
@@ -2259,6 +2266,9 @@ namespace Plock
                 button3.Visible = false;
                 tabControl1.SelectedIndex = 0;
                 button4.Visible = true;
+                ロードToolStripMenuItem.Enabled = true;
+                セーブToolStripMenuItem.Enabled = true;
+                toolStripMenuItem4.Enabled = true;
             }
         }
 
@@ -2584,7 +2594,6 @@ namespace Plock
                 {
 
                 }
-                tutorial++;
                 if (locked == true)
                 {
                     locked = false;
