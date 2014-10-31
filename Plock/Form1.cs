@@ -10,7 +10,7 @@ using System.Timers;
 
 namespace Plock
 {
-    using GameForm = HelloMaze.BoardData;//TODO:利用したいゲームのFormを登録
+   using GameForm = BoardData;//TODO:利用したいゲームのFormを登録
     using System.Threading;
 
     public class InterpriterController:Form
@@ -23,8 +23,10 @@ namespace Plock
 
         public InterpriterController(){
             //ゲームのFormのインスタンスを生成
+
             gameForm = new GameForm();
-            gameForm.Show();
+			this.AddOwnedForm(gameForm);
+			//gameForm.Show();
 
             //インタプリタの実体を生成
             gameInterpriter = new GameInterpriter();

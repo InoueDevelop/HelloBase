@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Plock
 {
-    using GameData = HelloMaze.BoardData;//TODO:利用したいゲームのデータクラスを登録
+    using GameData = BoardData;//TODO:利用したいゲームのデータクラスを登録
 
     class GameInterpriter
     {

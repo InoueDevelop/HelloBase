@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BitmapPaint;
 
-namespace HelloMaze
+namespace Plock
 {
     /// <summary>
     /// Boardに配置されるオブジェクト操作を行うクラス

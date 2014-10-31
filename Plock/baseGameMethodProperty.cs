@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Plock
 {
-    using GameData = HelloMaze.BoardData;
+    using GameData = BoardData;
 
 
     public class MethodWrapper

@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using BitmapPaint;
 
-namespace HelloMaze
+namespace Plock
 {
     
 
@@ -34,8 +34,6 @@ namespace HelloMaze
             public Bitmap cpfore;
           
            
-
-
             public Dataset(BoardData sdata)
             {
                 cpsquarelength = sdata._sql;
@@ -111,6 +109,8 @@ namespace HelloMaze
 
 		private bool contextFlag = false;
 
+           
+
         #endregion
 
 		#region //コンストラクタ
@@ -119,6 +119,8 @@ namespace HelloMaze
             InitializeComponent();
             constructer();
            
+			
+
         }
 
         public void constructer()
@@ -464,7 +466,7 @@ namespace HelloMaze
                             }
                             pictureBox3.Visible = true;
                             button2.Visible = true;
-                            locked = true;
+                        locked = true;
                         });
                         this.Invoke(refreshPic1);
                         //locked = true;
@@ -2230,7 +2232,7 @@ namespace HelloMaze
 		#endregion
 
         #region 不要
-        public static void writer(int stagecount)
+		public static void writer(int stagecount)
 		{
 
 
@@ -2256,8 +2258,8 @@ namespace HelloMaze
 			}
 
 		}
-        
-        public static int reader(int stagecount)
+
+		public static int reader(int stagecount)
 		{
 			int[] cl = new int[stagecount];
 			int count = 0;
@@ -2614,7 +2616,7 @@ namespace HelloMaze
         private void button4_Click(object sender, EventArgs e)
         {
             if(locked == true)
-            {
+                {
                 locked = false;
             }
             string path = "stage" + stagecount.ToString();
@@ -2660,6 +2662,23 @@ namespace HelloMaze
         {
 
         }
+
+		public class PanelEventArgs : EventArgs
+		{
+			public bool showFlag;
+		}
+
+		public delegate void PanelEventHandler(object sender, PanelEventArgs e);
+		public event PanelEventHandler PanelEvent;
+
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			PanelEventArgs ee = new PanelEventArgs();
+			if (tabControl1.SelectedIndex == 0) ee.showFlag = true;
+			else ee.showFlag = false;
+			this.PanelEvent(this, ee);
+		}
+
 
 		
 
