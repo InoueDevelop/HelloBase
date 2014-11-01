@@ -88,18 +88,18 @@
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			this.tabControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Object_Control_Menu
@@ -620,43 +620,6 @@
 			this.label2.TabIndex = 27;
 			this.label2.Text = "チュートリアルを開始するには[モード]から[チュートリアルモード]を[開始]してください";
 			// 
-			// tabPage1
-			// 
-			this.tabPage1.Location = new System.Drawing.Point(4, 29);
-			this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage1.Size = new System.Drawing.Size(763, 628);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "プログラミング";
-			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// tabControl1
-			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.tabControl1.Location = new System.Drawing.Point(482, 39);
-			this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(771, 661);
-			this.tabControl1.TabIndex = 15;
-			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.ContextMenuStrip = this.Object_Control_Menu;
-			this.pictureBox1.Location = new System.Drawing.Point(16, 39);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(440, 480);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-			this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
-			// 
 			// pictureBox3
 			// 
 			this.pictureBox3.InitialImage = null;
@@ -678,12 +641,49 @@
 			this.pictureBox2.TabStop = false;
 			this.pictureBox2.Visible = false;
 			// 
+			// tabPage1
+			// 
+			this.tabPage1.Location = new System.Drawing.Point(4, 29);
+			this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+			this.tabPage1.Size = new System.Drawing.Size(763, 606);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "プログラミング";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// tabControl1
+			// 
+			this.tabControl1.Controls.Add(this.tabPage1);
+			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.tabControl1.Location = new System.Drawing.Point(482, 39);
+			this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(771, 639);
+			this.tabControl1.TabIndex = 15;
+			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.ContextMenuStrip = this.Object_Control_Menu;
+			this.pictureBox1.Location = new System.Drawing.Point(16, 39);
+			this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(440, 480);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+			this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+			// 
 			// BoardData
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Bisque;
-			this.ClientSize = new System.Drawing.Size(1264, 711);
+			this.ClientSize = new System.Drawing.Size(1264, 689);
 			this.ControlBox = false;
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button2);
@@ -706,10 +706,10 @@
 			this.menuStrip1.PerformLayout();
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage2.PerformLayout();
-			this.tabControl1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			this.tabControl1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

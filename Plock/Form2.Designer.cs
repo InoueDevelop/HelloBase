@@ -85,7 +85,7 @@
 			this.panel1.AllowDrop = true;
 			this.panel1.Location = new System.Drawing.Point(5, 7);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(442, 610);
+			this.panel1.Size = new System.Drawing.Size(440, 584);
 			this.panel1.TabIndex = 0;
 			this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
 			this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
@@ -118,7 +118,7 @@
 			// button5
 			// 
 			this.button5.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button5.Location = new System.Drawing.Point(209, 634);
+			this.button5.Location = new System.Drawing.Point(208, 619);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(123, 60);
 			this.button5.TabIndex = 11;
@@ -129,7 +129,7 @@
 			// button6
 			// 
 			this.button6.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button6.Location = new System.Drawing.Point(349, 634);
+			this.button6.Location = new System.Drawing.Point(349, 619);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(123, 60);
 			this.button6.TabIndex = 12;
@@ -149,7 +149,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.label4.Location = new System.Drawing.Point(574, 27);
+			this.label4.Location = new System.Drawing.Point(575, 27);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(120, 24);
 			this.label4.TabIndex = 15;
@@ -158,15 +158,15 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.label5.Location = new System.Drawing.Point(690, 27);
+			this.label5.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.label5.Location = new System.Drawing.Point(696, 26);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(0, 19);
+			this.label5.Size = new System.Drawing.Size(0, 26);
 			this.label5.TabIndex = 16;
 			// 
 			// velocityBar1
 			// 
-			this.velocityBar1.Location = new System.Drawing.Point(615, 557);
+			this.velocityBar1.Location = new System.Drawing.Point(615, 545);
 			this.velocityBar1.Maximum = 5;
 			this.velocityBar1.Minimum = 1;
 			this.velocityBar1.Name = "velocityBar1";
@@ -179,7 +179,7 @@
 			// 
 			this.lvelocity.AutoSize = true;
 			this.lvelocity.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.lvelocity.Location = new System.Drawing.Point(689, 539);
+			this.lvelocity.Location = new System.Drawing.Point(689, 526);
 			this.lvelocity.Name = "lvelocity";
 			this.lvelocity.Size = new System.Drawing.Size(44, 15);
 			this.lvelocity.TabIndex = 18;
@@ -189,7 +189,7 @@
 			// 
 			this.hvelocity.AutoSize = true;
 			this.hvelocity.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.hvelocity.Location = new System.Drawing.Point(609, 539);
+			this.hvelocity.Location = new System.Drawing.Point(609, 526);
 			this.hvelocity.Name = "hvelocity";
 			this.hvelocity.Size = new System.Drawing.Size(44, 15);
 			this.hvelocity.TabIndex = 19;
@@ -414,14 +414,14 @@
 			this.panel3.Controls.Add(this.button4);
 			this.panel3.Location = new System.Drawing.Point(489, 71);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(758, 623);
+			this.panel3.Size = new System.Drawing.Size(754, 598);
 			this.panel3.TabIndex = 27;
 			// 
 			// Form2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1264, 711);
+			this.ClientSize = new System.Drawing.Size(1264, 689);
 			this.Controls.Add(this.button5);
 			this.Controls.Add(this.panel3);
 			this.Controls.Add(this.button6);
