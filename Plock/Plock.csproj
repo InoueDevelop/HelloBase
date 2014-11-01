@@ -177,6 +177,7 @@
     <None Include="Resources\tutorial6" />
     <None Include="Resource\stage1" />
     <None Include="Resource\stage10" />
+    <None Include="Resource\stage11" />
     <None Include="Resource\stage2" />
     <None Include="Resource\stage5" />
     <None Include="Resource\stage6" />
