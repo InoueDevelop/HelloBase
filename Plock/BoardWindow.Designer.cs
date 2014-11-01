@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoardData));
 			this.Object_Control_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.主人公を置くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.敵を置くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +78,9 @@
 			this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
 			this.ステージ編集モードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.操作方法ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.クレジットToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stage = new System.Windows.Forms.Label();
 			this.settingobj = new System.Windows.Forms.Label();
 			this.button2 = new System.Windows.Forms.Button();
@@ -92,6 +96,8 @@
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -99,6 +105,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.tabControl1.SuspendLayout();
+			this.tabPage3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -224,7 +232,8 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3,
-            this.ステージ選択ToolStripMenuItem});
+            this.ステージ選択ToolStripMenuItem,
+            this.ヘルプToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(1264, 26);
@@ -487,6 +496,29 @@
 			this.ステージ編集モードToolStripMenuItem.Text = "ステージ編集モード";
 			this.ステージ編集モードToolStripMenuItem.Click += new System.EventHandler(this.ステージ編集モードToolStripMenuItem_Click);
 			// 
+			// ヘルプToolStripMenuItem
+			// 
+			this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.操作方法ToolStripMenuItem,
+            this.クレジットToolStripMenuItem});
+			this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
+			this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
+			this.ヘルプToolStripMenuItem.Text = "ヘルプ";
+			// 
+			// 操作方法ToolStripMenuItem
+			// 
+			this.操作方法ToolStripMenuItem.Name = "操作方法ToolStripMenuItem";
+			this.操作方法ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.操作方法ToolStripMenuItem.Text = "操作方法";
+			this.操作方法ToolStripMenuItem.Click += new System.EventHandler(this.操作方法ToolStripMenuItem_Click);
+			// 
+			// クレジットToolStripMenuItem
+			// 
+			this.クレジットToolStripMenuItem.Name = "クレジットToolStripMenuItem";
+			this.クレジットToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.クレジットToolStripMenuItem.Text = "クレジット";
+			this.クレジットToolStripMenuItem.Click += new System.EventHandler(this.クレジットToolStripMenuItem_Click);
+			// 
 			// stage
 			// 
 			this.stage.AutoSize = true;
@@ -541,7 +573,7 @@
 			this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage2.Size = new System.Drawing.Size(763, 628);
+			this.tabPage2.Size = new System.Drawing.Size(763, 606);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "チュートリアル";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -592,7 +624,7 @@
 			this.richTextBox1.Location = new System.Drawing.Point(14, 47);
 			this.richTextBox1.Name = "richTextBox1";
 			this.richTextBox1.ReadOnly = true;
-			this.richTextBox1.Size = new System.Drawing.Size(368, 573);
+			this.richTextBox1.Size = new System.Drawing.Size(368, 540);
 			this.richTextBox1.TabIndex = 16;
 			this.richTextBox1.Text = "";
 			this.richTextBox1.Visible = false;
@@ -623,20 +655,20 @@
 			// pictureBox3
 			// 
 			this.pictureBox3.InitialImage = null;
-			this.pictureBox3.Location = new System.Drawing.Point(466, 390);
+			this.pictureBox3.Location = new System.Drawing.Point(452, 314);
 			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(211, 192);
-			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox3.Size = new System.Drawing.Size(260, 270);
+			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox3.TabIndex = 22;
 			this.pictureBox3.TabStop = false;
 			this.pictureBox3.Visible = false;
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Location = new System.Drawing.Point(388, 70);
+			this.pictureBox2.Location = new System.Drawing.Point(394, 64);
 			this.pictureBox2.Name = "pictureBox2";
 			this.pictureBox2.Size = new System.Drawing.Size(360, 234);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 20;
 			this.pictureBox2.TabStop = false;
 			this.pictureBox2.Visible = false;
@@ -656,6 +688,7 @@
 			// 
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.tabControl1.Location = new System.Drawing.Point(482, 39);
 			this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -664,6 +697,26 @@
 			this.tabControl1.Size = new System.Drawing.Size(771, 639);
 			this.tabControl1.TabIndex = 15;
 			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+			// 
+			// tabPage3
+			// 
+			this.tabPage3.Controls.Add(this.axAcroPDF1);
+			this.tabPage3.Location = new System.Drawing.Point(4, 29);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(763, 606);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "操作方法";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// axAcroPDF1
+			// 
+			this.axAcroPDF1.Enabled = true;
+			this.axAcroPDF1.Location = new System.Drawing.Point(6, 26);
+			this.axAcroPDF1.Name = "axAcroPDF1";
+			this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+			this.axAcroPDF1.Size = new System.Drawing.Size(751, 555);
+			this.axAcroPDF1.TabIndex = 0;
 			// 
 			// pictureBox1
 			// 
@@ -709,6 +762,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.tabControl1.ResumeLayout(false);
+			this.tabPage3.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -781,6 +836,11 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 操作方法ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem クレジットToolStripMenuItem;
+		private System.Windows.Forms.TabPage tabPage3;
+		private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
     }
 }
 

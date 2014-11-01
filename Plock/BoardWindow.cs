@@ -12,6 +12,9 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using BitmapPaint;
 
+using AxAcroPDFLib;
+using System.Runtime.InteropServices;
+
 namespace Plock
 {
     
@@ -42,7 +45,8 @@ namespace Plock
                 cpcontrolobj = sdata.controlobj;
                 cpCanPutObjectOnBoard = sdata.BoardObjectCanMove;
                 cp_ListObjectBoard = new List<BoardObject>();
-              
+
+				
             }
 
         }
@@ -118,7 +122,7 @@ namespace Plock
         {
             InitializeComponent();
             constructer();
-           
+			
 			
 
         }
@@ -192,6 +196,8 @@ namespace Plock
             }
 
 			(tabControl1.TabPages[1] as Control).Enabled = false;
+
+			
         }
 
 #endregion
@@ -470,7 +476,7 @@ namespace Plock
                             button2.Visible = true;
                             tabControl1.SelectedIndex = 1;
                             pictureBox3.Visible = true;
-                            pictureBox3.Size = new Size(600, 600);
+                            pictureBox3.Size = new Size(540, 540);
                             pictureBox3.Location = new Point(0, 50);
                             
 
@@ -2774,6 +2780,26 @@ namespace Plock
 			if (tabControl1.SelectedIndex == 0) ee.showFlag = true;
 			else ee.showFlag = false;
 			this.PanelEvent(this, ee);
+
+			if (tabControl1.SelectedIndex == 2)
+			{
+				axAcroPDF1.LoadFile(@"help.pdf");
+				axAcroPDF1.setShowToolbar(false);
+				axAcroPDF1.setLayoutMode("OneColumn");
+				axAcroPDF1.setPageMode("none");
+				axAcroPDF1.setView("FitH");
+			}
+		}
+
+		private void 操作方法ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			tabControl1.SelectedIndex = 2;
+		}
+
+		private void クレジットToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Credits creditForm = new Credits();
+			creditForm.ShowDialog(this);
 		}
 
 

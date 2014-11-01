@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("早稲田大学 井上研究室")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © inoueLab 2014")]
+[assembly: AssemblyCopyright("Copyright © InoueLab 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
