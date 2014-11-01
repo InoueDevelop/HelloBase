@@ -2269,6 +2269,26 @@ namespace Plock
                 ロードToolStripMenuItem.Enabled = true;
                 セーブToolStripMenuItem.Enabled = true;
                 toolStripMenuItem4.Enabled = true;
+                if (locked == false)
+                {
+                    locked = true;
+                }
+                string path = "Userdata/stage1";
+                var resource = Properties.Resources.stage1;
+                try
+                {
+                    demoDataset(path, resource);
+                    stagecount = 1;
+                    stage.Text = "現在のステージ:" + stagecount;
+                    if (button2.Visible == true)
+                    {
+                        button2.Visible = false;
+                    }
+                }
+                catch (Exception exc)
+                {
+
+                }
             }
         }
 
@@ -2636,7 +2656,6 @@ namespace Plock
                 {
 
                 }
-                tutorial++;
                 if (locked == true)
                 {
                     locked = false;
