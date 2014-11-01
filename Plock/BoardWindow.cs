@@ -69,6 +69,7 @@ namespace Plock
         Point sp;    //イベント発生時に保持されるマウスの画面座標
         public int stagecount = 21;
         public bool gostage = false;
+		public bool[] pGoalFlag = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
         int setswitch=(int) set.None;
         public int _sql
@@ -197,7 +198,14 @@ namespace Plock
 
 			(tabControl1.TabPages[1] as Control).Enabled = false;
 
-			
+			try
+			{
+				axAcroPDF1.LoadFile(@"help.pdf");
+			}
+			catch (Exception)
+			{
+
+			}
         }
 
 #endregion
@@ -466,11 +474,13 @@ namespace Plock
                         {
                             pictureBox3.Image = Properties.Resources.goal;
                             button2.Text = "次へ";
+							pGoalFlag[stagecount - 1] = true;
                             if(stagecount == 20)
                             {
                                 stagecount = 0;
                                 button2.Text = "はじめから";
                                 pictureBox3.Image = Properties.Resources.perfectgoal;
+								
                             }
                             pictureBox3.Visible = true;
                             button2.Visible = true;
@@ -478,7 +488,6 @@ namespace Plock
                             pictureBox3.Visible = true;
                             pictureBox3.Size = new Size(540, 540);
                             pictureBox3.Location = new Point(0, 50);
-                            
 
                         locked = true;
                         });
@@ -593,7 +602,7 @@ namespace Plock
                        loadDataset2(pathnext, da);
 
                    }
-                   catch (Exception exc)
+                   catch (Exception)
                    {
 
                    }
@@ -628,7 +637,7 @@ namespace Plock
                    //        loadDataset2(pathnext, da);
 
                    //    }
-                   //    catch (Exception exc)
+                   //    catch (Exception )
                    //    {
 
                    //    }
@@ -1073,7 +1082,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1108,7 +1117,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1140,7 +1149,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1172,7 +1181,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception  )
 			{
 
 			}
@@ -1204,7 +1213,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception  )
 			{
 
 			}
@@ -1236,7 +1245,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1268,7 +1277,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1300,7 +1309,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1332,7 +1341,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1364,7 +1373,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1396,7 +1405,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1428,7 +1437,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1461,7 +1470,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1493,7 +1502,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1525,7 +1534,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1557,7 +1566,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1589,7 +1598,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1621,7 +1630,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1654,7 +1663,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1686,7 +1695,7 @@ namespace Plock
                     button2.Visible = false;
                 }
 			}
-			catch (Exception exc)
+			catch (Exception )
 			{
 
 			}
@@ -1766,6 +1775,7 @@ namespace Plock
 			if (contextFlag)
 			{
 				contextFlag = false;
+				settingobj.Text = "";
 				ステージ選択ToolStripMenuItem1.Enabled = true;
 				チュートリアルモードToolStripMenuItem.Enabled = true;
 				ステージ編集モードToolStripMenuItem.Text = "ステージ編集モード";
@@ -1773,6 +1783,7 @@ namespace Plock
 			else 
 			{
 				contextFlag = true;
+				settingobj.Text = "";
 				ステージ選択ToolStripMenuItem1.Enabled = false;
 				チュートリアルモードToolStripMenuItem.Enabled = false;
 				ステージ編集モードToolStripMenuItem.Text = "編集モード終了";
@@ -1818,7 +1829,7 @@ namespace Plock
                     stage.Text = "現在のステージ:チュートリアル1";
 
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -1866,7 +1877,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル2";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -1909,7 +1920,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル2";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -1945,7 +1956,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル2-1";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -1966,7 +1977,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル2";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2002,7 +2013,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル2";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -2034,7 +2045,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル3";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2078,7 +2089,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル3";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -2099,7 +2110,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル4";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2131,7 +2142,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル4";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -2162,7 +2173,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル5";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2196,7 +2207,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル5";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -2221,7 +2232,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル6";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2292,7 +2303,7 @@ namespace Plock
                         button2.Visible = false;
                     }
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2322,7 +2333,7 @@ namespace Plock
 					stagecount = 1;
 					stage.Text = "現在のステージ:" + stagecount;
 				}
-				catch (Exception exc)
+				catch (Exception )
 				{
 
 				}
@@ -2350,7 +2361,7 @@ namespace Plock
         public void draevent(){
             int x = -1;
             int y = -1;
-            int objectselectnum = 0;
+            //int objectselectnum = 0;
 
 
 
@@ -2523,7 +2534,7 @@ namespace Plock
                 loadDataset2(pathnext, da);
 
             }
-            catch (Exception exc)
+            catch (Exception )
             {
 
             }
@@ -2550,7 +2561,7 @@ namespace Plock
                     stage.Text = "現在のステージ:チュートリアル1";
 
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2571,7 +2582,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル2";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2595,7 +2606,7 @@ namespace Plock
                         stagecount = 30;
                         stage.Text = "現在のステージ:チュートリアル2-1";
                     }
-                    catch (Exception exc)
+                    catch (Exception )
                     {
 
                     }
@@ -2617,7 +2628,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル2";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2638,7 +2649,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル3";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2659,7 +2670,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル4";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2679,7 +2690,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル5";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2703,7 +2714,7 @@ namespace Plock
                     stagecount = 30;
                     stage.Text = "現在のステージ:チュートリアル6";
                 }
-                catch (Exception exc)
+                catch (Exception )
                 {
 
                 }
@@ -2756,7 +2767,7 @@ namespace Plock
                     button2.Visible = false;
                 }
             }
-            catch (Exception exc)
+            catch (Exception )
             {
 
             }
@@ -2784,11 +2795,11 @@ namespace Plock
 
 			if (tabControl1.SelectedIndex == 2)
 			{
-				axAcroPDF1.LoadFile(@"help.pdf");
 				axAcroPDF1.setShowToolbar(false);
 				axAcroPDF1.setLayoutMode("OneColumn");
 				axAcroPDF1.setPageMode("none");
 				axAcroPDF1.setView("FitH");
+				axAcroPDF1.Show();
 			}
 		}
 
@@ -2799,8 +2810,19 @@ namespace Plock
 
 		private void クレジットToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Credits creditForm = new Credits();
+			bool p = true;
+			for(int i =0; i<20; i++)
+			{
+				if(pGoalFlag[i] == false) p = false;
+			}
+			Credits creditForm = new Credits(p);
 			creditForm.ShowDialog(this);
+		}
+
+		private void BoardData_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			axAcroPDF1.Dispose();
+			axAcroPDF1 = null;
 		}
 
 

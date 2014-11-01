@@ -73,6 +73,16 @@ namespace Plock.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap ex_answer {
+            get {
+                object obj = ResourceManager.GetObject("ex_answer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap goal {
             get {
                 object obj = ResourceManager.GetObject("goal", resourceCulture);
@@ -87,6 +97,16 @@ namespace Plock.Properties {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap hidarite_answer {
+            get {
+                object obj = ResourceManager.GetObject("hidarite_answer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

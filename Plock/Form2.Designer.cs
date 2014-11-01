@@ -59,6 +59,7 @@
 			this.pictureBox4 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.velocityBar1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -78,6 +79,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			this.panel3.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -118,7 +120,7 @@
 			// button5
 			// 
 			this.button5.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button5.Location = new System.Drawing.Point(208, 619);
+			this.button5.Location = new System.Drawing.Point(15, 26);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(123, 60);
 			this.button5.TabIndex = 11;
@@ -129,7 +131,7 @@
 			// button6
 			// 
 			this.button6.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button6.Location = new System.Drawing.Point(349, 619);
+			this.button6.Location = new System.Drawing.Point(160, 26);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(123, 60);
 			this.button6.TabIndex = 12;
@@ -401,7 +403,7 @@
 			// 
 			// panel3
 			// 
-			this.panel3.BackColor = System.Drawing.Color.Transparent;
+			this.panel3.BackColor = System.Drawing.SystemColors.Control;
 			this.panel3.Controls.Add(this.panel1);
 			this.panel3.Controls.Add(this.hvelocity);
 			this.panel3.Controls.Add(this.panel2);
@@ -417,14 +419,28 @@
 			this.panel3.Size = new System.Drawing.Size(754, 598);
 			this.panel3.TabIndex = 27;
 			// 
+			// groupBox1
+			// 
+			this.groupBox1.BackColor = System.Drawing.Color.Bisque;
+			this.groupBox1.Controls.Add(this.button5);
+			this.groupBox1.Controls.Add(this.button6);
+			this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuText;
+			this.groupBox1.Location = new System.Drawing.Point(148, 577);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(298, 100);
+			this.groupBox1.TabIndex = 28;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "プログラムの実行";
+			// 
 			// Form2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.Bisque;
 			this.ClientSize = new System.Drawing.Size(1264, 689);
-			this.Controls.Add(this.button5);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.panel3);
-			this.Controls.Add(this.button6);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Location = new System.Drawing.Point(10, 10);
 			this.MaximizeBox = false;
@@ -453,6 +469,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -489,6 +506,7 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
 		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

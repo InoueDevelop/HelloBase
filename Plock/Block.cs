@@ -8,16 +8,16 @@ namespace Block
 {
     class Block
     {
-        int Width;
-        int Height;
-        string Text;
+        //int Width;
+        //int Height;
+        //string Text;
 
 
         public Block()
         {
-            Width = 0;
-            Height = 0;
-            Text = ("");
+            //Width = 0;
+            //Height = 0;
+            //Text = ("");
         }
     }
 }

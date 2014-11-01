@@ -11,9 +11,11 @@ namespace Plock
 {
 	public partial class Credits : Form
 	{
-		public Credits()
+		public Credits(bool OK)
 		{
 			InitializeComponent();
+			pictureBox1.Image = Properties.Resources.hidarite_answer;
+			if (OK) pictureBox2.Image = Properties.Resources.ex_answer;
 		}
 	}
 }

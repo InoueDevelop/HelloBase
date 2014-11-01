@@ -92,22 +92,23 @@
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Object_Control_Menu
@@ -532,9 +533,10 @@
 			// settingobj
 			// 
 			this.settingobj.AutoSize = true;
-			this.settingobj.Location = new System.Drawing.Point(287, 39);
+			this.settingobj.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.settingobj.Location = new System.Drawing.Point(20, 569);
 			this.settingobj.Name = "settingobj";
-			this.settingobj.Size = new System.Drawing.Size(0, 12);
+			this.settingobj.Size = new System.Drawing.Size(0, 19);
 			this.settingobj.TabIndex = 13;
 			// 
 			// button2
@@ -652,27 +654,6 @@
 			this.label2.TabIndex = 27;
 			this.label2.Text = "チュートリアルを開始するには[モード]から[チュートリアルモード]を[開始]してください";
 			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.InitialImage = null;
-			this.pictureBox3.Location = new System.Drawing.Point(452, 314);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(260, 270);
-			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox3.TabIndex = 22;
-			this.pictureBox3.TabStop = false;
-			this.pictureBox3.Visible = false;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Location = new System.Drawing.Point(394, 64);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(360, 234);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox2.TabIndex = 20;
-			this.pictureBox2.TabStop = false;
-			this.pictureBox2.Visible = false;
-			// 
 			// tabPage1
 			// 
 			this.tabPage1.Location = new System.Drawing.Point(4, 29);
@@ -700,6 +681,7 @@
 			// 
 			// tabPage3
 			// 
+			this.tabPage3.Controls.Add(this.label3);
 			this.tabPage3.Controls.Add(this.axAcroPDF1);
 			this.tabPage3.Location = new System.Drawing.Point(4, 29);
 			this.tabPage3.Name = "tabPage3";
@@ -712,10 +694,10 @@
 			// axAcroPDF1
 			// 
 			this.axAcroPDF1.Enabled = true;
-			this.axAcroPDF1.Location = new System.Drawing.Point(6, 26);
+			this.axAcroPDF1.Location = new System.Drawing.Point(6, 6);
 			this.axAcroPDF1.Name = "axAcroPDF1";
 			this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
-			this.axAcroPDF1.Size = new System.Drawing.Size(751, 555);
+			this.axAcroPDF1.Size = new System.Drawing.Size(751, 571);
 			this.axAcroPDF1.TabIndex = 0;
 			// 
 			// pictureBox1
@@ -730,6 +712,37 @@
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
 			this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.InitialImage = null;
+			this.pictureBox3.Location = new System.Drawing.Point(452, 314);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(260, 270);
+			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox3.TabIndex = 22;
+			this.pictureBox3.TabStop = false;
+			this.pictureBox3.Visible = false;
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Location = new System.Drawing.Point(394, 64);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(360, 234);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox2.TabIndex = 20;
+			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Visible = false;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+			this.label3.Location = new System.Drawing.Point(247, 580);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(510, 20);
+			this.label3.TabIndex = 1;
+			this.label3.Text = "クリックするとデータが読み込まれます。(表示にはAdobe Readerが必要です。)";
 			// 
 			// BoardData
 			// 
@@ -753,18 +766,20 @@
 			this.Name = "BoardData";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "迷路を解こう";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BoardData_FormClosing);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BoardData_KeyDown);
 			this.Object_Control_Menu.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage3.ResumeLayout(false);
+			this.tabPage3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -841,6 +856,7 @@
 		private System.Windows.Forms.ToolStripMenuItem クレジットToolStripMenuItem;
 		private System.Windows.Forms.TabPage tabPage3;
 		private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+		private System.Windows.Forms.Label label3;
     }
 }
 
