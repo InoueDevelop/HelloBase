@@ -2233,7 +2233,8 @@ namespace Plock
                     if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
                     {
                         richTextBox1.Text = "ゴールできました！\n以上でチュートリアルはおしまいです。\n全ステージクリアを目指してがんばろう！";
-                        button1.Text = "次へ";
+                        tutorial++;
+                        button1.Text = "終了";
                     }
 
                 }
@@ -2241,8 +2242,8 @@ namespace Plock
                 {
                     locked = false;
                 }
-                tutorial++;
-                button1.Text = "終了";
+
+
             }
             else if (tutorial == 21)
             {
