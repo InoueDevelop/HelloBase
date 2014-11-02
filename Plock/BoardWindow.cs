@@ -1862,6 +1862,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "このように一度のすべて実行でゴールに到着するのが目標になります。";
 						tutorial++;
 						break;
@@ -1903,6 +1904,7 @@ namespace Plock
 			}
 			else if (tutorial == 5)
 			{
+			
 				comboBox1.SelectedIndex = 2;
 				richTextBox1.Text = "そんな時には、右を向く または 左を向く のどちらかのブロックをドラッグしましょう！\n主人公から見てゴールの扉は左側にあるので、左を向く をドラッグし、すべて実行をクリックしてください。\n前へ進むのブロックが残っていたら、すべて削除もしくは前へ進むのブロックを右クリックすることで削除できます！\nクリックしたら次へを押してね！";
 				tabFlag = true;
@@ -1920,6 +1922,7 @@ namespace Plock
 			{
 				if (ListObjectBoard[0].objectDirection == 1)
 				{
+					((Form2)this.Owner).button3_Delete();
 					richTextBox1.Text = "それではゴールの方向を向くことができました。次に前へ進むのブロックをドラッグして、ゴールしましょう！";
 					tabFlag = true;
 					tutorial++;
@@ -1952,6 +1955,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "ゴールできました!\nそれでは一回の実行でゴールを目指してみましょう。";
 				
 						tutorial++;
@@ -2011,6 +2015,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "一度の実行でクリアすることができました！\nこのように一度の実行でクリアすることが目標です。\nステージは後ろに行けばいくほど難しくなるので、頑張って挑戦してみましょう！";
 						tutorial++;
 						break;
@@ -2091,6 +2096,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "前へ進むブロックが1つだけでクリアすることができました！\nこのように繰り返しブロックは繰り返しの間にあるブロックをゴールに辿りつくまで何回も行います。";
 						tutorial++;
 						pictureBox2.Visible = false;
@@ -2146,6 +2152,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "繰り返しブロックの使い方は以上です！\nチュートリアルは次で最後になります('ω')";
 						tutorial++;
 					}
@@ -2212,6 +2219,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "ゴールできました！\nもしブロックは、その条件を満たしていた時にその中にあるブロックの行動をします。\n今どの行動をしているかは矢印マークで確認できます。";
 						tutorial++;
 						button1.Text = "次へ";
@@ -2272,6 +2280,7 @@ namespace Plock
 				{
 					if (n is GoalObject && controlobj is PlayerObject && (controlobj.ObjectPositionX == n.ObjectPositionX && controlobj.ObjectPositionY == n.ObjectPositionY))
 					{
+						((Form2)this.Owner).button3_Delete();
 						richTextBox1.Text = "ゴールできました！\n以上でチュートリアルはおしまいです。\n全ステージクリアを目指してがんばろう！";
 						tutorial++;
 						button1.Text = "終了";
@@ -2817,6 +2826,12 @@ namespace Plock
 			if (tabControl1.SelectedIndex == 0) ee.showFlag = true;
 			else ee.showFlag = false;
 			this.PanelEvent(this, ee);
+
+			if (tabControl1.SelectedIndex == 2)
+			{
+				tabControl1.SelectedIndex = 1;
+				tabControl1.SelectedIndex = 2;
+			}
 
 			if (tabControl1.SelectedIndex == 2)
 			{

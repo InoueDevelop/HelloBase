@@ -108,10 +108,10 @@
 			// 
 			// button4
 			// 
-			this.button4.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button4.Location = new System.Drawing.Point(465, 548);
+			this.button4.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.button4.Location = new System.Drawing.Point(15, 26);
 			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(135, 33);
+			this.button4.Size = new System.Drawing.Size(135, 60);
 			this.button4.TabIndex = 10;
 			this.button4.Text = "はじめの行へ";
 			this.button4.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
 			// button5
 			// 
 			this.button5.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button5.Location = new System.Drawing.Point(15, 26);
+			this.button5.Location = new System.Drawing.Point(156, 26);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(123, 60);
 			this.button5.TabIndex = 11;
@@ -130,8 +130,8 @@
 			// 
 			// button6
 			// 
-			this.button6.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button6.Location = new System.Drawing.Point(160, 26);
+			this.button6.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.button6.Location = new System.Drawing.Point(285, 26);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(123, 60);
 			this.button6.TabIndex = 12;
@@ -413,7 +413,6 @@
 			this.panel3.Controls.Add(this.textBox1);
 			this.panel3.Controls.Add(this.label5);
 			this.panel3.Controls.Add(this.label4);
-			this.panel3.Controls.Add(this.button4);
 			this.panel3.Location = new System.Drawing.Point(489, 71);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(754, 598);
@@ -424,11 +423,12 @@
 			this.groupBox1.BackColor = System.Drawing.Color.Bisque;
 			this.groupBox1.Controls.Add(this.button5);
 			this.groupBox1.Controls.Add(this.button6);
+			this.groupBox1.Controls.Add(this.button4);
 			this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuText;
-			this.groupBox1.Location = new System.Drawing.Point(148, 577);
+			this.groupBox1.Location = new System.Drawing.Point(12, 577);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(298, 100);
+			this.groupBox1.Size = new System.Drawing.Size(425, 100);
 			this.groupBox1.TabIndex = 28;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "プログラムの実行";
@@ -444,8 +444,8 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Location = new System.Drawing.Point(10, 10);
 			this.MaximizeBox = false;
-			this.MinimizeBox = false;
 			this.Name = "Form2";
+			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "はじめてのプログラミング　迷路パズル";
 			this.Load += new System.EventHandler(this.Form2_Load);

@@ -18,9 +18,10 @@ namespace Plock
 
 
         //ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-        List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
-        static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
-        int indent_count;                                 //インデント回数
+        internal List<PictureBox> clist = new List<PictureBox>();  //ブロック格納リスト
+		internal static Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
+		//internal Stack<string> indent = new Stack<string>();       //インデントの種類（IfかWhileか）
+		internal int indent_count;                                 //インデント回数
         delegate void safevelocityenable();
 
         int x;   //マウス座標
@@ -28,7 +29,7 @@ namespace Plock
 
 
 
-        int insert_point; //ブロック挿入位置（リストインデックス）
+        public int insert_point; //ブロック挿入位置（リストインデックス）
         private PictureBox arrowPicture;//矢印の画像
         private PictureBox line;//挿入位置を示す横棒
         private PictureBox dummyBlock;//ドラックアンドドロップ用の画像
@@ -116,7 +117,7 @@ namespace Plock
 
 
         //-------------------------------------------------------------------------------------------
-        private void block_View(int k)
+        internal void block_View(int k)
         {
             int top;
             int y = 40; //ブロック描画開始位置
@@ -182,7 +183,7 @@ namespace Plock
 
         }
         //-------------------------------------------------------------------------------------------
-        private int countBlocknumber()
+        internal int countBlocknumber()
         {
             int count = 0;
             for (int i = 0; i < clist.Count; i++)
@@ -431,17 +432,24 @@ namespace Plock
             DialogResult result = MessageBox.Show("すべてのブロックを消してもいいですか？", "けいこく", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                clist.Clear();
-                indent_count = 0;
-                insert_point = 0;
-                indent.Clear();
-                block_View(0);
-                countBlocknumber();
-
+				button3_Delete();
             }
             else { };
 
         }
+
+		internal void button3_Delete()
+		{
+			
+				clist.Clear();
+				indent_count = 0;
+				insert_point = 0;
+				indent.Clear();
+				block_View(0);
+				countBlocknumber();
+
+		}
+
         //-------------------------------------------------------------------------------------------
         private void onClick1(object sender, EventArgs e)
         {

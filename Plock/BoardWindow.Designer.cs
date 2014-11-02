@@ -95,11 +95,11 @@
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.label3 = new System.Windows.Forms.Label();
 			this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.label3 = new System.Windows.Forms.Label();
 			this.Object_Control_Menu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -509,22 +509,23 @@
 			// 操作方法ToolStripMenuItem
 			// 
 			this.操作方法ToolStripMenuItem.Name = "操作方法ToolStripMenuItem";
-			this.操作方法ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.操作方法ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.操作方法ToolStripMenuItem.Text = "操作方法";
 			this.操作方法ToolStripMenuItem.Click += new System.EventHandler(this.操作方法ToolStripMenuItem_Click);
 			// 
 			// クレジットToolStripMenuItem
 			// 
 			this.クレジットToolStripMenuItem.Name = "クレジットToolStripMenuItem";
-			this.クレジットToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.クレジットToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.クレジットToolStripMenuItem.Text = "クレジット";
 			this.クレジットToolStripMenuItem.Click += new System.EventHandler(this.クレジットToolStripMenuItem_Click);
 			// 
 			// stage
 			// 
 			this.stage.AutoSize = true;
+			this.stage.BackColor = System.Drawing.SystemColors.Control;
 			this.stage.Font = new System.Drawing.Font("Meiryo UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.stage.Location = new System.Drawing.Point(12, 537);
+			this.stage.Location = new System.Drawing.Point(235, 2);
 			this.stage.Name = "stage";
 			this.stage.Size = new System.Drawing.Size(146, 24);
 			this.stage.TabIndex = 7;
@@ -534,7 +535,7 @@
 			// 
 			this.settingobj.AutoSize = true;
 			this.settingobj.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.settingobj.Location = new System.Drawing.Point(20, 569);
+			this.settingobj.Location = new System.Drawing.Point(22, 533);
 			this.settingobj.Name = "settingobj";
 			this.settingobj.Size = new System.Drawing.Size(0, 19);
 			this.settingobj.TabIndex = 13;
@@ -542,7 +543,7 @@
 			// button2
 			// 
 			this.button2.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button2.Location = new System.Drawing.Point(363, 533);
+			this.button2.Location = new System.Drawing.Point(354, 533);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(93, 41);
 			this.button2.TabIndex = 16;
@@ -553,7 +554,7 @@
 			// button4
 			// 
 			this.button4.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.button4.Location = new System.Drawing.Point(259, 533);
+			this.button4.Location = new System.Drawing.Point(239, 533);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(98, 41);
 			this.button4.TabIndex = 17;
@@ -691,6 +692,16 @@
 			this.tabPage3.Text = "操作方法";
 			this.tabPage3.UseVisualStyleBackColor = true;
 			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+			this.label3.Location = new System.Drawing.Point(311, 580);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(446, 20);
+			this.label3.TabIndex = 1;
+			this.label3.Text = "(表示にはAdobe Readerがインストールされている必要があります。)";
+			// 
 			// axAcroPDF1
 			// 
 			this.axAcroPDF1.Enabled = true;
@@ -733,16 +744,6 @@
 			this.pictureBox2.TabIndex = 20;
 			this.pictureBox2.TabStop = false;
 			this.pictureBox2.Visible = false;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-			this.label3.Location = new System.Drawing.Point(247, 580);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(510, 20);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "クリックするとデータが読み込まれます。(表示にはAdobe Readerが必要です。)";
 			// 
 			// BoardData
 			// 
